@@ -54,8 +54,8 @@ public class PlayerController : MonoBehaviour
     CapsuleCollider col;
     //CharacterController characterController;
     PlayerInput playerInput;
-
     PlayerControls playerControls;
+    Camera cam;
 
     // Variables
     bool isRunning = false;
@@ -86,6 +86,7 @@ public class PlayerController : MonoBehaviour
         rb = GetComponent<Rigidbody>();
         col = GetComponent<CapsuleCollider>();
         playerInput = GetComponent<PlayerInput>();
+        cam = Camera.main;
 
         playerControls = new PlayerControls();
 
@@ -99,6 +100,7 @@ public class PlayerController : MonoBehaviour
     private void FixedUpdate()
     {
         //updateMovementInput();
+        RotateAccordingToCamera();
         checkGroundState();
         Move();
 
@@ -109,6 +111,14 @@ public class PlayerController : MonoBehaviour
     }
 
     // MOVEMENT METHODS
+
+    void RotateAccordingToCamera()
+    {
+        // No hacemos un suavizado porque ya lo tiene la cámara y, además, 
+        // sería molesto
+        float cameraRotation = cam.transform.rotation.eulerAngles.y; 
+        rb.MoveRotation(Quaternion.Euler(0, cameraRotation, 0));
+    }
 
     void Move()
     {
@@ -125,6 +135,8 @@ public class PlayerController : MonoBehaviour
         Vector3 forward = transform.forward;
         Vector3 movement = Vector3.zero;
         Vector3 targetSpeed;
+        Vector3 currentSpeed = rb.velocity;
+        currentSpeed.y = 0;
         float difference;
         float _acceleration; // used for maths
         float _deceleration;
@@ -150,10 +162,10 @@ public class PlayerController : MonoBehaviour
             _deceleration = -airborneAcceleration;
         }
 
-        difference = targetSpeed.magnitude - rb.velocity.magnitude;
+        difference = targetSpeed.magnitude - currentSpeed.magnitude;
 
 
-        if (!ExtendedMaths.Approximately(difference, 0.0f, 0.01f)) // Si existe diferencia significativa entre nuestra velocidad objetivo y la actual
+        if (!ExtendedMaths.Approximately(difference, 0.0f, 0.001f)) // Si existe diferencia significativa entre nuestra velocidad objetivo y la actual
         {
             if (difference > 0) // Si es positiva (es decir, necesitamos más), entonces añadimos aceleración
             {
@@ -170,6 +182,8 @@ public class PlayerController : MonoBehaviour
         }
 
         rb.velocity += movement;
+
+        Debug.Log(rb.velocity.magnitude);
         //rb.AddForce(movement, ForceMode.VelocityChange);
         onGroundLastFrame = isOnGround;
     }

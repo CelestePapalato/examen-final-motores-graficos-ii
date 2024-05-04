@@ -420,7 +420,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 5, y: 1, z: 5}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
@@ -1084,8 +1084,8 @@ MonoBehaviour:
   walkingMaxSpeed: 3
   runningMaxSpeed: 6
   airborneMaxSpeed: 4
-  walkingAcceleration: 12
-  runningAcceleration: 12
+  walkingAcceleration: 3
+  runningAcceleration: 6
   airborneAcceleration: 5
   deceleration: 8
   maximumSlop: 45
@@ -1104,7 +1104,7 @@ Rigidbody:
   serializedVersion: 4
   m_Mass: 1
   m_Drag: 0
-  m_AngularDrag: 0.05
+  m_AngularDrag: 0
   m_CenterOfMass: {x: 0, y: 0, z: 0}
   m_InertiaTensor: {x: 1, y: 1, z: 1}
   m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}

@@ -4,6 +4,14 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.InputSystem;
 
+public class ExtendedMaths
+{
+    public static bool Approximately(float a, float b, float tolerance)
+    {
+        return Mathf.Abs(a - b) < tolerance;
+    }
+}
+
 public class PlayerController : MonoBehaviour
 {
     [Header("Movement constants")]
@@ -145,7 +153,7 @@ public class PlayerController : MonoBehaviour
         difference = targetSpeed.magnitude - rb.velocity.magnitude;
 
 
-        if (!Mathf.Approximately(difference, 0.0f)) // Si existe diferencia significativa entre nuestra velocidad objetivo y la actual
+        if (!ExtendedMaths.Approximately(difference, 0.0f, 0.01f)) // Si existe diferencia significativa entre nuestra velocidad objetivo y la actual
         {
             if (difference > 0) // Si es positiva (es decir, necesitamos más), entonces añadimos aceleración
             {

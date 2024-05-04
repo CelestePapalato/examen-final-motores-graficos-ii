@@ -136,7 +136,6 @@ public class PlayerController : MonoBehaviour
         Vector3 movement = Vector3.zero;
         Vector3 targetSpeed;
         Vector3 currentSpeed = rb.velocity;
-        currentSpeed.y = 0;
         float difference;
         float _acceleration; // used for maths
         float _deceleration;

@@ -12,7 +12,7 @@ public class ExtendedMaths
     }
 }
 
-public class PlayerController : MonoBehaviour
+public class PlayerFPSController : MonoBehaviour
 {
     [Header("Movement constants")]
     [SerializeField]

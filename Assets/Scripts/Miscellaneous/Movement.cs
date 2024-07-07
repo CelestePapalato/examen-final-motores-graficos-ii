@@ -50,6 +50,8 @@ public class Movement : MonoBehaviour, IBuffable
         get => decceleration * speedMultiplier; private set { decceleration = (value > 0) ? value : decceleration; }
     }
 
+    public float RigidbodySpeed { get => rb.velocity.magnitude; }
+
     public Vector2 Direction
     {
         get => input_vector;

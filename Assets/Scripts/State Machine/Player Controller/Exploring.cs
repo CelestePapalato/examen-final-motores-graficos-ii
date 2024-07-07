@@ -17,6 +17,11 @@ public class Exploring : PlayerController
         }
     }
 
+    public override void Actualizar()
+    {
+        animator.SetFloat("Speed", movement.RigidbodySpeed);
+    }
+
     public override void Move(InputValue inputValue)
     {
         Vector2 input = inputValue.Get<Vector2>(); 
@@ -28,5 +33,9 @@ public class Exploring : PlayerController
         Debug.Log(input);
     }
 
+    public override void Attack()
+    {
+        base.Attack();
+    }
 
 }

@@ -39,13 +39,13 @@ public abstract class CharacterController : State
 
     protected Movement movement;
     protected Animator animator;
-    protected AnimationEventReservoir animEvent;
+    protected AnimationEventHandler animEvent;
 
     protected virtual void Awake()
     {
         movement = GetComponentInChildren<Movement>();
         animator = GetComponentInChildren<Animator>();
-        animEvent = GetComponentInChildren<AnimationEventReservoir>();
+        animEvent = GetComponentInChildren<AnimationEventHandler>();
         if (camera == null)
         {
             camera = Camera.main;

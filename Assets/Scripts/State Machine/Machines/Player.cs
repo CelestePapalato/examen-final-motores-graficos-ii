@@ -9,6 +9,7 @@ public class Player : StateMachine
     [Header("States")]
     [SerializeField] CharacterController idleState;
     [SerializeField] CharacterController attackState;
+    [SerializeField] CharacterController specialAttackState;
     [SerializeField] CharacterController stunState;
 
     Health healthComponent;

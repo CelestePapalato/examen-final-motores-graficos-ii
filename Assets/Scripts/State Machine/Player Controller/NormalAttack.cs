@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-public class Attack : CharacterController
+public class NormalAttack : CharacterController
 {
     public override void Entrar(StateMachine personajeActual)
     {

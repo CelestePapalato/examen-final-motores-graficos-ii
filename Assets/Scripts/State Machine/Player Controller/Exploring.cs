@@ -19,7 +19,7 @@ public class Exploring : PlayerController
 
     public override void Actualizar()
     {
-        animator.SetFloat("Speed", movement.RigidbodySpeed);
+        animator.SetFloat("Speed", movement.RigidbodySpeed / maxSpeed);
     }
 
     public override void Move(InputValue inputValue)

@@ -38,8 +38,8 @@ public abstract class PlayerController : Estado
 
     protected virtual void Awake()
     {
-        movement = GetComponent<Movement>();
-        animator = GetComponent<Animator>();
+        movement = GetComponentInChildren<Movement>();
+        animator = GetComponentInChildren<Animator>();
     }
 
     protected float GetPlayerDamageMultiplier()

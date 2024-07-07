@@ -3,20 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-public class Exploring : PlayerController
+public class Idle : CharacterController
 {
-    [SerializeField] bool inputRelatedToCamera = true;
-    [SerializeField] new Camera camera;
-
-    protected override void Awake()
-    {
-        base.Awake();
-        if (camera == null)
-        {
-            camera = Camera.main;
-        }
-    }
-
     public override void Actualizar()
     {
         animator.SetFloat("Speed", movement.RigidbodySpeed / maxSpeed);
@@ -33,9 +21,8 @@ public class Exploring : PlayerController
         Debug.Log(input);
     }
 
-    public override void Attack()
-    {
-        base.Attack();
-    }
+    public override void Attack() { }
+
+    public override void Evade() { }
 
 }

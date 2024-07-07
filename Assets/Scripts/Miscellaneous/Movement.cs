@@ -13,6 +13,7 @@ public class Movement : MonoBehaviour, IBuffable
     [SerializeField]
     [Range(0f, .5f)] float rotationSmoothing;
 
+    private float speedBeforeRepose;
     private float speedMultiplier = 1f;
     private float currentMaxSpeed;
     private Vector2 input_vector = Vector2.zero;
@@ -28,16 +29,31 @@ public class Movement : MonoBehaviour, IBuffable
         get => maxSpeed * speedMultiplier;
         set
         {
-            if (value > 0)
+            if (value == maxSpeed) { return; }
+
+            if (maxSpeed == 0)
             {
-                float diff = maxSpeed / value;
                 maxSpeed = value;
+                float diff = speedBeforeRepose / value;
                 acceleration *= diff;
                 decceleration *= diff;
             }
-            if (value == 0)
+            else
             {
-                maxSpeed = 0;
+                if (value > 0)
+                {
+                    float diff = maxSpeed / value;
+                    maxSpeed = value;
+                    acceleration *= diff;
+                    decceleration *= diff;
+                    return;
+                }
+                if (value == 0)
+                {
+                    speedBeforeRepose = maxSpeed;
+                    maxSpeed = 0;
+                    return;
+                }
             }
         }
     }
@@ -71,6 +87,7 @@ public class Movement : MonoBehaviour, IBuffable
 
     private void Awake()
     {
+        speedBeforeRepose = maxSpeed;
         currentMaxSpeed = 0;
         rb = GetComponent<Rigidbody>();
     }

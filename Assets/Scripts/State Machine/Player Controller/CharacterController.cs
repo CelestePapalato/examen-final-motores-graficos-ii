@@ -3,11 +3,15 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-public abstract class PlayerController : Estado
+public abstract class CharacterController : Estado
 {
     [SerializeField] protected float maxSpeed;
     [SerializeField] protected float attackCooldown;
     [SerializeField] protected float evadeCooldown;
+
+    [Header("Camera")]
+    [SerializeField] protected bool inputRelatedToCamera;
+    [SerializeField] protected new Camera camera;
 
     // # MOVEMENT ====================
     public float MaxSpeed { get => maxSpeed; }
@@ -40,6 +44,10 @@ public abstract class PlayerController : Estado
     {
         movement = GetComponentInChildren<Movement>();
         animator = GetComponentInChildren<Animator>();
+        if (camera == null)
+        {
+            camera = Camera.main;
+        }
     }
 
     protected float GetPlayerDamageMultiplier()

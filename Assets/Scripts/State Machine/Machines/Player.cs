@@ -6,9 +6,14 @@ using UnityEngine.InputSystem;
 
 public class Player : StateMachine
 {
+    [Header("States")]
+    [SerializeField] CharacterController idleState;
+    [SerializeField] CharacterController attackState;
+    [SerializeField] CharacterController stunState;
+
     Health healthComponent;
     Movement movement;
-    PlayerController controller;
+    CharacterController controller;
     PlayerInput playerInput;
 
     public UnityAction OnDead;
@@ -20,6 +25,8 @@ public class Player : StateMachine
 
     protected override void Awake()
     {
+        firstState = idleState;
+
         base.Awake();
 
         movement = GetComponent<Movement>();
@@ -52,20 +59,12 @@ public class Player : StateMachine
             return;
         }
         base.Update();
-        if (attackInput)
-        {
-            controller?.Attack();
-        }
-        if(evadeInput)
-        {
-            controller?.Evade();
-        }
     }
 
     public override void CambiarEstado(Estado nuevoEstado)
     {
         base.CambiarEstado(nuevoEstado);
-        controller = (PlayerController) estadoActual;
+        controller = (CharacterController) currentState;
     }
 
     private void Dead()
@@ -83,16 +82,29 @@ public class Player : StateMachine
     private void OnAttack()
     {
         attackInput = !attackInput;
+        if (attackInput)
+        {
+            controller?.Attack();
+        }
+        if (currentState == idleState && attackState)
+        {
+            Debug.Log("vvv");
+            CambiarEstado(attackState);
+        }
     }
 
     private void OnEvade()
     {
         evadeInput = !evadeInput;
+        if (evadeInput)
+        {
+            controller?.Evade();
+        }
     }
 
     private void OnDamage(int health, int maxHealth)
     {
-        estadoActual?.DañoRecibido();
+        currentState?.DañoRecibido();
     }
 
 }

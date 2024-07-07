@@ -22,7 +22,7 @@ public class PowerUp : ScriptableObject, IBuff
         {
             healthComponent.Heal(_healPoints);
         }
-        PlayerController player = o as PlayerController;
+        CharacterController player = o as CharacterController;
         if (player)
         {
             //player.SpeedPowerUp(_speedMultiplier, _buffTime);

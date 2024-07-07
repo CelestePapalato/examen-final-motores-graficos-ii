@@ -4,23 +4,25 @@ using UnityEngine;
 
 public abstract class StateMachine : MonoBehaviour
 {
-    [SerializeField] protected Estado primerEstado;
+    [SerializeField] protected Estado firstState;
 
-    protected Estado estadoActual;
-    protected Estado primerEstadoBuffer;
-    protected Estado ultimoEstado;
+    [Header("DEBUG")]
+    [SerializeField]
+    protected Estado currentState;
+    protected Estado firstStateBuffer;
+    protected Estado lastState;
 
     protected virtual void Awake()
     {
-        if (!primerEstado)
+        if (!firstState)
         {
-            primerEstado = GetComponent<Estado>();
+            firstState = GetComponent<Estado>();
         }
 
-        if (primerEstado)
+        if (firstState)
         {
-            primerEstadoBuffer = primerEstado;
-            CambiarEstado(primerEstado);
+            firstStateBuffer = firstState;
+            CambiarEstado(firstState);
         }
         else
         {
@@ -30,49 +32,49 @@ public abstract class StateMachine : MonoBehaviour
 
     protected virtual void Update()
     {
-        if (estadoActual)
+        if (currentState)
         {
-            estadoActual.Actualizar();
+            currentState.Actualizar();
         }
     }
 
     protected virtual void FixedUpdate()
     {
-        if (estadoActual)
+        if (currentState)
         {
-            estadoActual.ActualizarFixed();
+            currentState.ActualizarFixed();
         }
     }
 
     public virtual void CambiarEstado(Estado nuevoEstado)
     {
-        estadoActual?.Salir();
-        estadoActual = (nuevoEstado) ? nuevoEstado : primerEstado;
-        estadoActual?.Entrar(this);
+        currentState?.Salir();
+        currentState = (nuevoEstado) ? nuevoEstado : firstState;
+        currentState?.Entrar(this);
     }
 
     private void OnEnable()
     {
-        if (estadoActual)
+        if (currentState)
         {
             return;
         }
-        primerEstado = primerEstadoBuffer;
-        CambiarEstado(ultimoEstado);
+        firstState = firstStateBuffer;
+        CambiarEstado(lastState);
     }
 
     private void OnDisable()
     {
-        ultimoEstado = estadoActual;
-        primerEstadoBuffer = primerEstado;
-        primerEstado = null;
-        estadoActual?.Salir();
+        lastState = currentState;
+        firstStateBuffer = firstState;
+        firstState = null;
+        currentState?.Salir();
     }
 
     private void OnDestroy()
     {
-        primerEstado = null;
-        estadoActual?.Salir();
+        firstState = null;
+        currentState?.Salir();
     }
 }
 

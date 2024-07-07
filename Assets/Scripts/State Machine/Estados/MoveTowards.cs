@@ -4,11 +4,11 @@ using UnityEngine;
 
 [RequireComponent(typeof(Movement))]
 
-public class MoveTowards : Estado
+public class MoveTowards : State
 {
     [SerializeField] Transform destination;
     [SerializeField] float tolerance;
-    [SerializeField] Estado nextState;
+    [SerializeField] State nextState;
 
     Movement movement;
 

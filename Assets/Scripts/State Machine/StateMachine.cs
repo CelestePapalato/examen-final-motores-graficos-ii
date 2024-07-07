@@ -4,19 +4,19 @@ using UnityEngine;
 
 public abstract class StateMachine : MonoBehaviour
 {
-    [SerializeField] protected Estado firstState;
+    [SerializeField] protected State firstState;
 
     [Header("DEBUG")]
     [SerializeField]
-    protected Estado currentState;
-    protected Estado firstStateBuffer;
-    protected Estado lastState;
+    protected State currentState;
+    protected State firstStateBuffer;
+    protected State lastState;
 
     protected virtual void Awake()
     {
         if (!firstState)
         {
-            firstState = GetComponent<Estado>();
+            firstState = GetComponent<State>();
         }
 
         if (firstState)
@@ -46,7 +46,7 @@ public abstract class StateMachine : MonoBehaviour
         }
     }
 
-    public virtual void CambiarEstado(Estado nuevoEstado)
+    public virtual void CambiarEstado(State nuevoEstado)
     {
         currentState?.Salir();
         currentState = (nuevoEstado) ? nuevoEstado : firstState;
@@ -78,7 +78,7 @@ public abstract class StateMachine : MonoBehaviour
     }
 }
 
-public abstract class Estado : MonoBehaviour
+public abstract class State : MonoBehaviour
 {
     protected StateMachine personaje;
 

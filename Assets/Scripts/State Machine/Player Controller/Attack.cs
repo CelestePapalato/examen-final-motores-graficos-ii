@@ -5,19 +5,44 @@ using UnityEngine.InputSystem;
 
 public class Attack : CharacterController
 {
-    [SerializeField]
-    string animationStateRoute = "Base Layer/Attack";
-
     public override void Entrar(StateMachine personajeActual)
     {
         base.Entrar(personajeActual);
         animator.SetTrigger("Attack");
+        animEvent.onAnimationComplete += AttackFinished;
     }
 
     public override void Salir()
     {
         movement.enabled = true;
+        animEvent.onAnimationComplete -= AttackFinished;
         base.Salir();
+    }
+
+    private void OnEnable()
+    {
+        if (isActive)
+        {
+
+            animEvent.onAnimationComplete += AttackFinished;
+        }
+    }
+
+    private void OnDisable()
+    {
+        if (isActive)
+        {
+
+            animEvent.onAnimationComplete -= AttackFinished;
+        }
+    }
+
+    private void AttackFinished(CharacterAnimatorState state)
+    {
+        if(state == CharacterAnimatorState.ATTACK)
+        {
+            personaje.CambiarEstado(null);
+        }
     }
 
     public override void Move(InputValue inputValue)

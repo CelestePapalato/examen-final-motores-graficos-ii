@@ -61,7 +61,7 @@ public class Player : StateMachine
         base.Update();
     }
 
-    public override void CambiarEstado(Estado nuevoEstado)
+    public override void CambiarEstado(State nuevoEstado)
     {
         base.CambiarEstado(nuevoEstado);
         controller = (CharacterController) currentState;

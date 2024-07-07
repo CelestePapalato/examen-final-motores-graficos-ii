@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-public abstract class CharacterController : Estado
+public abstract class CharacterController : State
 {
     [SerializeField] protected float maxSpeed;
     [SerializeField] protected float attackCooldown;
@@ -39,11 +39,13 @@ public abstract class CharacterController : Estado
 
     protected Movement movement;
     protected Animator animator;
+    protected AnimationEventReservoir animEvent;
 
     protected virtual void Awake()
     {
         movement = GetComponentInChildren<Movement>();
         animator = GetComponentInChildren<Animator>();
+        animEvent = GetComponentInChildren<AnimationEventReservoir>();
         if (camera == null)
         {
             camera = Camera.main;

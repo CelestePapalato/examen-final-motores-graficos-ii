@@ -67,6 +67,7 @@ public class Movement : MonoBehaviour, IBuffable
     }
 
     public float RigidbodySpeed { get => rb.velocity.magnitude; }
+    public Rigidbody RigidBody { get => rb; }
 
     public Vector2 Direction
     {

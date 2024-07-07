@@ -5,17 +5,27 @@ using UnityEngine.InputSystem;
 
 public class NormalAttack : CharacterController
 {
+    bool attackBuffer;
+
     public override void Entrar(StateMachine personajeActual)
     {
         base.Entrar(personajeActual);
+        canAttack = false;
+        attackBuffer = false;
         animator.SetTrigger("Attack");
+        float y_velocity = movement.RigidBody.velocity.y;
+        movement.RigidBody.velocity = new Vector3(0f, y_velocity, 0f);
+        animEvent.onAnimationStart += CleanBuffer;
         animEvent.onAnimationComplete += AttackFinished;
+        animEvent.onAnimationCancelable += CanCombo;
     }
 
     public override void Salir()
     {
         movement.enabled = true;
+        animEvent.onAnimationStart -= CleanBuffer;
         animEvent.onAnimationComplete -= AttackFinished;
+        animEvent.onAnimationCancelable -= CanCombo;
         base.Salir();
     }
 
@@ -23,8 +33,9 @@ public class NormalAttack : CharacterController
     {
         if (isActive)
         {
-
+            animEvent.onAnimationStart += CleanBuffer;
             animEvent.onAnimationComplete += AttackFinished;
+            animEvent.onAnimationCancelable -= CanCombo;
         }
     }
 
@@ -32,14 +43,36 @@ public class NormalAttack : CharacterController
     {
         if (isActive)
         {
-
+            animEvent.onAnimationStart -= CleanBuffer;
             animEvent.onAnimationComplete -= AttackFinished;
+            animEvent.onAnimationCancelable -= CanCombo;
+        }
+    }
+
+    private void CleanBuffer(CharacterAnimatorState state)
+    {
+        if (state == CharacterAnimatorState.ATTACK)
+        {
+            attackBuffer = false;
+            canAttack = false;
+        }
+    }
+
+    private void CanCombo(CharacterAnimatorState state)
+    {
+        if (state == CharacterAnimatorState.ATTACK)
+        {
+            canAttack = true;
         }
     }
 
     private void AttackFinished(CharacterAnimatorState state)
     {
-        if(state == CharacterAnimatorState.ATTACK)
+        if (attackBuffer)
+        {
+            return;
+        }
+        if (state == CharacterAnimatorState.ATTACK)
         {
             personaje.CambiarEstado(null);
         }
@@ -54,5 +87,15 @@ public class NormalAttack : CharacterController
         }
         movement.Direction = input;
         Debug.Log(input);
+    }
+
+    public override void Attack()
+    {
+        if(canAttack)
+        {
+            canAttack = false;
+            animator.SetTrigger("Attack");
+            attackBuffer = true;
+        }
     }
 }

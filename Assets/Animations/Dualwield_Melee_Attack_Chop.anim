@@ -55219,6 +55219,13 @@ AnimationClip:
     intParameter: 1
     messageOptions: 0
   - time: 0.9
+    functionName: AnimationCancelableHandler
+    data: 
+    objectReferenceParameter: {fileID: 0}
+    floatParameter: 0
+    intParameter: 1
+    messageOptions: 0
+  - time: 1.1666666
     functionName: AnimationCompleteHandler
     data: 
     objectReferenceParameter: {fileID: 0}

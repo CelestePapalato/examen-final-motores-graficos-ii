@@ -15,7 +15,9 @@ public class Player : StateMachine
     Health healthComponent;
     Movement movement;
     CharacterController controller;
+    Animator animator;
     PlayerInput playerInput;
+    Collider[] hitboxes;
 
     public UnityAction OnDead;
     bool attackInput = false;
@@ -33,6 +35,18 @@ public class Player : StateMachine
         movement = GetComponentInChildren<Movement>();
         healthComponent = GetComponentInChildren<Health>();
         playerInput = GetComponent<PlayerInput>();
+        GetAllHitboxes(true);
+    }
+
+    private void GetAllHitboxes(bool disable)
+    {
+        Damage[] damageComponents = GetComponentsInChildren<Damage>();
+        hitboxes = new Collider[damageComponents.Length];
+        for (int i = 0; i < hitboxes.Length; i++)
+        {
+            hitboxes[i] = damageComponents[i].GetComponentInChildren<Collider>();
+            hitboxes[i].enabled = !disable;
+        }
     }
 
     private void OnEnable()
@@ -106,6 +120,11 @@ public class Player : StateMachine
     private void OnDamage(int health, int maxHealth)
     {
         currentState?.DañoRecibido();
+        if (stunState)
+        {            
+            CambiarEstado(stunState);
+        }
+        animator?.SetTrigger("Damage");
     }
 
 }

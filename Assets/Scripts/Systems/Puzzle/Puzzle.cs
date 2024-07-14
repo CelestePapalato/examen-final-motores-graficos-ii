@@ -7,7 +7,7 @@ namespace PuzzleSystem
 {
     public abstract class Puzzle : MonoBehaviour
     {
-        private bool _completed = false;
+        protected bool _completed = false;
         public bool Completed
         {
             get { return _completed; }

@@ -11,6 +11,7 @@ public class NormalAttack : CharacterController
     {
         base.Entrar(personajeActual);
         canAttack = false;
+        canEvade = false;
         attackBuffer = false;
         animator.SetTrigger("Attack");
         float y_velocity = movement.RigidBody.velocity.y;

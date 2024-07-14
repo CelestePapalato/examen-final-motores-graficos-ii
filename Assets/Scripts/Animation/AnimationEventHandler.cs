@@ -6,6 +6,7 @@ public enum CharacterAnimatorState
     IDLE,
     ATTACK,
     STUN,
+    INTERACTION,
     DEAD
 }
 

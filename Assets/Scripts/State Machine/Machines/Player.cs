@@ -36,17 +36,21 @@ public class Player : StateMachine
         healthComponent = GetComponentInChildren<Health>();
         animator = GetComponentInChildren<Animator>();
         playerInput = GetComponent<PlayerInput>();
-        GetAllHitboxes(true);
     }
 
-    private void GetAllHitboxes(bool disable)
+    private void Start()
+    {
+        GetAllHitboxes(false);
+    }
+
+    private void GetAllHitboxes(bool enable)
     {
         Damage[] damageComponents = GetComponentsInChildren<Damage>();
         hitboxes = new Collider[damageComponents.Length];
         for (int i = 0; i < hitboxes.Length; i++)
         {
-            hitboxes[i] = damageComponents[i].GetComponentInChildren<Collider>();
-            hitboxes[i].enabled = !disable;
+            hitboxes[i] = damageComponents[i].GetComponent<Collider>();
+            hitboxes[i].enabled = enable;
         }
     }
 

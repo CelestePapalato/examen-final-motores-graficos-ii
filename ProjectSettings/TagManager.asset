@@ -11,14 +11,14 @@ TagManager:
   - 
   - Water
   - UI
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
+  - Player
+  - Player Hitbox
+  - Player Hurtbox
+  - Enemy
+  - Enemy Hitbox
+  - Enemy Hurtbox
+  - Interactable
+  - Item
   - 
   - 
   - 

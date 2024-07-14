@@ -179,7 +179,7 @@ GameObject:
   - component: {fileID: 8840903937923531898}
   - component: {fileID: 1151473648019523380}
   - component: {fileID: 6839517451787653580}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Hurtbox
   m_TagString: Untagged
   m_Icon: {fileID: 0}

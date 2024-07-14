@@ -289,7 +289,7 @@ GameObject:
   - component: {fileID: 1791533887688315003}
   - component: {fileID: 3014259629822842884}
   - component: {fileID: 4481863325778163207}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: 1H_Sword_Offhand
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -725,7 +725,7 @@ GameObject:
   - component: {fileID: 763449774842030355}
   - component: {fileID: 8364266318338261498}
   - component: {fileID: 6104263702429426405}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Knight
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2881,7 +2881,7 @@ GameObject:
   - component: {fileID: 8840903937923531898}
   - component: {fileID: 1151473648019523380}
   - component: {fileID: 6839517451787653580}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Hurtbox
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2989,7 +2989,7 @@ GameObject:
   - component: {fileID: 6426071742251676296}
   - component: {fileID: 5944946178121253444}
   - component: {fileID: 1536145726756130358}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: 2H_Sword
   m_TagString: Untagged
   m_Icon: {fileID: 0}

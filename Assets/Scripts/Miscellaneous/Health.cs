@@ -35,31 +35,20 @@ public class Health : MonoBehaviour, IDamageable, IHittable
     public void Heal(int healPoints)
     {
         health = Mathf.Clamp(health + healPoints, 0, maxHealth);
-        if(onHealthUpdate != null)
-        {
-            onHealthUpdate(health, maxHealth);
-        }
-        if(onHealed != null)
-        {
-            onHealed(health, maxHealth);
-        }
+        onHealthUpdate?.Invoke(health, maxHealth);
+        onHealed?.Invoke(health, maxHealth);
     }
 
     public void Damage(IDamageDealer damageDealer)
     {
-        if(invincibility)
+        if (invincibility)
         {
             return;
         }
         health = Mathf.Clamp(health - damageDealer.DamagePoints, 0, maxHealth);
-        if (onHealthUpdate != null)
-        {
-            onHealthUpdate(health, maxHealth);
-        }
-        if(onDamaged != null)
-        {
-            onDamaged.Invoke(health, maxHealth);
-        }
+        onHealthUpdate?.Invoke(health, maxHealth);
+        onDamaged?.Invoke(health, maxHealth);
+
         if (health <= 0 && onNoHealth != null)
         {
             col.enabled = false;

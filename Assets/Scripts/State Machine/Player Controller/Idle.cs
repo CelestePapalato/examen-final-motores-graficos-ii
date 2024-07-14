@@ -18,7 +18,6 @@ public class Idle : CharacterController
             input = Quaternion.Euler(0f, 0f, -camera.transform.eulerAngles.y) * input;
         }
         movement.Direction = input;
-        Debug.Log(input);
     }
 
     public override void Attack() { }

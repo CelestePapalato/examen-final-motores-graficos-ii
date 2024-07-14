@@ -34,6 +34,7 @@ public class Player : StateMachine
 
         movement = GetComponentInChildren<Movement>();
         healthComponent = GetComponentInChildren<Health>();
+        animator = GetComponentInChildren<Animator>();
         playerInput = GetComponent<PlayerInput>();
         GetAllHitboxes(true);
     }
@@ -103,7 +104,6 @@ public class Player : StateMachine
         }
         if (currentState == idleState && attackState)
         {
-            Debug.Log("vvv");
             CambiarEstado(attackState);
         }
     }
@@ -119,6 +119,7 @@ public class Player : StateMachine
 
     private void OnDamage(int health, int maxHealth)
     {
+        Debug.Log("Vida: " + health);
         currentState?.DañoRecibido();
         if (stunState)
         {            

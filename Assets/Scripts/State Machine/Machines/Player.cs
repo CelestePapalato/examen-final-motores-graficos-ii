@@ -30,7 +30,7 @@ public class Player : StateMachine
 
         base.Awake();
 
-        movement = GetComponent<Movement>();
+        movement = GetComponentInChildren<Movement>();
         healthComponent = GetComponentInChildren<Health>();
         playerInput = GetComponent<PlayerInput>();
     }

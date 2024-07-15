@@ -1210,35 +1210,12 @@ MonoBehaviour:
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls: []
---- !u!1 &1117015015 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 2907547849783969211, guid: 43aa2669f5bf40449b70d6e2a973239e,
-    type: 3}
-  m_PrefabInstance: {fileID: 1581692146999014459}
-  m_PrefabAsset: {fileID: 0}
 --- !u!4 &1117015022 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 6830506450299512291, guid: 43aa2669f5bf40449b70d6e2a973239e,
     type: 3}
   m_PrefabInstance: {fileID: 1581692146999014459}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &1117015026
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1117015015}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5b6cb2790558493448670a816e08e3f1, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  maxSpeed: 0
-  attackCooldown: 0
-  evadeCooldown: 0
-  inputRelatedToCamera: 0
-  camera: {fileID: 0}
 --- !u!1 &1121478531
 GameObject:
   m_ObjectHideFlags: 0
@@ -2024,11 +2001,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Bones.Array.data[40]
       value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 763449774842030355, guid: 2e681cf9ace3ee846901432440a7398a,
-        type: 3}
-      propertyPath: m_Constraints
-      value: 112
       objectReference: {fileID: 0}
     - target: {fileID: 1151473648019523380, guid: 2e681cf9ace3ee846901432440a7398a,
         type: 3}
@@ -3833,11 +3805,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 7675662819753635044, guid: 43aa2669f5bf40449b70d6e2a973239e,
-        type: 3}
-      propertyPath: interactionState
-      value: 
-      objectReference: {fileID: 1117015026}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects:
@@ -3845,11 +3812,7 @@ PrefabInstance:
         type: 3}
       insertIndex: -1
       addedObject: {fileID: 826166538}
-    m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 2907547849783969211, guid: 43aa2669f5bf40449b70d6e2a973239e,
-        type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 1117015026}
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 43aa2669f5bf40449b70d6e2a973239e, type: 3}
 --- !u!23 &1597299924790021621
 MeshRenderer:

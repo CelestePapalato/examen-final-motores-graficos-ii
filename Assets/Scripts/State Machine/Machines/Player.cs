@@ -1,11 +1,15 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.InputSystem;
 
 public class Player : StateMachine
 {
+    private static List<Player> currentPlayers = new List<Player>();
+    public static Player[] CurrentPlayers {  get { return currentPlayers.ToArray(); } }
+
     [Header("States")]
     [SerializeField] CharacterController idleState;
     [SerializeField] CharacterController attackState;
@@ -26,6 +30,8 @@ public class Player : StateMachine
 
     private float damageMultiplier = 1f;
     public float DamageMultiplier {  get { return damageMultiplier; } }
+
+    public bool IsDead = false;
 
     protected override void Awake()
     {
@@ -57,6 +63,7 @@ public class Player : StateMachine
 
     private void OnEnable()
     {
+        currentPlayers.Add(this);
         if (healthComponent)
         {
             healthComponent.onDamaged += OnDamage;
@@ -66,6 +73,7 @@ public class Player : StateMachine
 
    private void OnDisable()
     {
+        currentPlayers.Remove(this);
         if (healthComponent)
         {
             healthComponent.onDamaged -= OnDamage;
@@ -94,6 +102,7 @@ public class Player : StateMachine
         OnDead?.Invoke();
         playerInput.enabled = false;
         this.enabled = false;
+        IsDead = true;
     }
     private void OnMove(InputValue inputValue)
     {

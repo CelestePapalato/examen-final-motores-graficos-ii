@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 4394378423198415706}
   - component: {fileID: 8849611349192327312}
   - component: {fileID: 5185572987534178429}
+  - component: {fileID: 7078773081239684264}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -85,6 +86,7 @@ MonoBehaviour:
   attackState: {fileID: 8849611349192327312}
   specialAttackState: {fileID: 0}
   stunState: {fileID: 5185572987534178429}
+  interactionState: {fileID: 7078773081239684264}
 --- !u!114 &4394378423198415706
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -134,5 +136,22 @@ MonoBehaviour:
   maxSpeed: 0
   attackCooldown: 0
   evadeCooldown: 0
-  inputRelatedToCamera: 0
+  inputRelatedToCamera: 1
+  camera: {fileID: 0}
+--- !u!114 &7078773081239684264
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2907547849783969211}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5b6cb2790558493448670a816e08e3f1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxSpeed: 0
+  attackCooldown: 0
+  evadeCooldown: 0
+  inputRelatedToCamera: 1
   camera: {fileID: 0}

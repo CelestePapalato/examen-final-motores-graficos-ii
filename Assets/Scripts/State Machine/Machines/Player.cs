@@ -69,17 +69,17 @@ public class Player : StateMachine
 
         movement = GetComponentInChildren<Movement>();
         healthComponent = GetComponentInChildren<Health>();
-        healthBar = GetComponentInChildren<Healthbar>();
-        if (healthBar)
-        {
-            healthBar.HealthComponent = healthComponent;
-        }
         animator = GetComponentInChildren<Animator>();
         playerInput = GetComponent<PlayerInput>();
     }
 
     private void Start()
     {
+        healthBar = GetComponentInChildren<Healthbar>();
+        if (healthBar)
+        {
+            healthBar.HealthComponent = healthComponent;
+        }
         GetAllHitboxes(false);
     }
 

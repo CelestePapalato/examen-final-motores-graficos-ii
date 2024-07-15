@@ -12,7 +12,10 @@ public class Healthbar : MonoBehaviour
         get => healthComponent;
         set
         {
-            healthComponent.onHealthUpdate -= UpdateSlider;
+            if (healthComponent)
+            {
+                healthComponent.onHealthUpdate -= UpdateSlider;
+            }
             healthComponent = value;
             if(healthComponent)
             {

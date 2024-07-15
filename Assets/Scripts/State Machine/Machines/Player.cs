@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using System.Runtime.InteropServices.WindowsRuntime;
 using UnityEngine;
 using UnityEngine.Events;
@@ -10,6 +11,25 @@ public class Player : StateMachine
 {
     private static List<Player> currentPlayers = new List<Player>();
     public static Player[] CurrentPlayers {  get { return currentPlayers.ToArray(); } }
+
+    public static Player RandomPlayer
+    {
+        get
+        {
+            int r = UnityEngine.Random.Range(0, currentPlayers.Count);
+            return currentPlayers[r];
+        }
+    }
+
+    public static Player RandomAlivePlayer
+    {
+        get
+        {
+            Player[] alivePlayers = currentPlayers.Where(x => !x.IsDead).ToArray();
+            int r = UnityEngine.Random.Range(0, alivePlayers.Length);
+            return alivePlayers[r];
+        }
+    }
 
     public static event Action<Player> OnPlayerDead;
 

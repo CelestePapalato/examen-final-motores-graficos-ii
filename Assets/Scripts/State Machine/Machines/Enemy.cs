@@ -38,7 +38,7 @@ public class Enemy : StateMachine
 
     protected void Start()
     {
-        //player = Player.Instance;
+        player = Player.RandomAlivePlayer;
     }
 
     protected override void Update()

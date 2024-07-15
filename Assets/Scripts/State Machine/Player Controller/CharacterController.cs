@@ -39,8 +39,6 @@ public abstract class CharacterController : State
 
     public IInteractable currentInteractable;
 
-    protected bool isActive = false;
-
     protected Movement movement;
     protected Animator animator;
     protected AnimationEventHandler animEvent;
@@ -72,17 +70,10 @@ public abstract class CharacterController : State
     public override void Entrar(StateMachine personajeActual)
     {
         base.Entrar(personajeActual);
-        isActive = true;
         if (movement)
         {
             movement.MaxSpeed = maxSpeed;
         }
-    }
-
-    public override void Salir()
-    {
-        base.Salir();
-        isActive = false;
     }
 
     public override void Actualizar()

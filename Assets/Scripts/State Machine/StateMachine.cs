@@ -81,12 +81,18 @@ public abstract class StateMachine : MonoBehaviour
 public abstract class State : MonoBehaviour
 {
     protected StateMachine personaje;
+    protected bool isActive = false;
 
     public virtual void Entrar(StateMachine personajeActual)
     {
         personaje = personajeActual;
+        isActive = true;
     }
-    public virtual void Salir() { }
+    public virtual void Salir()
+    {
+
+        isActive = false;
+    }
     public virtual void Actualizar() { }
     public virtual void ActualizarFixed() { }
     public virtual void DañoRecibido() { }
@@ -101,5 +107,6 @@ public abstract class State : MonoBehaviour
     {
         if (!personaje) { return; }
         personaje.CambiarEstado(null);
+        isActive = false;
     }
 }

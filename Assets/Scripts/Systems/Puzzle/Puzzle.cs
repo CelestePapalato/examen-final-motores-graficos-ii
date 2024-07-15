@@ -21,7 +21,7 @@ namespace PuzzleSystem
             }
         }
 
-        public UnityAction PuzzleStateUpdated;
+        public UnityEvent PuzzleStateUpdated;
 
     }
 }

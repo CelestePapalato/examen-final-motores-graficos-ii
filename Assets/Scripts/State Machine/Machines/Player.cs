@@ -11,6 +11,7 @@ public class Player : StateMachine
     [SerializeField] CharacterController attackState;
     [SerializeField] CharacterController specialAttackState;
     [SerializeField] CharacterController stunState;
+    [SerializeField] CharacterController interactionState;
 
     Health healthComponent;
     Movement movement;
@@ -132,4 +133,16 @@ public class Player : StateMachine
         animator?.SetTrigger("Damage");
     }
 
+    private void OnInteract()
+    {   
+        if(controller != interactionState)
+        {
+            controller?.Interact();
+            CambiarEstado(interactionState);
+        }
+        else
+        {
+            controller?.Interact();
+        }
+    }
 }

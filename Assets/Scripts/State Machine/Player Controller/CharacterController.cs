@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.IO.LowLevel.Unsafe;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -34,6 +35,9 @@ public abstract class CharacterController : State
 
     public bool CanEvade { get => canEvade; set => canEvade = value; }
     // =============================== #
+
+
+    public IInteractable currentInteractable;
 
     protected bool isActive = false;
 
@@ -81,6 +85,12 @@ public abstract class CharacterController : State
         isActive = false;
     }
 
+    public override void Actualizar()
+    {
+        float speedFactor = (maxSpeed <= 0) ? 0 : movement.RigidbodySpeed / maxSpeed;
+        animator.SetFloat("Speed", speedFactor);
+    }
+
     public virtual void Move(InputValue inputValue) { }
 
     public virtual void Attack()
@@ -100,6 +110,8 @@ public abstract class CharacterController : State
         animator?.SetTrigger("Evade");
     }
 
+    public virtual void Interact() { }
+
     IEnumerator ControlAttackCooldown()
     {
         canAttack = false;
@@ -112,5 +124,18 @@ public abstract class CharacterController : State
         canEvade = false;
         yield return new WaitForSeconds(evadeCooldown);
         canEvade = true;
+    }
+
+    protected void StopPlayerMovement()
+    {
+        canAttack = false;
+        canEvade = false;
+        float y_velocity = movement.RigidBody.velocity.y;
+        movement.RigidBody.velocity = new Vector3(0f, y_velocity, 0f);
+    }
+
+    protected void ResumePlayerMovement()
+    {
+        movement.enabled = true;
     }
 }

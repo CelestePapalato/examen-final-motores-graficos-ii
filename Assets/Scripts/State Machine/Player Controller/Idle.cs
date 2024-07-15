@@ -5,11 +5,6 @@ using UnityEngine.InputSystem;
 
 public class Idle : CharacterController
 {
-    public override void Actualizar()
-    {
-        animator.SetFloat("Speed", movement.RigidbodySpeed / maxSpeed);
-    }
-
     public override void Move(InputValue inputValue)
     {
         Vector2 input = inputValue.Get<Vector2>(); 

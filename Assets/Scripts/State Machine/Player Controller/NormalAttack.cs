@@ -10,12 +10,9 @@ public class NormalAttack : CharacterController
     public override void Entrar(StateMachine personajeActual)
     {
         base.Entrar(personajeActual);
-        canAttack = false;
-        canEvade = false;
         attackBuffer = false;
         animator.SetTrigger("Attack");
-        float y_velocity = movement.RigidBody.velocity.y;
-        movement.RigidBody.velocity = new Vector3(0f, y_velocity, 0f);
+        StopPlayerMovement();
         animEvent.onAnimationStart += CleanBuffer;
         animEvent.onAnimationComplete += AttackFinished;
         animEvent.onAnimationCancelable += CanCombo;
@@ -23,7 +20,7 @@ public class NormalAttack : CharacterController
 
     public override void Salir()
     {
-        movement.enabled = true;
+        ResumePlayerMovement();
         animEvent.onAnimationStart -= CleanBuffer;
         animEvent.onAnimationComplete -= AttackFinished;
         animEvent.onAnimationCancelable -= CanCombo;

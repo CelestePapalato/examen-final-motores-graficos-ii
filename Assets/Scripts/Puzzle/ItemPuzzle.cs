@@ -41,5 +41,7 @@ namespace PuzzleSystem
                 Destroy(toDestroyWhenFinished);
             }
         }
+
+        public override void StopInteraction() { }
     }
 }

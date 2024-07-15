@@ -67,7 +67,7 @@ public class Enemy : StateMachine
 
         if (player)
         {
-            float distance = Vector3.Distance(transform.position, player.transform.position);
+            float distance = Vector3.Distance(transform.position, player.CharacterTransform.position);
             if (distance <= distanceToAttack)
             {
                 animator.SetTrigger("Attack");
@@ -85,7 +85,7 @@ public class Enemy : StateMachine
         player.OnDead += PlayerKilled;
         foreach (var tracker in trackers)
         {
-            tracker.Target = player.transform;
+            tracker.Target = player.CharacterTransform;
         }
     }
 

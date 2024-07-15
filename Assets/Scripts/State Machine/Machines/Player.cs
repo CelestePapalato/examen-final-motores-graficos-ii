@@ -58,6 +58,8 @@ public class Player : StateMachine
 
     public bool IsDead { get => _isDead; private set => _isDead = value; }
 
+    public Transform CharacterTransform { get => movement.transform; }
+
     protected override void Awake()
     {
         firstState = idleState;

@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.AI;
 
@@ -40,12 +41,17 @@ public class ChasePlayer : State, IObjectTracker
         StopAllCoroutines();
     }
 
+    private void OnDisable()
+    {
+        StopAllCoroutines();
+    }
+
     IEnumerator UpdateNavMeshTarget()
     {
-        while(isActive && Target)
+        while(isActive)
         {
             yield return new WaitForSeconds(pathUpdateRate);
-            if(agent.enabled)
+            if(agent.enabled && Target != null)
             {
                 agent.destination = Target.position;
             }

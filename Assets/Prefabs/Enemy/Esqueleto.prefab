@@ -59,7 +59,7 @@ NavMeshAgent:
   m_Height: 2.5
   m_BaseOffset: 1
   m_WalkableMask: 4294967295
-  m_ObstacleAvoidanceType: 4
+  m_ObstacleAvoidanceType: 2
 --- !u!114 &6876792706800186685
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -74,7 +74,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   firstState: {fileID: 0}
   currentState: {fileID: 0}
-  distanceToAttack: 0
+  distanceToAttack: 2.5
   points: 0
 --- !u!114 &6233780197518808555
 MonoBehaviour:

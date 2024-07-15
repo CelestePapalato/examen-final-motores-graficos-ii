@@ -1,6 +1,6 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
-using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.InputSystem;
@@ -9,6 +9,8 @@ public class Player : StateMachine
 {
     private static List<Player> currentPlayers = new List<Player>();
     public static Player[] CurrentPlayers {  get { return currentPlayers.ToArray(); } }
+
+    public static event Action<Player> PlayerDead;
 
     [Header("States")]
     [SerializeField] CharacterController idleState;
@@ -103,6 +105,7 @@ public class Player : StateMachine
         playerInput.enabled = false;
         this.enabled = false;
         IsDead = true;
+        PlayerDead?.Invoke(this);
     }
     private void OnMove(InputValue inputValue)
     {

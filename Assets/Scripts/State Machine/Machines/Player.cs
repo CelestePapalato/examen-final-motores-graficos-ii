@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Runtime.InteropServices.WindowsRuntime;
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.InputSystem;
@@ -31,9 +32,11 @@ public class Player : StateMachine
     bool evadeInput = false;
 
     private float damageMultiplier = 1f;
-    public float DamageMultiplier {  get { return damageMultiplier; } }
+    public float DamageMultiplier { get => damageMultiplier; }
 
-    public bool IsDead = false;
+    private bool _isDead = false;
+
+    public bool IsDead { get => _isDead; private set => _isDead = value; }
 
     protected override void Awake()
     {
@@ -104,7 +107,7 @@ public class Player : StateMachine
         OnDead?.Invoke();
         playerInput.enabled = false;
         this.enabled = false;
-        IsDead = true;
+        _isDead = true;
         PlayerDead?.Invoke(this);
     }
     private void OnMove(InputValue inputValue)

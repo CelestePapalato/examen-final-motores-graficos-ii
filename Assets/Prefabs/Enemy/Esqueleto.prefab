@@ -72,9 +72,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9eb845c35e2a2bc4698c0dee5b78d300, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  firstState: {fileID: 0}
+  firstState: {fileID: 6233780197518808555}
   currentState: {fileID: 0}
   distanceToAttack: 2.5
+  attackCooldown: 1.2
   points: 0
 --- !u!114 &6233780197518808555
 MonoBehaviour:
@@ -88,7 +89,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 246d58b2b993ba14eb0825f4c110212b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  pathUpdateRate: 0
+  pathUpdateRate: 0.1
 --- !u!114 &6849383167755829295
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -204,8 +205,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1129597965132553590}
-  - component: {fileID: 7370743972417417}
   - component: {fileID: 8567448591003059166}
+  - component: {fileID: 298380713473782972}
   m_Layer: 9
   m_Name: Hurtbox
   m_TagString: Untagged
@@ -228,8 +229,22 @@ Transform:
   m_Children: []
   m_Father: {fileID: 7584335105931442208}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!65 &7370743972417417
-BoxCollider:
+--- !u!114 &8567448591003059166
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6566856389615769187}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f81ff89199fff9f4e865d517f2cc48db, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxHealth: 3
+  invincibilityTime: 0
+--- !u!136 &298380713473782972
+CapsuleCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -246,23 +261,11 @@ BoxCollider:
   m_IsTrigger: 1
   m_ProvidesContacts: 0
   m_Enabled: 1
-  serializedVersion: 3
-  m_Size: {x: 2.5, y: 2.5, z: 2.5}
+  serializedVersion: 2
+  m_Radius: 0.55
+  m_Height: 2.11
+  m_Direction: 1
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &8567448591003059166
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6566856389615769187}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f81ff89199fff9f4e865d517f2cc48db, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  maxHealth: 0
-  invincibilityTime: 0
 --- !u!1001 &2800836487714948337
 PrefabInstance:
   m_ObjectHideFlags: 0

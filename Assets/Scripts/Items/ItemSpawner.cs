@@ -48,6 +48,10 @@ public class ItemSpawner : MonoBehaviour
 
     private int CalculateProbability()
     {
+        if(_probabilities.Count == 0)
+        {
+            return -1;
+        }
         int value = Random.Range(0, _probabilities.Count);
         int index = _probabilities[value];
         return index;

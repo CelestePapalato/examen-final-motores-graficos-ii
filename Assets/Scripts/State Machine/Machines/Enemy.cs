@@ -10,7 +10,10 @@ public class Enemy : StateMachine
     public static event Action<int> EnemyDead;
     public UnityAction<Enemy> OnDead;
 
+    [Header("Enemy")]
+
     [SerializeField] float distanceToAttack;
+    [SerializeField] float attackCooldown;
     [SerializeField] int points;
 
     Health healthComponent;
@@ -22,6 +25,8 @@ public class Enemy : StateMachine
     IObjectTracker[] trackers;
 
     float originalSpeed;
+
+    bool canAttack = true;
 
     protected override void Awake()
     {
@@ -65,12 +70,13 @@ public class Enemy : StateMachine
     {
         agent.enabled = animator.GetBool("CanMove");
 
-        if (player)
+        if (player && canAttack)
         {
             float distance = Vector3.Distance(transform.position, player.CharacterTransform.position);
             if (distance <= distanceToAttack)
             {
                 animator.SetTrigger("Attack");
+                StartCoroutine(AttackCooldown());
             }
         }
 
@@ -98,6 +104,13 @@ public class Enemy : StateMachine
         GetPlayer();
     }
 
+    IEnumerator AttackCooldown()
+    {
+        canAttack = false;
+        yield return new WaitForSeconds(attackCooldown);
+        canAttack = true;
+    }
+
     private void Dead()
     {
         itemSpawner?.DropItem();
@@ -113,5 +126,6 @@ public class Enemy : StateMachine
     private void OnDestroy()
     {
         OnDead?.Invoke(this);
+        StopAllCoroutines();
     }
 }

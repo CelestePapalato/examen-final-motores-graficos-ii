@@ -1,15 +1,20 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 using UnityEngine.UI;
 
 namespace PuzzleSystem
 {
     public class CrankPuzzle : PuzzleInteractable
     {
+        [Header("Crank Puzzle")]
+
         [SerializeField] float timeToComplete;
         [SerializeField]
         [Range(0f, 1f)] float slowDownFactor;
+
+        public UnityEvent<float> onWheelValueUpdated;
 
         float wheelValue = 0f;
         float timer = 0f;
@@ -48,7 +53,8 @@ namespace PuzzleSystem
                 timer += Time.deltaTime * ((isInteracting) ? 1 : -slowDownFactor);
                 timer = Mathf.Max(timer, 0);
                 wheelValue = timer/timeToComplete;
-                stateSlider.value = wheelValue;
+                stateSlider.value = 1 - wheelValue;
+                onWheelValueUpdated?.Invoke(wheelValue);
             }
             Completed = true;
         }

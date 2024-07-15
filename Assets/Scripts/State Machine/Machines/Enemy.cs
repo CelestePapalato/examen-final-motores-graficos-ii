@@ -114,8 +114,8 @@ public class Enemy : StateMachine
     private void Dead()
     {
         itemSpawner?.DropItem();
+        EnemyDead?.Invoke(points);
         Destroy(gameObject);
-        EnemyDead.Invoke(points);
     }
 
     private void DamageReceived(int health, int maxHealth)

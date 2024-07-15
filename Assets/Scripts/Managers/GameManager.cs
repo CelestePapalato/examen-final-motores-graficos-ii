@@ -20,6 +20,8 @@ public class GameManager : MonoBehaviour
     private static int maxScore = 0;
     public int MaxScore { get => maxScore; }
 
+    public static float GameTime { get => Time.timeSinceLevelLoad; }
+
     private void Awake()
     {
         Instance = this;

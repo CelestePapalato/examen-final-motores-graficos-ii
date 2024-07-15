@@ -16,7 +16,7 @@ GameObject:
   - component: {fileID: 7932319514149748121}
   - component: {fileID: 914018795855099251}
   - component: {fileID: 3616315719023316466}
-  m_Layer: 13
+  m_Layer: 9
   m_Name: Especial
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -239,7 +239,7 @@ GameObject:
   - component: {fileID: 1129597965132553590}
   - component: {fileID: 7370743972417417}
   - component: {fileID: 8567448591003059166}
-  m_Layer: 9
+  m_Layer: 11
   m_Name: Hurtbox
   m_TagString: Untagged
   m_Icon: {fileID: 0}

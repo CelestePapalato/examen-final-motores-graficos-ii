@@ -19,6 +19,8 @@ public class Enemy : StateMachine
     NavMeshAgent agent;
     Player player;
 
+    IObjectTracker[] trackers;
+
     float originalSpeed;
 
     protected override void Awake()
@@ -34,11 +36,29 @@ public class Enemy : StateMachine
         animator = GetComponentInChildren<Animator>();
         agent = GetComponent<NavMeshAgent>();
         originalSpeed = agent.speed;
+
+        trackers = GetComponentsInChildren<IObjectTracker>();
     }
 
-    protected void Start()
+    private void Start()
     {
-        player = Player.RandomAlivePlayer;
+        GetPlayer();
+    }
+
+    private void OnEnable()
+    {
+        if (player)
+        {
+            player.OnDead += PlayerKilled;
+        }
+    }
+
+    private void OnDisable()
+    {
+        if (player)
+        {
+            player.OnDead -= PlayerKilled;
+        }
     }
 
     protected override void Update()
@@ -57,6 +77,25 @@ public class Enemy : StateMachine
         float speedBlend = agent.speed / originalSpeed;
         animator?.SetFloat("Speed", speedBlend);
         base.Update();
+    }
+
+    private void GetPlayer()
+    {
+        player = Player.RandomAlivePlayer;
+        player.OnDead += PlayerKilled;
+        foreach (var tracker in trackers)
+        {
+            tracker.Target = player.transform;
+        }
+    }
+
+    private void PlayerKilled()
+    {
+        if (player)
+        {
+            player.OnDead -= PlayerKilled;
+        }
+        GetPlayer();
     }
 
     private void Dead()

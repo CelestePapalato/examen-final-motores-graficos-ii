@@ -4,11 +4,13 @@ using UnityEngine;
 using UnityEngine.AI;
 
 [RequireComponent(typeof(NavMeshAgent))]
-public class ChasePlayer : State
+public class ChasePlayer : State, IObjectTracker
 {
     [SerializeField] float pathUpdateRate;
     NavMeshAgent agent;
     Rigidbody rb;
+
+    public Transform Target { get; set; }
 
     private void Awake()
     {
@@ -40,14 +42,12 @@ public class ChasePlayer : State
 
     IEnumerator UpdateNavMeshTarget()
     {
-        Player player = null;
-        //player = Player.Instance;
-        while(isActive && player)
+        while(isActive && Target)
         {
             yield return new WaitForSeconds(pathUpdateRate);
             if(agent.enabled)
             {
-                agent.destination = player.transform.position;
+                agent.destination = Target.position;
             }
         }
     }

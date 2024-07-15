@@ -3630,6 +3630,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 899110927}
     m_Modifications:
+    - target: {fileID: 29670340122032, guid: 43aa2669f5bf40449b70d6e2a973239e, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 29670340122032, guid: 43aa2669f5bf40449b70d6e2a973239e, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 2907547849783969211, guid: 43aa2669f5bf40449b70d6e2a973239e,
         type: 3}
       propertyPath: m_Name
@@ -3650,6 +3658,11 @@ PrefabInstance:
       propertyPath: m_AnchorMax.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5534172913059665578, guid: 43aa2669f5bf40449b70d6e2a973239e,
+        type: 3}
+      propertyPath: healthComponent
+      value: 
+      objectReference: {fileID: 1267126456}
     - target: {fileID: 6830506450299512291, guid: 43aa2669f5bf40449b70d6e2a973239e,
         type: 3}
       propertyPath: m_LocalPosition.x

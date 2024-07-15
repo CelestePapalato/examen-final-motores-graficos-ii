@@ -41,6 +41,7 @@ public class Player : StateMachine
     [SerializeField] CharacterController interactionState;
 
     Health healthComponent;
+    Healthbar healthBar;
     Movement movement;
     CharacterController controller;
     Animator animator;
@@ -68,6 +69,11 @@ public class Player : StateMachine
 
         movement = GetComponentInChildren<Movement>();
         healthComponent = GetComponentInChildren<Health>();
+        healthBar = GetComponentInChildren<Healthbar>();
+        if (healthBar)
+        {
+            healthBar.HealthComponent = healthComponent;
+        }
         animator = GetComponentInChildren<Animator>();
         playerInput = GetComponent<PlayerInput>();
     }

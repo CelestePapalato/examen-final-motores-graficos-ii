@@ -6,13 +6,32 @@ using UnityEngine.UI;
 
 public class Healthbar : MonoBehaviour
 {
-    public Health healthComponent;
+    private Health healthComponent;
+    public Health HealthComponent
+    {
+        get => healthComponent;
+        set
+        {
+            healthComponent.onHealthUpdate -= UpdateSlider;
+            healthComponent = value;
+            if(healthComponent)
+            {
+                healthComponent.onHealthUpdate += UpdateSlider;
+            }
+            else
+            {
+                healthComponent.onHealthUpdate -= UpdateSlider;
+            }
+            healthbarSlider?.gameObject.SetActive(healthComponent);
+        }
+    }
+
     private Slider healthbarSlider;
 
     private void Awake()
     {
         healthbarSlider = GetComponent<Slider>();
-        if (!healthbarSlider || !healthComponent) { gameObject.SetActive(false); }
+        healthbarSlider.gameObject.SetActive(!healthbarSlider || !healthComponent);
     }
 
     private void OnEnable()

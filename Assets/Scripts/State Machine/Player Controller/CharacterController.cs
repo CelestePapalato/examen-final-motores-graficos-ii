@@ -91,7 +91,15 @@ public abstract class CharacterController : State
         animator.SetFloat("Speed", speedFactor);
     }
 
-    public virtual void Move(InputValue inputValue) { }
+    public virtual void Move(InputValue inputValue)
+    {
+        Vector2 input = inputValue.Get<Vector2>();
+        if (inputRelatedToCamera)
+        {
+            input = Quaternion.Euler(0f, 0f, -camera.transform.eulerAngles.y) * input;
+        }
+        movement.Direction = input;
+    }
 
     public virtual void Attack()
     {

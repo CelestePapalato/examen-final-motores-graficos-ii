@@ -5,14 +5,10 @@ using UnityEngine.InputSystem;
 
 public class Idle : CharacterController
 {
-    public override void Move(InputValue inputValue)
+    public override void Salir()
     {
-        Vector2 input = inputValue.Get<Vector2>(); 
-        if(inputRelatedToCamera)
-        {
-            input = Quaternion.Euler(0f, 0f, -camera.transform.eulerAngles.y) * input;
-        }
-        movement.Direction = input;
+        base.Salir();
+        movement.Direction = Vector2.zero;
     }
 
     public override void Attack() { }

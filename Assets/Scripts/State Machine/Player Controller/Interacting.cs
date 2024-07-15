@@ -34,6 +34,7 @@ public class Interacting : CharacterController
             return;
         }
         StopPlayerMovement();
+        movement.enabled = false;
         currentInteractable.Interact();
         currentPuzzle = currentInteractable.Puzzle; if (currentPuzzle != null)
         {

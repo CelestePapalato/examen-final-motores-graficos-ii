@@ -9,6 +9,7 @@ public class Paralyzed : CharacterController
     {
         base.Entrar(personajeActual);
         StopPlayerMovement();
+        movement.enabled = false;
         animEvent.onAnimationComplete += StunFinished;
     }
 

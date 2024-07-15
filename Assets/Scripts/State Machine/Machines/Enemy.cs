@@ -7,7 +7,7 @@ using UnityEngine.Events;
 
 public class Enemy : StateMachine
 {
-    public static event Action<int> EnemyDead;
+    public static event Action<int> OnEnemyDead;
     public UnityAction<Enemy> OnDead;
 
     [Header("Enemy")]
@@ -114,7 +114,7 @@ public class Enemy : StateMachine
     private void Dead()
     {
         itemSpawner?.DropItem();
-        EnemyDead?.Invoke(points);
+        OnEnemyDead?.Invoke(points);
         Destroy(gameObject);
     }
 

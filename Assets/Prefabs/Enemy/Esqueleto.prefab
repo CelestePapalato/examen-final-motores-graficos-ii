@@ -76,7 +76,7 @@ MonoBehaviour:
   currentState: {fileID: 0}
   distanceToAttack: 2.5
   attackCooldown: 1.7
-  points: 0
+  points: 10
 --- !u!114 &6233780197518808555
 MonoBehaviour:
   m_ObjectHideFlags: 0

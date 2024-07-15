@@ -10,15 +10,12 @@ public class GameManager : MonoBehaviour
 {
     public static GameManager Instance;
 
-    public static UnityAction<int> OnNewScore;
-    public static UnityAction<int> OnNewMaxScore;
+    public static UnityAction<int> OnScoreUpdate;
 
     public static UnityAction<bool> OnGameOver;
 
     private int score = 0;
     public int Score { get => score; }
-    private static int maxScore = 0;
-    public int MaxScore { get => maxScore; }
 
     public static float GameTime { get => Time.timeSinceLevelLoad; }
 
@@ -45,20 +42,14 @@ public class GameManager : MonoBehaviour
     private void Start()
     {
         score = 0;
-        OnNewScore?.Invoke(score);
-        OnNewMaxScore?.Invoke(maxScore);
+        OnScoreUpdate?.Invoke(score);
     }
 
     private void ScoreUp(int puntos)
     {
         puntos = Mathf.Max(puntos, 0);
         score += puntos;
-        OnNewScore?.Invoke(score);
-        if (score > maxScore)
-        {
-            maxScore = score;
-            OnNewMaxScore?.Invoke(maxScore);
-        }
+        OnScoreUpdate?.Invoke(score);
     }
 
     private void GameOver(Player player)

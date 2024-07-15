@@ -11,7 +11,7 @@ public class Player : StateMachine
     private static List<Player> currentPlayers = new List<Player>();
     public static Player[] CurrentPlayers {  get { return currentPlayers.ToArray(); } }
 
-    public static event Action<Player> PlayerDead;
+    public static event Action<Player> OnPlayerDead;
 
     [Header("States")]
     [SerializeField] CharacterController idleState;
@@ -108,7 +108,7 @@ public class Player : StateMachine
         playerInput.enabled = false;
         this.enabled = false;
         _isDead = true;
-        PlayerDead?.Invoke(this);
+        OnPlayerDead?.Invoke(this);
     }
     private void OnMove(InputValue inputValue)
     {

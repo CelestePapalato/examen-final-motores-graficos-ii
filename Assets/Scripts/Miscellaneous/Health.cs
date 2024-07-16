@@ -17,6 +17,9 @@ public class Health : MonoBehaviour, IDamageable, IHittable
     Collider col;
     Rigidbody rb;
 
+    public int CurrentHealth { get => health; }
+    public int MaxHealth { get => maxHealth; }
+
     private void Awake()
     {
         health = maxHealth;
@@ -26,10 +29,7 @@ public class Health : MonoBehaviour, IDamageable, IHittable
 
     private void Start()
     {
-        if (onHealthUpdate != null)
-        {
-            onHealthUpdate(health, maxHealth);
-        }
+        onHealthUpdate?.Invoke(health, maxHealth);
     }
 
     public void Heal(int healPoints)

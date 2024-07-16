@@ -41,3 +41,12 @@ TagManager:
   - name: Default
     uniqueID: 0
     locked: 0
+  - name: Level UI
+    uniqueID: 1933324353
+    locked: 0
+  - name: HUD
+    uniqueID: 2695067911
+    locked: 0
+  - name: World
+    uniqueID: 3503188895
+    locked: 0

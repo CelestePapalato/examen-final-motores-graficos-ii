@@ -86,6 +86,9 @@ public class Interacting : CharacterController
         personaje.CambiarEstado(null);
     }
 
-    public override void Move(Vector2 input) { }
+    public override void Move(Vector2 input)
+    {
+        currentCharacter.MovementComponent.Direction = input;
+    }
 
 }

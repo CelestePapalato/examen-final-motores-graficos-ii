@@ -1,38 +1,12 @@
-using System;
 using System.Collections;
 using System.Collections.Generic;
-using System.Linq;
-using System.Runtime.InteropServices.WindowsRuntime;
 using UnityEngine;
+using UnityEngine.AI;
 using UnityEngine.Events;
 using UnityEngine.InputSystem;
 
-public class Player : StateMachine
+public class Character : StateMachine
 {
-    private static List<Player> currentPlayers = new List<Player>();
-    public static Player[] CurrentPlayers {  get { return currentPlayers.ToArray(); } }
-
-    public static Player RandomPlayer
-    {
-        get
-        {
-            int r = UnityEngine.Random.Range(0, currentPlayers.Count);
-            return currentPlayers[r];
-        }
-    }
-
-    public static Player RandomAlivePlayer
-    {
-        get
-        {
-            Player[] alivePlayers = currentPlayers.Where(x => !x.IsDead).ToArray();
-            int r = UnityEngine.Random.Range(0, alivePlayers.Length);
-            return alivePlayers[r];
-        }
-    }
-
-    public static event Action<Player> OnPlayerDead;
-
     [Header("States")]
     [SerializeField] CharacterController idleState;
     [SerializeField] CharacterController attackState;
@@ -40,13 +14,26 @@ public class Player : StateMachine
     [SerializeField] CharacterController stunState;
     [SerializeField] CharacterController interactionState;
 
-    Health healthComponent;
-    Healthbar healthBar;
+    [Header("Hitboxes")]
+    [SerializeField] bool disableHitboxesOnStart = true;
+    
+    [Header("Object Tracking")]
+    [SerializeField] protected State estadoAlEncontrarObjetivo;
+    [SerializeField] protected State estadoAlPerderObjetivo;
+
+    Health health;
     Movement movement;
     CharacterController controller;
     Animator animator;
-    PlayerInput playerInput;
+    Damage[] damage;
     Collider[] hitboxes;
+    NavMeshAgent agent;
+    IObjectTracker[] trackers;
+
+    public Movement MovementComponent { get => movement; }
+    public Health HealthComponent { get => health; }
+    public Animator Animator { get => animator; }
+    public Damage[] DamageComponents { get => damage;}
 
     public UnityAction OnDead;
     bool attackInput = false;
@@ -68,55 +55,53 @@ public class Player : StateMachine
         base.Awake();
 
         movement = GetComponentInChildren<Movement>();
-        healthComponent = GetComponentInChildren<Health>();
+        health = GetComponentInChildren<Health>();
         animator = GetComponentInChildren<Animator>();
-        playerInput = GetComponent<PlayerInput>();
+        agent = GetComponent<NavMeshAgent>();
+
+        trackers = GetComponentsInChildren<IObjectTracker>();
     }
 
     private void Start()
     {
-        healthBar = GetComponentInChildren<Healthbar>();
-        if (healthBar)
+        if (disableHitboxesOnStart)
         {
-            healthBar.HealthComponent = healthComponent;
+            GetAllHitboxes(false);
         }
-        GetAllHitboxes(false);
     }
 
     private void GetAllHitboxes(bool enable)
     {
-        Damage[] damageComponents = GetComponentsInChildren<Damage>();
-        hitboxes = new Collider[damageComponents.Length];
+        damage = GetComponentsInChildren<Damage>();
+        hitboxes = new Collider[damage.Length];
         for (int i = 0; i < hitboxes.Length; i++)
         {
-            hitboxes[i] = damageComponents[i].GetComponent<Collider>();
+            hitboxes[i] = damage[i].GetComponent<Collider>();
             hitboxes[i].enabled = enable;
         }
     }
 
     private void OnEnable()
     {
-        currentPlayers.Add(this);
-        if (healthComponent)
+        if (health)
         {
-            healthComponent.onDamaged += OnDamage;
-            healthComponent.onNoHealth += Dead;
+            health.onDamaged += OnDamage;
+            health.onNoHealth += Dead;
         }
     }
 
-   private void OnDisable()
+    private void OnDisable()
     {
-        currentPlayers.Remove(this);
-        if (healthComponent)
+        if (health)
         {
-            healthComponent.onDamaged -= OnDamage;
-            healthComponent.onNoHealth -= Dead;
+            health.onDamaged -= OnDamage;
+            health.onNoHealth -= Dead;
         }
     }
 
     protected override void Update()
     {
-        if(Time.timeScale == 0)
+        if (Time.timeScale == 0)
         {
             return;
         }
@@ -126,25 +111,22 @@ public class Player : StateMachine
     public override void CambiarEstado(State nuevoEstado)
     {
         base.CambiarEstado(nuevoEstado);
-        controller = (CharacterController) currentState;
+        controller = (CharacterController)currentState;
     }
 
     private void Dead()
     {
         movement.Direction = Vector2.zero;
         OnDead?.Invoke();
-        playerInput.enabled = false;
         this.enabled = false;
         _isDead = true;
-        OnPlayerDead?.Invoke(this);
     }
-    private void OnMove(InputValue inputValue)
+    public void Move(Vector2 input)
     {
-        Vector2 input = inputValue.Get<Vector2>();
         controller?.Move(input);
     }
 
-    private void OnAttack()
+    public void Attack()
     {
         attackInput = !attackInput;
         if (attackInput)
@@ -157,12 +139,24 @@ public class Player : StateMachine
         }
     }
 
-    private void OnEvade()
+    public void Evade()
     {
         evadeInput = !evadeInput;
         if (evadeInput)
         {
             controller?.Evade();
+        }
+    }
+    public void Interact()
+    {
+        if (controller != interactionState)
+        {
+            controller?.Interact();
+            CambiarEstado(interactionState);
+        }
+        else
+        {
+            controller?.Interact();
         }
     }
 
@@ -171,22 +165,27 @@ public class Player : StateMachine
         Debug.Log("Vida: " + health);
         currentState?.DañoRecibido();
         if (stunState)
-        {            
+        {
             CambiarEstado(stunState);
         }
         animator?.SetTrigger("Damage");
     }
 
-    private void OnInteract()
-    {   
-        if(controller != interactionState)
+
+    public void TargetUpdate(Transform newTarget)
+    {
+        foreach (IObjectTracker tracker in trackers)
         {
-            controller?.Interact();
-            CambiarEstado(interactionState);
+            tracker.Target = newTarget;
+        }
+
+        if (newTarget)
+        {
+            CambiarEstado(estadoAlEncontrarObjetivo);
         }
         else
         {
-            controller?.Interact();
+            CambiarEstado(estadoAlPerderObjetivo);
         }
     }
 }

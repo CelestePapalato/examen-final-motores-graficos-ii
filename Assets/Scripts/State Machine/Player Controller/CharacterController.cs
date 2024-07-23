@@ -56,15 +56,8 @@ public abstract class CharacterController : State
 
     protected float GetPlayerDamageMultiplier()
     {
-        Player player = personaje as Player;
-        if (player)
-        {
-            return player.DamageMultiplier;
-        }
-        else
-        {
-            return 1f;
-        }
+        Character chara = personaje as Character;
+        return (chara) ? chara.DamageMultiplier : 1f;
     }
 
     public override void Entrar(StateMachine personajeActual)

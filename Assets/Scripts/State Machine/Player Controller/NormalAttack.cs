@@ -76,15 +76,13 @@ public class NormalAttack : CharacterController
         }
     }
 
-    public override void Move(InputValue inputValue)
+    public override void Move(Vector2 input)
     {
-        Vector2 input = inputValue.Get<Vector2>();
         if (inputRelatedToCamera)
         {
             input = Quaternion.Euler(0f, 0f, -camera.transform.eulerAngles.y) * input;
         }
         movement.Direction = input;
-        Debug.Log(input);
     }
 
     public override void Attack()

@@ -56,7 +56,6 @@ public class Healthbar : MonoBehaviour
 
     public void UpdateSlider(int value, int maxValue)
     {
-        Debug.Log(value + " / " + maxValue);
         float slider_value = (float) value / maxValue;
         healthbarSlider.value = slider_value;
     }

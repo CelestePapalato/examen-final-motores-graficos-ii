@@ -20,7 +20,7 @@ public class Enemy : StateMachine
     ItemSpawner itemSpawner;
     Animator animator;
     NavMeshAgent agent;
-    Player player;
+    Character player;
 
     IObjectTracker[] trackers;
 
@@ -87,7 +87,7 @@ public class Enemy : StateMachine
 
     private void GetPlayer()
     {
-        player = Player.RandomAlivePlayer;
+        player = Player.RandomAlivePlayer.PlayerCharacter;
         player.OnDead += PlayerKilled;
         foreach (var tracker in trackers)
         {

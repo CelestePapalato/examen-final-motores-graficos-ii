@@ -7,7 +7,7 @@ using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.InputSystem;
 
-public class Player : StateMachine
+public class Player : MonoBehaviour
 {
     private static List<Player> currentPlayers = new List<Player>();
     public static Player[] CurrentPlayers {  get { return currentPlayers.ToArray(); } }
@@ -33,24 +33,8 @@ public class Player : StateMachine
 
     public static event Action<Player> OnPlayerDead;
 
-    [Header("States")]
-    [SerializeField] CharacterController idleState;
-    [SerializeField] CharacterController attackState;
-    [SerializeField] CharacterController specialAttackState;
-    [SerializeField] CharacterController stunState;
-    [SerializeField] CharacterController interactionState;
-
-    Health healthComponent;
     Healthbar healthBar;
-    Movement movement;
-    CharacterController controller;
-    Animator animator;
-    PlayerInput playerInput;
-    Collider[] hitboxes;
-
-    public UnityAction OnDead;
-    bool attackInput = false;
-    bool evadeInput = false;
+    Character chara;
 
     private float damageMultiplier = 1f;
     public float DamageMultiplier { get => damageMultiplier; }
@@ -59,134 +43,64 @@ public class Player : StateMachine
 
     public bool IsDead { get => _isDead; private set => _isDead = value; }
 
-    public Transform CharacterTransform { get => movement.transform; }
+    public Transform CharacterTransform { get => (chara) ? chara.MovementComponent.transform : transform; }
 
-    protected override void Awake()
-    {
-        firstState = idleState;
-
-        base.Awake();
-
-        movement = GetComponentInChildren<Movement>();
-        healthComponent = GetComponentInChildren<Health>();
-        animator = GetComponentInChildren<Animator>();
-        playerInput = GetComponent<PlayerInput>();
-    }
+    public Character PlayerCharacter { get => chara; }
 
     private void Start()
     {
+        chara = GetComponentInChildren<Character>();
         healthBar = GetComponentInChildren<Healthbar>();
-        if (healthBar)
+        if (healthBar && chara)
         {
-            healthBar.HealthComponent = healthComponent;
+            healthBar.HealthComponent = chara.HealthComponent;
         }
-        GetAllHitboxes(false);
     }
 
-    private void GetAllHitboxes(bool enable)
-    {
-        Damage[] damageComponents = GetComponentsInChildren<Damage>();
-        hitboxes = new Collider[damageComponents.Length];
-        for (int i = 0; i < hitboxes.Length; i++)
-        {
-            hitboxes[i] = damageComponents[i].GetComponent<Collider>();
-            hitboxes[i].enabled = enable;
-        }
-    }
 
     private void OnEnable()
     {
         currentPlayers.Add(this);
-        if (healthComponent)
+        if (chara)
         {
-            healthComponent.onDamaged += OnDamage;
-            healthComponent.onNoHealth += Dead;
+            chara.OnDead += Dead;
         }
     }
 
    private void OnDisable()
     {
         currentPlayers.Remove(this);
-        if (healthComponent)
+        if (chara)
         {
-            healthComponent.onDamaged -= OnDamage;
-            healthComponent.onNoHealth -= Dead;
+            chara.OnDead -= Dead;
         }
-    }
-
-    protected override void Update()
-    {
-        if(Time.timeScale == 0)
-        {
-            return;
-        }
-        base.Update();
-    }
-
-    public override void CambiarEstado(State nuevoEstado)
-    {
-        base.CambiarEstado(nuevoEstado);
-        controller = (CharacterController) currentState;
     }
 
     private void Dead()
     {
-        movement.Direction = Vector2.zero;
-        OnDead?.Invoke();
-        playerInput.enabled = false;
+        OnMove(null);
         this.enabled = false;
         _isDead = true;
         OnPlayerDead?.Invoke(this);
     }
     private void OnMove(InputValue inputValue)
     {
-        Vector2 input = inputValue.Get<Vector2>();
-        controller?.Move(input);
+        Vector2 input = (inputValue != null) ? inputValue.Get<Vector2>() : Vector2.zero;
+        chara?.Move(input);
     }
 
     private void OnAttack()
     {
-        attackInput = !attackInput;
-        if (attackInput)
-        {
-            controller?.Attack();
-        }
-        if (currentState == idleState && attackState)
-        {
-            CambiarEstado(attackState);
-        }
+        chara?.Attack();
     }
 
     private void OnEvade()
     {
-        evadeInput = !evadeInput;
-        if (evadeInput)
-        {
-            controller?.Evade();
-        }
-    }
-
-    private void OnDamage(int health, int maxHealth)
-    {
-        Debug.Log("Vida: " + health);
-        currentState?.DañoRecibido();
-        if (stunState)
-        {            
-            CambiarEstado(stunState);
-        }
-        animator?.SetTrigger("Damage");
+        chara?.Evade();
     }
 
     private void OnInteract()
     {   
-        if(controller != interactionState)
-        {
-            controller?.Interact();
-            CambiarEstado(interactionState);
-        }
-        else
-        {
-            controller?.Interact();
-        }
+        chara?.Interact();
     }
 }

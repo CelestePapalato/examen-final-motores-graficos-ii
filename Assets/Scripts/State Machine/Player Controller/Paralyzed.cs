@@ -9,14 +9,14 @@ public class Paralyzed : CharacterController
     {
         base.Entrar(personajeActual);
         StopPlayerMovement();
-        movement.enabled = false;
-        animEvent.onAnimationComplete += StunFinished;
+        currentCharacter.MovementComponent.enabled = false;
+        currentCharacter.AnimationEventHandler.onAnimationComplete += StunFinished;
     }
 
     public override void Salir()
     {
         ResumePlayerMovement();
-        animEvent.onAnimationComplete -= StunFinished;
+        currentCharacter.AnimationEventHandler.onAnimationComplete -= StunFinished;
         base.Salir();
     }
 
@@ -24,7 +24,7 @@ public class Paralyzed : CharacterController
     {
         if (isActive)
         {
-            animEvent.onAnimationComplete += StunFinished;
+            currentCharacter.AnimationEventHandler.onAnimationComplete += StunFinished;
         }
     }
 
@@ -32,7 +32,7 @@ public class Paralyzed : CharacterController
     {
         if (isActive)
         {
-            animEvent.onAnimationComplete -= StunFinished;
+            currentCharacter.AnimationEventHandler.onAnimationComplete -= StunFinished;
         }
     }
 

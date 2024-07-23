@@ -8,7 +8,7 @@ public class Idle : CharacterController
     public override void Salir()
     {
         base.Salir();
-        movement.Direction = Vector2.zero;
+        //currentCharacter.MovementComponent.Direction = Vector2.zero;
     }
 
     public override void Attack() { }

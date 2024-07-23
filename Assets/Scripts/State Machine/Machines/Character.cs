@@ -18,8 +18,8 @@ public class Character : StateMachine
     [SerializeField] bool disableHitboxesOnStart = true;
     
     [Header("Object Tracking")]
-    [SerializeField] protected State estadoAlEncontrarObjetivo;
-    [SerializeField] protected State estadoAlPerderObjetivo;
+    [SerializeField] protected CharacterController stateAtObjectFound;
+    [SerializeField] protected CharacterController stateAtObjectLost;
 
     Health health;
     Movement movement;
@@ -28,12 +28,15 @@ public class Character : StateMachine
     Damage[] damage;
     Collider[] hitboxes;
     NavMeshAgent agent;
+    AnimationEventHandler animEvent;
     IObjectTracker[] trackers;
 
     public Movement MovementComponent { get => movement; }
+    public NavMeshAgent Agent { get => agent; }
     public Health HealthComponent { get => health; }
     public Animator Animator { get => animator; }
     public Damage[] DamageComponents { get => damage;}
+    public AnimationEventHandler AnimationEventHandler { get => animEvent;}
 
     public UnityAction OnDead;
     bool attackInput = false;
@@ -48,18 +51,23 @@ public class Character : StateMachine
 
     public Transform CharacterTransform { get => movement.transform; }
 
+    CharacterController currentIdleState;
+
     protected override void Awake()
     {
-        firstState = idleState;
-
-        base.Awake();
-
         movement = GetComponentInChildren<Movement>();
         health = GetComponentInChildren<Health>();
         animator = GetComponentInChildren<Animator>();
-        agent = GetComponent<NavMeshAgent>();
+        agent = GetComponentInChildren<NavMeshAgent>();
 
         trackers = GetComponentsInChildren<IObjectTracker>();
+
+        animEvent = GetComponentInChildren<AnimationEventHandler>();
+
+        firstState = idleState;
+        currentIdleState = idleState;
+
+        base.Awake();
     }
 
     private void Start()
@@ -108,9 +116,11 @@ public class Character : StateMachine
         base.Update();
     }
 
-    public override void CambiarEstado(State nuevoEstado)
+    public override void CambiarEstado(State newState)
     {
-        base.CambiarEstado(nuevoEstado);
+        currentState?.Salir();
+        currentState = (newState) ? newState : currentIdleState;
+        currentState?.Entrar(this);
         controller = (CharacterController)currentState;
     }
 
@@ -181,11 +191,13 @@ public class Character : StateMachine
 
         if (newTarget)
         {
-            CambiarEstado(estadoAlEncontrarObjetivo);
+            currentIdleState = stateAtObjectFound;
+            CambiarEstado(stateAtObjectFound);
         }
         else
         {
-            CambiarEstado(estadoAlPerderObjetivo);
+            currentIdleState = stateAtObjectLost;
+            CambiarEstado(stateAtObjectLost);
         }
     }
 }

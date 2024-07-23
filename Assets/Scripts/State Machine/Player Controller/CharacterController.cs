@@ -39,15 +39,10 @@ public abstract class CharacterController : State
 
     public IInteractable currentInteractable;
 
-    protected Movement movement;
-    protected Animator animator;
-    protected AnimationEventHandler animEvent;
+    protected Character currentCharacter;
 
     protected virtual void Awake()
     {
-        movement = GetComponentInChildren<Movement>();
-        animator = GetComponentInChildren<Animator>();
-        animEvent = GetComponentInChildren<AnimationEventHandler>();
         if (camera == null)
         {
             camera = Camera.main;
@@ -63,16 +58,17 @@ public abstract class CharacterController : State
     public override void Entrar(StateMachine personajeActual)
     {
         base.Entrar(personajeActual);
-        if (movement)
+        currentCharacter = personaje as Character;
+        if (currentCharacter)
         {
-            movement.MaxSpeed = maxSpeed;
+            currentCharacter.MovementComponent.MaxSpeed = maxSpeed;
         }
     }
 
     public override void Actualizar()
     {
-        float speedFactor = (maxSpeed <= 0) ? 0 : movement.RigidbodySpeed / maxSpeed;
-        animator.SetFloat("Speed", speedFactor);
+        float speedFactor = (maxSpeed <= 0) ? 0 : currentCharacter.MovementComponent.RigidbodySpeed / maxSpeed;
+        currentCharacter.Animator?.SetFloat("Speed", speedFactor);
     }
 
     public virtual void Move(Vector2 input)
@@ -81,7 +77,7 @@ public abstract class CharacterController : State
         {
             input = Quaternion.Euler(0f, 0f, -camera.transform.eulerAngles.y) * input;
         }
-        movement.Direction = input;
+        currentCharacter.MovementComponent.Direction = input;
     }
 
     public virtual void Attack()
@@ -90,7 +86,7 @@ public abstract class CharacterController : State
 
         StopCoroutine(ControlAttackCooldown());
         StartCoroutine(ControlAttackCooldown());
-        animator?.SetTrigger("Attack");
+        currentCharacter.Animator?.SetTrigger("Attack");
     }
 
     public virtual void Evade()
@@ -98,7 +94,7 @@ public abstract class CharacterController : State
         if (!canEvade || evadeCooldown <= 0) { return; }
         StopCoroutine(ControlEvadeCooldown());
         StartCoroutine(ControlEvadeCooldown());
-        animator?.SetTrigger("Evade");
+        currentCharacter.Animator?.SetTrigger("Evade");
     }
 
     public virtual void Interact() { }
@@ -121,12 +117,12 @@ public abstract class CharacterController : State
     {
         canAttack = false;
         canEvade = false;
-        float y_velocity = movement.RigidBody.velocity.y;
-        movement.RigidBody.velocity = new Vector3(0f, y_velocity, 0f);
+        float y_velocity = currentCharacter.MovementComponent.RigidBody.velocity.y;
+        currentCharacter.MovementComponent.RigidBody.velocity = new Vector3(0f, y_velocity, 0f);
     }
 
     protected void ResumePlayerMovement()
     {
-        movement.enabled = true;
+        currentCharacter.MovementComponent.enabled = true;
     }
 }

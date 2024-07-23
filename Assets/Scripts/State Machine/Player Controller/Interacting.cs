@@ -10,7 +10,7 @@ public class Interacting : CharacterController
     {
         IInteractable nearest = null;
         float distance = Mathf.Infinity;
-        Collider[] collisions = Physics.OverlapSphere(movement.transform.position, 2, LayerMask.GetMask("Interactable"));
+        Collider[] collisions = Physics.OverlapSphere(currentCharacter.MovementComponent.transform.position, 2, LayerMask.GetMask("Interactable"));
         foreach (Collider col in collisions)
         {
             IInteractable interactable = col.gameObject.GetComponent<IInteractable>();
@@ -25,16 +25,26 @@ public class Interacting : CharacterController
 
     public override void Entrar(StateMachine personajeActual)
     {
-        base.Entrar(personajeActual);
+        currentCharacter = personajeActual as Character;
         CheckForInteractables();
         Debug.Log(currentInteractable);
         if (currentInteractable == null)
         {
-            personaje.CambiarEstado(null);
+            personajeActual.CambiarEstado(null);
+            personaje = null;
             return;
         }
+        if (currentCharacter)
+        {
+            personaje = currentCharacter;
+            currentCharacter.MovementComponent.MaxSpeed = maxSpeed;
+        }
+        else
+        {
+            personajeActual.CambiarEstado(null);
+        }
         StopPlayerMovement();
-        movement.enabled = false;
+        currentCharacter.MovementComponent.enabled = false;
         currentInteractable.Interact();
         currentPuzzle = currentInteractable.Puzzle; if (currentPuzzle != null)
         {
@@ -75,5 +85,7 @@ public class Interacting : CharacterController
     {
         personaje.CambiarEstado(null);
     }
+
+    public override void Move(Vector2 input) { }
 
 }

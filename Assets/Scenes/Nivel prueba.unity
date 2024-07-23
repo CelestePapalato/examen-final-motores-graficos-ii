@@ -170,7 +170,7 @@ PrefabInstance:
     - target: {fileID: 2976386310684457965, guid: 72912cda72e750640958a07b1ed88435,
         type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6566856389615769187, guid: 72912cda72e750640958a07b1ed88435,
         type: 3}
@@ -499,7 +499,7 @@ PrefabInstance:
     - target: {fileID: 2976386310684457965, guid: 72912cda72e750640958a07b1ed88435,
         type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6566856389615769187, guid: 72912cda72e750640958a07b1ed88435,
         type: 3}
@@ -680,7 +680,7 @@ PrefabInstance:
     - target: {fileID: 2976386310684457965, guid: 72912cda72e750640958a07b1ed88435,
         type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6566856389615769187, guid: 72912cda72e750640958a07b1ed88435,
         type: 3}
@@ -2270,7 +2270,7 @@ PrefabInstance:
     - target: {fileID: 2976386310684457965, guid: 72912cda72e750640958a07b1ed88435,
         type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6566856389615769187, guid: 72912cda72e750640958a07b1ed88435,
         type: 3}
@@ -3210,7 +3210,7 @@ PrefabInstance:
     - target: {fileID: 2976386310684457965, guid: 72912cda72e750640958a07b1ed88435,
         type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6566856389615769187, guid: 72912cda72e750640958a07b1ed88435,
         type: 3}
@@ -3297,8 +3297,8 @@ MonoBehaviour:
   stunState: {fileID: 5185572985862165326}
   interactionState: {fileID: 7078773080773586843}
   disableHitboxesOnStart: 1
-  estadoAlEncontrarObjetivo: {fileID: 0}
-  estadoAlPerderObjetivo: {fileID: 0}
+  stateAtObjectFound: {fileID: 0}
+  stateAtObjectLost: {fileID: 4394378423789228137}
 --- !u!1 &1825723598
 GameObject:
   m_ObjectHideFlags: 0

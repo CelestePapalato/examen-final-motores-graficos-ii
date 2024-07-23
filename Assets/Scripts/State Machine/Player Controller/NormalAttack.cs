@@ -11,19 +11,19 @@ public class NormalAttack : CharacterController
     {
         base.Entrar(personajeActual);
         attackBuffer = false;
-        animator.SetTrigger("Attack");
+        currentCharacter.Animator?.SetTrigger("Attack");
         StopPlayerMovement();
-        animEvent.onAnimationStart += CleanBuffer;
-        animEvent.onAnimationComplete += AttackFinished;
-        animEvent.onAnimationCancelable += CanCombo;
+        currentCharacter.AnimationEventHandler.onAnimationStart += CleanBuffer;
+        currentCharacter.AnimationEventHandler.onAnimationComplete += AttackFinished;
+        currentCharacter.AnimationEventHandler.onAnimationCancelable += CanCombo;
     }
 
     public override void Salir()
     {
         ResumePlayerMovement();
-        animEvent.onAnimationStart -= CleanBuffer;
-        animEvent.onAnimationComplete -= AttackFinished;
-        animEvent.onAnimationCancelable -= CanCombo;
+        currentCharacter.AnimationEventHandler.onAnimationStart -= CleanBuffer;
+        currentCharacter.AnimationEventHandler.onAnimationComplete -= AttackFinished;
+        currentCharacter.AnimationEventHandler.onAnimationCancelable -= CanCombo;
         base.Salir();
     }
 
@@ -31,9 +31,9 @@ public class NormalAttack : CharacterController
     {
         if (isActive)
         {
-            animEvent.onAnimationStart += CleanBuffer;
-            animEvent.onAnimationComplete += AttackFinished;
-            animEvent.onAnimationCancelable -= CanCombo;
+            currentCharacter.AnimationEventHandler.onAnimationStart += CleanBuffer;
+            currentCharacter.AnimationEventHandler.onAnimationComplete += AttackFinished;
+            currentCharacter.AnimationEventHandler.onAnimationCancelable -= CanCombo;
         }
     }
 
@@ -41,9 +41,9 @@ public class NormalAttack : CharacterController
     {
         if (isActive)
         {
-            animEvent.onAnimationStart -= CleanBuffer;
-            animEvent.onAnimationComplete -= AttackFinished;
-            animEvent.onAnimationCancelable -= CanCombo;
+            currentCharacter.AnimationEventHandler.onAnimationStart -= CleanBuffer;
+            currentCharacter.AnimationEventHandler.onAnimationComplete -= AttackFinished;
+            currentCharacter.AnimationEventHandler.onAnimationCancelable -= CanCombo;
         }
     }
 
@@ -82,7 +82,7 @@ public class NormalAttack : CharacterController
         {
             input = Quaternion.Euler(0f, 0f, -camera.transform.eulerAngles.y) * input;
         }
-        movement.Direction = input;
+        currentCharacter.MovementComponent.Direction = input;
     }
 
     public override void Attack()
@@ -90,7 +90,7 @@ public class NormalAttack : CharacterController
         if(canAttack)
         {
             canAttack = false;
-            animator.SetTrigger("Attack");
+            currentCharacter.Animator?.SetTrigger("Attack");
             attackBuffer = true;
         }
     }

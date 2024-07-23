@@ -66,6 +66,11 @@ public class Movement : MonoBehaviour, IBuffable
         get => decceleration * speedMultiplier; private set { decceleration = (value > 0) ? value : decceleration; }
     }
 
+    public float RotationSmoothing
+    {
+        get => rotationSmoothing; private set { rotationSmoothing = Mathf.Clamp(value, 0f, 0.5f); }
+    }
+
     public float RigidbodySpeed { get => rb.velocity.magnitude; }
     public Rigidbody RigidBody { get => rb; }
 

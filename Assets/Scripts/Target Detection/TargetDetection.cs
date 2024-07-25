@@ -12,7 +12,6 @@ public class TargetDetection : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        Debug.Log("OnTriggerEnter");
         if(targets.Contains(other.transform)) { return; }
         targets.Add(other.transform);
         TargetUpdate?.Invoke(other.transform);
@@ -20,7 +19,6 @@ public class TargetDetection : MonoBehaviour
 
     private void OnTriggerExit(Collider collision)
     {
-        Debug.Log("OnTriggerExit");
         targets.Remove(collision.transform);
         TargetUpdate?.Invoke(null);
     }

@@ -30,7 +30,7 @@ public class Chase : CharacterState, IObjectTracker
         currentCharacter.Agent.enabled = true;
         currentCharacter.Agent.speed = maxSpeed;
 
-        StartCoroutine(nameof(UpdatePath));
+        InvokeRepeating(nameof(UpdatePath), 0f, pathUpdateRate);
     }
 
     public override void Salir()
@@ -50,13 +50,13 @@ public class Chase : CharacterState, IObjectTracker
     {
         if(isActive && Target)
         {
-            StartCoroutine(nameof(UpdatePath));
+            InvokeRepeating(nameof(UpdatePath), 0f, pathUpdateRate);
         }
     }
 
     private void OnDisable()
     {
-        StopAllCoroutines(); 
+        CancelInvoke(); 
     }
 
     public override void Actualizar()
@@ -69,12 +69,15 @@ public class Chase : CharacterState, IObjectTracker
         }
     }
 
-    IEnumerator UpdatePath()
+    private void UpdatePath()
     {
-        while (Target && isActive)
+        if (Target && isActive)
         {
             currentCharacter.Agent.destination = Target.position;
-            yield return new WaitForSeconds(pathUpdateRate);
+        }
+        else
+        {
+            CancelInvoke();
         }
     }
 }

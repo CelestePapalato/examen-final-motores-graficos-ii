@@ -53,6 +53,8 @@ public class Character : StateMachine
 
     CharacterState currentIdleState;
 
+    private bool toBeDestroyed = false;
+
     protected override void Awake()
     {
         movement = GetComponentInChildren<Movement>();
@@ -86,7 +88,6 @@ public class Character : StateMachine
         {
             hitboxes[i] = damage[i].GetComponent<Collider>();
             hitboxes[i].enabled = enable;
-            Debug.Log(hitboxes[i]);
         }
     }
 
@@ -108,6 +109,11 @@ public class Character : StateMachine
         }
     }
 
+    private void OnDestroy()
+    {
+        toBeDestroyed = true;   
+    }
+
     protected override void Update()
     {
         if (Time.timeScale == 0)
@@ -120,9 +126,12 @@ public class Character : StateMachine
     public override void CambiarEstado(State newState)
     {
         currentState?.Salir();
-        currentState = (newState) ? newState : currentIdleState;
-        currentState?.Entrar(this);
-        controller = (CharacterState)currentState;
+        if (!toBeDestroyed)
+        {
+            currentState = (newState) ? newState : currentIdleState;
+            currentState?.Entrar(this);
+            controller = (CharacterState)currentState;
+        }
     }
 
     private void Dead()

@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Interacting : CharacterController
+public class Interacting : CharacterState
 {
     PuzzleSystem.Puzzle currentPuzzle;
 

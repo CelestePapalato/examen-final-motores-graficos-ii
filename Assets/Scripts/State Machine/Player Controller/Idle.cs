@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-public class Idle : CharacterController
+public class Idle : CharacterState
 {
     public override void Salir()
     {

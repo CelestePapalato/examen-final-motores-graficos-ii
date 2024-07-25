@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-public class Paralyzed : CharacterController
+public class Paralyzed : CharacterState
 {
     public override void Entrar(StateMachine personajeActual)
     {

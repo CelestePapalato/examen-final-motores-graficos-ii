@@ -1,10 +1,9 @@
 using System.Collections;
 using System.Collections.Generic;
-using Unity.IO.LowLevel.Unsafe;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-public abstract class CharacterController : State
+public abstract class CharacterState : State
 {
     [SerializeField] protected float maxSpeed;
     [SerializeField] protected float attackCooldown;
@@ -51,15 +50,14 @@ public abstract class CharacterController : State
 
     protected float GetPlayerDamageMultiplier()
     {
-        Character chara = personaje as Character;
-        return (chara) ? chara.DamageMultiplier : 1f;
+        return (currentCharacter) ? currentCharacter.DamageMultiplier : 1f;
     }
 
     public override void Entrar(StateMachine personajeActual)
     {
         base.Entrar(personajeActual);
         currentCharacter = personaje as Character;
-        if (currentCharacter)
+        if (currentCharacter && currentCharacter.MovementComponent)
         {
             currentCharacter.MovementComponent.MaxSpeed = maxSpeed;
         }

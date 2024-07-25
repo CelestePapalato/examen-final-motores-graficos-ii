@@ -25,6 +25,8 @@ public class Player : MonoBehaviour
     {
         get
         {
+            if(currentPlayers.Count == 0) { return null; }
+
             Player[] alivePlayers = currentPlayers.Where(x => !x.IsDead).ToArray();
             int r = UnityEngine.Random.Range(0, alivePlayers.Length);
             return alivePlayers[r];

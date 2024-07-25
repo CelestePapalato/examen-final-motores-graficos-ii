@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-public class NormalAttack : CharacterController
+public class NormalAttack : CharacterState
 {
     bool attackBuffer;
 
@@ -13,23 +13,29 @@ public class NormalAttack : CharacterController
         attackBuffer = false;
         currentCharacter.Animator?.SetTrigger("Attack");
         StopPlayerMovement();
-        currentCharacter.AnimationEventHandler.onAnimationStart += CleanBuffer;
-        currentCharacter.AnimationEventHandler.onAnimationComplete += AttackFinished;
-        currentCharacter.AnimationEventHandler.onAnimationCancelable += CanCombo;
+        if (currentCharacter.AnimationEventHandler)
+        {
+            currentCharacter.AnimationEventHandler.onAnimationStart += CleanBuffer;
+            currentCharacter.AnimationEventHandler.onAnimationComplete += AttackFinished;
+            currentCharacter.AnimationEventHandler.onAnimationCancelable += CanCombo;
+        }
     }
 
     public override void Salir()
     {
         ResumePlayerMovement();
-        currentCharacter.AnimationEventHandler.onAnimationStart -= CleanBuffer;
-        currentCharacter.AnimationEventHandler.onAnimationComplete -= AttackFinished;
-        currentCharacter.AnimationEventHandler.onAnimationCancelable -= CanCombo;
+        if (currentCharacter.AnimationEventHandler)
+        {
+            currentCharacter.AnimationEventHandler.onAnimationStart -= CleanBuffer;
+            currentCharacter.AnimationEventHandler.onAnimationComplete -= AttackFinished;
+            currentCharacter.AnimationEventHandler.onAnimationCancelable -= CanCombo;
+        }
         base.Salir();
     }
 
     private void OnEnable()
     {
-        if (isActive)
+        if (isActive && currentCharacter.AnimationEventHandler)
         {
             currentCharacter.AnimationEventHandler.onAnimationStart += CleanBuffer;
             currentCharacter.AnimationEventHandler.onAnimationComplete += AttackFinished;
@@ -39,7 +45,7 @@ public class NormalAttack : CharacterController
 
     private void OnDisable()
     {
-        if (isActive)
+        if (isActive && currentCharacter.AnimationEventHandler)
         {
             currentCharacter.AnimationEventHandler.onAnimationStart -= CleanBuffer;
             currentCharacter.AnimationEventHandler.onAnimationComplete -= AttackFinished;

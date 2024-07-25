@@ -45,16 +45,16 @@ public class Enemy : StateMachine
         trackers = GetComponentsInChildren<IObjectTracker>();
     }
 
-    private void Start()
-    {
-        GetPlayer();
-    }
 
     private void OnEnable()
     {
         if (player)
         {
             player.OnDead += PlayerKilled;
+        }
+        else
+        {
+            GetPlayer();
         }
     }
 
@@ -69,6 +69,8 @@ public class Enemy : StateMachine
     protected override void Update()
     {
         agent.enabled = animator.GetBool("CanMove");
+
+        if(!player) { GetPlayer(); }
 
         if (player && canAttack)
         {
@@ -87,7 +89,9 @@ public class Enemy : StateMachine
 
     private void GetPlayer()
     {
-        player = Player.RandomAlivePlayer.PlayerCharacter;
+        Player aux = Player.RandomAlivePlayer;
+        if (!aux) { return; }
+        player = aux.PlayerCharacter;
         player.OnDead += PlayerKilled;
         foreach (var tracker in trackers)
         {

@@ -8,22 +8,22 @@ using UnityEngine.InputSystem;
 public class Character : StateMachine
 {
     [Header("States")]
-    [SerializeField] CharacterController idleState;
-    [SerializeField] CharacterController attackState;
-    [SerializeField] CharacterController specialAttackState;
-    [SerializeField] CharacterController stunState;
-    [SerializeField] CharacterController interactionState;
+    [SerializeField] CharacterState idleState;
+    [SerializeField] CharacterState attackState;
+    [SerializeField] CharacterState specialAttackState;
+    [SerializeField] CharacterState stunState;
+    [SerializeField] CharacterState interactionState;
 
     [Header("Hitboxes")]
     [SerializeField] bool disableHitboxesOnStart = true;
     
     [Header("Object Tracking")]
-    [SerializeField] protected CharacterController stateAtObjectFound;
-    [SerializeField] protected CharacterController stateAtObjectLost;
+    [SerializeField] protected CharacterState stateAtObjectFound;
+    [SerializeField] protected CharacterState stateAtObjectLost;
 
     Health health;
     Movement movement;
-    CharacterController controller;
+    CharacterState controller;
     Animator animator;
     Damage[] damage;
     Collider[] hitboxes;
@@ -51,7 +51,7 @@ public class Character : StateMachine
 
     public Transform CharacterTransform { get => movement.transform; }
 
-    CharacterController currentIdleState;
+    CharacterState currentIdleState;
 
     protected override void Awake()
     {
@@ -86,6 +86,7 @@ public class Character : StateMachine
         {
             hitboxes[i] = damage[i].GetComponent<Collider>();
             hitboxes[i].enabled = enable;
+            Debug.Log(hitboxes[i]);
         }
     }
 
@@ -121,7 +122,7 @@ public class Character : StateMachine
         currentState?.Salir();
         currentState = (newState) ? newState : currentIdleState;
         currentState?.Entrar(this);
-        controller = (CharacterController)currentState;
+        controller = (CharacterState)currentState;
     }
 
     private void Dead()

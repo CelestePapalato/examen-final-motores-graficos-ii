@@ -153,7 +153,7 @@ public class Character : StateMachine
         {
             controller?.Attack();
         }
-        if (currentState == idleState && attackState)
+        if (currentState == currentIdleState && attackState)
         {
             CambiarEstado(attackState);
         }

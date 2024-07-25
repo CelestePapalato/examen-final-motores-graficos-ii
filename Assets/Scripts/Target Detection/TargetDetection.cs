@@ -6,7 +6,9 @@ using UnityEngine.Events;
 
 public class TargetDetection : MonoBehaviour
 {
-    [SerializeField] UnityEvent<Transform> TargetUpdate;
+    [SerializeField] UnityEvent<Transform[]> TargetUpdate;
+    [SerializeField] UnityEvent<Transform> TargetFound;
+    [SerializeField] UnityEvent<Transform> TargetLost;
 
     List<Transform> targets = new List<Transform>();
 
@@ -14,12 +16,14 @@ public class TargetDetection : MonoBehaviour
     {
         if(targets.Contains(other.transform)) { return; }
         targets.Add(other.transform);
-        TargetUpdate?.Invoke(other.transform);
+        TargetFound?.Invoke(other.transform);
+        TargetUpdate?.Invoke(targets.ToArray());
     }
 
     private void OnTriggerExit(Collider collision)
     {
         targets.Remove(collision.transform);
-        TargetUpdate?.Invoke(null);
+        TargetLost?.Invoke(collision.transform);
+        TargetUpdate?.Invoke(targets.ToArray());
     }
 }

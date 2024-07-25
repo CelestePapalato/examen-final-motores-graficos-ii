@@ -678,7 +678,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 2147483647
   m_IsActive: 1
 --- !u!4 &557315722
 Transform:
@@ -709,6 +709,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   TargetUpdate:
     m_PersistentCalls:
+      m_Calls: []
+  TargetFound:
+    m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 7584335105862763871}
         m_TargetAssemblyTypeName: Character, Assembly-CSharp
@@ -722,6 +725,9 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+  TargetLost:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!135 &557315724
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -6542,7 +6548,9 @@ MonoBehaviour:
   camera: {fileID: 0}
   pathUpdateRate: 0.5
   distanceForNextState: 6
-  nextState: {fileID: 7584335105862763873}
+  stateChangeCooldown: 2
+  attack: 1
+  nextState: {fileID: 0}
 --- !u!114 &7584335105862763871
 MonoBehaviour:
   m_ObjectHideFlags: 0

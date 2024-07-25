@@ -97,14 +97,14 @@ public abstract class CharacterState : State
 
     public virtual void Interact() { }
 
-    IEnumerator ControlAttackCooldown()
+    protected IEnumerator ControlAttackCooldown()
     {
         canAttack = false;
         yield return new WaitForSeconds(attackCooldownMultiplier * attackCooldown);
         canAttack = true;
     }
 
-    IEnumerator ControlEvadeCooldown()
+    protected IEnumerator ControlEvadeCooldown()
     {
         canEvade = false;
         yield return new WaitForSeconds(evadeCooldown);

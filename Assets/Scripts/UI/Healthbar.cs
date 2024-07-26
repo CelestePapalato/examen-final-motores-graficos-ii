@@ -14,16 +14,16 @@ public class Healthbar : MonoBehaviour
         {
             if (healthComponent)
             {
-                healthComponent.onHealthUpdate -= UpdateSlider;
+                healthComponent.OnHealthUpdate -= UpdateSlider;
             }
             healthComponent = value;
             if(healthComponent)
             {
-                healthComponent.onHealthUpdate += UpdateSlider;
+                healthComponent.OnHealthUpdate += UpdateSlider;
             }
             else
             {
-                healthComponent.onHealthUpdate -= UpdateSlider;
+                healthComponent.OnHealthUpdate -= UpdateSlider;
             }
             healthbarSlider?.gameObject.SetActive(healthComponent);
             UpdateSlider(healthComponent.CurrentHealth, healthComponent.MaxHealth);
@@ -42,7 +42,7 @@ public class Healthbar : MonoBehaviour
     {
         if (healthComponent)
         {
-            healthComponent.onHealthUpdate += UpdateSlider;
+            healthComponent.OnHealthUpdate += UpdateSlider;
         }
     }
 
@@ -50,7 +50,7 @@ public class Healthbar : MonoBehaviour
     {
         if (healthComponent)
         {
-            healthComponent.onHealthUpdate -= UpdateSlider;
+            healthComponent.OnHealthUpdate -= UpdateSlider;
         }
     }
 

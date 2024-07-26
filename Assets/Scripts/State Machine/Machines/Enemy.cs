@@ -1,56 +1,50 @@
 using System;
+using System.Linq;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.AI;
 using UnityEngine.Events;
+using UnityEngine.UIElements;
 
-public class Enemy : StateMachine
+public class Enemy : MonoBehaviour
 {
     public static event Action<int> OnEnemyDead;
     public UnityAction<Enemy> OnDead;
 
-    [Header("Enemy")]
-
-    [SerializeField] float distanceToAttack;
-    [SerializeField] float attackCooldown;
     [SerializeField] int points;
 
-    Health healthComponent;
+    [Header("Target Selection. Total Probability, 100% = 2")]
+    [SerializeField]
+    [Tooltip("1 = Low Health + High Health")]
+    [Range(0f, 1f)] float lowHealthProbability;
+    [SerializeField]
+    [Tooltip("1 = Nearest + Furthest")]
+    [Range(0f, 1f)] float nearestProbability;
+
+    Character chara;
     ItemSpawner itemSpawner;
-    Animator animator;
-    NavMeshAgent agent;
-    Character player;
 
-    IObjectTracker[] trackers;
+    List<Health> enemiesDetected = new List<Health>();
+    Health currentTarget;
 
-    float originalSpeed;
+    bool isInBattle = false;
 
-    bool canAttack = true;
-
-    protected override void Awake()
+    private void Awake()
     {
-        base.Awake();
-        healthComponent = GetComponentInChildren<Health>();
-        if (healthComponent)
+        chara = GetComponentInChildren<Character>();
+        if (chara)
         {
-            healthComponent.onNoHealth += Dead;
-            healthComponent.onDamaged += DamageReceived;
+            chara.OnDead += Dead;
         }
         itemSpawner = GetComponent<ItemSpawner>();
-        animator = GetComponentInChildren<Animator>();
-        agent = GetComponent<NavMeshAgent>();
-        originalSpeed = agent.speed;
-
-        trackers = GetComponentsInChildren<IObjectTracker>();
     }
 
 
     private void OnEnable()
     {
-        if (player)
+        if (currentTarget)
         {
-            player.OnDead += PlayerKilled;
+            currentTarget.OnDead += PlayerKilled;
         }
         else
         {
@@ -60,72 +54,72 @@ public class Enemy : StateMachine
 
     private void OnDisable()
     {
-        if (player)
+        if (currentTarget)
         {
-            player.OnDead -= PlayerKilled;
+            currentTarget.OnDead -= PlayerKilled;
         }
     }
 
-    protected override void Update()
+    public void TargetFound(Transform target)
     {
-        agent.enabled = animator.GetBool("CanMove");
-
-        if(!player) { GetPlayer(); }
-
-        if (player && canAttack)
+       enemiesDetected.Add(target.GetComponentInChildren<Health>());
+        if (!currentTarget)
         {
-            float distance = Vector3.Distance(transform.position, player.CharacterTransform.position);
-            if (distance <= distanceToAttack)
-            {
-                animator.SetTrigger("Attack");
-                StartCoroutine(AttackCooldown());
-            }
+            TargetUpdate();
         }
+    }
 
-        float speedBlend = agent.speed / originalSpeed;
-        animator?.SetFloat("Speed", speedBlend);
-        base.Update();
+    public void TargetLost(Transform target)
+    {
+        Health character = target.GetComponentInChildren<Health>();
+        if (!enemiesDetected.Contains(character)) { Debug.Log("papas"); return; }
+        enemiesDetected.Remove(character);
+        if (character == currentTarget)
+        {
+            TargetUpdate();
+        }
+    }
+
+    private void TargetUpdate()
+    {
+        Health[] aliveTargets = enemiesDetected.Where(x => x.CurrentHealth > 0).ToArray();
+        if (enemiesDetected.Count == 0 || aliveTargets.Length == 0)
+        {
+            currentTarget = null; 
+            chara.TargetUpdate(null); 
+            isInBattle = false;
+            return;
+        }
+        int r = UnityEngine.Random.Range(0, aliveTargets.Length);
+        currentTarget = aliveTargets[r];
+        currentTarget.OnDead += PlayerKilled;
+        chara.TargetUpdate(currentTarget.transform);
+        isInBattle = true;
     }
 
     private void GetPlayer()
     {
         Player aux = Player.RandomAlivePlayer;
         if (!aux) { return; }
-        player = aux.PlayerCharacter;
-        player.OnDead += PlayerKilled;
-        foreach (var tracker in trackers)
-        {
-            tracker.Target = player.CharacterTransform;
-        }
+       // currentTarget = aux.PlayerCharacter;
+        //currentTarget.OnDead += PlayerKilled;
+        //chara.TargetUpdate(currentTarget.transform);
     }
 
     private void PlayerKilled()
     {
-        if (player)
+        if (currentTarget)
         {
-            player.OnDead -= PlayerKilled;
+            currentTarget.OnDead -= PlayerKilled;
         }
-        GetPlayer();
+        TargetUpdate();
     }
-
-    IEnumerator AttackCooldown()
-    {
-        canAttack = false;
-        yield return new WaitForSeconds(attackCooldown);
-        canAttack = true;
-    }
-
     private void Dead()
     {
-        itemSpawner?.DropItem();
+        //itemSpawner?.DropItem();
         OnEnemyDead?.Invoke(points);
-        Destroy(gameObject);
     }
 
-    private void DamageReceived(int health, int maxHealth)
-    {
-        //DamageReceived();
-    }
 
     private void OnDestroy()
     {

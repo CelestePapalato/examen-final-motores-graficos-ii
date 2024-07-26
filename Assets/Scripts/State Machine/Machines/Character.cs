@@ -95,8 +95,8 @@ public class Character : StateMachine
     {
         if (health)
         {
-            health.onDamaged += OnDamage;
-            health.onNoHealth += Dead;
+            health.OnDamaged += OnDamage;
+            health.OnDead += Dead;
         }
     }
 
@@ -104,8 +104,8 @@ public class Character : StateMachine
     {
         if (health)
         {
-            health.onDamaged -= OnDamage;
-            health.onNoHealth -= Dead;
+            health.OnDamaged -= OnDamage;
+            health.OnDead -= Dead;
         }
     }
 

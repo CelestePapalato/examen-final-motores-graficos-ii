@@ -7,10 +7,10 @@ public class Health : MonoBehaviour, IDamageable, IHittable
 {
     [SerializeField] int maxHealth;
     [SerializeField] float invincibilityTime;
-    public UnityAction<int, int> onHealthUpdate;
-    public UnityAction onNoHealth;
-    public UnityAction<int, int> onDamaged;
-    public UnityAction<int, int> onHealed;
+    public UnityAction<int, int> OnHealthUpdate;
+    public UnityAction OnDead;
+    public UnityAction<int, int> OnDamaged;
+    public UnityAction<int, int> OnHealed;
 
     int health;
     bool invincibility = false;
@@ -29,14 +29,14 @@ public class Health : MonoBehaviour, IDamageable, IHittable
 
     private void Start()
     {
-        onHealthUpdate?.Invoke(health, maxHealth);
+        OnHealthUpdate?.Invoke(health, maxHealth);
     }
 
     public void Heal(int healPoints)
     {
         health = Mathf.Clamp(health + healPoints, 0, maxHealth);
-        onHealthUpdate?.Invoke(health, maxHealth);
-        onHealed?.Invoke(health, maxHealth);
+        OnHealthUpdate?.Invoke(health, maxHealth);
+        OnHealed?.Invoke(health, maxHealth);
     }
 
     public void Damage(IDamageDealer damageDealer)
@@ -46,13 +46,13 @@ public class Health : MonoBehaviour, IDamageable, IHittable
             return;
         }
         health = Mathf.Clamp(health - damageDealer.DamagePoints, 0, maxHealth);
-        onHealthUpdate?.Invoke(health, maxHealth);
-        onDamaged?.Invoke(health, maxHealth);
+        OnHealthUpdate?.Invoke(health, maxHealth);
+        OnDamaged?.Invoke(health, maxHealth);
 
-        if (health <= 0 && onNoHealth != null)
+        if (health <= 0 && OnDead != null)
         {
             col.enabled = false;
-            onNoHealth();
+            OnDead();
             return;
         }
         StartCoroutine(invincibilityEnabler());

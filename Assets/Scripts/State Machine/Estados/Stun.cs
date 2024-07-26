@@ -59,7 +59,7 @@ public class Stun : MonoBehaviour
     {
         if (health)
         {
-            health.onDamaged += StunStart;
+            health.OnDamaged += StunStart;
         }
     }
 
@@ -67,7 +67,7 @@ public class Stun : MonoBehaviour
     {
         if (health)
         {
-            health.onDamaged -= StunStart;
+            health.OnDamaged -= StunStart;
         }
     }
 }

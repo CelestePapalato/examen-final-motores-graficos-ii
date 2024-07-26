@@ -6,10 +6,11 @@ using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.UIElements;
 
-public class Enemy : MonoBehaviour
+public class Enemy : Character
 {
     public static event Action<int> OnEnemyDead;
-    public UnityAction<Enemy> OnDead;
+
+    [Header("Enemy")]
 
     [SerializeField] int points;
 
@@ -21,7 +22,6 @@ public class Enemy : MonoBehaviour
     [Tooltip("1 = Nearest + Furthest")]
     [Range(0f, 1f)] float nearestProbability;
 
-    Character chara;
     ItemSpawner itemSpawner;
 
     List<Health> enemiesDetected = new List<Health>();
@@ -29,19 +29,16 @@ public class Enemy : MonoBehaviour
 
     bool isInBattle = false;
 
-    private void Awake()
+    protected override void Awake()
     {
-        chara = GetComponentInChildren<Character>();
-        if (chara)
-        {
-            chara.OnDead += Dead;
-        }
+        base.Awake();
         itemSpawner = GetComponent<ItemSpawner>();
     }
 
 
-    private void OnEnable()
+    protected override void OnEnable()
     {
+        base.OnEnable();
         if (currentTarget)
         {
             currentTarget.OnDead += PlayerKilled;
@@ -52,8 +49,9 @@ public class Enemy : MonoBehaviour
         }
     }
 
-    private void OnDisable()
+    protected override void OnDisable()
     {
+        base.OnDisable();
         if (currentTarget)
         {
             currentTarget.OnDead -= PlayerKilled;
@@ -86,14 +84,14 @@ public class Enemy : MonoBehaviour
         if (enemiesDetected.Count == 0 || aliveTargets.Length == 0)
         {
             currentTarget = null; 
-            chara.TargetUpdate(null); 
+            TrackerUpdate(null); 
             isInBattle = false;
             return;
         }
         int r = UnityEngine.Random.Range(0, aliveTargets.Length);
         currentTarget = aliveTargets[r];
         currentTarget.OnDead += PlayerKilled;
-        chara.TargetUpdate(currentTarget.transform);
+        TrackerUpdate(currentTarget.transform);
         isInBattle = true;
     }
 
@@ -114,16 +112,17 @@ public class Enemy : MonoBehaviour
         }
         TargetUpdate();
     }
-    private void Dead()
+    
+    protected override void Dead()
     {
-        //itemSpawner?.DropItem();
+        base.Dead();
+        itemSpawner?.DropItem();
         OnEnemyDead?.Invoke(points);
+        Destroy(gameObject);
     }
 
-
-    private void OnDestroy()
+    public override void Attack()
     {
-        OnDead?.Invoke(this);
-        StopAllCoroutines();
+        base.Attack();
     }
 }

@@ -91,7 +91,7 @@ public class Character : StateMachine
         }
     }
 
-    private void OnEnable()
+    protected virtual void OnEnable()
     {
         if (health)
         {
@@ -100,7 +100,7 @@ public class Character : StateMachine
         }
     }
 
-    private void OnDisable()
+    protected virtual void OnDisable()
     {
         if (health)
         {
@@ -134,8 +134,9 @@ public class Character : StateMachine
         }
     }
 
-    private void Dead()
+    protected virtual void Dead()
     {
+        Debug.Log("xddd");
         movement.Direction = Vector2.zero;
         OnDead?.Invoke();
         this.enabled = false;
@@ -146,7 +147,7 @@ public class Character : StateMachine
         controller?.Move(input);
     }
 
-    public void Attack()
+    public virtual void Attack()
     {
         attackInput = !attackInput;
         if (attackInput)
@@ -159,7 +160,7 @@ public class Character : StateMachine
         }
     }
 
-    public void Evade()
+    public virtual void Evade()
     {
         evadeInput = !evadeInput;
         if (evadeInput)
@@ -167,7 +168,7 @@ public class Character : StateMachine
             controller?.Evade();
         }
     }
-    public void Interact()
+    public virtual void Interact()
     {
         if (controller != interactionState)
         {
@@ -192,7 +193,7 @@ public class Character : StateMachine
     }
 
 
-    public void TargetUpdate(Transform newTarget)
+    public void TrackerUpdate(Transform newTarget)
     {
         foreach (IObjectTracker tracker in trackers)
         {

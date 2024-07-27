@@ -43,7 +43,6 @@ public class Chase : CharacterState, IObjectTracker
     public override void Salir()
     {
         base.Salir();
-        StopAllCoroutines();
         currentCharacter.Agent.enabled = false;
 
         if (currentCharacter.MovementComponent)

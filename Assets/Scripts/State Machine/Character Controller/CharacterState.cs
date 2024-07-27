@@ -121,6 +121,25 @@ public abstract class CharacterState : State
 
     protected void ResumePlayerMovement()
     {
-        currentCharacter.MovementComponent.enabled = true;
+        if (currentCharacter.MovementComponent)
+        {
+            currentCharacter.MovementComponent.enabled = true;
+        }
+    }
+
+    protected void EnableRigidbody(bool enable)
+    {
+        if (currentCharacter.MovementComponent)
+        {
+            currentCharacter.MovementComponent.RigidBody.isKinematic = !enable;
+        }
+    }
+
+    protected void EnableAgent(bool enable)
+    {
+        if (currentCharacter.Agent)
+        {
+            currentCharacter.Agent.enabled = enable;
+        }
     }
 }

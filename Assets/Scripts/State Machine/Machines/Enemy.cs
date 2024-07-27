@@ -29,6 +29,8 @@ public class Enemy : Character
 
     bool isInBattle = false;
 
+    bool canAttack = true;
+
     protected override void Awake()
     {
         base.Awake();
@@ -123,6 +125,7 @@ public class Enemy : Character
 
     public override void Attack()
     {
+        if(isInBattle && !canAttack) { return; }
         base.Attack();
     }
 }

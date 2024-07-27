@@ -52,7 +52,6 @@ public class MoveTowards : CharacterState
         currentCharacter.Animator?.SetFloat("Speed", speedFactor);
         float distance = Vector3.Distance(transform.position, destination.position);
         if (distance > tolerance || !nextState) { return; }
-        Debug.Log("xd");
         currentCharacter?.CambiarEstado(nextState);
     }
 

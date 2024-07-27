@@ -1,10 +1,7 @@
 using System;
 using System.Linq;
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.Events;
-using UnityEngine.UIElements;
 
 public class Enemy : Character
 {
@@ -13,6 +10,7 @@ public class Enemy : Character
     [Header("Enemy")]
 
     [SerializeField] int points;
+    [SerializeField] float attackDistance;
 
     [Header("Target Selection. Total Probability, 100% = 2")]
     [SerializeField]
@@ -58,6 +56,14 @@ public class Enemy : Character
         {
             currentTarget.OnDead -= PlayerKilled;
         }
+    }
+
+    protected override void Update()
+    {
+        base.Update();
+        if (!isInBattle || !currentTarget) { return; }
+        float distanceToTarget = Vector3.Distance(MovementComponent.transform.position, currentTarget.transform.position);
+        canAttack = (distanceToTarget <= attackDistance);       
     }
 
     public void TargetFound(Transform target)

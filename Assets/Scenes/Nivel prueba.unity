@@ -6651,6 +6651,7 @@ MonoBehaviour:
   stateAtObjectFound: {fileID: 7584335105862763870}
   stateAtObjectLost: {fileID: 7584335105862763877}
   points: 2
+  attackDistance: 2.5
   lowHealthProbability: 0
   nearestProbability: 0
 --- !u!114 &7584335105862763877

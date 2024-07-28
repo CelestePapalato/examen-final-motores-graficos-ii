@@ -6,9 +6,9 @@ using UnityEngine.Events;
 
 public class TargetDetection : MonoBehaviour
 {
-    [SerializeField] UnityEvent<Transform[]> TargetUpdate;
-    [SerializeField] UnityEvent<Transform> TargetFound;
-    [SerializeField] UnityEvent<Transform> TargetLost;
+    public UnityEvent<Transform[]> TargetUpdate;
+    public UnityEvent<Transform> TargetFound;
+    public UnityEvent<Transform> TargetLost;
 
     List<Transform> targets = new List<Transform>();
 

@@ -723,7 +723,8 @@ Transform:
   m_LocalPosition: {x: -0.02, y: 6.67, z: 30.56}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children: []
+  m_Children:
+  - {fileID: 7584335105862763869}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &557315723
@@ -743,34 +744,10 @@ MonoBehaviour:
       m_Calls: []
   TargetFound:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 7584335105862763876}
-        m_TargetAssemblyTypeName: Enemy, Assembly-CSharp
-        m_MethodName: TargetFound
-        m_Mode: 0
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
   TargetLost:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 7584335105862763876}
-        m_TargetAssemblyTypeName: Enemy, Assembly-CSharp
-        m_MethodName: TargetLost
-        m_Mode: 0
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
 --- !u!135 &557315724
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -6599,12 +6576,12 @@ Transform:
   m_GameObject: {fileID: 2976386310744721040}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.02, y: 6.67, z: 30.56}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 2401589097256083047}
-  m_Father: {fileID: 0}
+  m_Father: {fileID: 557315722}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &7584335105862763870
 MonoBehaviour:
@@ -6679,7 +6656,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   firstState: {fileID: 0}
   currentState: {fileID: 0}
-  idleState: {fileID: 7584335105862763875}
+  idleState: {fileID: 7584335105862763877}
   attackState: {fileID: 7584335105862763873}
   specialAttackState: {fileID: 0}
   stunState: {fileID: 0}
@@ -7222,7 +7199,6 @@ SceneRoots:
   - {fileID: 4674327568031360014}
   - {fileID: 2752250361162576894}
   - {fileID: 557315722}
-  - {fileID: 7584335105862763869}
   - {fileID: 1035135477}
   - {fileID: 484538997}
   - {fileID: 1541368125}

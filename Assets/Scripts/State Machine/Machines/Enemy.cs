@@ -24,6 +24,7 @@ public class Enemy : Character
 
     ItemSpawner itemSpawner;
 
+    TargetDetection targetDetection;
     List<Health> enemiesDetected = new List<Health>();
     Health currentTarget;
 
@@ -35,6 +36,7 @@ public class Enemy : Character
     {
         base.Awake();
         itemSpawner = GetComponent<ItemSpawner>();
+        targetDetection = transform.parent.GetComponent<TargetDetection>();
     }
 
 
@@ -49,6 +51,11 @@ public class Enemy : Character
         {
             GetPlayer();
         }
+        if (targetDetection)
+        {
+            targetDetection.TargetFound.AddListener(TargetFound);
+            targetDetection.TargetLost.AddListener(TargetLost);
+        }
     }
 
     protected override void OnDisable()
@@ -57,6 +64,11 @@ public class Enemy : Character
         if (currentTarget)
         {
             currentTarget.OnDead -= PlayerKilled;
+        }
+        if (targetDetection)
+        {
+            targetDetection.TargetFound?.RemoveListener(TargetFound);
+            targetDetection.TargetLost?.RemoveListener(TargetLost);
         }
     }
 

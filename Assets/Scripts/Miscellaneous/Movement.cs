@@ -68,7 +68,7 @@ public class Movement : MonoBehaviour, IBuffable
 
     public float RotationSmoothing
     {
-        get => rotationSmoothing; private set { rotationSmoothing = Mathf.Clamp(value, 0f, 0.5f); }
+        get => rotationSmoothing; set { rotationSmoothing = Mathf.Clamp(value, 0f, 0.5f); }
     }
 
     public float RigidbodySpeed { get => rb.velocity.magnitude; }

@@ -6,6 +6,8 @@ using UnityEngine.InputSystem;
 public abstract class CharacterState : State
 {
     [SerializeField] protected float maxSpeed;
+    [SerializeField]
+    [Range(0f, .5f)] float rotationSmoothing;
     [SerializeField] protected float attackCooldown;
     [SerializeField] protected float evadeCooldown;
 
@@ -60,6 +62,10 @@ public abstract class CharacterState : State
         if (currentCharacter && currentCharacter.MovementComponent)
         {
             currentCharacter.MovementComponent.MaxSpeed = maxSpeed;
+            if(rotationSmoothing > 0)
+            {
+                currentCharacter.MovementComponent.RotationSmoothing = rotationSmoothing;
+            }
         }
     }
 

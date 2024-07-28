@@ -1,19 +1,27 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 public class MoveTowards : CharacterState
 {
     [Header("Move Towards State Configuration")]
-    [SerializeField] Transform destination;
+    [SerializeField] Transform[] destination;
     [SerializeField] float pathUpdateRate;
+    [SerializeField] 
+    [Tooltip("If looping is activated, Next State won't be called")]
+                     bool loop;
+    [SerializeField] bool restartOnExit;
     [SerializeField] float tolerance;
     [SerializeField] State nextState;
+
+    Transform currentDestination;
+    int currentDestinationIndex = -1;
 
     public override void Entrar(StateMachine personajeActual)
     {
         base.Entrar(personajeActual);
-        if (!currentCharacter || !currentCharacter.Agent || !destination)
+        if (!currentCharacter || !currentCharacter.Agent || destination.Length == 0)
         {
             //personaje.CambiarEstado(null);
             return;
@@ -22,6 +30,7 @@ public class MoveTowards : CharacterState
         EnableRigidbody(false);
         EnableAgent(true);
         currentCharacter.Agent.speed = maxSpeed;
+        if(restartOnExit || currentDestinationIndex < 0) { currentDestinationIndex = -1; NextDestination(); }
         InvokeRepeating(nameof(UpdatePath), 0f, pathUpdateRate);
     }
 
@@ -35,7 +44,7 @@ public class MoveTowards : CharacterState
 
     private void OnEnable()
     {
-        if (isActive && destination)
+        if (isActive && currentDestination)
         {
             InvokeRepeating(nameof(UpdatePath), 0f, pathUpdateRate);
         }
@@ -50,16 +59,28 @@ public class MoveTowards : CharacterState
     {
         float speedFactor = currentCharacter.Agent.velocity.magnitude / maxSpeed;
         currentCharacter.Animator?.SetFloat("Speed", speedFactor);
-        float distance = Vector3.Distance(transform.position, destination.position);
-        if (distance > tolerance || !nextState) { return; }
+        float distance = Vector3.Distance(currentCharacter.Agent.transform.position, currentDestination.position);
+        if (distance > tolerance || !(nextState || loop)) { return; }
+        if (loop || currentDestinationIndex < destination.Length - 1)
+        {
+            NextDestination();
+            return;
+        }
         currentCharacter?.CambiarEstado(nextState);
+    }
+
+    private void NextDestination()
+    {
+        currentDestinationIndex++;
+        if(currentDestinationIndex > destination.Length - 1) { currentDestinationIndex = 0; }
+        currentDestination = destination[currentDestinationIndex];
     }
 
     private void UpdatePath()
     {
-        if (destination && isActive)
+        if (currentDestination && isActive)
         {
-            currentCharacter.Agent.destination = destination.position;
+            currentCharacter.Agent.destination = currentDestination.position;
         }
         else
         {

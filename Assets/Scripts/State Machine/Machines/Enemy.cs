@@ -7,6 +7,8 @@ public class Enemy : Character
 {
     public static event Action<int> OnEnemyDead;
 
+    private static Dictionary<Health, List<Enemy>> enemiesAttacking = new Dictionary<Health, List<Enemy>>();
+
     [Header("Enemy")]
 
     [SerializeField] int points;

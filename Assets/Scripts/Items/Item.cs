@@ -8,10 +8,14 @@ public class Item : MonoBehaviour
 
     private void OnTriggerEnter(Collider collider)
     {
-        IBuffable buffable;
-        if(collider.gameObject.TryGetComponent<IBuffable>(out buffable))
+        IBuffable[] buffables = GetComponentsInChildren<IBuffable>();
+        foreach(IBuffable buffable in buffables)
         {
             buffable.Accept(powerUp);
+        }
+
+        if(buffables.Length > 0)
+        {
             Destroy(gameObject);
         }
     }

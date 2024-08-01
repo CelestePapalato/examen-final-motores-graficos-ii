@@ -22,19 +22,15 @@ public class PowerUp : ScriptableObject, IBuff
         {
             healthComponent.Heal(_healPoints);
         }
-        CharacterState player = o as CharacterState;
-        if (player)
+        Movement movementComponent = o as Movement;
+        if (movementComponent)
         {
-            //player.SpeedPowerUp(_speedMultiplier, _buffTime);
-            //player.DamagePowerUp(_damageMultiplier, _buffTime);
+            movementComponent.SpeedPowerUp(_speedMultiplier, _buffTime);
         }
-        /*
-        Weapon weapon = o as Weapon;
-        if (weapon)
+        Damage damageComponent = o as Damage;
+        if (damageComponent)
         {
-            weapon.FireRateBonus(_fireRateMultiplier, _buffTime);
-            weapon.DamageBonus(_damageMultiplier, _buffTime);
+            damageComponent.DamagePowerUp(_damageMultiplier, _buffTime);
         }
-        */
     }
 }

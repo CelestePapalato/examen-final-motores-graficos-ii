@@ -48,19 +48,18 @@ public class Damage : MonoBehaviour, IDamageDealer, IBuffable
     public void DamagePowerUp(float multiplier, float time)
     {
         multiplier = Mathf.Max(multiplier, 1f);
-        if (multiplier == 1f)
+        if (multiplier == 1)
         {
             return;
         }
-        StopCoroutine(nameof(DamagePowerUpEnabler));
-        StartCoroutine(DamagePowerUpEnabler(multiplier, time));
+        damageMultiplier = multiplier;
+        CancelInvoke(nameof(DamagePowerUpDisabler));
+        Invoke(nameof(DamagePowerUpDisabler), time);
     }
 
-    IEnumerator DamagePowerUpEnabler(float multiplier, float time)
+    private void DamagePowerUpDisabler()
     {
-        damageMultiplier = multiplier;
-        yield return new WaitForSeconds(time);
-        damageMultiplier = 1f;
+        damageMultiplier = 1;
     }
 
 }

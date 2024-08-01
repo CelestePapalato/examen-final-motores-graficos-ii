@@ -169,15 +169,14 @@ public class Movement : MonoBehaviour, IBuffable
         {
             return;
         }
-        StopCoroutine(nameof(SpeedPowerUpEnabler));
-        StartCoroutine(SpeedPowerUpEnabler(multiplier, time));
+        SpeedMultiplier = multiplier;
+        CancelInvoke(nameof(SpeedPowerUpDisabler));
+        Invoke(nameof(SpeedPowerUpDisabler), time);
     }
 
-    IEnumerator SpeedPowerUpEnabler(float multiplier, float time)
+    private void SpeedPowerUpDisabler()
     {
-        SpeedMultiplier = multiplier;
-        yield return new WaitForSeconds(time);
-        SpeedMultiplier = 1f;
+        SpeedMultiplier = 1;
     }
 
 }

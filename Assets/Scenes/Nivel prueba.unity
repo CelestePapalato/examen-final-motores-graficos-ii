@@ -2259,31 +2259,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6104263702429426405, guid: 2e681cf9ace3ee846901432440a7398a,
         type: 3}
-      propertyPath: drag
-      value: 1.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 6104263702429426405, guid: 2e681cf9ace3ee846901432440a7398a,
-        type: 3}
-      propertyPath: maxSpeed
-      value: 6
-      objectReference: {fileID: 0}
-    - target: {fileID: 6104263702429426405, guid: 2e681cf9ace3ee846901432440a7398a,
-        type: 3}
-      propertyPath: acceleration
-      value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 6104263702429426405, guid: 2e681cf9ace3ee846901432440a7398a,
-        type: 3}
-      propertyPath: decceleration
-      value: 20000
-      objectReference: {fileID: 0}
-    - target: {fileID: 6104263702429426405, guid: 2e681cf9ace3ee846901432440a7398a,
-        type: 3}
-      propertyPath: rotationSmoothing
-      value: 0.168
-      objectReference: {fileID: 0}
-    - target: {fileID: 6104263702429426405, guid: 2e681cf9ace3ee846901432440a7398a,
-        type: 3}
       propertyPath: deccelerationFactor
       value: 0.902
       objectReference: {fileID: 0}
@@ -2441,11 +2416,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 179.99998
-      objectReference: {fileID: 0}
-    - target: {fileID: 8364266318338261498, guid: 2e681cf9ace3ee846901432440a7398a,
-        type: 3}
-      propertyPath: m_Material
-      value: 
       objectReference: {fileID: 0}
     - target: {fileID: 8764098276138424156, guid: 2e681cf9ace3ee846901432440a7398a,
         type: 3}
@@ -4847,6 +4817,7 @@ MonoBehaviour:
     m_Bits: 8
   maxSpeed: 0
   acceleration: 0
+  decceleration: 0
   drag: 0
   rotationSmoothing: 0
   impulseResistance: 0
@@ -5281,7 +5252,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 072aa0d2d046aee44aadb203a7278580, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxSpeed: 10
+  maxSpeed: 8
   drag: -1
   rotationSmoothing: 0
   attackCooldown: 0
@@ -7173,7 +7144,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxSpeed: 0
-  drag: 3
+  drag: 1.5
   rotationSmoothing: 0.342
   attackCooldown: 0
   evadeCooldown: 0

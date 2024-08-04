@@ -10,8 +10,10 @@ public class Movement : MonoBehaviour, IBuffable, IHittable
     [Range(0f, 90f)] float maxSlope = 45f;
     [SerializeField] LayerMask floorLayer;
     [Header("Speed related")]
+    [Tooltip("Drag afecta a la velocidad máxima")]
     [SerializeField] float maxSpeed;
     [SerializeField] float acceleration;
+    [SerializeField] float decceleration;
     [SerializeField] float drag;
     [Header("Smoothing")]
     [SerializeField]
@@ -45,6 +47,7 @@ public class Movement : MonoBehaviour, IBuffable, IHittable
                 maxSpeed = value;
                 float diff = speedBeforeRepose / value;
                 acceleration /= diff;
+                decceleration /= diff;
             }
             else
             {
@@ -53,6 +56,7 @@ public class Movement : MonoBehaviour, IBuffable, IHittable
                     float diff = maxSpeed / value;
                     maxSpeed = value;
                     acceleration /= diff;
+                    decceleration /= diff;
                     return;
                 }
                 if (value == 0)
@@ -67,6 +71,11 @@ public class Movement : MonoBehaviour, IBuffable, IHittable
     public float Acceleration
     {
         get => acceleration * speedMultiplier; private set { acceleration = (value > 0) ? value : acceleration; }
+    }
+
+    public float Decceleration
+    {
+        get => decceleration * speedMultiplier; private set { decceleration = (value > 0) ? value : decceleration; }
     }
 
     public float RotationSmoothing
@@ -116,7 +125,7 @@ public class Movement : MonoBehaviour, IBuffable, IHittable
     {
         CheckGroundState();
         UpdateRotation();
-        //UpdateCurrentMaxSpeed();
+        UpdateCurrentMaxSpeed();
         Move();
     }
 
@@ -135,7 +144,7 @@ public class Movement : MonoBehaviour, IBuffable, IHittable
     }
 
     private void UpdateCurrentMaxSpeed()
-    {/*
+    {
         float desiredSpeed = input_vector.magnitude * MaxSpeed;
         if (desiredSpeed < currentMaxSpeed)
         {
@@ -146,7 +155,6 @@ public class Movement : MonoBehaviour, IBuffable, IHittable
             currentMaxSpeed += Acceleration * Time.fixedDeltaTime;
         }
         currentMaxSpeed = Mathf.Clamp(currentMaxSpeed, 0f, MaxSpeed);
-    */
     }
 
     void UpdateRotation()
@@ -168,24 +176,23 @@ public class Movement : MonoBehaviour, IBuffable, IHittable
         Vector3 forward = transform.forward;
 
         Vector3 velocity = rb.velocity;
+        Vector3 normal = Vector3.up;
+        float speed = velocity.magnitude;
+        Vector3.OrthoNormalize(ref normal, ref velocity); // velocity pasa a ser un versor
+        velocity *= speed;
         velocity.y = 0f;
         float dragMagnitude = velocity.sqrMagnitude * drag;
         Vector3 dragVector = -velocity.normalized * dragMagnitude;
 
-
-        Vector3 accel = forward * Acceleration * input_vector.magnitude;
+        Vector3 desiredVelocity = forward * currentMaxSpeed * input_vector.magnitude;
+        if (speed > MaxSpeed * 3/5)
+        {
+            desiredVelocity *= Mathf.InverseLerp(MaxSpeed, 0, speed);
+        }
 
         Debug.Log(velocity.magnitude);
 
-        float accelFactor = 0;
-        float dt = 1 / Time.fixedDeltaTime;
-
-        if (MaxSpeed > 0)
-        {
-            accelFactor = 1 - (velocity.magnitude / MaxSpeed);
-        }
-
-        accel *= accelFactor;
+        float dt = Time.fixedDeltaTime;
 
         if (OnFloor)
         {
@@ -194,7 +201,7 @@ public class Movement : MonoBehaviour, IBuffable, IHittable
         }
 
 
-        rb.AddForce(accel * dt, ForceMode.Acceleration);
+        rb.AddForce(desiredVelocity / dt, ForceMode.Acceleration);
 
         rb.AddForce(dragVector);
 

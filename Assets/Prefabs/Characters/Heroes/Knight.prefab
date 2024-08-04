@@ -538,6 +538,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   damagePoints: 1
   impulse: 3
+  Owner: {fileID: 0}
 --- !u!65 &3193925258140543757
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -943,10 +944,10 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 8
   maxSpeed: 6
-  acceleration: 6
-  decceleration: 15
-  drag: 0
-  rotationSmoothing: 0.125
+  acceleration: 5
+  decceleration: 7
+  drag: 1
+  rotationSmoothing: 0.168
   impulseResistance: 0
 --- !u!95 &2600849693426865440
 Animator:
@@ -2135,6 +2136,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   damagePoints: 1
   impulse: 3
+  Owner: {fileID: 0}
 --- !u!65 &3253736070669683237
 BoxCollider:
   m_ObjectHideFlags: 0

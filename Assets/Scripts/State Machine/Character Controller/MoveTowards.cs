@@ -21,7 +21,7 @@ public class MoveTowards : CharacterState
     public override void Entrar(StateMachine personajeActual)
     {
         base.Entrar(personajeActual);
-        if (!currentCharacter || !currentCharacter.Agent || destination.Length == 0)
+        if (!currentCharacter || !currentCharacter.Agent)
         {
             //personaje.CambiarEstado(null);
             return;
@@ -58,6 +58,7 @@ public class MoveTowards : CharacterState
 
     public override void Actualizar()
     {
+        if (!currentDestination) { return; }
         float speedFactor = currentCharacter.Agent.velocity.magnitude / maxSpeed;
         currentCharacter.Animator?.SetFloat("Speed", speedFactor);
         float distance = Vector3.Distance(currentCharacter.Agent.transform.position, currentDestination.position);
@@ -79,6 +80,7 @@ public class MoveTowards : CharacterState
 
     private void UpdatePath()
     {
+        if(destination.Length == 0) { return; }
         if (currentDestination && isActive)
         {
             currentCharacter.Agent.destination = currentDestination.position;

@@ -37,6 +37,11 @@ public class Enemy : Character
         base.Awake();
         itemSpawner = GetComponent<ItemSpawner>();
         targetDetection = transform.parent.GetComponent<TargetDetection>();
+        Transform[] targets = targetDetection.Targets;
+        foreach (Transform t in targets)
+        {
+            TargetFound(t);
+        }
     }
 
 

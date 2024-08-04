@@ -12,6 +12,8 @@ public class TargetDetection : MonoBehaviour
 
     List<Transform> targets = new List<Transform>();
 
+    public Transform[] Targets { get => targets.ToArray(); }
+
     private void OnTriggerEnter(Collider other)
     {
         if(targets.Contains(other.transform)) { return; }

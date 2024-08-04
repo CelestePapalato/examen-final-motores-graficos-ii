@@ -815,38 +815,14 @@ GameObject:
   - component: {fileID: 787386506}
   - component: {fileID: 787386505}
   - component: {fileID: 787386504}
-  - component: {fileID: 787386503}
+  - component: {fileID: 787386508}
   m_Layer: 0
-  m_Name: Sphere
+  m_Name: Spawner ejemplo
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &787386503
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 787386502}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1984c781c0a475a4697fdbf8f73a4538, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  startWaitTime: 0
-  spawnCooldown: 0
-  spawnData:
-  - enemy: {fileID: 0}
-    spawnCooldown: 0
-  spawnTransform: {fileID: 0}
-  Start:
-    m_PersistentCalls:
-      m_Calls: []
-  End:
-    m_PersistentCalls:
-      m_Calls: []
 --- !u!135 &787386504
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -933,6 +909,31 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &787386508
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 787386502}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1984c781c0a475a4697fdbf8f73a4538, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  startWaitTime: 2
+  spawnCooldown: 0.5
+  spawnData:
+  - gameObject: {fileID: 8184515020758011238, guid: 72912cda72e750640958a07b1ed88435,
+      type: 3}
+    spawnCooldown: 1
+  spawnTransform: {fileID: 557315722}
+  Start:
+    m_PersistentCalls:
+      m_Calls: []
+  End:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!1 &814154368
 GameObject:
   m_ObjectHideFlags: 0

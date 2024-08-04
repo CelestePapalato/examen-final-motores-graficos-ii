@@ -3,9 +3,10 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 
-public class Health : MonoBehaviour, IDamageable, IHittable
+public class Health : MonoBehaviour, IDamageable
 {
     [SerializeField] int maxHealth;
+    [SerializeField] bool enableInvincibilitySystem = false;
     [SerializeField] float invincibilityTime;
     public UnityAction<int, int> OnHealthUpdate;
     public UnityAction OnDead;
@@ -55,7 +56,7 @@ public class Health : MonoBehaviour, IDamageable, IHittable
             OnDead();
             return;
         }
-        StartCoroutine(invincibilityEnabler());
+        //StartCoroutine(invincibilityEnabler());
     }
 
     public void Hit(IDamageDealer damageDealer)

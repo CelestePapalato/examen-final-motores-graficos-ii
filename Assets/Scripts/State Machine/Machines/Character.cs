@@ -13,6 +13,7 @@ public class Character : StateMachine
     [SerializeField] CharacterState specialAttackState;
     [SerializeField] CharacterState stunState;
     [SerializeField] CharacterState interactionState;
+    [SerializeField] CharacterState deadState;
 
     [Header("Hitboxes")]
     [SerializeField] bool disableHitboxesOnStart = true;
@@ -86,6 +87,7 @@ public class Character : StateMachine
         hitboxes = new Collider[damage.Length];
         for (int i = 0; i < hitboxes.Length; i++)
         {
+            damage[i].Owner = this;
             hitboxes[i] = damage[i].GetComponent<Collider>();
             hitboxes[i].enabled = enable;
         }
@@ -137,7 +139,7 @@ public class Character : StateMachine
     protected virtual void Dead()
     {
         Debug.Log("xddd");
-        movement.Direction = Vector2.zero;
+        if (deadState) { CambiarEstado(deadState); }
         OnDead?.Invoke();
         this.enabled = false;
         _isDead = true;

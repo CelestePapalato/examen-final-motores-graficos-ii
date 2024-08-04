@@ -3,15 +3,23 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-public class Movement : MonoBehaviour, IBuffable
+public class Movement : MonoBehaviour, IBuffable, IHittable
 {
+    [Header("Floor")]
+    [Tooltip("Inclinación máxima del terreno para considerar que el objeto está en el suelo")]
+    [Range(0f, 90f)] float maxSlope = 45f;
+    [SerializeField] LayerMask floorLayer;
     [Header("Speed related")]
     [SerializeField] float maxSpeed;
     [SerializeField] float acceleration;
     [SerializeField] float decceleration;
+    [SerializeField] float drag;
     [Header("Smoothing")]
     [SerializeField]
     [Range(0f, .5f)] float rotationSmoothing;
+    [Header("Impulse")]
+    [SerializeField]
+    [Range(0f, 1f)] float impulseResistance;
 
     private float speedBeforeRepose;
     private float speedMultiplier = 1f;
@@ -21,6 +29,8 @@ public class Movement : MonoBehaviour, IBuffable
     private Rigidbody rb;
 
     private float _rotationCurrentVelocity;
+
+    Dictionary<int, ContactPoint[]> contactPoints = new Dictionary<int, ContactPoint[]>();
 
     public float SpeedMultiplier { get => speedMultiplier; set => speedMultiplier = value; }
 
@@ -91,6 +101,10 @@ public class Movement : MonoBehaviour, IBuffable
 
     }
 
+    public bool OnFloor {  get; private set; }
+
+    private Vector3 groundNormal = Vector3.zero;
+
     private void Awake()
     {
         speedBeforeRepose = maxSpeed;
@@ -100,9 +114,24 @@ public class Movement : MonoBehaviour, IBuffable
 
     private void FixedUpdate()
     {
+        CheckGroundState();
         UpdateRotation();
         UpdateCurrentMaxSpeed();
         Move();
+    }
+
+    public void CheckGroundState()
+    {
+        groundNormal = Vector3.zero;
+        OnFloor = false;
+        foreach (ContactPoint[] contacts in contactPoints.Values) // obtenemos los puntos de contacto
+        {
+            for (int i = 0; i < contacts.Length; i++)
+            {
+                OnFloor = OnFloor || contacts[i].normal.y >= Mathf.Cos(maxSlope * Mathf.Deg2Rad);
+                groundNormal += contacts[i].normal;
+            }
+        }
     }
 
     private void UpdateCurrentMaxSpeed()
@@ -110,11 +139,11 @@ public class Movement : MonoBehaviour, IBuffable
         float desiredSpeed = input_vector.magnitude * MaxSpeed;
         if (desiredSpeed < currentMaxSpeed)
         {
-            currentMaxSpeed -= decceleration * Time.fixedDeltaTime;
+            currentMaxSpeed -= Decceleration * Time.fixedDeltaTime;
         }
         else
         {
-            currentMaxSpeed += acceleration * Time.fixedDeltaTime;
+            currentMaxSpeed += Acceleration * Time.fixedDeltaTime;
         }
         currentMaxSpeed = Mathf.Clamp(currentMaxSpeed, 0f, MaxSpeed);
     }
@@ -135,6 +164,33 @@ public class Movement : MonoBehaviour, IBuffable
 
     private void Move()
     {
+        Vector3 forward = transform.forward;
+
+        if (OnFloor)
+        {
+            Vector3.OrthoNormalize(ref groundNormal, ref forward);
+        }
+
+        Vector3 accel = forward * Acceleration * input_vector.magnitude;
+
+        Vector3 velocity = rb.velocity;
+        velocity.y = 0f;
+        float dragMagnitude = velocity.sqrMagnitude * drag;
+        Vector3 dragVector = -velocity.normalized * dragMagnitude;
+
+        float accelFactor = 0;
+
+        if (MaxSpeed > 0)
+        {
+            accelFactor = 1 - (velocity.magnitude / MaxSpeed);
+        }
+
+        accel *= accelFactor;    
+
+        rb.AddForce(accel / Time.fixedDeltaTime, ForceMode.Acceleration);
+        rb.AddForce(dragVector);
+        
+        /*
         Vector3 targetSpeed = transform.forward * currentMaxSpeed;
         Vector3 currentSpeed = rb.velocity;
         currentSpeed.y = 0;
@@ -143,7 +199,7 @@ public class Movement : MonoBehaviour, IBuffable
 
         // a = v/t
         rb.AddForce(dv / dt, ForceMode.Acceleration);
-
+        */
         /*
         if (rb.velocity.magnitude > MaxSpeed)
         {
@@ -179,4 +235,34 @@ public class Movement : MonoBehaviour, IBuffable
         SpeedMultiplier = 1;
     }
 
+    public void Hit(IDamageDealer damageDealer)
+    {
+        Vector3 direction = transform.position - damageDealer.Position;
+        direction.y = 0f;
+        direction.Normalize();
+        Vector3.OrthoNormalize(ref groundNormal, ref direction);
+        float factor = Mathf.Lerp(damageDealer.Impulse, 0, impulseResistance);
+        rb.AddForce(direction * factor, ForceMode.Impulse);
+        /*
+        AddImpulse(damageDealer.Impulse * direction);
+        */
+    }
+    private void OnCollisionEnter(Collision collision)
+    {
+        if(collision.gameObject.layer != floorLayer) { return; }
+        Debug.Log(collision.gameObject.name);
+        contactPoints.Add(collision.gameObject.GetInstanceID(), collision.contacts);
+    }
+
+    private void OnCollisionStay(Collision collision)
+    {
+        if (collision.gameObject.layer != floorLayer) { return; }
+        contactPoints[collision.gameObject.GetInstanceID()] = collision.contacts;
+    }
+
+    private void OnCollisionExit(Collision collision)
+    {
+        if (collision.gameObject.layer != floorLayer) { return; }
+        contactPoints.Remove(collision.gameObject.GetInstanceID());
+    }
 }

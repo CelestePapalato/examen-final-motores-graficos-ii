@@ -939,10 +939,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e4df42713c4b7cd49b87ce96cca0a68b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  floorLayer:
+    serializedVersion: 2
+    m_Bits: 8
   maxSpeed: 6
   acceleration: 6
   decceleration: 15
+  drag: 0
   rotationSmoothing: 0.125
+  impulseResistance: 0
 --- !u!95 &2600849693426865440
 Animator:
   serializedVersion: 5
@@ -2817,6 +2822,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxHealth: 5
+  enableInvincibilitySystem: 0
   invincibilityTime: 0.8
 --- !u!136 &6839517451787653580
 CapsuleCollider:

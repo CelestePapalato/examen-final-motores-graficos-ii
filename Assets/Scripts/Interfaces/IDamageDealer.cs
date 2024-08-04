@@ -6,4 +6,5 @@ public interface IDamageDealer
     public float Impulse { get; }
     public Vector3 Position { get; }
 
+    public float ID { get; }
 }

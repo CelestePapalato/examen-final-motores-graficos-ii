@@ -5,7 +5,11 @@ using UnityEngine.Events;
 
 public class Health : MonoBehaviour, IDamageable
 {
+    Dictionary<IDamageDealer, List<float>> DamageDealerMemory = new Dictionary<IDamageDealer, List<float>>();
+
     [SerializeField] int maxHealth;
+    [SerializeField] 
+    [Tooltip("Realtime")] float damageMemoryTimeAlive;
     [SerializeField] bool enableInvincibilitySystem = false;
     [SerializeField] float invincibilityTime;
     public UnityAction<int, int> OnHealthUpdate;
@@ -46,6 +50,16 @@ public class Health : MonoBehaviour, IDamageable
         {
             return;
         }
+        if (DamageDealerMemory.ContainsKey(damageDealer))
+        {
+            if (DamageDealerMemory[damageDealer].Contains(damageDealer.ID)) { return; }
+        }
+        else
+        {
+            DamageDealerMemory.Add(damageDealer, new List<float>());
+        }
+        DamageDealerMemory[damageDealer].Add(damageDealer.ID);
+        StartCoroutine(CleanDamageDealerMemory(damageDealer, damageDealer.ID));
         health = Mathf.Clamp(health - damageDealer.DamagePoints, 0, maxHealth);
         OnHealthUpdate?.Invoke(health, maxHealth);
         OnDamaged?.Invoke(health, maxHealth);
@@ -56,7 +70,24 @@ public class Health : MonoBehaviour, IDamageable
             OnDead();
             return;
         }
-        //StartCoroutine(invincibilityEnabler());
+        if (enableInvincibilitySystem)
+        {
+            StartCoroutine(invincibilityEnabler());
+            return;
+        }
+    }
+
+    IEnumerator CleanDamageDealerMemory(IDamageDealer key, float id)
+    {
+        if (DamageDealerMemory.ContainsKey(key))
+        {
+            yield return new WaitForSecondsRealtime(damageMemoryTimeAlive);
+
+            DamageDealerMemory[key].Remove(id);
+
+            if (DamageDealerMemory[key].Count == 0) { DamageDealerMemory.Remove(key); }
+            Debug.Log("a");
+        }
     }
 
     public void Hit(IDamageDealer damageDealer)

@@ -18,6 +18,10 @@ public class Damage : MonoBehaviour, IDamageDealer, IBuffable
     public float DamageMultiplier { get => damageMultiplier; set => damageMultiplier = value; }
 
     public float Impulse { get {  return impulse; } }
+
+    private float id;
+    public float ID {  get => id; }
+
     public Vector3 Position
     {
         get
@@ -30,6 +34,29 @@ public class Damage : MonoBehaviour, IDamageDealer, IBuffable
             {
                 return transform.position;
             }
+        }
+    }
+
+    Collider col;
+
+    bool updateID = true;
+
+    private void Awake()
+    {
+        col = GetComponent<Collider>();
+    }
+
+    private void FixedUpdate()
+    {
+        if (!col.enabled && !updateID)
+        {
+            updateID = true;
+        }
+
+        if(col.enabled && updateID)
+        {
+            updateID = false;
+            id = Time.timeSinceLevelLoad;
         }
     }
 

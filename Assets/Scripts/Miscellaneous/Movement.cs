@@ -173,14 +173,22 @@ public class Movement : MonoBehaviour, IBuffable, IHittable
 
     private void Move()
     {
+
         Vector3 forward = transform.forward;
 
         Vector3 velocity = rb.velocity;
         Vector3 normal = Vector3.up;
         float speed = velocity.magnitude;
         Vector3.OrthoNormalize(ref normal, ref velocity); // velocity pasa a ser un versor
-        velocity *= speed;
         velocity.y = 0f;
+
+        if (OnFloor)
+        {
+            Vector3.OrthoNormalize(ref groundNormal, ref forward);
+            Vector3.OrthoNormalize(ref groundNormal, ref velocity);
+        }
+
+        velocity *= speed;
         float dragMagnitude = velocity.sqrMagnitude * drag;
         Vector3 dragVector = -velocity.normalized * dragMagnitude;
 
@@ -190,15 +198,8 @@ public class Movement : MonoBehaviour, IBuffable, IHittable
             desiredVelocity *= Mathf.InverseLerp(MaxSpeed, 0, speed);
         }
 
-        Debug.Log(velocity.magnitude);
-
         float dt = Time.fixedDeltaTime;
 
-        if (OnFloor)
-        {
-            Vector3.OrthoNormalize(ref groundNormal, ref forward);
-            Vector3.OrthoNormalize(ref groundNormal, ref dragVector);
-        }
 
 
         rb.AddForce(desiredVelocity / dt, ForceMode.Acceleration);

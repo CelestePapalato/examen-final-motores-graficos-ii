@@ -1882,6 +1882,16 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: -0.0000338764
       objectReference: {fileID: 0}
+    - target: {fileID: 1151473648019523380, guid: 2e681cf9ace3ee846901432440a7398a,
+        type: 3}
+      propertyPath: damageMemoryTimeAlive
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 1151473648019523380, guid: 2e681cf9ace3ee846901432440a7398a,
+        type: 3}
+      propertyPath: enableInvincibilitySystem
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 1399322638218689292, guid: 2e681cf9ace3ee846901432440a7398a,
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -7088,6 +7098,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxHealth: 3
+  damageMemoryTimeAlive: 0
   enableInvincibilitySystem: 0
   invincibilityTime: 0
 --- !u!1 &8797293947597016408

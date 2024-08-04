@@ -9,6 +9,7 @@ public class Paralyzed : CharacterState
     {
         base.Entrar(personajeActual);
         StopPlayerMovement();
+        EnableAgent(false);
         //currentCharacter.MovementComponent.enabled = false;
         currentCharacter.AnimationEventHandler.onAnimationComplete += StunFinished;
     }

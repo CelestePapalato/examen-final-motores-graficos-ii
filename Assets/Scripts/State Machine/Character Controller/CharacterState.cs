@@ -122,8 +122,8 @@ public abstract class CharacterState : State
         canAttack = false;
         canEvade = false;
         float y_velocity = currentCharacter.MovementComponent.RigidBody.velocity.y;
-        currentCharacter.MovementComponent.Direction = Vector2.zero;
-        //currentCharacter.MovementComponent.RigidBody.velocity = new Vector3(0f, y_velocity, 0f);
+        // -> currentCharacter.MovementComponent.Direction = Vector2.zero;
+        // currentCharacter.MovementComponent.RigidBody.velocity = new Vector3(0f, y_velocity, 0f);
     }
 
     protected void ResumePlayerMovement()

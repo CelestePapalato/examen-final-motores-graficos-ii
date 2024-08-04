@@ -2265,7 +2265,12 @@ PrefabInstance:
     - target: {fileID: 6104263702429426405, guid: 2e681cf9ace3ee846901432440a7398a,
         type: 3}
       propertyPath: acceleration
-      value: 6
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 6104263702429426405, guid: 2e681cf9ace3ee846901432440a7398a,
+        type: 3}
+      propertyPath: rotationSmoothing
+      value: 0.168
       objectReference: {fileID: 0}
     - target: {fileID: 6225306927887866781, guid: 2e681cf9ace3ee846901432440a7398a,
         type: 3}

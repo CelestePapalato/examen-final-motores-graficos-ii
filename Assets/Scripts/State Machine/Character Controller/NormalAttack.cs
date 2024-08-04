@@ -10,6 +10,8 @@ public class NormalAttack : CharacterState
     public override void Entrar(StateMachine personajeActual)
     {
         base.Entrar(personajeActual);
+        float y_velocity = currentCharacter.MovementComponent.RigidBody.velocity.y;
+        currentCharacter.MovementComponent.RigidBody.velocity = new Vector3(0f, y_velocity, 0f);
         attackBuffer = false;
         currentCharacter.Animator?.SetTrigger("Attack");
         StopPlayerMovement();

@@ -1,8 +1,10 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 
+[Serializable]
 public class EnemySpawnData
 {
     public Enemy enemy;
@@ -21,6 +23,8 @@ public class EnemySpawner : MonoBehaviour
 
     Vector3 spawnPosition;
 
+    List<Enemy> alreadySpawned = new List<Enemy>();
+
     private void Awake()
     {
         if (!spawnTransform)
@@ -31,15 +35,34 @@ public class EnemySpawner : MonoBehaviour
         {
             spawnPosition = spawnTransform.position;
         }
+        Invoke(nameof(StartSpawning), startWaitTime);
     }
 
-    public void StartSpawning() { }
+    [ContextMenu("Start Spawning")]
+    public void StartSpawning()
+    {
+        CancelInvoke(nameof(StartSpawning));
+        CancelInvoke(nameof(Spawn));
+        InvokeRepeating(nameof(Spawn), spawnCooldown, spawnCooldown);
+        Start?.Invoke();
+    }
 
-    public void EndSpawning() { }
+    [ContextMenu("End Spawning")]
+    public void EndSpawning()
+    {
+        CancelInvoke(nameof(StartSpawning));
+        CancelInvoke(nameof(Spawn));
+        End?.Invoke();
+    }
 
     private Enemy GetEnemy()
     {
 
         return null;
+    }
+
+    private void Spawn()
+    {
+
     }
 }

@@ -2824,6 +2824,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxHealth: 5
+  damageMemoryTimeAlive: 0
   enableInvincibilitySystem: 0
   invincibilityTime: 0.8
 --- !u!136 &6839517451787653580

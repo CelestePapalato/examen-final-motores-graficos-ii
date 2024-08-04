@@ -11,7 +11,7 @@ public class NormalAttack : CharacterState
     {
         base.Entrar(personajeActual);
         float y_velocity = currentCharacter.MovementComponent.RigidBody.velocity.y;
-        currentCharacter.MovementComponent.RigidBody.velocity = new Vector3(0f, y_velocity, 0f);
+        //currentCharacter.MovementComponent.RigidBody.velocity = new Vector3(0f, y_velocity, 0f);
         attackBuffer = false;
         currentCharacter.Animator?.SetTrigger("Attack");
         StopPlayerMovement();

@@ -27,6 +27,7 @@ public class MoveTowards : CharacterState
             return;
         }
         StopPlayerMovement();
+        currentCharacter.MovementComponent.enabled = false;
         EnableRigidbody(false);
         EnableAgent(true);
         currentCharacter.Agent.speed = maxSpeed;

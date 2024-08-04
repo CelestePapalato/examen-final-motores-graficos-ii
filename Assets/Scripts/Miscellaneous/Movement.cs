@@ -12,7 +12,6 @@ public class Movement : MonoBehaviour, IBuffable, IHittable
     [Header("Speed related")]
     [SerializeField] float maxSpeed;
     [SerializeField] float acceleration;
-    [SerializeField] float decceleration;
     [SerializeField] float drag;
     [Header("Smoothing")]
     [SerializeField]
@@ -45,8 +44,7 @@ public class Movement : MonoBehaviour, IBuffable, IHittable
             {
                 maxSpeed = value;
                 float diff = speedBeforeRepose / value;
-                acceleration *= diff;
-                decceleration *= diff;
+                acceleration /= diff;
             }
             else
             {
@@ -54,8 +52,7 @@ public class Movement : MonoBehaviour, IBuffable, IHittable
                 {
                     float diff = maxSpeed / value;
                     maxSpeed = value;
-                    acceleration *= diff;
-                    decceleration *= diff;
+                    acceleration /= diff;
                     return;
                 }
                 if (value == 0)
@@ -71,14 +68,16 @@ public class Movement : MonoBehaviour, IBuffable, IHittable
     {
         get => acceleration * speedMultiplier; private set { acceleration = (value > 0) ? value : acceleration; }
     }
-    public float Decceleration
-    {
-        get => decceleration * speedMultiplier; private set { decceleration = (value > 0) ? value : decceleration; }
-    }
 
     public float RotationSmoothing
     {
         get => rotationSmoothing; set { rotationSmoothing = Mathf.Clamp(value, 0f, 0.5f); }
+    }
+
+    private float og_drag = -1;
+    public float Drag
+    {
+        get => drag; set { drag = (value >= 0) ? value : og_drag; }
     }
 
     public float RigidbodySpeed { get => rb.velocity.magnitude; }
@@ -110,13 +109,14 @@ public class Movement : MonoBehaviour, IBuffable, IHittable
         speedBeforeRepose = maxSpeed;
         currentMaxSpeed = 0;
         rb = GetComponent<Rigidbody>();
+        og_drag = drag;
     }
 
     private void FixedUpdate()
     {
         CheckGroundState();
         UpdateRotation();
-        UpdateCurrentMaxSpeed();
+        //UpdateCurrentMaxSpeed();
         Move();
     }
 
@@ -135,7 +135,7 @@ public class Movement : MonoBehaviour, IBuffable, IHittable
     }
 
     private void UpdateCurrentMaxSpeed()
-    {
+    {/*
         float desiredSpeed = input_vector.magnitude * MaxSpeed;
         if (desiredSpeed < currentMaxSpeed)
         {
@@ -146,6 +146,7 @@ public class Movement : MonoBehaviour, IBuffable, IHittable
             currentMaxSpeed += Acceleration * Time.fixedDeltaTime;
         }
         currentMaxSpeed = Mathf.Clamp(currentMaxSpeed, 0f, MaxSpeed);
+    */
     }
 
     void UpdateRotation()
@@ -166,30 +167,37 @@ public class Movement : MonoBehaviour, IBuffable, IHittable
     {
         Vector3 forward = transform.forward;
 
-        if (OnFloor)
-        {
-            Vector3.OrthoNormalize(ref groundNormal, ref forward);
-        }
-
-        Vector3 accel = forward * Acceleration * input_vector.magnitude;
-
         Vector3 velocity = rb.velocity;
         velocity.y = 0f;
         float dragMagnitude = velocity.sqrMagnitude * drag;
         Vector3 dragVector = -velocity.normalized * dragMagnitude;
 
+
+        Vector3 accel = forward * Acceleration * input_vector.magnitude;
+
+        Debug.Log(velocity.magnitude);
+
         float accelFactor = 0;
+        float dt = 1 / Time.fixedDeltaTime;
 
         if (MaxSpeed > 0)
         {
             accelFactor = 1 - (velocity.magnitude / MaxSpeed);
         }
 
-        accel *= accelFactor;    
+        accel *= accelFactor;
 
-        rb.AddForce(accel / Time.fixedDeltaTime, ForceMode.Acceleration);
+        if (OnFloor)
+        {
+            Vector3.OrthoNormalize(ref groundNormal, ref forward);
+            Vector3.OrthoNormalize(ref groundNormal, ref dragVector);
+        }
+
+
+        rb.AddForce(accel * dt, ForceMode.Acceleration);
+
         rb.AddForce(dragVector);
-        
+
         /*
         Vector3 targetSpeed = transform.forward * currentMaxSpeed;
         Vector3 currentSpeed = rb.velocity;

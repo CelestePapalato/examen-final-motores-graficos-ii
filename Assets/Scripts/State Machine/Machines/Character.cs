@@ -15,7 +15,6 @@ public class Character : StateMachine
     [Header("States")]
     [SerializeField] CharacterState idleState;
     [SerializeField] CharacterState attackState;
-    [SerializeField] CharacterState specialAttackState;
     [SerializeField] CharacterState stunState;
     [SerializeField] CharacterState interactionState;
     [SerializeField] CharacterState deadState;

@@ -3,17 +3,26 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-public class NormalAttack : CharacterState
+public class Attacking : CharacterState, IAttacker
 {
     bool attackBuffer;
+    SkillData skillData;
+
+    public void Setup(SkillData skill)
+    {
+        if (isActive) { return; }
+        skillData = skill;
+    }
 
     public override void Entrar(StateMachine personajeActual)
     {
         base.Entrar(personajeActual);
+        if (!skillData) {  return; }
         float y_velocity = currentCharacter.MovementComponent.RigidBody.velocity.y;
         //currentCharacter.MovementComponent.RigidBody.velocity = new Vector3(0f, y_velocity, 0f);
         attackBuffer = false;
-        currentCharacter.Animator?.SetTrigger("Attack");
+        currentCharacter.Animator?.SetTrigger(skillData.AnimationTrigger);
+        skillData.SetupCharacter(currentCharacter);
         StopPlayerMovement();
         if (currentCharacter.AnimationEventHandler)
         {

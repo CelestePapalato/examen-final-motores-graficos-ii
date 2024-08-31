@@ -12,7 +12,7 @@ public class Damage : MonoBehaviour, IDamageDealer, IBuffable
 
     public Character Owner;
 
-    public int DamagePoints { get { return (int) (damagePoints * damageMultiplier); } }
+    public int DamagePoints { get { return (int)(damagePoints * damageMultiplier); } set => damagePoints = (value > 0) ? value : damagePoints; }
 
     private float damageMultiplier = 1f;
     public float DamageMultiplier { get => damageMultiplier; set => damageMultiplier = value; }

@@ -7,6 +7,11 @@ using UnityEngine.InputSystem;
 
 public class Character : StateMachine
 {
+    [Header("Skills")]
+    [SerializeField] SkillData NormalAttackData;
+    [SerializeField] SkillData SpecialAttackData;
+    public Transform SkillSpawnPoint {  get; private set; }
+
     [Header("States")]
     [SerializeField] CharacterState idleState;
     [SerializeField] CharacterState attackState;
@@ -31,6 +36,7 @@ public class Character : StateMachine
     NavMeshAgent agent;
     AnimationEventHandler animEvent;
     IObjectTracker[] trackers;
+    IAttacker[] attackers;
 
     public Movement MovementComponent { get => movement; }
     public NavMeshAgent Agent { get => agent; }
@@ -64,6 +70,7 @@ public class Character : StateMachine
         agent = GetComponentInChildren<NavMeshAgent>();
 
         trackers = GetComponentsInChildren<IObjectTracker>();
+        attackers = GetComponentsInChildren<IAttacker>();
 
         animEvent = GetComponentInChildren<AnimationEventHandler>();
 
@@ -151,15 +158,30 @@ public class Character : StateMachine
 
     public virtual void Attack()
     {
+        Attack(NormalAttackData);
+    }
+
+    public virtual void Attack(SkillData skillData)
+    {
         attackInput = !attackInput;
+        if (!skillData) { return; }
         if (attackInput)
         {
             controller?.Attack();
         }
         if (currentState == currentIdleState && attackState)
         {
+            foreach (IAttacker attacker in attackers)
+            {
+                attacker.Setup(skillData);
+            }
             CambiarEstado(attackState);
         }
+    }
+
+    public virtual void SpecialAttack()
+    {
+        Attack(SpecialAttackData);
     }
 
     public virtual void Evade()

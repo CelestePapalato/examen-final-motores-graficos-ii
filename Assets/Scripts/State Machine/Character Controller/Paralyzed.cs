@@ -46,6 +46,6 @@ public class Paralyzed : CharacterState
             personaje.CambiarEstado(null);
         }
     }
-
+    
     public override void Attack() { }
 }

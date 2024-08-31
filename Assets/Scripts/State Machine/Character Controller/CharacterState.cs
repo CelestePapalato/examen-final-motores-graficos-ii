@@ -94,7 +94,6 @@ public abstract class CharacterState : State
 
         StopCoroutine(ControlAttackCooldown());
         StartCoroutine(ControlAttackCooldown());
-        currentCharacter.Animator?.SetTrigger("Attack");
     }
 
     public virtual void Evade()

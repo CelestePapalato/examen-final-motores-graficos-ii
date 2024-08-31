@@ -96,6 +96,11 @@ public class Player : MonoBehaviour
         chara?.Attack();
     }
 
+    private void OnSpecialAttack()
+    {
+        chara?.SpecialAttack();
+    }
+
     private void OnEvade()
     {
         chara?.Evade();

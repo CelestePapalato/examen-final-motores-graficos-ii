@@ -2316,10 +2316,9 @@ MonoBehaviour:
   SpecialAttackData: {fileID: 11400000, guid: d4878fc9426c24b42a7e8a54dd373859, type: 2}
   idleState: {fileID: 4394378423789228137}
   attackState: {fileID: 8849611350740511651}
-  specialAttackState: {fileID: 0}
   stunState: {fileID: 5185572985862165326}
   interactionState: {fileID: 7078773080773586843}
-  deadState: {fileID: 0}
+  deadState: {fileID: 8849611350740511652}
   disableHitboxesOnStart: 1
   stateAtObjectFound: {fileID: 0}
   stateAtObjectLost: {fileID: 4394378423789228137}
@@ -3696,6 +3695,7 @@ GameObject:
   - component: {fileID: 8849611350740511651}
   - component: {fileID: 5185572985862165326}
   - component: {fileID: 7078773080773586843}
+  - component: {fileID: 8849611350740511652}
   m_Layer: 0
   m_Name: Character
   m_TagString: Player
@@ -4485,6 +4485,25 @@ MonoBehaviour:
   attackCooldown: 0
   evadeCooldown: 0
   inputRelatedToCamera: 1
+  camera: {fileID: 0}
+--- !u!114 &8849611350740511652
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2907547849286479496}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a838105473de6ef42b59982e7d438c72, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxSpeed: 0
+  drag: -1
+  rotationSmoothing: 0
+  attackCooldown: 0
+  evadeCooldown: 0
+  inputRelatedToCamera: 0
   camera: {fileID: 0}
 --- !u!1 &8886618083319454338
 GameObject:

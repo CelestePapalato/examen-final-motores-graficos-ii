@@ -2732,6 +2732,7 @@ GameObject:
   - component: {fileID: 4910257477513172802}
   - component: {fileID: 795193053281405491}
   - component: {fileID: 981353093700320070}
+  - component: {fileID: 9187192045758457223}
   m_Layer: 9
   m_Name: Esqueleto
   m_TagString: Untagged
@@ -2784,12 +2785,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   firstState: {fileID: 0}
   currentState: {fileID: 0}
+  NormalAttackData: {fileID: 11400000, guid: 5d2c1067a6f2abf4ebae4194760fc69b, type: 2}
+  SpecialAttackData: {fileID: 0}
   idleState: {fileID: 795193053281405491}
   attackState: {fileID: 4910257477513172802}
-  specialAttackState: {fileID: 0}
   stunState: {fileID: 981353093700320070}
   interactionState: {fileID: 0}
-  deadState: {fileID: 0}
+  deadState: {fileID: 9187192045758457223}
   disableHitboxesOnStart: 1
   stateAtObjectFound: {fileID: 6288251048710172828}
   stateAtObjectLost: {fileID: 795193053281405491}
@@ -2900,6 +2902,25 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxSpeed: 0
   drag: 0
+  rotationSmoothing: 0
+  attackCooldown: 0
+  evadeCooldown: 0
+  inputRelatedToCamera: 0
+  camera: {fileID: 0}
+--- !u!114 &9187192045758457223
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8184515020758011238}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a838105473de6ef42b59982e7d438c72, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxSpeed: 0
+  drag: -1
   rotationSmoothing: 0
   attackCooldown: 0
   evadeCooldown: 0

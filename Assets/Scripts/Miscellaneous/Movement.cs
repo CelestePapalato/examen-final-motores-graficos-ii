@@ -201,10 +201,15 @@ public class Movement : MonoBehaviour, IBuffable, IHittable
         float dt = Time.fixedDeltaTime;
 
 
+        if(desiredVelocity != null)
+        {
+            rb.AddForce(desiredVelocity / dt, ForceMode.Acceleration);
+        }
 
-        rb.AddForce(desiredVelocity / dt, ForceMode.Acceleration);
-
-        rb.AddForce(dragVector);
+        if(dragVector != null)
+        {
+            rb.AddForce(dragVector);
+        }
 
         /*
         Vector3 targetSpeed = transform.forward * currentMaxSpeed;

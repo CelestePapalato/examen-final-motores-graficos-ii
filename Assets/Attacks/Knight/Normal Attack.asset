@@ -12,6 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8d6d21c04ce4b744288889d7d96a9e50, type: 3}
   m_Name: Normal Attack
   m_EditorClassIdentifier: 
-  Damage: 6
+  Damage: 1
   AnimationTrigger: Attack
   SpawnableObject: {fileID: 0}

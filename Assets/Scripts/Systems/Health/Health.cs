@@ -7,7 +7,6 @@ public class Health : MonoBehaviour, IDamageable
 {
     Dictionary<IDamageDealer, List<float>> DamageDealerMemory = new Dictionary<IDamageDealer, List<float>>();
 
-    [SerializeField] bool canResurrect = false;
     [SerializeField] int maxHealth;
     [SerializeField] 
     [Tooltip("Realtime")] float damageMemoryTimeAlive;
@@ -17,7 +16,6 @@ public class Health : MonoBehaviour, IDamageable
     public UnityAction OnDead;
     public UnityAction<int, int> OnDamaged;
     public UnityAction<int, int> OnHealed;
-    public UnityAction OnResurrection;
 
     int health;
     bool invincibility = false;
@@ -41,12 +39,9 @@ public class Health : MonoBehaviour, IDamageable
 
     public void Heal(int healPoints)
     {
-        bool isDead = health == 0;
-        if(isDead && !canResurrect) { return; }
         health = Mathf.Clamp(health + healPoints, 0, maxHealth);
         OnHealthUpdate?.Invoke(health, maxHealth);
         OnHealed?.Invoke(health, maxHealth);
-        if (isDead) { OnResurrection?.Invoke(); }
     }
 
     public void Damage(IDamageDealer damageDealer)

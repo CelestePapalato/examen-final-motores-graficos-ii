@@ -10,6 +10,7 @@ public class Dead : CharacterState
         StopPlayerMovement();
         EnableAgent(false);
         EnableRigidbody(true);
+        currentCharacter.Animator.SetTrigger("Dead");
     }
 
     public override void Move(Vector2 input)

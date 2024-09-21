@@ -48,9 +48,6 @@ public class Character : StateMachine
     bool attackInput = false;
     bool evadeInput = false;
 
-    private float damageMultiplier = 1f;
-    public float DamageMultiplier { get => damageMultiplier; }
-
     private bool _isDead = false;
 
     public bool IsDead { get => _isDead; private set => _isDead = value; }
@@ -160,7 +157,7 @@ public class Character : StateMachine
         Attack(NormalAttackData);
     }
 
-    public virtual void Attack(SkillData skillData)
+    protected virtual void Attack(SkillData skillData)
     {
         attackInput = !attackInput;
         if (!skillData) { return; }

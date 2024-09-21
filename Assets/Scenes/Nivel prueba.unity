@@ -1292,7 +1292,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1012807783}
   - component: {fileID: 1012807785}
-  - component: {fileID: 1012807784}
+  - component: {fileID: 1012807786}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -1317,18 +1317,6 @@ Transform:
   - {fileID: 6830506449725361872}
   m_Father: {fileID: 899110927}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1012807784
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1012807782}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 831a01f6773dff5438ce18e8028b1f03, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &1012807785
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1343,7 +1331,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Actions: {fileID: -944628639613478452, guid: 05d160db78185a84cb85d315192294c5,
     type: 3}
-  m_NotificationBehavior: 0
+  m_NotificationBehavior: 1
   m_UIInputModule: {fileID: 0}
   m_DeviceLostEvent:
     m_PersistentCalls:
@@ -1360,6 +1348,18 @@ MonoBehaviour:
   m_DefaultActionMap: Gameplay
   m_SplitScreenIndex: -1
   m_Camera: {fileID: 0}
+--- !u!114 &1012807786
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1012807782}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6b3c44ffe58919e49a5752943109e066, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1035135476
 GameObject:
   m_ObjectHideFlags: 0
@@ -3696,6 +3696,7 @@ GameObject:
   - component: {fileID: 5185572985862165326}
   - component: {fileID: 7078773080773586843}
   - component: {fileID: 8849611350740511652}
+  - component: {fileID: 8849611350740511653}
   m_Layer: 0
   m_Name: Character
   m_TagString: Player
@@ -4505,6 +4506,78 @@ MonoBehaviour:
   evadeCooldown: 0
   inputRelatedToCamera: 0
   camera: {fileID: 0}
+--- !u!114 &8849611350740511653
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2907547849286479496}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ca0bc94d28d3f8a47b1b3c74f28bc23e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  OnMoveInput:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1710811962}
+        m_TargetAssemblyTypeName: Character, Assembly-CSharp
+        m_MethodName: Move
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  OnAttackInput:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1710811962}
+        m_TargetAssemblyTypeName: Character, Assembly-CSharp
+        m_MethodName: Attack
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  OnSpecialAttackInput:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1710811962}
+        m_TargetAssemblyTypeName: Character, Assembly-CSharp
+        m_MethodName: SpecialAttack
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  OnInteractInput:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1710811962}
+        m_TargetAssemblyTypeName: Character, Assembly-CSharp
+        m_MethodName: Interact
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &8886618083319454338
 GameObject:
   m_ObjectHideFlags: 0

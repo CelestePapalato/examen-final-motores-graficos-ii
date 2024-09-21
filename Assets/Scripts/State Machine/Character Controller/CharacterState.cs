@@ -53,11 +53,6 @@ public abstract class CharacterState : State
         }
     }
 
-    protected float GetPlayerDamageMultiplier()
-    {
-        return (currentCharacter) ? currentCharacter.DamageMultiplier : 1f;
-    }
-
     public override void Entrar(StateMachine personajeActual)
     {
         base.Entrar(personajeActual);

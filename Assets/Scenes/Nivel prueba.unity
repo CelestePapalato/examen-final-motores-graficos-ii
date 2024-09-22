@@ -4052,8 +4052,6 @@ MonoBehaviour:
   rotationSmoothing: 0
   attackCooldown: 0
   evadeCooldown: 0
-  inputRelatedToCamera: 1
-  camera: {fileID: 0}
 --- !u!1001 &4674327568031360014
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -4195,8 +4193,6 @@ MonoBehaviour:
   rotationSmoothing: 0
   attackCooldown: 0
   evadeCooldown: 0
-  inputRelatedToCamera: 1
-  camera: {fileID: 0}
 --- !u!114 &5534172911532408217
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4299,8 +4295,6 @@ MonoBehaviour:
   rotationSmoothing: 0
   attackCooldown: 0
   evadeCooldown: 0
-  inputRelatedToCamera: 1
-  camera: {fileID: 0}
 --- !u!114 &7127300747945830264
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4485,8 +4479,6 @@ MonoBehaviour:
   rotationSmoothing: 0.342
   attackCooldown: 0
   evadeCooldown: 0
-  inputRelatedToCamera: 1
-  camera: {fileID: 0}
 --- !u!114 &8849611350740511652
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4504,8 +4496,6 @@ MonoBehaviour:
   rotationSmoothing: 0
   attackCooldown: 0
   evadeCooldown: 0
-  inputRelatedToCamera: 0
-  camera: {fileID: 0}
 --- !u!114 &8849611350740511653
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4518,6 +4508,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ca0bc94d28d3f8a47b1b3c74f28bc23e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  inputRelatedToCamera: 1
+  camera: {fileID: 0}
   OnMoveInput:
     m_PersistentCalls:
       m_Calls:

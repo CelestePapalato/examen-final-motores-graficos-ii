@@ -95,10 +95,6 @@ public class Attacking : CharacterState, IAttacker
 
     public override void Move(Vector2 input)
     {
-        if (inputRelatedToCamera)
-        {
-            input = Quaternion.Euler(0f, 0f, -camera.transform.eulerAngles.y) * input;
-        }
         currentCharacter.MovementComponent.Direction = input;
     }
 

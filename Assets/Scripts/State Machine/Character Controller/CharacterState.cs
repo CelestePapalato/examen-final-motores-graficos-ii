@@ -14,10 +14,6 @@ public abstract class CharacterState : State
     [SerializeField] protected float attackCooldown;
     [SerializeField] protected float evadeCooldown;
 
-    [Header("Camera")]
-    [SerializeField] protected bool inputRelatedToCamera;
-    [SerializeField] protected new Camera camera;
-
     // # MOVEMENT ====================
     public float MaxSpeed { get => maxSpeed; }
     // =============================== #
@@ -45,14 +41,6 @@ public abstract class CharacterState : State
 
     protected Character currentCharacter;
 
-    protected virtual void Awake()
-    {
-        if (camera == null)
-        {
-            camera = Camera.main;
-        }
-    }
-
     public override void Entrar(StateMachine personajeActual)
     {
         base.Entrar(personajeActual);
@@ -75,11 +63,7 @@ public abstract class CharacterState : State
     }
 
     public virtual void Move(Vector2 input)
-    {
-        if (inputRelatedToCamera)
-        {
-            input = Quaternion.Euler(0f, 0f, -camera.transform.eulerAngles.y) * input;
-        }
+    {        
         currentCharacter.MovementComponent.Direction = input;
     }
 

@@ -2725,8 +2725,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1584030438035277635}
-  - component: {fileID: 3196123747725466381}
-  - component: {fileID: 2897289725485949501}
+  - component: {fileID: 1792973991908558640}
+  - component: {fileID: 6752023439451164890}
   - component: {fileID: 6419777909725961314}
   - component: {fileID: 6288251048710172828}
   - component: {fileID: 4910257477513172802}
@@ -2756,7 +2756,7 @@ Transform:
   - {fileID: 3895149123887329841}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &3196123747725466381
+--- !u!114 &1792973991908558640
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -2765,13 +2765,14 @@ MonoBehaviour:
   m_GameObject: {fileID: 8184515020758011238}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 456189b30227e2041bc79238c8defe45, type: 3}
+  m_Script: {fileID: 11500000, guid: 363cc72b541af6a4eacd04008fb2ea9e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _itemList: []
-  _noDropProbability: 0
-  _dropProbability: 
---- !u!114 &2897289725485949501
+  points: 0
+  attackDistance: 0
+  lowHealthProbability: 0
+  nearestProbability: 0
+--- !u!114 &6752023439451164890
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -2780,7 +2781,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 8184515020758011238}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9eb845c35e2a2bc4698c0dee5b78d300, type: 3}
+  m_Script: {fileID: 11500000, guid: fff222d8f88064e4ebd47b5ab3829d88, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   firstState: {fileID: 0}
@@ -2795,10 +2796,6 @@ MonoBehaviour:
   disableHitboxesOnStart: 1
   stateAtObjectFound: {fileID: 6288251048710172828}
   stateAtObjectLost: {fileID: 795193053281405491}
-  points: 2
-  attackDistance: 2.5
-  lowHealthProbability: 0
-  nearestProbability: 0
 --- !u!114 &6419777909725961314
 MonoBehaviour:
   m_ObjectHideFlags: 0

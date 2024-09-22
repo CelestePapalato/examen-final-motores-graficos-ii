@@ -3,11 +3,11 @@ using System.Linq;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Enemy : Character
+public class EnemyAI : MonoBehaviour
 {
     public static event Action<int> OnEnemyDead;
 
-    private static Dictionary<Health, List<Enemy>> enemiesAttacking = new Dictionary<Health, List<Enemy>>();
+    private static Dictionary<Health, List<EnemyAI>> enemiesAttacking = new Dictionary<Health, List<EnemyAI>>();
 
     [Header("Enemy")]
 
@@ -22,6 +22,8 @@ public class Enemy : Character
     [Tooltip("1 = Nearest + Furthest")]
     [Range(0f, 1f)] float nearestProbability;
 
+    Character character;
+
     ItemSpawner itemSpawner;
 
     TargetDetection targetDetection;
@@ -32,11 +34,15 @@ public class Enemy : Character
 
     bool canAttack = true;
 
-    protected override void Awake()
+    private void Awake()
     {
-        base.Awake();
+        character = GetComponent<Character>();
         itemSpawner = GetComponent<ItemSpawner>();
         targetDetection = transform.parent.GetComponent<TargetDetection>();
+    }
+
+    private void Start()
+    {
         Transform[] targets = targetDetection.Targets;
         foreach (Transform t in targets)
         {
@@ -44,10 +50,8 @@ public class Enemy : Character
         }
     }
 
-
-    protected override void OnEnable()
+    private void OnEnable()
     {
-        base.OnEnable();
         if (currentTarget)
         {
             currentTarget.OnDead += PlayerKilled;
@@ -61,11 +65,14 @@ public class Enemy : Character
             targetDetection.TargetFound.AddListener(TargetFound);
             targetDetection.TargetLost.AddListener(TargetLost);
         }
+        if (character)
+        {
+            character.OnDead += Dead;
+        }
     }
 
-    protected override void OnDisable()
+    private void OnDisable()
     {
-        base.OnDisable();
         if (currentTarget)
         {
             currentTarget.OnDead -= PlayerKilled;
@@ -75,17 +82,20 @@ public class Enemy : Character
             targetDetection.TargetFound?.RemoveListener(TargetFound);
             targetDetection.TargetLost?.RemoveListener(TargetLost);
         }
+        if (character)
+        {
+            character.OnDead -= Dead;
+        }
     }
 
-    protected override void Update()
+    private void Update()
     {
-        base.Update();
         if (!isInBattle || !currentTarget) { return; }
-        float distanceToTarget = Vector3.Distance(MovementComponent.transform.position, currentTarget.transform.position);
+        float distanceToTarget = Vector3.Distance(character.MovementComponent.transform.position, currentTarget.transform.position);
         canAttack = (distanceToTarget <= attackDistance);       
     }
 
-    public void TargetFound(Transform target)
+    private void TargetFound(Transform target)
     {
        enemiesDetected.Add(target.GetComponentInChildren<Health>());
         if (!currentTarget)
@@ -94,7 +104,7 @@ public class Enemy : Character
         }
     }
 
-    public void TargetLost(Transform target)
+    private void TargetLost(Transform target)
     {
         Health character = target.GetComponentInChildren<Health>();
         if (!enemiesDetected.Contains(character)) { Debug.Log("papas"); return; }
@@ -111,14 +121,14 @@ public class Enemy : Character
         if (enemiesDetected.Count == 0 || aliveTargets.Length == 0)
         {
             currentTarget = null; 
-            TrackerUpdate(null); 
+            character.MoveTowards(null); 
             isInBattle = false;
             return;
         }
         int r = UnityEngine.Random.Range(0, aliveTargets.Length);
         currentTarget = aliveTargets[r];
         currentTarget.OnDead += PlayerKilled;
-        TrackerUpdate(currentTarget.transform);
+        character.MoveTowards(currentTarget.transform);
         isInBattle = true;
     }
 
@@ -140,17 +150,11 @@ public class Enemy : Character
         TargetUpdate();
     }
     
-    protected override void Dead()
+    private void Dead()
     {
-        base.Dead();
         itemSpawner?.DropItem();
         OnEnemyDead?.Invoke(points);
         Destroy(gameObject);
     }
 
-    public override void Attack()
-    {
-        if(isInBattle && !canAttack) { return; }
-        base.Attack();
-    }
 }

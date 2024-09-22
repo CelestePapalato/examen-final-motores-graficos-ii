@@ -27,14 +27,14 @@ public class GameManager : MonoBehaviour
 
     private void OnEnable()
     {
-        Enemy.OnEnemyDead += ScoreUp;
+        EnemyAI.OnEnemyDead += ScoreUp;
         Points.OnCollected += ScoreUp;
         Player.OnPlayerDead += GameOver;
     }
 
     private void OnDisable()
     {
-        Enemy.OnEnemyDead -= ScoreUp;
+        EnemyAI.OnEnemyDead -= ScoreUp;
         Points.OnCollected -= ScoreUp;
         Player.OnPlayerDead -= GameOver;
     }

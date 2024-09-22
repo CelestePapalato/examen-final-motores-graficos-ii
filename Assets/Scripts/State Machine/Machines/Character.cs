@@ -201,6 +201,25 @@ public class Character : StateMachine
         }
     }
 
+    public virtual void MoveTowards(Transform target)
+    {
+        foreach (IObjectTracker tracker in trackers)
+        {
+            tracker.Target = target;
+        }
+
+        if (target)
+        {
+            currentIdleState = stateAtObjectFound;
+            CambiarEstado(stateAtObjectFound);
+        }
+        else
+        {
+            currentIdleState = stateAtObjectLost;
+            CambiarEstado(stateAtObjectLost);
+        }
+    }
+
     private void OnDamage(int health, int maxHealth)
     {
         Debug.Log("Vida: " + health);
@@ -212,23 +231,4 @@ public class Character : StateMachine
         animator?.SetTrigger("Damage");
     }
 
-
-    public void TrackerUpdate(Transform newTarget)
-    {
-        foreach (IObjectTracker tracker in trackers)
-        {
-            tracker.Target = newTarget;
-        }
-
-        if (newTarget)
-        {
-            currentIdleState = stateAtObjectFound;
-            CambiarEstado(stateAtObjectFound);
-        }
-        else
-        {
-            currentIdleState = stateAtObjectLost;
-            CambiarEstado(stateAtObjectLost);
-        }
-    }
 }

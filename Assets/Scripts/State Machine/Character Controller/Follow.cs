@@ -2,24 +2,12 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Chase : CharacterState, IObjectTracker
+public class Follow : CharacterState, IObjectTracker
 {
-    [Header("Chase configuration")]
+    [Header("Path configuration")]
     [SerializeField]
     private float pathUpdateRate;
-    [SerializeField]
-    private float distanceForNextState;
-    [SerializeField]
-    private float stateChangeCooldown;
-    [SerializeField]
-    [Tooltip("Si es true, se ignora nextState y se llama a Attack")]
-    private bool attack = false;
-    [SerializeField]
-    private CharacterState nextState;
-
     public Transform Target { get; set; }
-
-    private bool canChangeState = true;
 
     public override void Entrar(StateMachine personajeActual)
     {
@@ -69,17 +57,6 @@ public class Chase : CharacterState, IObjectTracker
     {
         float speedFactor = currentCharacter.Agent.velocity.magnitude / maxSpeed;
         currentCharacter.Animator?.SetFloat("Speed", speedFactor);
-        float distance = Vector3.Distance(currentCharacter.Agent.transform.position, Target.position);
-        if (distance > distanceForNextState || !canChangeState) { return; }
-        if (attack)
-        {
-            currentCharacter?.Attack();
-        }
-        else if(nextState)
-        {
-            currentCharacter?.CambiarEstado(nextState);
-        }
-        StateChangeCooldown();
     }
 
     private void UpdatePath()
@@ -92,16 +69,5 @@ public class Chase : CharacterState, IObjectTracker
         {
             CancelInvoke(nameof(UpdatePath));
         }
-    }
-
-    private void StateChangeCooldown()
-    {
-        canChangeState = false;
-        Invoke(nameof(EnableStateChange), stateChangeCooldown);
-    }
-
-    private void EnableStateChange()
-    {
-        canChangeState = true;
     }
 }

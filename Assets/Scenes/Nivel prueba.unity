@@ -2320,7 +2320,7 @@ MonoBehaviour:
   interactionState: {fileID: 7078773080773586843}
   deadState: {fileID: 8849611350740511652}
   disableHitboxesOnStart: 1
-  stateAtObjectFound: {fileID: 0}
+  stateAtObjectFound: {fileID: 8849611350740511654}
   stateAtObjectLost: {fileID: 4394378423789228137}
 --- !u!1 &1825723598
 GameObject:
@@ -3697,6 +3697,7 @@ GameObject:
   - component: {fileID: 7078773080773586843}
   - component: {fileID: 8849611350740511652}
   - component: {fileID: 8849611350740511653}
+  - component: {fileID: 8849611350740511654}
   m_Layer: 0
   m_Name: Character
   m_TagString: Player
@@ -4570,6 +4571,29 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+--- !u!114 &8849611350740511654
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2907547849286479496}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3149b709afd11c74987f060ed78bd0d8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxSpeed: 0
+  drag: -1
+  rotationSmoothing: 0
+  attackCooldown: 0
+  evadeCooldown: 0
+  destination: []
+  pathUpdateRate: 0
+  loop: 0
+  restartOnExit: 0
+  tolerance: 0
+  nextState: {fileID: 0}
 --- !u!1 &8886618083319454338
 GameObject:
   m_ObjectHideFlags: 0

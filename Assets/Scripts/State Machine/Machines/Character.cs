@@ -18,13 +18,12 @@ public class Character : StateMachine
     [SerializeField] CharacterState stunState;
     [SerializeField] CharacterState interactionState;
     [SerializeField] CharacterState deadState;
+    
+    [Header("Object Tracking")]
+    [SerializeField] protected CharacterState followState;
 
     [Header("Hitboxes")]
     [SerializeField] bool disableHitboxesOnStart = true;
-    
-    [Header("Object Tracking")]
-    [SerializeField] protected CharacterState stateAtObjectFound;
-    [SerializeField] protected CharacterState stateAtObjectLost;
 
     Health health;
     Movement movement;
@@ -210,14 +209,13 @@ public class Character : StateMachine
 
         if (target)
         {
-            currentIdleState = stateAtObjectFound;
-            CambiarEstado(stateAtObjectFound);
+            currentIdleState = followState;
         }
         else
         {
-            currentIdleState = stateAtObjectLost;
-            CambiarEstado(stateAtObjectLost);
+            currentIdleState = idleState;
         }
+        CambiarEstado(currentIdleState);
     }
 
     private void OnDamage(int health, int maxHealth)

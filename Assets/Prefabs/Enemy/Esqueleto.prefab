@@ -2788,7 +2788,7 @@ MonoBehaviour:
   currentState: {fileID: 0}
   NormalAttackData: {fileID: 11400000, guid: 5d2c1067a6f2abf4ebae4194760fc69b, type: 2}
   SpecialAttackData: {fileID: 0}
-  idleState: {fileID: 795193053281405491}
+  idleState: {fileID: 6419777909725961314}
   attackState: {fileID: 4910257477513172802}
   stunState: {fileID: 981353093700320070}
   interactionState: {fileID: 0}
@@ -2813,8 +2813,6 @@ MonoBehaviour:
   rotationSmoothing: 0
   attackCooldown: 0
   evadeCooldown: 0
-  inputRelatedToCamera: 0
-  camera: {fileID: 0}
 --- !u!114 &6288251048710172828
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2832,13 +2830,8 @@ MonoBehaviour:
   rotationSmoothing: 0
   attackCooldown: 0
   evadeCooldown: 0
-  inputRelatedToCamera: 0
-  camera: {fileID: 0}
   pathUpdateRate: 0.5
-  distanceForNextState: 6
   stateChangeCooldown: 2
-  attack: 1
-  nextState: {fileID: 0}
 --- !u!114 &4910257477513172802
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2856,8 +2849,6 @@ MonoBehaviour:
   rotationSmoothing: 0
   attackCooldown: 0
   evadeCooldown: 0
-  inputRelatedToCamera: 0
-  camera: {fileID: 0}
 --- !u!114 &795193053281405491
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2875,8 +2866,6 @@ MonoBehaviour:
   rotationSmoothing: 0
   attackCooldown: 0
   evadeCooldown: 0
-  inputRelatedToCamera: 0
-  camera: {fileID: 0}
   destination:
   - {fileID: 0}
   - {fileID: 0}
@@ -2902,8 +2891,6 @@ MonoBehaviour:
   rotationSmoothing: 0
   attackCooldown: 0
   evadeCooldown: 0
-  inputRelatedToCamera: 0
-  camera: {fileID: 0}
 --- !u!114 &9187192045758457223
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2921,8 +2908,6 @@ MonoBehaviour:
   rotationSmoothing: 0
   attackCooldown: 0
   evadeCooldown: 0
-  inputRelatedToCamera: 0
-  camera: {fileID: 0}
 --- !u!1 &8223399516022985450
 GameObject:
   m_ObjectHideFlags: 0

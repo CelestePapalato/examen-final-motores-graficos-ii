@@ -15,6 +15,7 @@ public class Character : StateMachine
     [Header("States")]
     [SerializeField] CharacterState idleState;
     [SerializeField] CharacterState attackState;
+    [SerializeField] CharacterState patrolState;
     [SerializeField] CharacterState stunState;
     [SerializeField] CharacterState interactionState;
     [SerializeField] CharacterState deadState;
@@ -216,6 +217,16 @@ public class Character : StateMachine
             currentIdleState = idleState;
         }
         CambiarEstado(currentIdleState);
+    }
+
+    public virtual void StartPatrol()
+    {
+        CambiarEstado(patrolState);
+    }
+
+    public virtual void EndPatrol()
+    {
+        CambiarEstado(idleState);
     }
 
     private void OnDamage(int health, int maxHealth)

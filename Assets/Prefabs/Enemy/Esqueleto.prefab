@@ -2770,6 +2770,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   points: 0
   attackDistance: 0
+  attackCooldown: 0
   lowHealthProbability: 0
   nearestProbability: 0
 --- !u!114 &6752023439451164890
@@ -2790,12 +2791,12 @@ MonoBehaviour:
   SpecialAttackData: {fileID: 0}
   idleState: {fileID: 6419777909725961314}
   attackState: {fileID: 4910257477513172802}
+  patrolState: {fileID: 795193053281405491}
   stunState: {fileID: 981353093700320070}
   interactionState: {fileID: 0}
   deadState: {fileID: 9187192045758457223}
+  followState: {fileID: 6288251048710172828}
   disableHitboxesOnStart: 1
-  stateAtObjectFound: {fileID: 6288251048710172828}
-  stateAtObjectLost: {fileID: 795193053281405491}
 --- !u!114 &6419777909725961314
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2831,7 +2832,6 @@ MonoBehaviour:
   attackCooldown: 0
   evadeCooldown: 0
   pathUpdateRate: 0.5
-  stateChangeCooldown: 2
 --- !u!114 &4910257477513172802
 MonoBehaviour:
   m_ObjectHideFlags: 0

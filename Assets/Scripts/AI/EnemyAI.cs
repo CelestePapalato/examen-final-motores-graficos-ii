@@ -2,9 +2,14 @@ using System;
 using System.Linq;
 using System.Collections.Generic;
 using UnityEngine;
+using System.Collections;
 
 public class EnemyAI : MonoBehaviour
 {
+
+    private enum STATE { IDLE, PATROL, CHASE, DEAD };
+    private STATE state = STATE.PATROL;
+
     public static event Action<int> OnEnemyDead;
 
     private static Dictionary<Health, List<EnemyAI>> enemiesAttacking = new Dictionary<Health, List<EnemyAI>>();
@@ -13,6 +18,7 @@ public class EnemyAI : MonoBehaviour
 
     [SerializeField] int points;
     [SerializeField] float attackDistance;
+    [SerializeField] float attackCooldown;
 
     [Header("Target Selection. Total Probability, 100% = 2")]
     [SerializeField]
@@ -43,11 +49,8 @@ public class EnemyAI : MonoBehaviour
 
     private void Start()
     {
-        Transform[] targets = targetDetection.Targets;
-        foreach (Transform t in targets)
-        {
-            TargetFound(t);
-        }
+        if (CheckTargetsInRange()) { return; }
+        character?.StartPatrol();
     }
 
     private void OnEnable()
@@ -90,9 +93,38 @@ public class EnemyAI : MonoBehaviour
 
     private void Update()
     {
-        if (!isInBattle || !currentTarget) { return; }
-        float distanceToTarget = Vector3.Distance(character.MovementComponent.transform.position, currentTarget.transform.position);
-        canAttack = (distanceToTarget <= attackDistance);       
+         
+    }
+
+    // # ---- CHASE STATE
+
+    private void AttackTarget()
+    {
+        if (state != STATE.CHASE || !currentTarget || !canAttack) { return; }
+        float distance = Vector3.Distance(currentTarget.transform.position, character.MovementComponent.transform.position);
+        if(distance <= attackDistance)
+        {
+            character.Attack();
+        }
+        canAttack = false;
+        Invoke(nameof(EnableAttack), attackCooldown);
+    }
+
+    private void EnableAttack()
+    {
+        canAttack = true;
+    }
+
+    // # ---- Target locator
+
+    private bool CheckTargetsInRange() 
+    {
+        Transform[] targets = targetDetection.Targets;
+        foreach (Transform t in targets)
+        {
+            TargetFound(t);
+        }
+        return targets.Length >= 1;
     }
 
     private void TargetFound(Transform target)
@@ -121,15 +153,15 @@ public class EnemyAI : MonoBehaviour
         if (enemiesDetected.Count == 0 || aliveTargets.Length == 0)
         {
             currentTarget = null; 
-            character.MoveTowards(null); 
             isInBattle = false;
+            character.StartPatrol();
             return;
         }
         int r = UnityEngine.Random.Range(0, aliveTargets.Length);
         currentTarget = aliveTargets[r];
         currentTarget.OnDead += PlayerKilled;
         character.MoveTowards(currentTarget.transform);
-        isInBattle = true;
+        state = STATE.CHASE;
     }
 
     private void GetPlayer()

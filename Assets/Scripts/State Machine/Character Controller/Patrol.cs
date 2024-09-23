@@ -3,9 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 
-public class MoveTowards : CharacterState
+public class Patrol : CharacterState
 {
-    [Header("Move Towards State Configuration")]
+    [Header("Patrol State Configuration")]
     [SerializeField] Transform[] destination;
     [SerializeField] float pathUpdateRate;
     [SerializeField] 

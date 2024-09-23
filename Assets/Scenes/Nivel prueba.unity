@@ -2316,12 +2316,12 @@ MonoBehaviour:
   SpecialAttackData: {fileID: 11400000, guid: d4878fc9426c24b42a7e8a54dd373859, type: 2}
   idleState: {fileID: 4394378423789228137}
   attackState: {fileID: 8849611350740511651}
+  patrolState: {fileID: 0}
   stunState: {fileID: 5185572985862165326}
   interactionState: {fileID: 7078773080773586843}
   deadState: {fileID: 8849611350740511652}
+  followState: {fileID: 0}
   disableHitboxesOnStart: 1
-  stateAtObjectFound: {fileID: 8849611350740511654}
-  stateAtObjectLost: {fileID: 4394378423789228137}
 --- !u!1 &1825723598
 GameObject:
   m_ObjectHideFlags: 0

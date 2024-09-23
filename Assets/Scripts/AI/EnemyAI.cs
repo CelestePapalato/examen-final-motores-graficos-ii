@@ -2,12 +2,13 @@ using System;
 using System.Linq;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 using System.Collections;
 
 public class EnemyAI : MonoBehaviour
 {
 
-    private enum STATE { IDLE, PATROL, CHASE, DEAD };
+    private enum STATE { PATROL, CHASE, DEAD };
     private STATE state = STATE.PATROL;
 
     public static event Action<int> OnEnemyDead;
@@ -93,7 +94,7 @@ public class EnemyAI : MonoBehaviour
 
     private void Update()
     {
-         
+        AttackTarget();
     }
 
     // # ---- CHASE STATE
@@ -186,7 +187,7 @@ public class EnemyAI : MonoBehaviour
     {
         itemSpawner?.DropItem();
         OnEnemyDead?.Invoke(points);
-        Destroy(gameObject);
+        Destroy(gameObject, 5);
     }
 
 }

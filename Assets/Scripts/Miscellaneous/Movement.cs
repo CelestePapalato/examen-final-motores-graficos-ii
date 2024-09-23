@@ -1,3 +1,4 @@
+using Cinemachine.Utility;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -201,7 +202,7 @@ public class Movement : MonoBehaviour, IBuffable, IHittable
         float dt = Time.fixedDeltaTime;
 
 
-        if(desiredVelocity != null)
+        if(!desiredVelocity.IsNaN())
         {
             rb.AddForce(desiredVelocity / dt, ForceMode.Acceleration);
         }

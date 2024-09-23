@@ -109,6 +109,10 @@ public abstract class CharacterState : State
 
     protected void ResumePlayerMovement()
     {
+        if (currentCharacter.Agent)
+        {
+            currentCharacter.Agent.enabled = false;
+        }
         if (currentCharacter.MovementComponent)
         {
             currentCharacter.MovementComponent.enabled = true;

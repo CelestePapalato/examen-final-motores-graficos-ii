@@ -31,6 +31,7 @@ public class Follow : CharacterState, IObjectTracker
     public override void Salir()
     {
         base.Salir();
+        CancelInvoke(nameof(UpdatePath));
         currentCharacter.Agent.enabled = false;
 
         if (currentCharacter.MovementComponent)

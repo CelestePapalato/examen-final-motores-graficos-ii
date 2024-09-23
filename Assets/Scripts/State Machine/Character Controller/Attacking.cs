@@ -24,6 +24,7 @@ public class Attacking : CharacterState, IAttacker
         currentCharacter.Animator?.SetTrigger(skillData.AnimationTrigger);
         skillData.SetupCharacter(currentCharacter);
         StopPlayerMovement();
+        
         if (currentCharacter.AnimationEventHandler)
         {
             currentCharacter.AnimationEventHandler.onAnimationStart += CleanBuffer;

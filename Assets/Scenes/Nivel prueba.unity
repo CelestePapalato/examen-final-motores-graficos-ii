@@ -3033,6 +3033,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: -0.000019765961
       objectReference: {fileID: 0}
+    - target: {fileID: 2767607265089169047, guid: 72912cda72e750640958a07b1ed88435,
+        type: 3}
+      propertyPath: m_ExcludeLayers.m_Bits
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3091536180116945563, guid: 72912cda72e750640958a07b1ed88435,
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.x

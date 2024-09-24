@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class WeaponGameObjectInstancer : MonoBehaviour
+public class ObjectInstancer : MonoBehaviour
 {
     [SerializeField]
     Transform spawnPoint;

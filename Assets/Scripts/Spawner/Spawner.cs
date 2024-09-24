@@ -12,7 +12,7 @@ public class SpawnData
     public float spawnCooldown;
 }
 
-public class GameObjectSpawner : MonoBehaviour
+public class Spawner : MonoBehaviour
 {
     [SerializeField] float startWaitTime;
     [SerializeField] float spawnCooldown;

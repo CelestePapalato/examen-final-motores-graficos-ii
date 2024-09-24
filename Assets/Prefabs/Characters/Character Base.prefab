@@ -99,10 +99,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e4df42713c4b7cd49b87ce96cca0a68b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  floorLayer:
+    serializedVersion: 2
+    m_Bits: 0
   maxSpeed: 6
   acceleration: 6
   decceleration: 15
+  drag: 0
   rotationSmoothing: 0.125
+  impulseResistance: 0
 --- !u!95 &2106875983036532176
 Animator:
   serializedVersion: 5
@@ -182,6 +187,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxHealth: 5
+  damageMemoryTimeAlive: 0
+  enableInvincibilitySystem: 0
   invincibilityTime: 0.8
 --- !u!136 &7480456361696215356
 CapsuleCollider:
@@ -220,6 +227,8 @@ GameObject:
   - component: {fileID: 4765782464251019249}
   - component: {fileID: 2093891824682135166}
   - component: {fileID: 1265562987755705121}
+  - component: {fileID: 3631492230910932299}
+  - component: {fileID: 5442263757927225502}
   m_Layer: 0
   m_Name: Character Base
   m_TagString: Player
@@ -257,14 +266,16 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   firstState: {fileID: 0}
   currentState: {fileID: 0}
+  NormalAttackData: {fileID: 0}
+  SpecialAttackData: {fileID: 0}
   idleState: {fileID: 1141402063301291206}
   attackState: {fileID: 4765782464251019249}
-  specialAttackState: {fileID: 0}
+  patrolState: {fileID: 0}
   stunState: {fileID: 2093891824682135166}
   interactionState: {fileID: 1265562987755705121}
+  deadState: {fileID: 3631492230910932299}
+  followState: {fileID: 5442263757927225502}
   disableHitboxesOnStart: 1
-  estadoAlEncontrarObjetivo: {fileID: 0}
-  estadoAlPerderObjetivo: {fileID: 0}
 --- !u!114 &1141402063301291206
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -278,10 +289,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxSpeed: 6
+  drag: -1
+  rotationSmoothing: 0
   attackCooldown: 0
   evadeCooldown: 0
-  inputRelatedToCamera: 1
-  camera: {fileID: 0}
 --- !u!114 &4765782464251019249
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -295,10 +306,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxSpeed: 0
+  drag: -1
+  rotationSmoothing: 0
   attackCooldown: 0
   evadeCooldown: 0
-  inputRelatedToCamera: 1
-  camera: {fileID: 0}
 --- !u!114 &2093891824682135166
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -312,10 +323,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxSpeed: 0
+  drag: -1
+  rotationSmoothing: 0
   attackCooldown: 0
   evadeCooldown: 0
-  inputRelatedToCamera: 1
-  camera: {fileID: 0}
 --- !u!114 &1265562987755705121
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -329,7 +340,42 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxSpeed: 0
+  drag: -1
+  rotationSmoothing: 0
   attackCooldown: 0
   evadeCooldown: 0
-  inputRelatedToCamera: 1
-  camera: {fileID: 0}
+--- !u!114 &3631492230910932299
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8524559244192018499}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a838105473de6ef42b59982e7d438c72, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxSpeed: 0
+  drag: -1
+  rotationSmoothing: 0
+  attackCooldown: 0
+  evadeCooldown: 0
+--- !u!114 &5442263757927225502
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8524559244192018499}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0bb171e12c2ddf2418d22c58c39fea6d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxSpeed: 0
+  drag: -1
+  rotationSmoothing: 0
+  attackCooldown: 0
+  evadeCooldown: 0
+  pathUpdateRate: 0

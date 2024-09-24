@@ -4728,7 +4728,7 @@ GameObject:
   - component: {fileID: 6429733500029375370}
   - component: {fileID: 8199043329972195021}
   - component: {fileID: 8199043329972195023}
-  - component: {fileID: 8199043329972195022}
+  - component: {fileID: 8199043329972195024}
   m_Layer: 7
   m_Name: Shooter
   m_TagString: Untagged
@@ -6744,19 +6744,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!114 &8199043329972195022
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3044621534088452417}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3dbd2924c4fe7934e8df134d64ca61f3, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  impulse: 10
 --- !u!54 &8199043329972195023
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -6784,6 +6771,20 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!114 &8199043329972195024
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3044621534088452417}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8fb615798694e924caa56c9e325f5918, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  spawnPoint: {fileID: 6065155234962149686}
+  toInstance: {fileID: 0}
 --- !u!4 &8269087536774040372
 Transform:
   m_ObjectHideFlags: 0

@@ -110,6 +110,8 @@ public class Movement : MonoBehaviour, IBuffable, IHittable
 
     }
 
+    public bool UpdateRotationON = true;
+
     public bool OnFloor {  get; private set; }
 
     private Vector3 groundNormal = Vector3.zero;
@@ -160,6 +162,7 @@ public class Movement : MonoBehaviour, IBuffable, IHittable
 
     void UpdateRotation()
     {
+        if(!UpdateRotationON) { return; }
         if (input_vector != Vector2.zero)
         {
 

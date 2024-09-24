@@ -111,6 +111,7 @@ public class Movement : MonoBehaviour, IBuffable, IHittable
     }
 
     public bool UpdateRotationON = true;
+    public bool UpdatePositionON = true;
 
     public bool OnFloor {  get; private set; }
 
@@ -177,7 +178,6 @@ public class Movement : MonoBehaviour, IBuffable, IHittable
 
     private void Move()
     {
-
         Vector3 forward = transform.forward;
 
         Vector3 velocity = rb.velocity;
@@ -196,21 +196,24 @@ public class Movement : MonoBehaviour, IBuffable, IHittable
         float dragMagnitude = velocity.sqrMagnitude * drag;
         Vector3 dragVector = -velocity.normalized * dragMagnitude;
 
-        Vector3 desiredVelocity = forward * currentMaxSpeed * input_vector.magnitude;
-        if (speed > MaxSpeed * 3/5)
+        if (UpdatePositionON)
         {
-            desiredVelocity *= Mathf.InverseLerp(MaxSpeed, 0, speed);
+            Vector3 desiredVelocity = forward * currentMaxSpeed * input_vector.magnitude;
+            if (speed > MaxSpeed * 3 / 5)
+            {
+                desiredVelocity *= Mathf.InverseLerp(MaxSpeed, 0, speed);
+            }
+
+            float dt = Time.fixedDeltaTime;
+
+
+            if (!desiredVelocity.IsNaN())
+            {
+                rb.AddForce(desiredVelocity / dt, ForceMode.Acceleration);
+            }
         }
 
-        float dt = Time.fixedDeltaTime;
-
-
-        if(!desiredVelocity.IsNaN())
-        {
-            rb.AddForce(desiredVelocity / dt, ForceMode.Acceleration);
-        }
-
-        if(dragVector != null)
+        if (dragVector != null)
         {
             rb.AddForce(dragVector);
         }

@@ -8,10 +8,12 @@ public class Paralyzed : CharacterState
     public override void Entrar(StateMachine personajeActual)
     {
         base.Entrar(personajeActual);
-        StopPlayerMovement();
+        StopPlayerActions();
         EnableAgent(false);
         EnableRigidbody(true);
         //currentCharacter.MovementComponent.enabled = false;
+        currentCharacter.MovementComponent.UpdateRotationON = false;
+        currentCharacter.MovementComponent.UpdatePositionON = false;
         currentCharacter.AnimationEventHandler.onAnimationComplete += StunFinished;
     }
 
@@ -19,6 +21,8 @@ public class Paralyzed : CharacterState
     {
         ResumePlayerMovement();
         currentCharacter.AnimationEventHandler.onAnimationComplete -= StunFinished;
+        currentCharacter.MovementComponent.UpdateRotationON = true;
+        currentCharacter.MovementComponent.UpdatePositionON = true;
         base.Salir();
     }
 

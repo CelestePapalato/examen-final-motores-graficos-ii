@@ -23,7 +23,7 @@ public class Attacking : CharacterState, IAttacker
         attackBuffer = false;
         currentCharacter.Animator?.SetTrigger(skillData.AnimationTrigger);
         skillData.SetupCharacter(currentCharacter);
-        StopPlayerMovement();
+        StopPlayerActions();
         
         if (currentCharacter.AnimationEventHandler)
         {

@@ -26,7 +26,7 @@ public class Patrol : CharacterState
             //personaje.CambiarEstado(null);
             return;
         }
-        StopPlayerMovement();
+        StopPlayerActions();
         currentCharacter.MovementComponent.enabled = false;
         EnableRigidbody(false);
         EnableAgent(true);

@@ -43,8 +43,9 @@ public class Interacting : CharacterState
         {
             personajeActual.CambiarEstado(null);
         }
-        StopPlayerMovement();
+        StopPlayerActions();
         currentCharacter.MovementComponent.UpdateRotationON = false;
+        currentCharacter.MovementComponent.UpdatePositionON = false;
         currentInteractable.Interact();
         currentPuzzle = currentInteractable.Puzzle; if (currentPuzzle != null)
         {
@@ -79,6 +80,7 @@ public class Interacting : CharacterState
         }
         ResumePlayerMovement();
         currentCharacter.MovementComponent.UpdateRotationON = true;
+        currentCharacter.MovementComponent.UpdatePositionON = true;
         base.Salir();
     }
 

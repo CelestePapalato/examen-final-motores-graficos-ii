@@ -99,7 +99,7 @@ public abstract class CharacterState : State
         canEvade = true;
     }
 
-    protected void StopPlayerMovement()
+    protected void StopPlayerActions()
     {
         canAttack = false;
         canEvade = false;

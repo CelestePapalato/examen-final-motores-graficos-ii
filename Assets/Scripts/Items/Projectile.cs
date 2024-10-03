@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [RequireComponent(typeof(Rigidbody))]
-public class Projectile : MonoBehaviour, IProjectile
+public class Projectile : MonoBehaviour
 {
     [SerializeField]
     float impulse;

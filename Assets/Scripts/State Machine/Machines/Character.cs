@@ -94,6 +94,8 @@ public class Character : StateMachine
             hitboxes[i] = damage[i].GetComponent<Collider>();
             hitboxes[i].enabled = enable;
         }
+        ProjectileShooter shooter = GetComponentInChildren<ProjectileShooter>();
+        if(shooter != null) { shooter.Owner = this; }
     }
 
     protected virtual void OnEnable()

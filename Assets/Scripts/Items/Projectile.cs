@@ -10,8 +10,6 @@ public class Projectile : MonoBehaviour
 
     Rigidbody rb;
 
-    public Transform SpawnPoint { get; set; }
-
     private void Awake()
     {
         rb = GetComponent<Rigidbody>();
@@ -20,7 +18,7 @@ public class Projectile : MonoBehaviour
 
     void Start()
     {
-        rb.AddForce(SpawnPoint.forward * impulse, ForceMode.Impulse);
+        rb.AddForce(transform.forward * impulse, ForceMode.Impulse);
     }
 
     private void OnTriggerEnter(Collider collider)

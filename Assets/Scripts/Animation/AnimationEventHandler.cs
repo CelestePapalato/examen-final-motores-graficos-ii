@@ -15,6 +15,7 @@ public class AnimationEventHandler : MonoBehaviour
     public event Action<CharacterAnimatorState> onAnimationStart;
     public event Action<CharacterAnimatorState> onAnimationComplete;
     public event Action<CharacterAnimatorState> onAnimationCancelable;
+    public event Action onShoot;
 
     public void AnimationStartHandler(CharacterAnimatorState state)
     {
@@ -29,5 +30,10 @@ public class AnimationEventHandler : MonoBehaviour
     public void AnimationCancelableHandler(CharacterAnimatorState state)
     {
         onAnimationCancelable?.Invoke(state);
+    }
+
+    public void AnimationShooter()
+    {
+        onShoot?.Invoke();
     }
 }

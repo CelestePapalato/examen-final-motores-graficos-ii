@@ -30,6 +30,7 @@ public class Attacking : CharacterState, IAttacker
             currentCharacter.AnimationEventHandler.onAnimationStart += CleanBuffer;
             currentCharacter.AnimationEventHandler.onAnimationComplete += AttackFinished;
             currentCharacter.AnimationEventHandler.onAnimationCancelable += CanCombo;
+            currentCharacter.AnimationEventHandler.onShoot += Shoot;
         }
     }
 
@@ -41,6 +42,7 @@ public class Attacking : CharacterState, IAttacker
             currentCharacter.AnimationEventHandler.onAnimationStart -= CleanBuffer;
             currentCharacter.AnimationEventHandler.onAnimationComplete -= AttackFinished;
             currentCharacter.AnimationEventHandler.onAnimationCancelable -= CanCombo;
+            currentCharacter.AnimationEventHandler.onShoot -= Shoot;
         }
         base.Salir();
     }
@@ -51,7 +53,8 @@ public class Attacking : CharacterState, IAttacker
         {
             currentCharacter.AnimationEventHandler.onAnimationStart += CleanBuffer;
             currentCharacter.AnimationEventHandler.onAnimationComplete += AttackFinished;
-            currentCharacter.AnimationEventHandler.onAnimationCancelable -= CanCombo;
+            currentCharacter.AnimationEventHandler.onAnimationCancelable += CanCombo;
+            currentCharacter.AnimationEventHandler.onShoot += Shoot;
         }
     }
 
@@ -62,6 +65,7 @@ public class Attacking : CharacterState, IAttacker
             currentCharacter.AnimationEventHandler.onAnimationStart -= CleanBuffer;
             currentCharacter.AnimationEventHandler.onAnimationComplete -= AttackFinished;
             currentCharacter.AnimationEventHandler.onAnimationCancelable -= CanCombo;
+            currentCharacter.AnimationEventHandler.onShoot -= Shoot;
         }
     }
 
@@ -91,6 +95,14 @@ public class Attacking : CharacterState, IAttacker
         if (state == CharacterAnimatorState.ATTACK)
         {
             personaje.CambiarEstado(null);
+        }
+    }
+
+    public void Shoot()
+    {
+        if (currentCharacter.Shooter)
+        {
+            currentCharacter.Shooter.Shoot();
         }
     }
 

@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 2371879647953573770}
   - component: {fileID: 4279673092232802879}
   - component: {fileID: 2266998203421708816}
+  - component: {fileID: 1842606560378108233}
   m_Layer: 0
   m_Name: Arrow
   m_TagString: Untagged
@@ -75,7 +76,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3dbd2924c4fe7934e8df134d64ca61f3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  impulse: 15
+  impulse: 30
 --- !u!136 &2266998203421708816
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -86,7 +87,7 @@ CapsuleCollider:
   m_Material: {fileID: 0}
   m_IncludeLayers:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 9
   m_ExcludeLayers:
     serializedVersion: 2
     m_Bits: 0
@@ -99,6 +100,19 @@ CapsuleCollider:
   m_Height: 0.73
   m_Direction: 2
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &1842606560378108233
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4679714220543441062}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: deb0b23054f8fab4b9ca892ee35fe983, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  timeAlive: 5
 --- !u!1 &7907482698303037284
 GameObject:
   m_ObjectHideFlags: 0
@@ -110,7 +124,7 @@ GameObject:
   - component: {fileID: 2606553231501797400}
   - component: {fileID: 2223616077221838538}
   - component: {fileID: 2526630924537864938}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Hitbox
   m_TagString: Untagged
   m_Icon: {fileID: 0}

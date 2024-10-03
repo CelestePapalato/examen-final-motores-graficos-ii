@@ -17,7 +17,7 @@ public class ProjectileShooter : MonoBehaviour, IBuffable
 
     public void Shoot()
     {
-        Projectile instance = Instantiate(toInstance, spawnPoint.position, Quaternion.identity);
+        Projectile instance = Instantiate(toInstance, spawnPoint.position, spawnPoint.rotation);
         Damage damage = instance.GetComponentInChildren<Damage>();
         if(damage != null)
         {

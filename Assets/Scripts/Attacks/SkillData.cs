@@ -5,7 +5,7 @@ public class SkillData : ScriptableObject
 {
     public int Damage;
     public string AnimationTrigger;
-    public GameObject SpawnableObject;
+    public Projectile Projectile;
 
     public void SetupCharacter(Character character)
     {
@@ -13,5 +13,7 @@ public class SkillData : ScriptableObject
         {
             damage.DamagePoints = Damage;
         }
+        ProjectileShooter shooter = character.Shooter;
+        if (shooter) { shooter.Projectile = Projectile; }
     }
 }

@@ -31,6 +31,7 @@ public class Character : StateMachine
     CharacterState controller;
     Animator animator;
     Damage[] damage;
+    ProjectileShooter shooter;
     Collider[] hitboxes;
     NavMeshAgent agent;
     AnimationEventHandler animEvent;
@@ -42,6 +43,7 @@ public class Character : StateMachine
     public Health HealthComponent { get => health; }
     public Animator Animator { get => animator; }
     public Damage[] DamageComponents { get => damage;}
+    public ProjectileShooter Shooter { get => shooter; }
     public AnimationEventHandler AnimationEventHandler { get => animEvent;}
 
     public UnityAction OnDead;
@@ -94,7 +96,7 @@ public class Character : StateMachine
             hitboxes[i] = damage[i].GetComponent<Collider>();
             hitboxes[i].enabled = enable;
         }
-        ProjectileShooter shooter = GetComponentInChildren<ProjectileShooter>();
+        shooter = GetComponentInChildren<ProjectileShooter>();
         if(shooter != null) { shooter.Owner = this; }
     }
 

@@ -13,6 +13,7 @@ public class ProjectileShooter : MonoBehaviour, IBuffable
 
     private float damageMultiplier = 1f;
     public float DamageMultiplier { get => damageMultiplier; set => damageMultiplier = value; }
+    public Projectile Projectile { get => toInstance; set => toInstance = (value)? value : toInstance; }
 
     public void Shoot()
     {

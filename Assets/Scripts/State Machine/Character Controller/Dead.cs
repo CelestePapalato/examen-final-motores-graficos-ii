@@ -12,6 +12,7 @@ public class Dead : CharacterState
         EnableRigidbody(true);
         currentCharacter.MovementComponent.UpdatePositionON = false;
         currentCharacter.MovementComponent.UpdateRotationON = false;
+        currentCharacter.Animator.SetTrigger("Dead");
     }
 
     public override void Salir()

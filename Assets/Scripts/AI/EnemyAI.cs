@@ -105,8 +105,8 @@ public class EnemyAI : MonoBehaviour
         if(distance <= attackDistance)
         {
             character.Attack();
+            canAttack = false;
         }
-        canAttack = false;
         Invoke(nameof(EnableAttack), attackCooldown);
     }
 

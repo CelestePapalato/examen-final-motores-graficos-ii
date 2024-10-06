@@ -106,8 +106,8 @@ public class EnemyAI : MonoBehaviour
         {
             character.Attack();
             canAttack = false;
+            Invoke(nameof(EnableAttack), attackCooldown);
         }
-        Invoke(nameof(EnableAttack), attackCooldown);
     }
 
     private void EnableAttack()

@@ -1246,6 +1246,8 @@ MonoBehaviour:
   drag: 0
   rotationSmoothing: 0
   impulseResistance: 0
+  UpdateRotationON: 1
+  UpdatePositionON: 1
 --- !u!195 &7161894772893216564
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -2768,7 +2770,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 363cc72b541af6a4eacd04008fb2ea9e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  points: 0
+  points: 5
   attackDistance: 3
   attackCooldown: 3.5
   lowHealthProbability: 0

@@ -66,10 +66,6 @@ public class Damage : MonoBehaviour, IDamageDealer, IBuffable
         IDamageable enemyDamageable = other.GetComponentInChildren<IDamageable>();
         IHittable enemyHittable = other.GetComponentInChildren<IHittable>();
 
-        Debug.Log(Owner.name + enemyDamageable);
-
-        Debug.Log(enemyHittable);
-        Debug.Log(enemyDamageable);
         if (enemyDamageable != null)
         {
             enemyDamageable.Damage(this);

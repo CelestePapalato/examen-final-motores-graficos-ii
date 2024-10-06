@@ -44,19 +44,23 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a200b19ca1a9685429ed7e043c28e904, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_Resolution: 43
+  m_Resolution: 1
   m_Appearance:
     pathColor: {r: 0, g: 1, b: 0, a: 1}
     inactivePathColor: {r: 0.5, g: 0.5, b: 0.5, a: 1}
     width: 1.21
-  m_Looped: 1
+  m_Looped: 0
   m_Waypoints:
-  - position: {x: 0, y: 0, z: -5}
-    roll: 3.11
-  - position: {x: -5.1454697, y: 13.135935, z: 29.72305}
-    roll: 1.52
-  - position: {x: 39.361862, y: -3.093777, z: 24.109228}
-    roll: 6.9
+  - position: {x: 60, y: 9, z: 0}
+    roll: 0
+  - position: {x: 60, y: 9, z: 9.504734}
+    roll: 0
+  - position: {x: 60, y: 17, z: 21.45901}
+    roll: 0
+  - position: {x: 61.64869, y: 19.852074, z: 21.44291}
+    roll: 0
+  - position: {x: 65, y: 25, z: 89.04318}
+    roll: 0
 --- !u!1 &2103330478427165372
 GameObject:
   m_ObjectHideFlags: 0
@@ -125,21 +129,21 @@ MonoBehaviour:
   m_ScreenY: 0.5
   m_DeadZoneWidth: 0
   m_DeadZoneHeight: 0
-  m_SoftZoneWidth: 0.76
-  m_SoftZoneHeight: 0.74
+  m_SoftZoneWidth: 0.5
+  m_SoftZoneHeight: 0.55
   m_BiasX: 0
   m_BiasY: 0
   m_CenterOnActivate: 1
-  m_GroupFramingSize: 0.2
+  m_GroupFramingSize: 0.8
   m_FramingMode: 2
   m_FrameDamping: 0
   m_AdjustmentMode: 2
   m_MaxDollyIn: 0
-  m_MaxDollyOut: 5
-  m_MinimumDistance: 15
-  m_MaximumDistance: 30
-  m_MinimumFOV: 3
-  m_MaximumFOV: 60
+  m_MaxDollyOut: 0
+  m_MinimumDistance: 0
+  m_MaximumDistance: 3
+  m_MinimumFOV: 20.4
+  m_MaximumFOV: 63.7
   m_MinimumOrthoSize: 1
   m_MaximumOrthoSize: 5000
 --- !u!114 &7397716651622955100
@@ -155,7 +159,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Path: {fileID: 5650519504254019441}
-  m_PathPosition: 2.4737356
+  m_PathPosition: 1.2427462
   m_PositionUnits: 0
   m_PathOffset: {x: 0, y: 0, z: 0}
   m_XDamping: 1.5
@@ -182,7 +186,7 @@ GameObject:
   - component: {fileID: 978488698733887693}
   m_Layer: 0
   m_Name: Target Group
-  m_TagString: Untagged
+  m_TagString: Camera Target Group
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -196,7 +200,7 @@ Transform:
   m_GameObject: {fileID: 2305827672005037752}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 17.374594, y: -4.9950266, z: 18.241802}
+  m_LocalPosition: {x: 10.781413, y: -5.8679137, z: 20.553072}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -218,6 +222,9 @@ MonoBehaviour:
   m_RotationMode: 0
   m_UpdateMethod: 0
   m_Targets:
+  - target: {fileID: 0}
+    weight: 1
+    radius: 1
   - target: {fileID: 0}
     weight: 1
     radius: 1
@@ -249,8 +256,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5710841285094775086}
   serializedVersion: 2
-  m_LocalRotation: {x: -0.029225873, y: -0.3100299, z: -0.0095354775, w: 0.95022964}
-  m_LocalPosition: {x: 26.218151, y: -4.6183085, z: 6.1319084}
+  m_LocalRotation: {x: 0.11723823, y: -0.641515, z: 0.10008486, w: 0.7514631}
+  m_LocalPosition: {x: 59.948387, y: 10.621769, z: 13.453016}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -289,7 +296,7 @@ Camera:
     height: 1
   near clip plane: 0.3
   far clip plane: 1000
-  field of view: 36.869984
+  field of view: 20.4
   orthographic: 0
   orthographic size: 5
   m_Depth: -1
@@ -369,7 +376,7 @@ MonoBehaviour:
   m_RendererIndex: -1
   m_VolumeLayerMask:
     serializedVersion: 2
-    m_Bits: 1
+    m_Bits: 577
   m_VolumeTrigger: {fileID: 0}
   m_VolumeFrameworkUpdateModeOption: 2
   m_RenderPostProcessing: 0
@@ -419,8 +426,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5937723526071890602}
   serializedVersion: 2
-  m_LocalRotation: {x: -0.029225873, y: -0.3100299, z: -0.0095354775, w: 0.95022964}
-  m_LocalPosition: {x: 26.009192, y: -4.6272097, z: 6.418045}
+  m_LocalRotation: {x: 0.11723823, y: -0.641515, z: 0.10008486, w: 0.7514631}
+  m_LocalPosition: {x: 59.948387, y: 10.621769, z: 13.453016}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -480,7 +487,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_CollideAgainst:
     serializedVersion: 2
-    m_Bits: 1
+    m_Bits: 9
   m_IgnoreTag: 
   m_TransparentLayers:
     serializedVersion: 2
@@ -490,7 +497,7 @@ MonoBehaviour:
   m_DistanceLimit: 0
   m_MinimumOcclusionTime: 0
   m_CameraRadius: 0.1
-  m_Strategy: 1
+  m_Strategy: 2
   m_MaximumEffort: 4
   m_SmoothingTime: 0
   m_Damping: 0

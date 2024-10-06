@@ -7,7 +7,6 @@ using System.Collections;
 
 public class EnemyAI : MonoBehaviour
 {
-
     private enum STATE { PATROL, CHASE, DEAD };
     private STATE state = STATE.PATROL;
 

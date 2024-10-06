@@ -86,7 +86,6 @@ public class Health : MonoBehaviour, IDamageable
             DamageDealerMemory[key].Remove(id);
 
             if (DamageDealerMemory[key].Count == 0) { DamageDealerMemory.Remove(key); }
-            Debug.Log("a");
         }
     }
 

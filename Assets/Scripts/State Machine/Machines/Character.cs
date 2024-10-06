@@ -145,7 +145,6 @@ public class Character : StateMachine
 
     protected virtual void Dead()
     {
-        Debug.Log("xddd");
         if (deadState) { CambiarEstado(deadState); }
         OnDead?.Invoke();
         this.enabled = false;
@@ -235,7 +234,6 @@ public class Character : StateMachine
 
     private void OnDamage(int health, int maxHealth)
     {
-        Debug.Log("Vida: " + health);
         currentState?.DañoRecibido();
         if (stunState)
         {

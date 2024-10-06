@@ -10,9 +10,9 @@ public class Dead : CharacterState
         StopPlayerActions();
         EnableAgent(false);
         EnableRigidbody(true);
+        currentCharacter.Animator.SetTrigger("Dead");
         currentCharacter.MovementComponent.UpdatePositionON = false;
         currentCharacter.MovementComponent.UpdateRotationON = false;
-        currentCharacter.Animator.SetTrigger("Dead");
     }
 
     public override void Salir()

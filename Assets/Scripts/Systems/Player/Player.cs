@@ -44,18 +44,14 @@ public class Player : MonoBehaviour
 
     private void Start()
     {
-        chara = GetComponentInChildren<Character>();
-        healthBar = GetComponentInChildren<Healthbar>();
-        if (healthBar && chara)
-        {
-            healthBar.HealthComponent = chara.HealthComponent;
-        }
+        UpdateHealthbar();
     }
 
     private void OnEnable()
     {
         currentPlayers.Add(this);
-        if (chara)
+        GetHealthbar();
+        if (GetCharacter())
         {
             chara.OnDead += Dead;
         }
@@ -64,9 +60,37 @@ public class Player : MonoBehaviour
     private void OnDisable()
     {
         currentPlayers.Remove(this);
-        if (chara)
+        if (GetCharacter())
         {
             chara.OnDead -= Dead;
+        }
+    }
+
+    private bool GetCharacter()
+    {
+        if (!chara)
+        {
+            chara = GetComponentInChildren<Character>();
+        }
+        UpdateHealthbar();
+        return chara;
+    }
+
+    private bool GetHealthbar()
+    {
+        if (!healthBar)
+        {
+            healthBar = GetComponentInChildren<Healthbar>();
+        }
+        return healthBar;
+    }
+
+    private void UpdateHealthbar()
+    {
+        Health health = chara.HealthComponent;
+        if (healthBar && health)
+        {
+            healthBar.HealthComponent = health;
         }
     }
 

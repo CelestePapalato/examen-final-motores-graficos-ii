@@ -949,6 +949,8 @@ MonoBehaviour:
   drag: 1
   rotationSmoothing: 0.168
   impulseResistance: 0
+  UpdateRotationON: 1
+  UpdatePositionON: 1
 --- !u!95 &2600849693426865440
 Animator:
   serializedVersion: 5

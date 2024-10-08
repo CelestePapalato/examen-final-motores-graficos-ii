@@ -9,7 +9,8 @@ public class Dead : CharacterState
         base.Entrar(personajeActual);
         StopPlayerActions();
         EnableAgent(false);
-        EnableRigidbody(true);
+        currentCharacter.MovementComponent.enabled = false;
+        currentCharacter.MovementComponent.RigidBody.isKinematic = false;
         currentCharacter.Animator.SetTrigger("Dead");
         currentCharacter.MovementComponent.UpdatePositionON = false;
         currentCharacter.MovementComponent.UpdateRotationON = false;

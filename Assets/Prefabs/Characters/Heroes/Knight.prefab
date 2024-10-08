@@ -31,7 +31,7 @@ Transform:
   m_Children:
   - {fileID: 4476983143904301396}
   m_Father: {fileID: 7195477241926677980}
-  m_LocalEulerAnglesHint: {x: -90, y: -8.651602, z: 0}
+  m_LocalEulerAnglesHint: {x: -89.98021, y: 0.00001142963, z: 0}
 --- !u!1 &89815011477024219
 GameObject:
   m_ObjectHideFlags: 0
@@ -180,7 +180,7 @@ Transform:
   - {fileID: 7258212371332757087}
   - {fileID: 1252521771292378391}
   m_Father: {fileID: 4476983143904301396}
-  m_LocalEulerAnglesHint: {x: -46.043987, y: 0.000025393985, z: 179.99997}
+  m_LocalEulerAnglesHint: {x: -46.043987, y: 0.00002533032, z: 179.99997}
 --- !u!1 &370070289333846569
 GameObject:
   m_ObjectHideFlags: 0
@@ -437,7 +437,7 @@ Transform:
   m_Children:
   - {fileID: 6355472822681354748}
   m_Father: {fileID: 3165874012440810920}
-  m_LocalEulerAnglesHint: {x: -59.168404, y: 54.97732, z: -32.91084}
+  m_LocalEulerAnglesHint: {x: -57.06239, y: 46.179447, z: -32.131496}
 --- !u!1 &882132030620312058
 GameObject:
   m_ObjectHideFlags: 0
@@ -452,7 +452,7 @@ GameObject:
   - component: {fileID: 3025188133718512714}
   - component: {fileID: 3193925258140543757}
   m_Layer: 7
-  m_Name: 1H_Sword_Offhand
+  m_Name: Hitbox
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -622,7 +622,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 4476983143904301396}
-  m_LocalEulerAnglesHint: {x: 0.000006715184, y: 2.8771676e-13, z: 0.0000017075477}
+  m_LocalEulerAnglesHint: {x: 0.000006715184, y: 2.8771676e-13, z: 0.0000017075472}
 --- !u!1 &1640570954110262439
 GameObject:
   m_ObjectHideFlags: 0
@@ -749,7 +749,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 7590643077660502206}
-  m_LocalEulerAnglesHint: {x: 46.04398, y: -179.99997, z: 0.000008324422}
+  m_LocalEulerAnglesHint: {x: 46.043976, y: -179.99997, z: 0.000008054322}
 --- !u!1 &1996731774366551904
 GameObject:
   m_ObjectHideFlags: 0
@@ -943,10 +943,10 @@ MonoBehaviour:
   floorLayer:
     serializedVersion: 2
     m_Bits: 8
-  maxSpeed: 6
-  acceleration: 5
-  decceleration: 7
-  drag: 1
+  maxSpeed: 10
+  acceleration: 6.6666665
+  decceleration: 9.333333
+  drag: 1.5
   rotationSmoothing: 0.168
   impulseResistance: 0
   UpdateRotationON: 1
@@ -1283,6 +1283,7 @@ GameObject:
   - component: {fileID: 6356720429602913783}
   - component: {fileID: 3506734558582469243}
   - component: {fileID: 138457896853204982}
+  - component: {fileID: 3111458007279952422}
   m_Layer: 0
   m_Name: Knight_Helmet
   m_TagString: Untagged
@@ -1355,6 +1356,27 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!135 &3111458007279952422
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4781277661097945965}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Radius: 0.67794013
+  m_Center: {x: 0, y: 0.572721, z: 0.084625155}
 --- !u!1 &4820864544866891532
 GameObject:
   m_ObjectHideFlags: 0
@@ -1889,7 +1911,7 @@ Transform:
   m_Children:
   - {fileID: 3165874012440810920}
   m_Father: {fileID: 5602801939717678112}
-  m_LocalEulerAnglesHint: {x: -5.5638404, y: -173.74435, z: -174.797}
+  m_LocalEulerAnglesHint: {x: 0.5382352, y: -171.49368, z: -170.32906}
 --- !u!1 &6072231307690050105
 GameObject:
   m_ObjectHideFlags: 0
@@ -2052,7 +2074,7 @@ GameObject:
   - component: {fileID: 9013549899389094131}
   - component: {fileID: 3253736070669683237}
   m_Layer: 7
-  m_Name: 2H_Sword
+  m_Name: Hitbox
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2232,7 +2254,8 @@ GameObject:
   m_Component:
   - component: {fileID: 4742412813058350912}
   - component: {fileID: 5717998479233527275}
-  - component: {fileID: 1592157508457236429}
+  - component: {fileID: 4716188487962943016}
+  - component: {fileID: 7336379112455677216}
   m_Layer: 0
   m_Name: Knight_Cape
   m_TagString: Untagged
@@ -2263,8 +2286,8 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6766037023314713662}
   m_Mesh: {fileID: -4812355098046673052, guid: 804da93734d8957418440a047ea115c1, type: 3}
---- !u!23 &1592157508457236429
-MeshRenderer:
+--- !u!137 &4716188487962943016
+SkinnedMeshRenderer:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -2278,7 +2301,7 @@ MeshRenderer:
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
-  m_RayTracingMode: 2
+  m_RayTracingMode: 3
   m_RayTraceProcedural: 0
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
@@ -2304,7 +2327,167 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_AdditionalVertexStreams: {fileID: 0}
+  serializedVersion: 2
+  m_Quality: 0
+  m_UpdateWhenOffscreen: 0
+  m_SkinnedMotionVectors: 1
+  m_Mesh: {fileID: -4812355098046673052, guid: 804da93734d8957418440a047ea115c1, type: 3}
+  m_Bones: []
+  m_BlendShapeWeights: []
+  m_RootBone: {fileID: 0}
+  m_AABB:
+    m_Center: {x: -0.000010639429, y: -0.55087256, z: -0.21479927}
+    m_Extent: {x: 0.4853784, y: 0.57097244, z: 0.17129438}
+  m_DirtyAABB: 0
+--- !u!183 &7336379112455677216
+Cloth:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6766037023314713662}
+  m_Enabled: 1
+  m_StretchingStiffness: 1
+  m_BendingStiffness: 0.77
+  m_UseTethers: 1
+  m_UseGravity: 1
+  m_Damping: 0.15
+  m_ExternalAcceleration: {x: 0, y: 0, z: 0}
+  m_RandomAcceleration: {x: 0, y: 0, z: 0}
+  m_WorldVelocityScale: 0.14
+  m_WorldAccelerationScale: 1
+  m_Friction: 0.8
+  m_CollisionMassScale: 0
+  m_UseContinuousCollision: 0
+  m_UseVirtualParticles: 1
+  m_SolverFrequency: 73.8
+  m_SleepThreshold: 0.1
+  m_Coefficients:
+  - maxDistance: 0.09
+    collisionSphereDistance: 3.4028235e+38
+  - maxDistance: 0
+    collisionSphereDistance: 3.4028235e+38
+  - maxDistance: 0
+    collisionSphereDistance: 3.4028235e+38
+  - maxDistance: 0.09
+    collisionSphereDistance: 3.4028235e+38
+  - maxDistance: 0.52
+    collisionSphereDistance: 3.4028235e+38
+  - maxDistance: 0.52
+    collisionSphereDistance: 3.4028235e+38
+  - maxDistance: 0.52
+    collisionSphereDistance: 3.4028235e+38
+  - maxDistance: 0.09
+    collisionSphereDistance: 3.4028235e+38
+  - maxDistance: 0.52
+    collisionSphereDistance: 3.4028235e+38
+  - maxDistance: 0.09
+    collisionSphereDistance: 3.4028235e+38
+  - maxDistance: 0.09
+    collisionSphereDistance: 3.4028235e+38
+  - maxDistance: 0.79
+    collisionSphereDistance: 3.4028235e+38
+  - maxDistance: 0.79
+    collisionSphereDistance: 3.4028235e+38
+  - maxDistance: 0.79
+    collisionSphereDistance: 3.4028235e+38
+  - maxDistance: 0.79
+    collisionSphereDistance: 3.4028235e+38
+  - maxDistance: 1.42
+    collisionSphereDistance: 3.4028235e+38
+  - maxDistance: 0.79
+    collisionSphereDistance: 3.4028235e+38
+  - maxDistance: 0.52
+    collisionSphereDistance: 3.4028235e+38
+  - maxDistance: 0.09
+    collisionSphereDistance: 0.04389465
+  - maxDistance: 0
+    collisionSphereDistance: 3.4028235e+38
+  - maxDistance: 0.09
+    collisionSphereDistance: 0.4995877
+  - maxDistance: 0
+    collisionSphereDistance: 0.40505117
+  - maxDistance: 0.52
+    collisionSphereDistance: 0.16101348
+  - maxDistance: 0.52
+    collisionSphereDistance: 0.6739789
+  - maxDistance: 0.79
+    collisionSphereDistance: 0.103449404
+  - maxDistance: 0.79
+    collisionSphereDistance: 0.7311182
+  - maxDistance: 0.79
+    collisionSphereDistance: 0.07905096
+  - maxDistance: 0.79
+    collisionSphereDistance: 0.7856209
+  - maxDistance: 1.42
+    collisionSphereDistance: 0.740206
+  - maxDistance: 0.79
+    collisionSphereDistance: 3.4028235e+38
+  - maxDistance: 0.79
+    collisionSphereDistance: 0
+  - maxDistance: 0.79
+    collisionSphereDistance: 3.4028235e+38
+  - maxDistance: 1.42
+    collisionSphereDistance: 3.4028235e+38
+  - maxDistance: 1.42
+    collisionSphereDistance: 0.055677235
+  - maxDistance: 1.42
+    collisionSphereDistance: 3.4028235e+38
+  - maxDistance: 1.42
+    collisionSphereDistance: 0.54667264
+  - maxDistance: 1.42
+    collisionSphereDistance: 0.35314316
+  - maxDistance: 1.42
+    collisionSphereDistance: 3.4028235e+38
+  - maxDistance: 1.42
+    collisionSphereDistance: 3.4028235e+38
+  - maxDistance: 0.79
+    collisionSphereDistance: 3.4028235e+38
+  - maxDistance: 1.42
+    collisionSphereDistance: 3.4028235e+38
+  - maxDistance: 0.79
+    collisionSphereDistance: 3.4028235e+38
+  - maxDistance: 1.42
+    collisionSphereDistance: 3.4028235e+38
+  - maxDistance: 1.42
+    collisionSphereDistance: 3.4028235e+38
+  - maxDistance: 1.42
+    collisionSphereDistance: 3.4028235e+38
+  - maxDistance: 1.42
+    collisionSphereDistance: 3.4028235e+38
+  - maxDistance: 1.42
+    collisionSphereDistance: 3.4028235e+38
+  - maxDistance: 1.42
+    collisionSphereDistance: 3.4028235e+38
+  - maxDistance: 1.42
+    collisionSphereDistance: 3.4028235e+38
+  - maxDistance: 1.42
+    collisionSphereDistance: 3.4028235e+38
+  - maxDistance: 1.42
+    collisionSphereDistance: 3.4028235e+38
+  - maxDistance: 1.42
+    collisionSphereDistance: 3.4028235e+38
+  - maxDistance: 1.42
+    collisionSphereDistance: 3.4028235e+38
+  - maxDistance: 0
+    collisionSphereDistance: 3.4028235e+38
+  - maxDistance: 0
+    collisionSphereDistance: 3.4028235e+38
+  - maxDistance: 0
+    collisionSphereDistance: 3.4028235e+38
+  m_CapsuleColliders:
+  - {fileID: 869092944749763802}
+  m_SphereColliders:
+  - first: {fileID: 3111458007279952422}
+    second: {fileID: 0}
+  m_SelfCollisionDistance: 0
+  m_SelfCollisionStiffness: 0.2
+  m_SelfAndInterCollisionIndices: 
+  m_VirtualParticleWeights:
+  - {x: 0.33333334, y: 0.33333334, z: 0.33333334}
+  - {x: 0.6666667, y: 0.16666667, z: 0.16666667}
+  - {x: 0.5, y: 0.5, z: 0}
+  m_VirtualParticleIndices: 
 --- !u!1 &6856929654309840797
 GameObject:
   m_ObjectHideFlags: 0
@@ -2463,7 +2646,7 @@ Transform:
   m_Children:
   - {fileID: 7590643077660502206}
   m_Father: {fileID: 3025513892982213283}
-  m_LocalEulerAnglesHint: {x: 18.996214, y: -0.0000053845342, z: 0.0000119145125}
+  m_LocalEulerAnglesHint: {x: 22.559908, y: -0.000004433528, z: 0.000014717029}
 --- !u!1 &7765149094458922623
 GameObject:
   m_ObjectHideFlags: 0
@@ -2494,7 +2677,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 70903923329326724}
-  m_LocalEulerAnglesHint: {x: -46.043987, y: 0.000005046364, z: 0.0000062042213}
+  m_LocalEulerAnglesHint: {x: -46.043987, y: 0.0000068016343, z: 0.0000044390704}
 --- !u!1 &7771180630664260872
 GameObject:
   m_ObjectHideFlags: 0
@@ -2536,6 +2719,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 684687534915145579}
+  - component: {fileID: 5733341271362113464}
   m_Layer: 0
   m_Name: head
   m_TagString: Untagged
@@ -2559,6 +2743,41 @@ Transform:
   - {fileID: 6356720429602913783}
   m_Father: {fileID: 5394173160273987065}
   m_LocalEulerAnglesHint: {x: -0.000000013403003, y: 3.5920877, z: 0.00000021513208}
+--- !u!58 &5733341271362113464
+CircleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8275538785938279278}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_LayerOverridePriority: 0
+  m_ForceSendLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ForceReceiveLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ContactCaptureLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_CallbackLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  serializedVersion: 2
+  m_Radius: 0.5
 --- !u!1 &8364143191876287053
 GameObject:
   m_ObjectHideFlags: 0
@@ -2664,6 +2883,7 @@ GameObject:
   m_Component:
   - component: {fileID: 686301897301096646}
   - component: {fileID: 2788911259945506922}
+  - component: {fileID: 869092944749763802}
   m_Layer: 0
   m_Name: Knight_Body
   m_TagString: Untagged
@@ -2780,6 +3000,29 @@ SkinnedMeshRenderer:
     m_Center: {x: -0.000022992492, y: 0.8347354, z: -0.01029107}
     m_Extent: {x: 0.4020757, y: 0.45833603, z: 0.375846}
   m_DirtyAABB: 0
+--- !u!136 &869092944749763802
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8625961803278089865}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 0.36
+  m_Height: 1.1
+  m_Direction: 1
+  m_Center: {x: -0.000022990038, y: 0.59, z: 0}
 --- !u!1 &8736940265383254771
 GameObject:
   m_ObjectHideFlags: 0
@@ -2826,8 +3069,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxHealth: 5
-  damageMemoryTimeAlive: 0
-  enableInvincibilitySystem: 0
+  damageMemoryTimeAlive: 2
+  enableInvincibilitySystem: 1
   invincibilityTime: 0.8
 --- !u!136 &6839517451787653580
 CapsuleCollider:

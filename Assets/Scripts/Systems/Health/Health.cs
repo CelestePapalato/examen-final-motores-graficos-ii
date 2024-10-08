@@ -9,9 +9,9 @@ public class Health : MonoBehaviour, IDamageable
 
     [SerializeField] int maxHealth;
     [SerializeField] 
-    [Tooltip("Realtime")] float damageMemoryTimeAlive;
+    [Tooltip("Realtime")] float damageMemoryTimeAlive = 2f;
     [SerializeField] bool enableInvincibilitySystem = false;
-    [SerializeField] float invincibilityTime;
+    [SerializeField] float invincibilityTime = .8f;
     public UnityAction<int, int> OnHealthUpdate;
     public UnityAction OnDead;
     public UnityAction<int, int> OnDamaged;

@@ -387,8 +387,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxHealth: 5
-  damageMemoryTimeAlive: 0
-  enableInvincibilitySystem: 0
+  damageMemoryTimeAlive: 2
+  enableInvincibilitySystem: 1
   invincibilityTime: 0.8
 --- !u!136 &6074310964407254822
 CapsuleCollider:
@@ -1173,10 +1173,10 @@ Cloth:
   m_GameObject: {fileID: 3444132735835333861}
   m_Enabled: 1
   m_StretchingStiffness: 1
-  m_BendingStiffness: 0.77
+  m_BendingStiffness: 1
   m_UseTethers: 1
   m_UseGravity: 1
-  m_Damping: 0.15
+  m_Damping: 0.51
   m_ExternalAcceleration: {x: 0, y: 0, z: 0}
   m_RandomAcceleration: {x: 0, y: 0, z: 0}
   m_WorldVelocityScale: 0.14
@@ -1198,7 +1198,7 @@ Cloth:
     collisionSphereDistance: 3.4028235e+38
   - maxDistance: 0.52
     collisionSphereDistance: 3.4028235e+38
-  - maxDistance: 0.52
+  - maxDistance: 0.16
     collisionSphereDistance: 3.4028235e+38
   - maxDistance: 0.52
     collisionSphereDistance: 3.4028235e+38
@@ -2570,7 +2570,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7377737314015244868}
   serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 1.9748747, y: 0.43260813, z: 3.8387978}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0

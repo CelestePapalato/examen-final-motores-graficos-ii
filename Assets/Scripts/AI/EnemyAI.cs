@@ -37,7 +37,7 @@ public class EnemyAI : MonoBehaviour
     Health currentTarget;
 
     bool isInBattle = false;
-
+    bool isDead = false;
     bool canAttack = true;
 
     private void Awake()
@@ -100,7 +100,7 @@ public class EnemyAI : MonoBehaviour
 
     private void AttackTarget()
     {
-        if (state != STATE.CHASE || !currentTarget || !canAttack) { return; }
+        if (state != STATE.CHASE || !currentTarget || !canAttack || isDead) { return; }
         float distance = Vector3.Distance(currentTarget.transform.position, character.MovementComponent.transform.position);
         if(distance <= attackDistance)
         {
@@ -149,6 +149,7 @@ public class EnemyAI : MonoBehaviour
 
     private void TargetUpdate()
     {
+        if (isDead) { return; }
         Health[] aliveTargets = enemiesDetected.Where(x => x.CurrentHealth > 0).ToArray();
         if (enemiesDetected.Count == 0 || aliveTargets.Length == 0)
         {
@@ -184,6 +185,7 @@ public class EnemyAI : MonoBehaviour
     
     private void Dead()
     {
+        isDead = true;
         itemSpawner?.DropItem();
         OnEnemyDead?.Invoke(points);
         Destroy(gameObject, 5);

@@ -47,6 +47,8 @@ public class Character : StateMachine
     public AnimationEventHandler AnimationEventHandler { get => animEvent;}
 
     public UnityAction OnDead;
+    public UnityAction OnStunStart;
+    public UnityAction OnStunEnd;
     bool attackInput = false;
     bool evadeInput = false;
 
@@ -134,12 +136,17 @@ public class Character : StateMachine
 
     public override void CambiarEstado(State newState)
     {
+        bool damaged = currentState == stunState;
         currentState?.Salir();
         if (!toBeDestroyed)
         {
             currentState = (newState) ? newState : currentIdleState;
             currentState?.Entrar(this);
             controller = (CharacterState)currentState;
+        }
+        if (damaged)
+        {
+            OnStunEnd?.Invoke();
         }
     }
 
@@ -225,11 +232,13 @@ public class Character : StateMachine
     public virtual void StartPatrol()
     {
         CambiarEstado(patrolState);
+        currentIdleState = patrolState;
     }
 
     public virtual void EndPatrol()
     {
         CambiarEstado(idleState);
+        currentIdleState = idleState;
     }
 
     private void OnDamage(int health, int maxHealth)
@@ -240,6 +249,7 @@ public class Character : StateMachine
             CambiarEstado(stunState);
         }
         animator?.SetTrigger("Damage");
+        OnStunStart?.Invoke();
     }
 
 }

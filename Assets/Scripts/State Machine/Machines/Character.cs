@@ -229,6 +229,22 @@ public class Character : StateMachine
         CambiarEstado(currentIdleState);
     }
 
+    public virtual void Avoid(Transform target)
+    {
+        foreach(IObjectTracker tracker in trackers)
+        {
+            tracker.AvoidTransform(target);
+        }
+    }
+
+    public virtual void StopAvoiding(Transform target)
+    {
+        foreach(IObjectTracker tracker in trackers)
+        {
+            tracker.StopAvoiding(target);
+        }
+    }
+
     public virtual void StartPatrol()
     {
         CambiarEstado(patrolState);

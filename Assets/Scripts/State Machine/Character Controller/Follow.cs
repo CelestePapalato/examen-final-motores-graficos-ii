@@ -69,6 +69,13 @@ public class Follow : CharacterState, IObjectTracker
     {
         float speedFactor = currentCharacter.Agent.velocity.magnitude / maxSpeed;
         currentCharacter.Animator?.SetFloat("Speed", speedFactor);
+
+        Vector3 avoidVector = CalculateAvoidVector();
+        currentCharacter.Agent.velocity = Vector3.Lerp(
+            currentCharacter.Agent.desiredVelocity,
+            avoidVector.normalized * currentCharacter.Agent.speed * speedMultiplier,
+            Mathf.Clamp01(runCompletelyAwayDistance.x - avoidVector.magnitude / runCompletelyAwayDistance.y)
+            );
     }
 
     private Vector3 CalculateAvoidVector()
@@ -96,13 +103,6 @@ public class Follow : CharacterState, IObjectTracker
             return;
         }
         currentCharacter.Agent.SetDestination(Target.position);
-        Vector3 avoidVector = CalculateAvoidVector();
-        Debug.Log(avoidVector);
-        currentCharacter.Agent.velocity = Vector3.Lerp(
-            currentCharacter.Agent.desiredVelocity,
-            avoidVector.normalized * currentCharacter.Agent.speed * speedMultiplier,
-            Mathf.Clamp01(runCompletelyAwayDistance.x - avoidVector.magnitude / runCompletelyAwayDistance.y)
-            );
     }
 
     public void AvoidTransform(Transform t)

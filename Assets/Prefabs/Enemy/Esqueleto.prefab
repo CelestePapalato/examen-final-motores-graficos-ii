@@ -2834,9 +2834,9 @@ MonoBehaviour:
   attackCooldown: 0
   evadeCooldown: 0
   pathUpdateRate: 0.5
-  distance: 6
+  distance: 10
   speedMultiplier: 0.8
-  runCompletelyAwayDistance: {x: 0.5, y: 0.5}
+  runCompletelyAwayDistance: {x: 4, y: 4}
 --- !u!114 &4910257477513172802
 MonoBehaviour:
   m_ObjectHideFlags: 0

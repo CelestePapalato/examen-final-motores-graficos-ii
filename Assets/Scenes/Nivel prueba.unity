@@ -2975,6 +2975,16 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 795193053281405491, guid: 72912cda72e750640958a07b1ed88435,
         type: 3}
+      propertyPath: distance
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 795193053281405491, guid: 72912cda72e750640958a07b1ed88435,
+        type: 3}
+      propertyPath: speedMultiplier
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 795193053281405491, guid: 72912cda72e750640958a07b1ed88435,
+        type: 3}
       propertyPath: destination.Array.data[0]
       value: 
       objectReference: {fileID: 1035135477}
@@ -2983,6 +2993,16 @@ PrefabInstance:
       propertyPath: destination.Array.data[1]
       value: 
       objectReference: {fileID: 484538997}
+    - target: {fileID: 795193053281405491, guid: 72912cda72e750640958a07b1ed88435,
+        type: 3}
+      propertyPath: runCompletelyAwayDistance.x
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 795193053281405491, guid: 72912cda72e750640958a07b1ed88435,
+        type: 3}
+      propertyPath: runCompletelyAwayDistance.y
+      value: 6
+      objectReference: {fileID: 0}
     - target: {fileID: 1180112266111121668, guid: 72912cda72e750640958a07b1ed88435,
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -4554,6 +4574,9 @@ MonoBehaviour:
   restartOnExit: 0
   tolerance: 0
   nextState: {fileID: 0}
+  distance: 0
+  speedMultiplier: 0
+  runCompletelyAwayDistance: {x: 0, y: 0}
 --- !u!1 &8886618083319454338
 GameObject:
   m_ObjectHideFlags: 0

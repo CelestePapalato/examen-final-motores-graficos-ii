@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 
-public class Follow : CharacterState, IObjectTracker
+public class Follow : CharacterState, IObjectTracker, IAvoidObject
 {
     [Header("Path configuration")]
     [SerializeField]
@@ -67,32 +67,40 @@ public class Follow : CharacterState, IObjectTracker
 
     public override void Actualizar()
     {
+        ApplyAvoidanceVector();
+
         float speedFactor = currentCharacter.Agent.velocity.magnitude / maxSpeed;
         currentCharacter.Animator?.SetFloat("Speed", speedFactor);
+    }
 
-        Vector3 avoidVector = CalculateAvoidVector();
+    private bool CalculateAvoidVector(out Vector3 output)
+    {
+        output = Vector3.zero;
+        if (toAvoid.Count == 0) { return false; }
+        Vector3 characterPosition = currentCharacter.MovementComponent.transform.position;
+        Transform[] inRange = toAvoid.Where(x => Vector3.Distance(characterPosition, x.position) <= distance).ToArray();
+        if (inRange.Length == 0) { return false; }
+        for (int i = 0; i < inRange.Length; i++)
+        {
+            Vector3 distance = inRange[i].position - characterPosition;
+            if(distance.magnitude < output.magnitude || i == 0)
+            {
+                output = distance;
+            }
+        }
+        output *= -1;
+        return true;
+    }
+
+    private void ApplyAvoidanceVector()
+    {
+        Vector3 avoidVector;
+        if(!CalculateAvoidVector(out avoidVector)) { return; }
         currentCharacter.Agent.velocity = Vector3.Lerp(
             currentCharacter.Agent.desiredVelocity,
             avoidVector.normalized * currentCharacter.Agent.speed * speedMultiplier,
             Mathf.Clamp01(runCompletelyAwayDistance.x - avoidVector.magnitude / runCompletelyAwayDistance.y)
             );
-    }
-
-    private Vector3 CalculateAvoidVector()
-    {
-        Vector3 avoidVector = Vector3.zero;
-        if(toAvoid.Count == 0) { return avoidVector; }
-        Vector3 characterPosition = currentCharacter.MovementComponent.transform.position;
-        Transform[] inRange = toAvoid.Where(x => Vector3.Distance(characterPosition, x.position) <= distance).ToArray();
-        for (int i = 0; i < inRange.Length; i++)
-        {
-            Vector3 distance = inRange[i].position - characterPosition;
-            if(distance.magnitude < avoidVector.magnitude || i == 0)
-            {
-                avoidVector = distance;
-            }
-        }
-        return -avoidVector;
     }
 
     private void UpdatePath()

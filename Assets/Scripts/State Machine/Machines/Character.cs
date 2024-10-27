@@ -36,6 +36,7 @@ public class Character : StateMachine
     NavMeshAgent agent;
     AnimationEventHandler animEvent;
     IObjectTracker[] trackers;
+    IAvoidObject[] avoiders;
     IAttacker[] attackers;
 
     public Movement MovementComponent { get => movement; }
@@ -70,6 +71,7 @@ public class Character : StateMachine
         agent = GetComponentInChildren<NavMeshAgent>();
 
         trackers = GetComponentsInChildren<IObjectTracker>();
+        avoiders = GetComponentsInChildren<IAvoidObject>();
         attackers = GetComponentsInChildren<IAttacker>();
 
         animEvent = GetComponentInChildren<AnimationEventHandler>();
@@ -231,17 +233,17 @@ public class Character : StateMachine
 
     public virtual void Avoid(Transform target)
     {
-        foreach(IObjectTracker tracker in trackers)
+        foreach(IAvoidObject avoider in avoiders)
         {
-            tracker.AvoidTransform(target);
+            avoider.AvoidTransform(target);
         }
     }
 
     public virtual void StopAvoiding(Transform target)
     {
-        foreach(IObjectTracker tracker in trackers)
+        foreach(IAvoidObject avoider in avoiders)
         {
-            tracker.StopAvoiding(target);
+            avoider.StopAvoiding(target);
         }
     }
 

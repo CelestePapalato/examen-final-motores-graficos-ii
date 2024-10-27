@@ -57,13 +57,4 @@ public class ChasePlayer : State, IObjectTracker
             }
         }
     }
-
-    public void AvoidTransform(Transform t)
-    {
-        Debug.LogWarning("Avoid Transform not implemented");
-    }
-    public void StopAvoiding(Transform t)
-    {
-        Debug.LogWarning("Stop Avoiding not implemented");
-    }
 }

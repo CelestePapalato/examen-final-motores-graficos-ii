@@ -106,6 +106,7 @@ public class EnemyAI : MonoBehaviour
         {
             character.Attack();
             canAttack = false;
+            character.Avoid(currentTarget.transform);
             Invoke(nameof(EnableAttack), attackCooldown);
         }
     }
@@ -113,6 +114,10 @@ public class EnemyAI : MonoBehaviour
     private void EnableAttack()
     {
         canAttack = true;
+        if (currentTarget)
+        {
+            character.StopAvoiding(currentTarget.transform);
+        }
     }
 
     // # ---- Target locator
@@ -138,11 +143,12 @@ public class EnemyAI : MonoBehaviour
 
     private void TargetLost(Transform target)
     {
-        Health character = target.GetComponentInChildren<Health>();
-        if (!enemiesDetected.Contains(character)) { Debug.Log("papas"); return; }
-        enemiesDetected.Remove(character);
-        if (character == currentTarget)
+        Health targetCharacter = target.GetComponentInChildren<Health>();
+        if (!enemiesDetected.Contains(targetCharacter)) { return; }
+        enemiesDetected.Remove(targetCharacter);
+        if (targetCharacter == currentTarget)
         {
+            character.StopAvoiding(currentTarget.transform);
             TargetUpdate();
         }
     }

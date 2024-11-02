@@ -70,7 +70,7 @@ public class Player : MonoBehaviour
 
     private void OnDestroy()
     {
-        HUDManager.Instance.RemovePlayer(chara);
+        HUDManager.Instance?.RemovePlayer(chara);
     }
 
     private bool GetCharacter()

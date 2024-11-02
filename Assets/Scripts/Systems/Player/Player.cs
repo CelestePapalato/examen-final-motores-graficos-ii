@@ -31,9 +31,11 @@ public class Player : MonoBehaviour
     }
 
     public static event Action<Player> OnPlayerDead;
+    public static event Action<Player> OnPlayerDestroyed;
+
     public Transform CharacterTransform { get => (chara) ? chara.MovementComponent.transform : transform; }
 
-    public Character PlayerCharacter { get => chara; }
+    public Character Character { get => chara; }
 
 
     private bool _isDead = false;
@@ -43,7 +45,7 @@ public class Player : MonoBehaviour
 
     private void Start()
     {
-        if(!HUDManager.Instance.AddPlayer(chara))
+        if(!HUDManager.Instance.AddPlayer(this))
         {
             Destroy(gameObject);
             return;
@@ -70,7 +72,7 @@ public class Player : MonoBehaviour
 
     private void OnDestroy()
     {
-        HUDManager.Instance?.RemovePlayer(chara);
+        OnPlayerDestroyed?.Invoke(this);
     }
 
     private bool GetCharacter()

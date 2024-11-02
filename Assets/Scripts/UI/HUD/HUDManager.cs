@@ -24,21 +24,25 @@ public class HUDManager : MonoBehaviour
         }
     }
 
-    public bool AddPlayer(Character chara)
+    public bool AddPlayer(Player player)
     {
+        Character character = player.Character;
+        if(!character) { return false; }
         HUD[] free;
         free = Players.Where(x => x.Character == null).ToArray();
         if(free.Length == 0)
         {
             return false;
         }
-        free[0].Character = chara;
+        free[0].Character = character;
         free[0].gameObject.SetActive(true);
         return true;
     }
 
-    public void RemovePlayer(Character chara){
-        HUD[] aux = Players.Where(x =>x.Character == chara).ToArray();
+    public void RemovePlayer(Player player){
+        Character character = player.Character;
+        if(!character) { return; }
+        HUD[] aux = Players.Where(x =>x.Character == character).ToArray();
         if(aux.Length == 0) { return; }
         HUD active = aux[0];
         active.Character = null;

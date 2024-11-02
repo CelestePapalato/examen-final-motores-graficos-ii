@@ -18,7 +18,6 @@ public class HUD : MonoBehaviour
         {
             healthbar.ObservableVariable = character.Health.GetComponent<IObservableVariable>();
             manabar.ObservableVariable = character.Mana.GetComponent<IObservableVariable>();
-            Debug.Log(character.Mana.gameObject.name);
         }
     }
 }

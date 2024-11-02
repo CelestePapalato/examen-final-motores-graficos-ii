@@ -156,7 +156,7 @@ public class EnemyAI : MonoBehaviour
     private void TargetUpdate()
     {
         if (isDead) { return; }
-        Health[] aliveTargets = enemiesDetected.Where(x => x.CurrentHealth > 0).ToArray();
+        Health[] aliveTargets = enemiesDetected.Where(x => x.Current > 0).ToArray();
         if (enemiesDetected.Count == 0 || aliveTargets.Length == 0)
         {
             currentTarget = null; 

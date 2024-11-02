@@ -13,5 +13,6 @@ MonoBehaviour:
   m_Name: Spin
   m_EditorClassIdentifier: 
   Damage: 3
+  ManaPoints: 5
   AnimationTrigger: Spin
   Projectile: {fileID: 0}

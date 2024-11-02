@@ -18,6 +18,15 @@ public class Attacking : CharacterState, IAttacker
     {
         base.Entrar(personajeActual);
         if (!skillData) {  return; }
+
+        if(currentCharacter.Mana) {
+            if (!currentCharacter.Mana.UseMana(skillData.ManaPoints))
+            {
+                currentCharacter.CambiarEstado(null);
+                return;
+            }
+        }
+
         float y_velocity = currentCharacter.MovementComponent.RigidBody.velocity.y;
         //currentCharacter.MovementComponent.RigidBody.velocity = new Vector3(0f, y_velocity, 0f);
         attackBuffer = false;

@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: Crossbow
   m_EditorClassIdentifier: 
   Damage: 1
+  ManaPoints: 3
   AnimationTrigger: Crossbow
   Projectile: {fileID: 4279673092232802879, guid: a7ffd887016570a43a98722ffb665b98,
     type: 3}

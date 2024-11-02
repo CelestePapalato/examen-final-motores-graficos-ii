@@ -40,17 +40,19 @@ public class Player : MonoBehaviour
     public bool IsDead { get => _isDead; private set => _isDead = value; }
 
     Character chara;
-    Healthbar healthBar;
 
     private void Start()
     {
-        UpdateHealthbar();
+        if(!HUDManager.Instance.AddPlayer(chara))
+        {
+            Destroy(gameObject);
+            return;
+        }
     }
 
     private void OnEnable()
     {
         currentPlayers.Add(this);
-        GetHealthbar();
         if (GetCharacter())
         {
             chara.OnDead += Dead;
@@ -66,32 +68,18 @@ public class Player : MonoBehaviour
         }
     }
 
+    private void OnDestroy()
+    {
+        HUDManager.Instance.RemovePlayer(chara);
+    }
+
     private bool GetCharacter()
     {
         if (!chara)
         {
             chara = GetComponentInChildren<Character>();
         }
-        UpdateHealthbar();
         return chara;
-    }
-
-    private bool GetHealthbar()
-    {
-        if (!healthBar)
-        {
-            healthBar = GetComponentInChildren<Healthbar>();
-        }
-        return healthBar;
-    }
-
-    private void UpdateHealthbar()
-    {
-        Health health = chara.HealthComponent;
-        if (healthBar && health)
-        {
-            healthBar.HealthComponent = health;
-        }
     }
 
     private void Dead()

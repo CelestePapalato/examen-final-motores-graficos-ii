@@ -1,9 +1,10 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 
-public class Health : MonoBehaviour, IDamageable
+public class Health : MonoBehaviour, IDamageable, IObservableVariable
 {
     Dictionary<IDamageDealer, List<float>> DamageDealerMemory = new Dictionary<IDamageDealer, List<float>>();
 
@@ -17,13 +18,15 @@ public class Health : MonoBehaviour, IDamageable
     public UnityAction<int, int> OnDamaged;
     public UnityAction<int, int> OnHealed;
 
+    public event Action<int, int> OnUpdate;
+
     int health;
     bool invincibility = false;
     Collider col;
     Rigidbody rb;
 
-    public int CurrentHealth { get => health; }
-    public int MaxHealth { get => maxHealth; }
+    public int Current { get => health; }
+    public int Max { get => maxHealth; }
 
     private void Awake()
     {
@@ -35,12 +38,14 @@ public class Health : MonoBehaviour, IDamageable
     private void Start()
     {
         OnHealthUpdate?.Invoke(health, maxHealth);
+        OnUpdate?.Invoke(health, maxHealth);
     }
 
     public void Heal(int healPoints)
     {
         health = Mathf.Clamp(health + healPoints, 0, maxHealth);
         OnHealthUpdate?.Invoke(health, maxHealth);
+        OnUpdate?.Invoke(health, maxHealth);
         OnHealed?.Invoke(health, maxHealth);
     }
 
@@ -62,6 +67,7 @@ public class Health : MonoBehaviour, IDamageable
         StartCoroutine(CleanDamageDealerMemory(damageDealer, damageDealer.ID));
         health = Mathf.Clamp(health - damageDealer.DamagePoints, 0, maxHealth);
         OnHealthUpdate?.Invoke(health, maxHealth);
+        OnUpdate?.Invoke(health, maxHealth);
         OnDamaged?.Invoke(health, maxHealth);
 
         if (health <= 0 && OnDead != null)

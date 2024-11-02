@@ -4,6 +4,7 @@ using UnityEngine;
 public class SkillData : ScriptableObject
 {
     public int Damage;
+    public int ManaPoints;
     public string AnimationTrigger;
     public Projectile Projectile;
 

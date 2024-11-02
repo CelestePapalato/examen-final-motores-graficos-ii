@@ -27,6 +27,7 @@ public class Character : StateMachine
     [SerializeField] bool disableHitboxesOnStart = true;
 
     Health health;
+    Mana mana;
     Movement movement;
     CharacterState controller;
     Animator animator;
@@ -41,7 +42,8 @@ public class Character : StateMachine
 
     public Movement MovementComponent { get => movement; }
     public NavMeshAgent Agent { get => agent; }
-    public Health HealthComponent { get => health; }
+    public Health Health { get => health; }
+    public Mana Mana { get => mana; }
     public Animator Animator { get => animator; }
     public Damage[] DamageComponents { get => damage;}
     public ProjectileShooter Shooter { get => shooter; }
@@ -67,6 +69,7 @@ public class Character : StateMachine
     {
         movement = GetComponentInChildren<Movement>();
         health = GetComponentInChildren<Health>();
+        mana = GetComponentInChildren<Mana>();
         animator = GetComponentInChildren<Animator>();
         agent = GetComponentInChildren<NavMeshAgent>();
 

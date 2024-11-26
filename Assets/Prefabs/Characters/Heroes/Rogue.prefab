@@ -2571,7 +2571,7 @@ Transform:
   m_GameObject: {fileID: 7377737314015244868}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 1.9748747, y: 0.43260813, z: 3.8387978}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -2779,6 +2779,9 @@ MonoBehaviour:
   attackCooldown: 0
   evadeCooldown: 0
   pathUpdateRate: 0
+  distance: 0
+  speedMultiplier: 0
+  runCompletelyAwayDistance: {x: 0, y: 0}
 --- !u!1 &7663684460002087541
 GameObject:
   m_ObjectHideFlags: 0
@@ -2950,6 +2953,7 @@ GameObject:
   - component: {fileID: 8257240555259129819}
   - component: {fileID: 531250877085811075}
   - component: {fileID: 7596783349577469301}
+  - component: {fileID: 5678365256774884786}
   m_Layer: 6
   m_Name: Rogue
   m_TagString: Untagged
@@ -3086,6 +3090,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 11e82ff69f186f947bc9403fe039c0f2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &5678365256774884786
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8224856316754125839}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 15f7826d81a5b7540963e272cbc53b68, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxMana: 7
+  manaRecoveryRate: 0.7
 --- !u!1 &8289436571418016197
 GameObject:
   m_ObjectHideFlags: 0

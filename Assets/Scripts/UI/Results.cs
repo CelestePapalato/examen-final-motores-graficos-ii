@@ -10,11 +10,14 @@ public class Results : MonoBehaviour
     [SerializeField] TMP_Text scoreText;
     [Header("Perder")]
     [SerializeField] Canvas lostCanvas;
+    [Header("Others")]
+    [SerializeField] GameObject[] others;
 
     private void Awake()
     {
         winCanvas?.gameObject.SetActive(false);
         lostCanvas?.gameObject.SetActive(false);
+        SetActiveOthers(false);
     }
 
     private void OnEnable()
@@ -40,6 +43,15 @@ public class Results : MonoBehaviour
         else
         {
             lostCanvas?.gameObject.SetActive(true);
+        }
+        SetActiveOthers(true);
+    }
+
+    private void SetActiveOthers(bool active)
+    {
+        foreach(GameObject o in others)
+        {
+            o.SetActive(active);
         }
     }
 }

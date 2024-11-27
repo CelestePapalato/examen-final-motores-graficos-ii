@@ -9,20 +9,19 @@ public class PlayerManager : MonoBehaviour
     public static PlayerManager Instance { get; private set; }
 
     public static event Action<PlayerInput> onPlayerAdded;
+    public UnityEvent OnAtLeastOnePlayerOn;
     public UnityEvent onFirstPlayerJoined;
     public UnityEvent onMultiplayer;
     public UnityEvent onMultiplayerDisabled;
     public UnityEvent onNoPlayersLeft;
 
     public static PlayerInput[] CurrentPlayers { get => players.ToArray(); }
+    public static Dictionary<PlayerInput, Character> CurrentCharacters { get => playerCharacter; }
     public static int[] PlayerIDsWithoutCharacters { get => playerIDsWithNoCharacters.ToArray(); }
 
-    private static List<PlayerInput> players = new List<PlayerInput>();
+    private static List<PlayerInput> players;
     private static Dictionary<PlayerInput, Character> playerCharacter = new Dictionary<PlayerInput, Character>();
     private static List<int> playerIDsWithNoCharacters = new List<int>();
-
-    [SerializeField]
-    private List<Transform> startingPoints;
 
     private PlayerInputManager playerInputManager;
 
@@ -35,7 +34,15 @@ public class PlayerManager : MonoBehaviour
         }
         Instance = this;
         playerInputManager = GetComponent<PlayerInputManager>();
-        players.Clear();
+    }
+
+    private void Start()
+    {
+        if(players == null) { return; }
+        if(players.Count > 0)
+        {
+            OnAtLeastOnePlayerOn?.Invoke();
+        }
     }
 
     private void OnEnable()
@@ -57,6 +64,10 @@ public class PlayerManager : MonoBehaviour
 
     private void AddPlayer(PlayerInput player)
     {
+        if (players == null)
+        {
+            players = new List<PlayerInput>();
+        }
         players.Add(player);
 
         Debug.Log("Jugador " + players.Count + " ha entrado a la partida");
@@ -72,6 +83,7 @@ public class PlayerManager : MonoBehaviour
         }
 
         playerIDsWithNoCharacters.Add(players.Count - 1);
+        DontDestroyOnLoad(player.gameObject);
     }
 
     private void PlayerLeft(PlayerInput player)
@@ -114,6 +126,8 @@ public class PlayerManager : MonoBehaviour
         PlayerInput[] playersJoined = CurrentPlayers;
         for(int i = 1; i < playersJoined.Length; i++) 
         {
+            playerCharacter.Remove(playersJoined[i]);
+            players.Remove(playersJoined[i]);
             Destroy(playersJoined[i].gameObject);
         }
         playerIDsWithNoCharacters.Clear();

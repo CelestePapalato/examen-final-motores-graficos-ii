@@ -9,7 +9,7 @@ public class HUD : MonoBehaviour
     [SerializeField]
     ObserverSliderUI manabar;
 
-    private Character m_Character;
+    private Character m_Character = null;
     public Character Character { get => m_Character; set => InitializeSliders(value); }
 
     private void InitializeSliders(Character character)
@@ -18,6 +18,7 @@ public class HUD : MonoBehaviour
         {
             healthbar.ObservableVariable = character.Health.GetComponent<IObservableVariable>();
             manabar.ObservableVariable = character.Mana.GetComponent<IObservableVariable>();
+            m_Character = character;
         }
     }
 }

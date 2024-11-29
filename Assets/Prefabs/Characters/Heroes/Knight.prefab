@@ -2208,6 +2208,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   inputRelatedToCamera: 1
   camera: {fileID: 0}
+  interactableRange: 4
+  origin: {fileID: 4971216893810648071}
+  interactableLayer:
+    serializedVersion: 2
+    m_Bits: 4096
   OnMoveInput:
     m_PersistentCalls:
       m_Calls:
@@ -2647,6 +2652,9 @@ MonoBehaviour:
   damageMemoryTimeAlive: 2
   enableInvincibilitySystem: 1
   invincibilityTime: 0.8
+  OnNoHealth:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!136 &6997726778545432955
 CapsuleCollider:
   m_ObjectHideFlags: 0

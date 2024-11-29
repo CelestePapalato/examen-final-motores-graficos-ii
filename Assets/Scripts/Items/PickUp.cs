@@ -4,6 +4,10 @@ using UnityEngine;
 
 public class PickUp : MonoBehaviour, IInteractable
 {
+    [SerializeField]
+    protected bool isProlonguedInteraction = false;
+    public bool ProlonguedInteraction { get => isProlonguedInteraction; }
+
     public float DistanceTo(Vector3 point)
     {
         return Vector3.Distance(transform.position, point);

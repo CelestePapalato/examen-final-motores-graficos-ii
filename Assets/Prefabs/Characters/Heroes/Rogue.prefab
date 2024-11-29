@@ -390,6 +390,9 @@ MonoBehaviour:
   damageMemoryTimeAlive: 2
   enableInvincibilitySystem: 1
   invincibilityTime: 0.8
+  OnNoHealth:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!136 &6074310964407254822
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -1414,6 +1417,7 @@ MonoBehaviour:
   spawnPoint: {fileID: 4595543021058113115}
   toInstance: {fileID: 4279673092232802879, guid: a7ffd887016570a43a98722ffb665b98,
     type: 3}
+  currentDamageMultiplier: 0
   Owner: {fileID: 0}
 --- !u!1 &3668267716337296094
 GameObject:
@@ -1949,6 +1953,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   damagePoints: 1
   impulse: 2
+  currentDamagePoints: 0
   Owner: {fileID: 0}
 --- !u!65 &6370573537853845758
 BoxCollider:
@@ -2389,6 +2394,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   damagePoints: 1
   impulse: 3
+  currentDamagePoints: 0
   Owner: {fileID: 0}
 --- !u!65 &6999818417351209068
 BoxCollider:
@@ -2592,6 +2598,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   inputRelatedToCamera: 1
   camera: {fileID: 0}
+  interactableRange: 4
+  origin: {fileID: 47408389500043241}
+  interactableLayer:
+    serializedVersion: 2
+    m_Bits: 4096
   OnMoveInput:
     m_PersistentCalls:
       m_Calls:
@@ -3046,6 +3057,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e4df42713c4b7cd49b87ce96cca0a68b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  currentSpeed: 0
   floorLayer:
     serializedVersion: 2
     m_Bits: 8

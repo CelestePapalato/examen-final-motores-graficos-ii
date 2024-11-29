@@ -115,6 +115,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8737119d8bea7cb4485d41923d4a4d7a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  tolerance: 10
 --- !u!1 &1663263048719297134
 GameObject:
   m_ObjectHideFlags: 0
@@ -299,6 +300,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+  isProlonguedInteraction: 1
   timeToComplete: 5
   slowDownFactor: 0.3
   onWheelValueUpdated:

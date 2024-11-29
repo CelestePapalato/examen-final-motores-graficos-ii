@@ -1,8 +1,3 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
-using System.Linq;
-using System.Runtime.InteropServices.WindowsRuntime;
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.InputSystem;
@@ -12,6 +7,10 @@ public class PlayerController : MonoBehaviour
     [Header("Camera")]
     [SerializeField] protected bool inputRelatedToCamera = true;
     [SerializeField] protected new Camera camera;
+    [Header("Interactables")]
+    [SerializeField] protected float interactableRange = 4f;
+    [SerializeField] protected Transform origin;
+    [SerializeField] protected LayerMask interactableLayer;
 
     public UnityEvent<Vector2> OnMoveInput;
     public UnityEvent OnAttackInput;
@@ -52,7 +51,38 @@ public class PlayerController : MonoBehaviour
     }
 
     private void OnInteract()
-    {   
+    {
         OnInteractInput?.Invoke();
+        /*
+        IInteractable interactable = null;
+        if(TryGetInteractable(out interactable))
+        {
+            interactable.Interact();
+        }
+        */
+    }
+
+    private bool TryGetInteractable(out IInteractable interactable)
+    {
+        Debug.Log(interactableLayer.value);
+        interactable = null;
+        Collider[] interactables = Physics.OverlapSphere(origin.position, interactableRange, interactableLayer.value);
+        if (interactables.Length == 0)
+        {
+            return false;
+        }
+        float distanceNearest = Mathf.Infinity;
+        foreach (Collider collider in interactables)
+        {
+            float distance = Vector3.Distance(collider.gameObject.transform.position, origin.position);
+            if ( distance < distanceNearest)
+            {
+                distanceNearest = distance;
+                IInteractable aux = collider.gameObject.GetComponent<IInteractable>();
+                if(aux != null ) { interactable = aux; }
+            }
+        }
+
+        return interactable != null;
     }
 }

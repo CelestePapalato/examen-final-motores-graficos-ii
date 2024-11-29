@@ -43,13 +43,20 @@ public class Interacting : CharacterState
         {
             personajeActual.CambiarEstado(null);
         }
-        StopPlayerActions();
-        currentCharacter.MovementComponent.UpdateRotationON = false;
-        currentCharacter.MovementComponent.UpdatePositionON = false;
         currentInteractable.Interact();
-        currentPuzzle = currentInteractable.Puzzle; if (currentPuzzle != null)
+        if (currentInteractable.ProlonguedInteraction)
         {
-            currentPuzzle.PuzzleStateUpdated.AddListener(Interact);
+            StopPlayerActions();
+            currentCharacter.MovementComponent.UpdateRotationON = false;
+            currentCharacter.MovementComponent.UpdatePositionON = false;
+            currentPuzzle = currentInteractable.Puzzle; if (currentPuzzle != null)
+            {
+                currentPuzzle.PuzzleStateUpdated.AddListener(Interact);
+            }
+        }
+        else
+        {
+            personajeActual.CambiarEstado(null);
         }
     }
 

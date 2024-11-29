@@ -5,6 +5,8 @@ using UnityEngine.Events;
 
 public interface IInteractable
 {
+    public bool ProlonguedInteraction { get; }
+
     public void Interact();
 
     public void StopInteraction();

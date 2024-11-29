@@ -6,7 +6,11 @@ using UnityEngine.Events;
 namespace PuzzleSystem
 {
     public abstract class PuzzleInteractable : Puzzle, IInteractable
-    {       
+    {
+        [SerializeField]
+        protected bool isProlonguedInteraction = false;
+        public bool ProlonguedInteraction { get => isProlonguedInteraction; }
+
         public abstract void Interact();
 
         public abstract void StopInteraction();

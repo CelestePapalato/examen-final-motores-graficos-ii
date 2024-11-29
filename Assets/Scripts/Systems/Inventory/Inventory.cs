@@ -7,28 +7,28 @@ namespace InventorySystem
 {
     public static class Inventory
     {
-        private static List<Item> _currentItems = new List<Item>();
-        public static Item[] CurrentItems { get { return _currentItems.ToArray(); } }
+        private static List<ItemSO> _currentItems = new List<ItemSO>();
+        public static ItemSO[] CurrentItems { get { return _currentItems.ToArray(); } }
 
-        public static UnityAction<Item[]> InventoryUpdated;
+        public static UnityAction<ItemSO[]> InventoryUpdated;
         private static void _inventoryUpdated()
         {
             if(InventoryUpdated == null)
             {
                 return;
             }
-            Item[] inventoryCopy = new Item[_currentItems.Count];
+            ItemSO[] inventoryCopy = new ItemSO[_currentItems.Count];
             _currentItems.CopyTo(inventoryCopy, 0);
             InventoryUpdated(inventoryCopy);
         }
 
-        public static void AddItem(Item itemToAdd)
+        public static void AddItem(ItemSO itemToAdd)
         {
             _currentItems.Add(itemToAdd);
             _inventoryUpdated();
         }
 
-        public static void RemoveItem(Item itemToRemove)
+        public static void RemoveItem(ItemSO itemToRemove)
         {
             if (!_currentItems.Contains(itemToRemove))
             {
@@ -39,7 +39,7 @@ namespace InventorySystem
             _inventoryUpdated();
         }
 
-        public static bool ContainsItem(Item itemToCheck)
+        public static bool ContainsItem(ItemSO itemToCheck)
         {
             return _currentItems.Contains(itemToCheck);
         }

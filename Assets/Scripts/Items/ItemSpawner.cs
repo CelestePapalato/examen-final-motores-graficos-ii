@@ -1,20 +1,28 @@
-using System.Collections;
+using System;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class ItemSpawner : MonoBehaviour
 {
-    [SerializeField] PowerUpItem[] _itemList;
+    [Serializable]
+    public class ItemSpawnerData
+    {
+        public string name;
+        public GameObject gameObject;
+        public int dropProbability;
+    }
+
+    [SerializeField] ItemSpawnerData[] _itemList;
     [SerializeField] int _noDropProbability;
-    [SerializeField] int[] _dropProbability;
+    [SerializeField] GameObject destroyOnSpawn;
 
     List<int> _probabilities = new List<int>();
 
     private void Awake()
     {
-        for(int i = 0; i < _dropProbability.Length; i++)
+        for(int i = 0; i < _itemList.Length; i++)
         {
-            for(int n = 0; n < _dropProbability[i]; n++)
+            for(int n = 0; n < _itemList[i].dropProbability; n++)
             {
                 _probabilities.Add(i);
             }
@@ -32,7 +40,7 @@ public class ItemSpawner : MonoBehaviour
         for (int i = 0; i < list.Count; i++)
         {
             int aux = list[i];
-            int r = Random.Range(0, list.Count);
+            int r = UnityEngine.Random.Range(0, list.Count);
             int randomSelected = list[r];
             list[i] = randomSelected;
             list[r] = aux;
@@ -43,6 +51,7 @@ public class ItemSpawner : MonoBehaviour
 
     public void DropItem()
     {
+        Debug.Log("xd");
         InstanceItem(CalculateProbability());
     }
 
@@ -52,19 +61,23 @@ public class ItemSpawner : MonoBehaviour
         {
             return -1;
         }
-        int value = Random.Range(0, _probabilities.Count);
+        int value = UnityEngine.Random.Range(0, _probabilities.Count);
         int index = _probabilities[value];
         return index;
     }
 
     private void InstanceItem()
     {
-        Instantiate(_itemList[0], transform.position, Quaternion.identity);
+        Instantiate(_itemList[0].gameObject, transform.position, Quaternion.identity);
     }
 
     private void InstanceItem(int index)
     {
         if(index < 0) { return; }
-        Instantiate(_itemList[index], transform.position, Quaternion.identity);
+        Instantiate(_itemList[index].gameObject, transform.position, Quaternion.identity);
+        if (destroyOnSpawn)
+        {
+            Destroy(destroyOnSpawn);
+        }
     }
 }

@@ -16,7 +16,7 @@ namespace InventorySystem {
             UpdateItemUI(Inventory.CurrentItems);
         }
 
-        private void UpdateItemUI(Item[] items)
+        private void UpdateItemUI(ItemSO[] items)
         {
             while (_itemsUIControllers.Count < items.Length)
             {

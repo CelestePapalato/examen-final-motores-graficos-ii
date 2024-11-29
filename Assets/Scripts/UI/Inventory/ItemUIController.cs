@@ -6,8 +6,8 @@ using UnityEngine.UI;
 namespace InventorySystem {
     public class ItemUIController : MonoBehaviour
     {
-        private Item _itemData;
-        public Item ItemData
+        private ItemSO _itemData;
+        public ItemSO ItemData
         {
             get { return _itemData; }
             set { _itemData = value;

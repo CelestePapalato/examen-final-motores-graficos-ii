@@ -6,7 +6,7 @@ namespace PuzzleSystem
 {
     public class ItemPuzzle : PuzzleInteractable
     {
-        [SerializeField] InventorySystem.Item itemNeeded;
+        [SerializeField] InventorySystem.ItemSO itemNeeded;
         [SerializeField] bool consumeObject = true;
         [SerializeField] 
         [Tooltip("Cuando el puzzle ha sido completado, se activa el objeto para que sea visible")]

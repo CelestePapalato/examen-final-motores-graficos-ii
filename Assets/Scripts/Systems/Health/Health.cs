@@ -20,6 +20,8 @@ public class Health : MonoBehaviour, IDamageable, IObservableVariable, IBuffable
 
     public event Action<int, int> OnUpdate;
 
+    public UnityEvent OnNoHealth;
+
     int health;
     bool invincibility = false;
     Collider col;
@@ -78,10 +80,11 @@ public class Health : MonoBehaviour, IDamageable, IObservableVariable, IBuffable
         OnUpdate?.Invoke(health, maxHealth);
         OnDamaged?.Invoke(health, maxHealth);
 
-        if (health <= 0 && OnDead != null)
+        if (health <= 0)
         {
             col.enabled = false;
-            OnDead();
+            OnDead?.Invoke();
+            OnNoHealth?.Invoke();
             return;
         }
         if (enableInvincibilitySystem)

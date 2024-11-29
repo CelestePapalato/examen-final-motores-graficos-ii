@@ -5,7 +5,7 @@ using UnityEngine;
 namespace InventorySystem
 {
     [CreateAssetMenu(fileName = "Item Data", menuName = "ScriptableObjects/Item Data", order = 1)]
-    public class Item : ScriptableObject
+    public class ItemSO : ScriptableObject
     {
         [SerializeField] int _id;
         [SerializeField] string _name;

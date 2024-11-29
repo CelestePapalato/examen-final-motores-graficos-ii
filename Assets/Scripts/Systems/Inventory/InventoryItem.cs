@@ -3,11 +3,12 @@ using UnityEngine;
 
 namespace InventorySystem
 {
-    public class InventoryItem : MonoBehaviour
+    public class InventoryItem : Item
     {
-        [SerializeField] private Item _itemData;
-        public void Grab()
+        [SerializeField] private ItemSO _itemData;
+        public override void Grab()
         {
+            base.Grab();
             Inventory.AddItem(_itemData);
             Destroy(gameObject);
         }

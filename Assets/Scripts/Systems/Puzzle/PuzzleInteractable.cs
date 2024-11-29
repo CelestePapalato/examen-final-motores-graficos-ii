@@ -19,10 +19,12 @@ namespace PuzzleSystem
         public virtual void StopInteraction()
         {
             if (!_completed) { OnInteractionHalted?.Invoke(); }
+            if (_completed) { OnInteractionEnd?.Invoke(); }
         }
 
         public UnityEvent OnInteraction;
         public UnityEvent OnInteractionHalted;
+        public UnityEvent OnInteractionEnd;
 
         public Puzzle Puzzle { get; protected set; }
 

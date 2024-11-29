@@ -40,7 +40,7 @@ public class ProjectileShooter : MonoBehaviour, IBuffable
     public void DamagePowerUp(float multiplier, float time)
     {
         multiplier = Mathf.Max(multiplier, 1f);
-        if (multiplier == 1)
+        if (multiplier <= 1)
         {
             return;
         }

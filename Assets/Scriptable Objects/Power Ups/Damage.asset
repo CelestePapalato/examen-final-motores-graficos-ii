@@ -9,11 +9,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 473d806b48c949d4e8f5c871b44ad45e, type: 3}
+  m_Script: {fileID: 11500000, guid: 14201fad2bcee4c4495298621b04d6d3, type: 3}
   m_Name: Damage
   m_EditorClassIdentifier: 
   _buffTime: 5
-  _healPoints: 1
-  _fireRateMultiplier: 2.5
-  _damageMultiplier: 2
+  _healPoints: 0
+  _fireRateMultiplier: 0
+  _damageMultiplier: 1.7
   _speedMultiplier: 0

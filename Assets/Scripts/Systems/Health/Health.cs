@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 
-public class Health : MonoBehaviour, IDamageable, IObservableVariable
+public class Health : MonoBehaviour, IDamageable, IObservableVariable, IBuffable
 {
     Dictionary<IDamageDealer, List<float>> DamageDealerMemory = new Dictionary<IDamageDealer, List<float>>();
 
@@ -39,6 +39,14 @@ public class Health : MonoBehaviour, IDamageable, IObservableVariable
     {
         OnHealthUpdate?.Invoke(health, maxHealth);
         OnUpdate?.Invoke(health, maxHealth);
+    }
+
+    public void Accept(IBuff buff)
+    {
+        if (buff != null)
+        {
+            buff.Buff(this);
+        }
     }
 
     public void Heal(int healPoints)

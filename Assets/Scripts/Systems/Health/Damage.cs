@@ -7,6 +7,8 @@ public class Damage : MonoBehaviour, IDamageDealer, IBuffable
 {
     [SerializeField] int damagePoints;
     [SerializeField] float impulse;
+    [Header("Debug")]
+    [SerializeField] int currentDamagePoints;
 
     public UnityAction DamageDealed;
 
@@ -44,6 +46,8 @@ public class Damage : MonoBehaviour, IDamageDealer, IBuffable
     private void Awake()
     {
         col = GetComponent<Collider>();
+
+        currentDamagePoints = damagePoints;
     }
 
     private void FixedUpdate()
@@ -96,6 +100,10 @@ public class Damage : MonoBehaviour, IDamageDealer, IBuffable
             return;
         }
         damageMultiplier = multiplier;
+        float desiredDamage = damageMultiplier * damagePoints;
+        float desiredDamagePoints = Mathf.Ceil(desiredDamage);
+        damageMultiplier = desiredDamagePoints / damagePoints;
+        currentDamagePoints = (int) (damageMultiplier * damagePoints);
         CancelInvoke(nameof(DamagePowerUpDisabler));
         Invoke(nameof(DamagePowerUpDisabler), time);
     }
@@ -103,6 +111,7 @@ public class Damage : MonoBehaviour, IDamageDealer, IBuffable
     private void DamagePowerUpDisabler()
     {
         damageMultiplier = 1;
+        currentDamagePoints = damagePoints;
     }
 
 }

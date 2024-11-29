@@ -645,6 +645,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   damagePoints: 1
   impulse: 3
+  currentDamagePoints: 0
   Owner: {fileID: 0}
 --- !u!65 &3891713746533481897
 BoxCollider:
@@ -1336,6 +1337,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   damagePoints: 1
   impulse: 3
+  currentDamagePoints: 0
   Owner: {fileID: 0}
 --- !u!65 &2006401794914857298
 BoxCollider:
@@ -2912,6 +2914,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e4df42713c4b7cd49b87ce96cca0a68b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  currentSpeed: 0
   floorLayer:
     serializedVersion: 2
     m_Bits: 8

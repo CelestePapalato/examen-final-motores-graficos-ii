@@ -6,6 +6,8 @@ using UnityEngine.InputSystem;
 
 public class Movement : MonoBehaviour, IBuffable, IHittable
 {
+    [Header("Debug")]
+    [SerializeField] float currentSpeed;
     [Header("Floor")]
     [Tooltip("Inclinación máxima del terreno para considerar que el objeto está en el suelo")]
     [Range(0f, 90f)] float maxSlope = 45f;
@@ -123,6 +125,9 @@ public class Movement : MonoBehaviour, IBuffable, IHittable
         currentMaxSpeed = 0;
         rb = GetComponent<Rigidbody>();
         og_drag = drag;
+
+
+        currentMaxSpeed = maxSpeed;
     }
 
     private void FixedUpdate()
@@ -254,6 +259,7 @@ public class Movement : MonoBehaviour, IBuffable, IHittable
             return;
         }
         SpeedMultiplier = multiplier;
+        currentMaxSpeed = maxSpeed * SpeedMultiplier;
         CancelInvoke(nameof(SpeedPowerUpDisabler));
         Invoke(nameof(SpeedPowerUpDisabler), time);
     }
@@ -261,6 +267,7 @@ public class Movement : MonoBehaviour, IBuffable, IHittable
     private void SpeedPowerUpDisabler()
     {
         SpeedMultiplier = 1;
+        currentMaxSpeed = maxSpeed;
     }
 
     public void Hit(IDamageDealer damageDealer)

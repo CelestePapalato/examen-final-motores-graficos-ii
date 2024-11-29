@@ -32,5 +32,10 @@ public class PowerUp : ScriptableObject, IBuff
         {
             damageComponent.DamagePowerUp(_damageMultiplier, _buffTime);
         }
+        ProjectileShooter shooter = o as ProjectileShooter;
+        if(shooter)
+        {
+            shooter.DamagePowerUp(_damageMultiplier, _buffTime);
+        }
     }
 }

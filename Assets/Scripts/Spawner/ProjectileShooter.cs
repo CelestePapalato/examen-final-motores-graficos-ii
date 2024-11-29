@@ -8,6 +8,9 @@ public class ProjectileShooter : MonoBehaviour, IBuffable
     Transform spawnPoint;
     [SerializeField]
     Projectile toInstance;
+    [Header("Debug")]
+    [SerializeField]
+    float currentDamageMultiplier;
 
     public Character Owner;
 
@@ -24,6 +27,8 @@ public class ProjectileShooter : MonoBehaviour, IBuffable
             damage.DamageMultiplier = damageMultiplier;
             damage.Owner = Owner;
         }
+
+        currentDamageMultiplier = damageMultiplier;
     }
 
     public void Accept(IBuff buff)
@@ -40,6 +45,7 @@ public class ProjectileShooter : MonoBehaviour, IBuffable
             return;
         }
         damageMultiplier = multiplier;
+        currentDamageMultiplier = damageMultiplier;
         CancelInvoke(nameof(DamagePowerUpDisabler));
         Invoke(nameof(DamagePowerUpDisabler), time);
     }
@@ -47,5 +53,6 @@ public class ProjectileShooter : MonoBehaviour, IBuffable
     private void DamagePowerUpDisabler()
     {
         damageMultiplier = 1;
+        currentDamageMultiplier = damageMultiplier;
     }
 }

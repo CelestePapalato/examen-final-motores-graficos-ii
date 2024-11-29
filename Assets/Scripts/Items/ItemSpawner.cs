@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class ItemSpawner : MonoBehaviour
 {
-    [SerializeField] Item[] _itemList;
+    [SerializeField] PowerUpItem[] _itemList;
     [SerializeField] int _noDropProbability;
     [SerializeField] int[] _dropProbability;
 

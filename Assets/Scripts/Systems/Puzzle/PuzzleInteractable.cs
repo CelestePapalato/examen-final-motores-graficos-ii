@@ -11,9 +11,18 @@ namespace PuzzleSystem
         protected bool isProlonguedInteraction = false;
         public bool ProlonguedInteraction { get => isProlonguedInteraction; }
 
-        public abstract void Interact();
+        public virtual void Interact()
+        {
+            OnInteraction?.Invoke();
+        }
 
-        public abstract void StopInteraction();
+        public virtual void StopInteraction()
+        {
+            if (!_completed) { OnInteractionHalted?.Invoke(); }
+        }
+
+        public UnityEvent OnInteraction;
+        public UnityEvent OnInteractionHalted;
 
         public Puzzle Puzzle { get; protected set; }
 

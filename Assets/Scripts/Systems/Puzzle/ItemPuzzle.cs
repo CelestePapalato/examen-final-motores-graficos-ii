@@ -23,6 +23,7 @@ namespace PuzzleSystem
 
         public override void Interact()
         {
+            base.Interact();
             if (!InventorySystem.Inventory.ContainsItem(itemNeeded) || Completed)
             {
                 return;
@@ -41,7 +42,5 @@ namespace PuzzleSystem
                 Destroy(toDestroyWhenFinished);
             }
         }
-
-        public override void StopInteraction() { }
     }
 }

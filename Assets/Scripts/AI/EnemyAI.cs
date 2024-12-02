@@ -134,6 +134,7 @@ public class EnemyAI : MonoBehaviour
 
     private void TargetFound(Transform target)
     {
+       enemiesDetected.RemoveAll(x => !x);
        enemiesDetected.Add(target.GetComponentInChildren<Health>());
         if (!currentTarget)
         {
@@ -143,6 +144,7 @@ public class EnemyAI : MonoBehaviour
 
     private void TargetLost(Transform target)
     {
+        enemiesDetected.RemoveAll(x => !x);
         Health targetCharacter = target.GetComponentInChildren<Health>();
         if (!enemiesDetected.Contains(targetCharacter)) { return; }
         enemiesDetected.Remove(targetCharacter);
@@ -186,6 +188,7 @@ public class EnemyAI : MonoBehaviour
         {
             currentTarget.OnDead -= PlayerKilled;
         }
+        character.StopAvoiding(currentTarget.transform);
         TargetUpdate();
     }
     

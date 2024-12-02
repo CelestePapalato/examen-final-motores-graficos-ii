@@ -945,6 +945,9 @@ MonoBehaviour:
   damageMemoryTimeAlive: 0
   enableInvincibilitySystem: 0
   invincibilityTime: 0
+  OnNoHealth:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!136 &2767607265089169047
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -1237,6 +1240,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e4df42713c4b7cd49b87ce96cca0a68b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  currentSpeed: 0
   floorLayer:
     serializedVersion: 2
     m_Bits: 8
@@ -2686,6 +2690,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   damagePoints: 1
   impulse: 10
+  currentDamagePoints: 0
   Owner: {fileID: 0}
 --- !u!1 &8032062799142484827
 GameObject:
@@ -2789,7 +2794,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   firstState: {fileID: 0}
   currentState: {fileID: 0}
-  NormalAttackData: {fileID: 11400000, guid: 5d2c1067a6f2abf4ebae4194760fc69b, type: 2}
+  NormalAttackData: {fileID: 11400000, guid: 002e74cce1baf66418cf9517400e580c, type: 2}
   SpecialAttackData: {fileID: 0}
   idleState: {fileID: 6419777909725961314}
   attackState: {fileID: 4910257477513172802}
@@ -2879,6 +2884,9 @@ MonoBehaviour:
   restartOnExit: 0
   tolerance: 2
   nextState: {fileID: 6419777909725961314}
+  distance: 0
+  speedMultiplier: 0
+  runCompletelyAwayDistance: {x: 0, y: 0}
 --- !u!114 &981353093700320070
 MonoBehaviour:
   m_ObjectHideFlags: 0

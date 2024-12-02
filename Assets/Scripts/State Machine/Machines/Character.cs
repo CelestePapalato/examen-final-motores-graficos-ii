@@ -148,11 +148,14 @@ public class Character : StateMachine
             currentState = (newState) ? newState : currentIdleState;
             currentState?.Entrar(this);
             controller = (CharacterState)currentState;
+            if (damaged)
+            {
+                OnStunEnd?.Invoke();
+            }
+            return;
         }
-        if (damaged)
-        {
-            OnStunEnd?.Invoke();
-        }
+        currentState = null;
+        idleState = null;
     }
 
     protected virtual void Dead()

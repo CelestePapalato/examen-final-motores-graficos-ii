@@ -43,28 +43,28 @@ public class Player : MonoBehaviour
 
     Character chara;
 
-    private void Start()
+    private void RestartCharacter()
     {
-        if(!HUDManager.Instance.AddPlayer(this))
+        if (GetCharacter())
         {
-            Destroy(gameObject);
-            return;
+            chara.OnDead += Dead;
+        }
+        if(chara.Health.Current > 0)
+        {
+            IsDead = false;
         }
     }
 
     private void OnEnable()
     {
         currentPlayers.Add(this);
-        if (GetCharacter())
-        {
-            chara.OnDead += Dead;
-        }
+        RestartCharacter();
     }
 
     private void OnDisable()
     {
         currentPlayers.Remove(this);
-        if (GetCharacter())
+        if (chara)
         {
             chara.OnDead -= Dead;
         }
@@ -80,8 +80,22 @@ public class Player : MonoBehaviour
         if (!chara)
         {
             chara = GetComponentInChildren<Character>();
+            HUDManager.AddPlayer(this);
         }
         return chara;
+    }
+
+    public void ChangeCharacter(Character character)
+    {
+        if (character)
+        {
+            chara = character;
+            HUDManager.AddPlayer(this);
+        }
+        if (chara.Health.Current > 0)
+        {
+            IsDead = false;
+        }
     }
 
     private void Dead()

@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.Events;
 
@@ -9,7 +10,7 @@ public class Health : MonoBehaviour, IDamageable, IObservableVariable, IBuffable
     Dictionary<IDamageDealer, List<float>> DamageDealerMemory = new Dictionary<IDamageDealer, List<float>>();
 
     [SerializeField] int maxHealth;
-    [SerializeField] 
+    [SerializeField]
     [Tooltip("Realtime")] float damageMemoryTimeAlive = 2f;
     [SerializeField] bool enableInvincibilitySystem = false;
     [SerializeField] float invincibilityTime = .8f;
@@ -19,6 +20,7 @@ public class Health : MonoBehaviour, IDamageable, IObservableVariable, IBuffable
     public UnityAction<int, int> OnHealed;
 
     public event Action<int, int> OnUpdate;
+    public event Action OnDestroyEvent;
 
     public UnityEvent OnNoHealth;
 
@@ -43,6 +45,11 @@ public class Health : MonoBehaviour, IDamageable, IObservableVariable, IBuffable
         OnUpdate?.Invoke(health, maxHealth);
     }
 
+    private void OnDestroy()
+    {
+        StopAllCoroutines();
+        OnDestroyEvent?.Invoke();
+    }
     public void Accept(IBuff buff)
     {
         if (buff != null)
@@ -131,10 +138,5 @@ public class Health : MonoBehaviour, IDamageable, IObservableVariable, IBuffable
         StopCoroutine(invincibilityEnabler());
         invincibility = value;
         col.enabled = !value;
-    }
-
-    private void OnDestroy()
-    {
-        StopAllCoroutines();
     }
 }

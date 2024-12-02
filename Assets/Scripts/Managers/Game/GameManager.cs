@@ -59,15 +59,14 @@ public class GameManager : MonoBehaviour
         {
             return;
         }
+        if (Checkpoint.TryRespawning())
+        {
+            return;
+        }
         Time.timeScale = 0;
         OnGameOver?.Invoke(false);
         //SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
         // Cambiar lógica para cuando termine la pantalla de resultados
-    }
-
-    public void ReloadLevel()
-    {
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
 
     public void LevelCompleted()

@@ -37,4 +37,9 @@ public class LevelManager : MonoBehaviour
         OnSceneLoad?.Invoke();
         SceneManager.LoadScene(level.scene.name);
     }
+    public void ReloadLevel()
+    {
+        OnSceneLoad?.Invoke();
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+    }
 }

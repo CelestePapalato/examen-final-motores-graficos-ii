@@ -16,6 +16,7 @@ public class Mana : MonoBehaviour, IObservableVariable
     public UnityAction<int, int> OnManaUpdate;
 
     public event Action<int, int> OnUpdate;
+    public event Action OnDestroyEvent;
     public int Current { get => currentMana; }
     public int Max { get => maxMana; }
 
@@ -24,6 +25,12 @@ public class Mana : MonoBehaviour, IObservableVariable
     void Start()
     {
         currentMana = maxMana;
+        OnUpdate?.Invoke(currentMana, maxMana);
+    }
+
+    private void OnDestroy()
+    {
+        OnDestroyEvent?.Invoke();
     }
 
     public bool UseMana(int points)

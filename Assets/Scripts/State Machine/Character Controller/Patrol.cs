@@ -109,6 +109,7 @@ public class Patrol : CharacterState, IAvoidObject
         output = Vector3.zero;
         if (toAvoid.Count == 0) { return false; }
         Vector3 characterPosition = currentCharacter.MovementComponent.transform.position;
+        toAvoid.RemoveAll(x => !x);
         Transform[] inRange = toAvoid.Where(x => Vector3.Distance(characterPosition, x.position) <= distance).ToArray();
         if (inRange.Length == 0) { return false; }
         for (int i = 0; i < inRange.Length; i++)

@@ -12,22 +12,30 @@ public class ObserverSliderUI : MonoBehaviour
             if (variable != null)
             {
                 variable.OnUpdate -= UpdateSlider;
+                variable.OnDestroyEvent -= OnVariableDestroy;
+            }
+            if (onDestroy)
+            {
+                variable = null;
+                return;
             }
             variable = value;
             if(variable != null)
             {
                 variable.OnUpdate += UpdateSlider;
+                variable.OnDestroyEvent += OnVariableDestroy;
             }
-            else
+            if (slider)
             {
-                variable.OnUpdate -= UpdateSlider;
+                slider.gameObject.SetActive(variable != null);
             }
-            slider?.gameObject.SetActive(variable != null);
             UpdateSlider(variable.Current, variable.Max);
         }
     }
 
     private Slider slider;
+
+    bool onDestroy = false;
 
     private void Awake()
     {
@@ -40,6 +48,7 @@ public class ObserverSliderUI : MonoBehaviour
         if (variable != null)
         {
             variable.OnUpdate += UpdateSlider;
+            variable.OnDestroyEvent += OnVariableDestroy;
         }
     }
 
@@ -48,12 +57,28 @@ public class ObserverSliderUI : MonoBehaviour
         if (variable != null)
         {
             variable.OnUpdate -= UpdateSlider;
+            variable.OnDestroyEvent -= OnVariableDestroy;
         }
+    }
+
+    private void OnDestroy()
+    {
+        onDestroy = true;
     }
 
     public void UpdateSlider(int value, int maxValue)
     {
-        float slider_value = (float) value / maxValue;
-        slider.value = slider_value;
+        if (slider)
+        {
+            float slider_value = (float)value / maxValue;
+            slider.value = slider_value;
+        }
+    }
+
+    private void OnVariableDestroy()
+    {
+        variable.OnUpdate -= UpdateSlider;
+        variable.OnDestroyEvent -= OnVariableDestroy;
+        variable = null;
     }
 }

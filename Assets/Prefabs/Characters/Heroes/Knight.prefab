@@ -2287,6 +2287,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   firstState: {fileID: 0}
   currentState: {fileID: 0}
+  hitCountResistance: 2
+  hitTimePeriod: 1
   NormalAttackData: {fileID: 11400000, guid: 5d2c1067a6f2abf4ebae4194760fc69b, type: 2}
   SpecialAttackData: {fileID: 11400000, guid: d4878fc9426c24b42a7e8a54dd373859, type: 2}
   idleState: {fileID: 3964458401082807578}

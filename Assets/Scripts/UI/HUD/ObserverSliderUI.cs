@@ -78,6 +78,8 @@ public class ObserverSliderUI : MonoBehaviour
     private void OnVariableDestroy()
     {
         Debug.Log(variable != null); // esto está aquí porque por alguna razón evita que variable sea null al entrar al método
+                                     // Ahora ya no funciona.
+                                     // ¿Qué sucede, Cele? Tengo miedo
         variable.OnUpdate -= UpdateSlider;
         variable.OnDestroyEvent -= OnVariableDestroy;
         variable = null;

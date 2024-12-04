@@ -7,6 +7,10 @@ using UnityEngine.InputSystem;
 
 public class Character : StateMachine
 {
+    [Header("Damage Resistance")]
+    [SerializeField] int hitCountResistance = 1;
+    [SerializeField] float hitTimePeriod = 1f;
+
     [Header("Skills")]
     [SerializeField] SkillData NormalAttackData;
     [SerializeField] SkillData SpecialAttackData;
@@ -64,6 +68,9 @@ public class Character : StateMachine
     CharacterState currentIdleState;
 
     private bool toBeDestroyed = false;
+
+    int currentHitCount = 0;
+    bool hitMemoryCoroutineON = false;
 
     protected override void Awake()
     {
@@ -267,6 +274,15 @@ public class Character : StateMachine
 
     private void OnDamage(int health, int maxHealth)
     {
+        currentHitCount++;
+        if (!hitMemoryCoroutineON)
+        {
+            StartCoroutine(HitCountMemory());
+        }
+    }
+
+    private void EnterDamageState()
+    {
         currentState?.DañoRecibido();
         if (stunState)
         {
@@ -276,4 +292,19 @@ public class Character : StateMachine
         OnStunStart?.Invoke();
     }
 
+    IEnumerator HitCountMemory()
+    {
+        float t = 0;
+        while(t <= hitTimePeriod)
+        {
+            yield return null;
+            t += Time.deltaTime;
+            if(currentHitCount >= hitCountResistance)
+            {
+                EnterDamageState();
+                break;
+            }
+        }
+        currentHitCount = 0;
+    }
 }

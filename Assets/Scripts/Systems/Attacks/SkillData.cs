@@ -17,6 +17,5 @@ public class SkillData : ScriptableObject
         }
         ProjectileShooter shooter = character.Shooter;
         if (shooter) { shooter.Projectile = Projectile; }
-        character?.MovementComponent?.Impulse(OnStartImpulse);
     }
 }

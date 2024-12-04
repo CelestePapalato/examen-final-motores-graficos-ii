@@ -36,7 +36,7 @@ public class Attacking : CharacterState, IAttacker
         
         if (currentCharacter.AnimationEventHandler)
         {
-            currentCharacter.AnimationEventHandler.onAnimationStart += CleanBuffer;
+            currentCharacter.AnimationEventHandler.onAnimationStart += InitializeSettings;
             currentCharacter.AnimationEventHandler.onAnimationComplete += AttackFinished;
             currentCharacter.AnimationEventHandler.onAnimationCancelable += CanCombo;
             currentCharacter.AnimationEventHandler.onShoot += Shoot;
@@ -48,7 +48,7 @@ public class Attacking : CharacterState, IAttacker
         ResumePlayerMovement();
         if (currentCharacter.AnimationEventHandler)
         {
-            currentCharacter.AnimationEventHandler.onAnimationStart -= CleanBuffer;
+            currentCharacter.AnimationEventHandler.onAnimationStart -= InitializeSettings;
             currentCharacter.AnimationEventHandler.onAnimationComplete -= AttackFinished;
             currentCharacter.AnimationEventHandler.onAnimationCancelable -= CanCombo;
             currentCharacter.AnimationEventHandler.onShoot -= Shoot;
@@ -60,7 +60,7 @@ public class Attacking : CharacterState, IAttacker
     {
         if (isActive && currentCharacter.AnimationEventHandler)
         {
-            currentCharacter.AnimationEventHandler.onAnimationStart += CleanBuffer;
+            currentCharacter.AnimationEventHandler.onAnimationStart += InitializeSettings;
             currentCharacter.AnimationEventHandler.onAnimationComplete += AttackFinished;
             currentCharacter.AnimationEventHandler.onAnimationCancelable += CanCombo;
             currentCharacter.AnimationEventHandler.onShoot += Shoot;
@@ -71,19 +71,20 @@ public class Attacking : CharacterState, IAttacker
     {
         if (isActive && currentCharacter.AnimationEventHandler)
         {
-            currentCharacter.AnimationEventHandler.onAnimationStart -= CleanBuffer;
+            currentCharacter.AnimationEventHandler.onAnimationStart -= InitializeSettings;
             currentCharacter.AnimationEventHandler.onAnimationComplete -= AttackFinished;
             currentCharacter.AnimationEventHandler.onAnimationCancelable -= CanCombo;
             currentCharacter.AnimationEventHandler.onShoot -= Shoot;
         }
     }
 
-    private void CleanBuffer(CharacterAnimatorState state)
+    private void InitializeSettings(CharacterAnimatorState state)
     {
         if (state == CharacterAnimatorState.SKILL)
         {
             attackBuffer = false;
             canAttack = false;
+            currentCharacter.MovementComponent.Impulse(skillData.OnStartImpulse);
         }
     }
 

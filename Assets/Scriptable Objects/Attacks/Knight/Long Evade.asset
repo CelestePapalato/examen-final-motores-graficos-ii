@@ -15,5 +15,5 @@ MonoBehaviour:
   Damage: 0
   ManaPoints: 1
   OnStartImpulse: 15
-  AnimationTrigger: 
+  AnimationTrigger: Evade
   Projectile: {fileID: 0}

@@ -41797,6 +41797,13 @@ AnimationClip:
     floatParameter: 0
     intParameter: 1
     messageOptions: 0
+  - time: 0.3
+    functionName: Impulse
+    data: 
+    objectReferenceParameter: {fileID: 0}
+    floatParameter: 1
+    intParameter: 0
+    messageOptions: 0
   - time: 1.2333333
     functionName: AnimationCompleteHandler
     data: 

@@ -282,6 +282,13 @@ public class Movement : MonoBehaviour, IBuffable, IHittable
         AddImpulse(damageDealer.Impulse * direction);
         */
     }
+
+    public void Impulse(float impulse)
+    {
+        Vector3 direction = transform.forward;
+        rb.AddForce(direction * impulse, ForceMode.Impulse);
+    }
+
     private void OnCollisionEnter(Collision collision)
     {
         if(collision.gameObject.layer != floorLayer) { return; }

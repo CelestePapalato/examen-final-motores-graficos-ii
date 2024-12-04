@@ -69,6 +69,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d20207936125b264f9c4e5326661d01d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  PuzzleStateUpdated:
+    m_PersistentCalls:
+      m_Calls: []
+  isProlonguedInteraction: 0
+  OnInteraction:
+    m_PersistentCalls:
+      m_Calls: []
+  OnInteractionHalted:
+    m_PersistentCalls:
+      m_Calls: []
+  OnInteractionEnd:
+    m_PersistentCalls:
+      m_Calls: []
   itemNeeded: {fileID: 11400000, guid: b9c6ce989effe1548b01d0241d9cb1ae, type: 2}
   consumeObject: 1
   finishedState: {fileID: 8524539674353674993}
@@ -84,7 +97,7 @@ GameObject:
   - component: {fileID: 172404022190840430}
   - component: {fileID: 6744855164132891953}
   - component: {fileID: 1287787124693962798}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: Caja de ayuda trigger
   m_TagString: Untagged
   m_Icon: {fileID: 0}

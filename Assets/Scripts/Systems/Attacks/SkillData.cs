@@ -5,6 +5,7 @@ public class SkillData : ScriptableObject
 {
     public int Damage;
     public int ManaPoints;
+    public float OnStartImpulse;
     public string AnimationTrigger;
     public Projectile Projectile;
 
@@ -16,5 +17,6 @@ public class SkillData : ScriptableObject
         }
         ProjectileShooter shooter = character.Shooter;
         if (shooter) { shooter.Projectile = Projectile; }
+        character?.MovementComponent?.Impulse(OnStartImpulse);
     }
 }

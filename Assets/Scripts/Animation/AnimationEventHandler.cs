@@ -4,7 +4,7 @@ using UnityEngine;
 public enum CharacterAnimatorState
 {
     IDLE,
-    ATTACK,
+    SKILL,
     STUN,
     INTERACTION,
     DEAD

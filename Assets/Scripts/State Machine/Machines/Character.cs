@@ -14,11 +14,12 @@ public class Character : StateMachine
     [Header("Skills")]
     [SerializeField] SkillData NormalAttackData;
     [SerializeField] SkillData SpecialAttackData;
+    [SerializeField] SkillData EvadeData;
     public Transform SkillSpawnPoint {  get; private set; }
 
     [Header("States")]
     [SerializeField] CharacterState idleState;
-    [SerializeField] CharacterState attackState;
+    [SerializeField] CharacterState skillState;
     [SerializeField] CharacterState patrolState;
     [SerializeField] CharacterState stunState;
     [SerializeField] CharacterState interactionState;
@@ -57,7 +58,6 @@ public class Character : StateMachine
     public UnityAction OnStunStart;
     public UnityAction OnStunEnd;
     bool attackInput = false;
-    bool evadeInput = false;
 
     private bool _isDead = false;
 
@@ -179,10 +179,15 @@ public class Character : StateMachine
 
     public virtual void Attack()
     {
-        Attack(NormalAttackData);
+        Skill(NormalAttackData);
     }
 
-    protected virtual void Attack(SkillData skillData)
+    public virtual void Evade()
+    {
+        Skill(EvadeData);
+    }
+
+    protected virtual void Skill(SkillData skillData)
     {
         attackInput = !attackInput;
         if (!skillData) { return; }
@@ -190,29 +195,21 @@ public class Character : StateMachine
         {
             controller?.Attack();
         }
-        if (currentState == currentIdleState && attackState)
+        if (currentState == currentIdleState && skillState)
         {
             foreach (IAttacker attacker in attackers)
             {
                 attacker.Setup(skillData);
             }
-            CambiarEstado(attackState);
+            CambiarEstado(skillState);
         }
     }
 
     public virtual void SpecialAttack()
     {
-        Attack(SpecialAttackData);
+        Skill(SpecialAttackData);
     }
 
-    public virtual void Evade()
-    {
-        evadeInput = !evadeInput;
-        if (evadeInput)
-        {
-            controller?.Evade();
-        }
-    }
     public virtual void Interact()
     {
         if (controller != interactionState)

@@ -10,9 +10,10 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 8d6d21c04ce4b744288889d7d96a9e50, type: 3}
-  m_Name: Normal Attack
+  m_Name: Long Evade
   m_EditorClassIdentifier: 
-  Damage: 1
-  ManaPoints: 0
-  AnimationTrigger: Attack
+  Damage: 0
+  ManaPoints: 1
+  OnStartImpulse: 15
+  AnimationTrigger: 
   Projectile: {fileID: 0}

@@ -16,6 +16,7 @@ public class PlayerController : MonoBehaviour
     public UnityEvent OnAttackInput;
     public UnityEvent OnSpecialAttackInput;
     public UnityEvent OnInteractInput;
+    public UnityEvent OnEvadeInput;
 
     private void Start()
     {
@@ -47,7 +48,7 @@ public class PlayerController : MonoBehaviour
 
     private void OnEvade()
     {
-        //chara?.Evade();
+        OnEvadeInput?.Invoke();
     }
 
     private void OnInteract()

@@ -94,7 +94,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 8379888803390064343}
-  m_LocalEulerAnglesHint: {x: 89.98021, y: 0.0000061968135, z: 0}
+  m_LocalEulerAnglesHint: {x: 89.98021, y: 0.0000061968112, z: 0}
 --- !u!1 &73656426592765741
 GameObject:
   m_ObjectHideFlags: 0
@@ -879,7 +879,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 8379888803390064343}
-  m_LocalEulerAnglesHint: {x: 89.98021, y: 0.000037160033, z: 0}
+  m_LocalEulerAnglesHint: {x: 89.98021, y: 0.000037160025, z: 0}
 --- !u!1 &2164592134428221830
 GameObject:
   m_ObjectHideFlags: 0
@@ -1105,7 +1105,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 8405754167557862791}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0.0000025044776, y: -0.0000004268868, z: 3.3923123e-15}
 --- !u!33 &1981050863858135429
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -1512,7 +1512,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 8405754167557862791}
-  m_LocalEulerAnglesHint: {x: -0.000000013403003, y: 3.5920877, z: 0.00000021513208}
+  m_LocalEulerAnglesHint: {x: -0.000000013403041, y: 3.592074, z: 0.00000021513205}
 --- !u!1 &3870732819466195435
 GameObject:
   m_ObjectHideFlags: 0
@@ -2663,6 +2663,21 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+  OnEvadeInput:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 8905914576188403892}
+        m_TargetAssemblyTypeName: Character, Assembly-CSharp
+        m_MethodName: Evade
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &8905914576188403892
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2677,10 +2692,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   firstState: {fileID: 0}
   currentState: {fileID: 0}
+  hitCountResistance: 1
+  hitTimePeriod: 1
   NormalAttackData: {fileID: 11400000, guid: 5d2c1067a6f2abf4ebae4194760fc69b, type: 2}
   SpecialAttackData: {fileID: 11400000, guid: 949dbecf0c8941a41883d29984cd7255, type: 2}
+  EvadeData: {fileID: 11400000, guid: 2ad5082e3009c6e4684b26cd8bc56c14, type: 2}
   idleState: {fileID: 3352572470649863919}
-  attackState: {fileID: 442658675809704088}
+  skillState: {fileID: 442658675809704088}
   patrolState: {fileID: 0}
   stunState: {fileID: 8298743200877897652}
   interactionState: {fileID: 6456369935489303692}
@@ -3146,7 +3164,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1362194091610939555}
-  m_LocalEulerAnglesHint: {x: -46.043987, y: 0.0000068016343, z: 0.0000044390704}
+  m_LocalEulerAnglesHint: {x: -46.043987, y: 0.0000068016357, z: 0.0000044390695}
 --- !u!1 &8696847684149885007
 GameObject:
   m_ObjectHideFlags: 0

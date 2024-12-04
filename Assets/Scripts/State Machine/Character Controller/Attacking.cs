@@ -80,7 +80,7 @@ public class Attacking : CharacterState, IAttacker
 
     private void CleanBuffer(CharacterAnimatorState state)
     {
-        if (state == CharacterAnimatorState.ATTACK)
+        if (state == CharacterAnimatorState.SKILL)
         {
             attackBuffer = false;
             canAttack = false;
@@ -89,7 +89,7 @@ public class Attacking : CharacterState, IAttacker
 
     private void CanCombo(CharacterAnimatorState state)
     {
-        if (state == CharacterAnimatorState.ATTACK)
+        if (state == CharacterAnimatorState.SKILL)
         {
             canAttack = true;
         }
@@ -101,7 +101,7 @@ public class Attacking : CharacterState, IAttacker
         {
             return;
         }
-        if (state == CharacterAnimatorState.ATTACK)
+        if (state == CharacterAnimatorState.SKILL)
         {
             personaje.CambiarEstado(null);
         }

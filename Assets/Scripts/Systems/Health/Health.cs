@@ -22,7 +22,9 @@ public class Health : MonoBehaviour, IDamageable, IObservableVariable, IBuffable
     public event Action<int, int> OnUpdate;
     public event Action OnDestroyEvent;
 
-    public UnityEvent OnNoHealth;
+    public UnityEvent OnHeal;
+    public UnityEvent OnDeath;
+    public UnityEvent OnRevive;
 
     int health;
     bool invincibility = false;
@@ -60,10 +62,19 @@ public class Health : MonoBehaviour, IDamageable, IObservableVariable, IBuffable
 
     public void Heal(int healPoints)
     {
+        bool revive = health <= 0 && healPoints > 0;
         health = Mathf.Clamp(health + healPoints, 0, maxHealth);
         OnHealthUpdate?.Invoke(health, maxHealth);
         OnUpdate?.Invoke(health, maxHealth);
         OnHealed?.Invoke(health, maxHealth);
+        if (revive)
+        {
+            OnRevive?.Invoke();
+        }
+        else
+        {
+            OnHeal?.Invoke();
+        }
     }
 
     public void Damage(IDamageDealer damageDealer)
@@ -89,9 +100,9 @@ public class Health : MonoBehaviour, IDamageable, IObservableVariable, IBuffable
 
         if (health <= 0)
         {
-            col.enabled = false;
             OnDead?.Invoke();
-            OnNoHealth?.Invoke();
+            OnDeath?.Invoke();
+            col.enabled = false;
             return;
         }
         if (enableInvincibilitySystem)

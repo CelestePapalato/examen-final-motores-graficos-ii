@@ -14,5 +14,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Damage: 1
   ManaPoints: 0
+  OnStartImpulse: 0
   AnimationTrigger: Attack
   Projectile: {fileID: 0}

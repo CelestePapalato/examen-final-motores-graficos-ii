@@ -17,6 +17,11 @@ public class PlayerInstancing : MonoBehaviour
 
     void Start()
     {
+        Player[] players = Player.CurrentPlayers;
+        foreach (Player p in players)
+        {
+            p.enabled = false;
+        }
         InstanceCharacters(startingPoints.ToArray());
     }
 

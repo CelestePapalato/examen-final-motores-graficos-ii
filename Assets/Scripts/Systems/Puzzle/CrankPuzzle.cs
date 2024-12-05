@@ -16,33 +16,41 @@ namespace PuzzleSystem
 
         public UnityEvent<float> onWheelValueUpdated;
 
-        float wheelValue = 0f;
-        float timer = 0f;
-
         bool isInteracting = false;
 
         Slider stateSlider;
 
         void Start()
         {
+            StopAllCoroutines();
             stateSlider = GetComponentInChildren<Slider>();
-            stateSlider.value = wheelValue;
             StopInteraction();
             StartCoroutine(WheelValueUpdate());
         }
 
+        private void OnDisable()
+        {
+            StopAllCoroutines();
+            StopInteraction();
+        }
+
         public override void Interact()
         {
+            base.Interact();
             isInteracting = true;
         }
 
         public override void StopInteraction()
         {
+            base.StopInteraction();
             isInteracting = false;
         }
 
         IEnumerator WheelValueUpdate()
         {
+            float wheelValue = 0f;
+            stateSlider.value = wheelValue;
+            float timer = 0f;
             while (wheelValue < 1f)
             {
                 if(timeToComplete == 0)
@@ -57,6 +65,18 @@ namespace PuzzleSystem
                 onWheelValueUpdated?.Invoke(wheelValue);
             }
             Completed = true;
+        }
+
+        public void Restart()
+        {
+            StopAllCoroutines();
+            StopInteraction();
+            _completed = false;
+            if (!stateSlider)
+            {
+                stateSlider = GetComponentInChildren<Slider>();
+            }
+            StartCoroutine(WheelValueUpdate());
         }
     }
 }

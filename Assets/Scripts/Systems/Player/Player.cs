@@ -25,6 +25,7 @@ public class Player : MonoBehaviour
             if (currentPlayers.Count == 0) { return null; }
 
             Player[] alivePlayers = currentPlayers.Where(x => !x.IsDead).ToArray();
+            if (alivePlayers.Length == 0) { return null; }
             int r = UnityEngine.Random.Range(0, alivePlayers.Length);
             return alivePlayers[r];
         }
@@ -48,6 +49,7 @@ public class Player : MonoBehaviour
         if (GetCharacter())
         {
             chara.OnDead += Dead;
+            chara.OnResurrection += Revived;
         }
         if(chara.Health.Current > 0)
         {
@@ -67,6 +69,7 @@ public class Player : MonoBehaviour
         if (chara)
         {
             chara.OnDead -= Dead;
+            chara.OnResurrection -= Revived;
         }
     }
 
@@ -100,8 +103,12 @@ public class Player : MonoBehaviour
 
     private void Dead()
     {
-        this.enabled = false;
         _isDead = true;
         OnPlayerDead?.Invoke(this);
+    }
+
+    private void Revived()
+    {
+        IsDead = false;
     }
 }

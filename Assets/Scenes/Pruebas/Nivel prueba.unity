@@ -2791,21 +2791,15 @@ MonoBehaviour:
   damageMemoryTimeAlive: 0
   enableInvincibilitySystem: 0
   invincibilityTime: 0
-  OnNoHealth:
+  OnHeal:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 3755133}
-        m_TargetAssemblyTypeName: ItemSpawner, Assembly-CSharp
-        m_MethodName: DropItem
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
+  OnDeath:
+    m_PersistentCalls:
+      m_Calls: []
+  OnRevive:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!65 &2079321708
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -2883,21 +2877,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 795193053281405491, guid: 72912cda72e750640958a07b1ed88435,
         type: 3}
-      propertyPath: distance
-      value: 8
-      objectReference: {fileID: 0}
-    - target: {fileID: 795193053281405491, guid: 72912cda72e750640958a07b1ed88435,
-        type: 3}
-      propertyPath: speedMultiplier
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 795193053281405491, guid: 72912cda72e750640958a07b1ed88435,
-        type: 3}
-      propertyPath: destination.Array.size
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 795193053281405491, guid: 72912cda72e750640958a07b1ed88435,
-        type: 3}
       propertyPath: destination.Array.data[0]
       value: 
       objectReference: {fileID: 484538997}
@@ -2906,16 +2885,6 @@ PrefabInstance:
       propertyPath: destination.Array.data[1]
       value: 
       objectReference: {fileID: 1035135477}
-    - target: {fileID: 795193053281405491, guid: 72912cda72e750640958a07b1ed88435,
-        type: 3}
-      propertyPath: runCompletelyAwayDistance.x
-      value: 6
-      objectReference: {fileID: 0}
-    - target: {fileID: 795193053281405491, guid: 72912cda72e750640958a07b1ed88435,
-        type: 3}
-      propertyPath: runCompletelyAwayDistance.y
-      value: 6
-      objectReference: {fileID: 0}
     - target: {fileID: 1180112266111121668, guid: 72912cda72e750640958a07b1ed88435,
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -3290,21 +3259,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.y
       value: 0.000037160033
-      objectReference: {fileID: 0}
-    - target: {fileID: 6288251048710172828, guid: 72912cda72e750640958a07b1ed88435,
-        type: 3}
-      propertyPath: speedMultiplier
-      value: 0.8
-      objectReference: {fileID: 0}
-    - target: {fileID: 6288251048710172828, guid: 72912cda72e750640958a07b1ed88435,
-        type: 3}
-      propertyPath: runCompletelyAwayDistance.x
-      value: 6
-      objectReference: {fileID: 0}
-    - target: {fileID: 6288251048710172828, guid: 72912cda72e750640958a07b1ed88435,
-        type: 3}
-      propertyPath: runCompletelyAwayDistance.y
-      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 6303662929460195560, guid: 72912cda72e750640958a07b1ed88435,
         type: 3}
@@ -3974,6 +3928,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Puzzle Manivela
+      objectReference: {fileID: 0}
+    - target: {fileID: 4669049379975101479, guid: 4dc532befac492e4480e438c3db4c97f,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5811617445896334856, guid: 4dc532befac492e4480e438c3db4c97f,
         type: 3}

@@ -150,6 +150,7 @@ public class EnemyAI : MonoBehaviour
         enemiesDetected.Remove(targetCharacter);
         if (targetCharacter == currentTarget)
         {
+            currentTarget.OnDead -= PlayerKilled;
             character.StopAvoiding(currentTarget.transform);
             TargetUpdate();
         }
@@ -187,8 +188,8 @@ public class EnemyAI : MonoBehaviour
         if (currentTarget)
         {
             currentTarget.OnDead -= PlayerKilled;
+            character.StopAvoiding(currentTarget.transform);
         }
-        character.StopAvoiding(currentTarget.transform);
         TargetUpdate();
     }
     

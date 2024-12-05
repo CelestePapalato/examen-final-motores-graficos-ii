@@ -945,7 +945,13 @@ MonoBehaviour:
   damageMemoryTimeAlive: 0
   enableInvincibilitySystem: 0
   invincibilityTime: 0
-  OnNoHealth:
+  OnHeal:
+    m_PersistentCalls:
+      m_Calls: []
+  OnDeath:
+    m_PersistentCalls:
+      m_Calls: []
+  OnRevive:
     m_PersistentCalls:
       m_Calls: []
 --- !u!136 &2767607265089169047
@@ -2794,10 +2800,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   firstState: {fileID: 0}
   currentState: {fileID: 0}
+  hitCountResistance: 1
+  hitTimePeriod: 1
   NormalAttackData: {fileID: 11400000, guid: 002e74cce1baf66418cf9517400e580c, type: 2}
   SpecialAttackData: {fileID: 0}
+  EvadeData: {fileID: 0}
   idleState: {fileID: 6419777909725961314}
-  attackState: {fileID: 4910257477513172802}
+  skillState: {fileID: 4910257477513172802}
   patrolState: {fileID: 795193053281405491}
   stunState: {fileID: 981353093700320070}
   interactionState: {fileID: 0}
@@ -2841,7 +2850,7 @@ MonoBehaviour:
   pathUpdateRate: 0.5
   distance: 10
   speedMultiplier: 0.8
-  runCompletelyAwayDistance: {x: 4, y: 4}
+  runCompletelyAwayDistance: {x: 6, y: 6}
 --- !u!114 &4910257477513172802
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2884,9 +2893,9 @@ MonoBehaviour:
   restartOnExit: 0
   tolerance: 2
   nextState: {fileID: 6419777909725961314}
-  distance: 0
-  speedMultiplier: 0
-  runCompletelyAwayDistance: {x: 0, y: 0}
+  distance: 8
+  speedMultiplier: 1
+  runCompletelyAwayDistance: {x: 6, y: 6}
 --- !u!114 &981353093700320070
 MonoBehaviour:
   m_ObjectHideFlags: 0

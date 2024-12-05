@@ -55,6 +55,9 @@ public class GameManager : MonoBehaviour
     private void GameOver(Player player)
     {
         Player[] alive = Player.CurrentPlayers.Where(x => !x.IsDead).ToArray();
+        foreach(var aliveItem in alive) {
+            Debug.Log(aliveItem.gameObject.name);
+        }
         if (alive.Length > 0)
         {
             return;

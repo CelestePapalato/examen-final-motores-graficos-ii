@@ -55,6 +55,7 @@ public class Character : StateMachine
     public AnimationEventHandler AnimationEventHandler { get => animEvent;}
 
     public UnityAction OnDead;
+    public UnityAction OnResurrection;
     public UnityAction OnStunStart;
     public UnityAction OnStunEnd;
     bool attackInput = false;
@@ -120,6 +121,7 @@ public class Character : StateMachine
         {
             health.OnDamaged += OnDamage;
             health.OnDead += Dead;
+            health.OnRevive.AddListener(Revive);
         }
     }
 
@@ -129,6 +131,7 @@ public class Character : StateMachine
         {
             health.OnDamaged -= OnDamage;
             health.OnDead -= Dead;
+            health.OnRevive?.RemoveListener(Revive);
         }
     }
 
@@ -169,9 +172,20 @@ public class Character : StateMachine
     {
         if (deadState) { CambiarEstado(deadState); }
         OnDead?.Invoke();
-        this.enabled = false;
         _isDead = true;
     }
+
+    protected virtual void Revive()
+    {
+        if (_isDead)
+        {
+            _isDead = false;
+            CambiarEstado(currentIdleState);
+            animator.SetTrigger("Revive");
+            OnResurrection?.Invoke();
+        }
+    }
+
     public void Move(Vector2 input)
     {
         controller?.Move(input);

@@ -83,6 +83,11 @@ public class Health : MonoBehaviour, IDamageable, IObservableVariable, IBuffable
         {
             return;
         }
+        if (health <= 0)
+        {
+            col.enabled = false;
+            return;
+        }
         if (DamageDealerMemory.ContainsKey(damageDealer))
         {
             if (DamageDealerMemory[damageDealer].Contains(damageDealer.ID)) { return; }

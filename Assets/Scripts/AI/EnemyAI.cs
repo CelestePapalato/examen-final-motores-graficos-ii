@@ -199,6 +199,7 @@ public class EnemyAI : MonoBehaviour
         itemSpawner?.DropItem();
         OnEnemyDead?.Invoke(points);
         Destroy(gameObject, 5);
+        this.enabled = false;
     }
 
 }

@@ -942,7 +942,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxHealth: 3
-  damageMemoryTimeAlive: 0
+  damageMemoryTimeAlive: 2
   enableInvincibilitySystem: 0
   invincibilityTime: 0
   OnHeal:

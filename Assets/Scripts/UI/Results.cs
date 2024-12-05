@@ -3,38 +3,20 @@ using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 
-public class Results : MonoBehaviour
+public class Results : Menu
 {
     [Header("Ganar")]
     [SerializeField] Canvas winCanvas;
     [SerializeField] TMP_Text scoreText;
     [Header("Perder")]
     [SerializeField] Canvas lostCanvas;
-    [Header("Others")]
-    [SerializeField] GameObject[] others;
 
-    private void Awake()
-    {
-        winCanvas?.gameObject.SetActive(false);
-        lostCanvas?.gameObject.SetActive(false);
-        SetActiveOthers(false);
-    }
-
-    private void OnEnable()
-    {
-        GameManager.OnGameOver += ShowResults;
-    }
-
-    private void OnDisable()
-    {
-        GameManager.OnGameOver -= ShowResults;
-    }
-
-    public void ShowResults(bool nivelCompletado)
+    public override void Initialize(bool nivelCompletado)
     {
         if(nivelCompletado)
         {
             winCanvas?.gameObject.SetActive(true);
+            lostCanvas?.gameObject.SetActive(false);
             if (scoreText)
             {
                 scoreText.text = GameManager.Instance.Score + "";
@@ -43,15 +25,7 @@ public class Results : MonoBehaviour
         else
         {
             lostCanvas?.gameObject.SetActive(true);
-        }
-        SetActiveOthers(true);
-    }
-
-    private void SetActiveOthers(bool active)
-    {
-        foreach(GameObject o in others)
-        {
-            o.SetActive(active);
+            winCanvas?.gameObject.SetActive(false);
         }
     }
 }

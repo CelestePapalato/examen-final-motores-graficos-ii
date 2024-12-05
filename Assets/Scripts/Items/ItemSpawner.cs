@@ -51,7 +51,6 @@ public class ItemSpawner : MonoBehaviour
 
     public void DropItem()
     {
-        Debug.Log("xd");
         InstanceItem(CalculateProbability());
     }
 

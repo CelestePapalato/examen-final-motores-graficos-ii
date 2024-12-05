@@ -34,7 +34,11 @@ public class MenuManager : MonoBehaviour
     {
         foreach (Screen screen in screens)
         {
-            if(!screen.activeOnStart)
+            if(screen.activeOnStart)
+            {
+                screen.menu.Open();
+            }
+            else
             {
                 screen.menu.Close();
             }

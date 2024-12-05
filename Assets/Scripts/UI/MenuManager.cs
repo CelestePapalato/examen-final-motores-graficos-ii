@@ -62,7 +62,55 @@ public class MenuManager : MonoBehaviour
         {
             Menu menu = resultsScreen.menu;
             menu.Open();
+            Debug.Log("Menu Manager: " + resultsScreen.name + " menu opened");
             menu.Initialize(nivelCompletado);
+        }
+    }
+
+    public void OpenMenu(string name)
+    {
+        Screen screen = screens.First(x => x.name == name);
+        if(screen != null)
+        {
+            screen.menu?.Open();
+            Debug.Log("Menu Manager: " + name + " menu opened");
+        }
+    }
+
+    public void CloseMenu(string name)
+    {
+        Screen screen = screens.First(x => x.name == name);
+        if (screen != null)
+        {
+            screen.menu?.Close();
+            Debug.Log("Menu Manager: " + name + " menu closed");
+        }
+    }
+
+    public void CloseAllScreens()
+    {
+        foreach(var screen in screens)
+        {
+            screen.menu?.Close();
+            Debug.Log("Menu Manager: " + name + " menu closed");
+        }
+    }
+
+    public void AlternateState(string name)
+    {
+        Screen screen = screens.First(x => x.name == name);
+        if (screen != null)
+        {
+            if (screen.menu.Closed)
+            {
+                screen.menu?.Open();
+                Debug.Log("Menu Manager: " + name + " menu opened");
+            }
+            else
+            {
+                screen.menu?.Close();
+                Debug.Log("Menu Manager: " + name + " menu closed");
+            }
         }
     }
 }

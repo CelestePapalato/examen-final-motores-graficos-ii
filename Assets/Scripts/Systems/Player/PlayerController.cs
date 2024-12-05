@@ -18,6 +18,8 @@ public class PlayerController : MonoBehaviour
     public UnityEvent OnInteractInput;
     public UnityEvent OnEvadeInput;
 
+    static bool PlayerOnPauseMenu = false;
+
     private void Start()
     {
         if (camera == null)
@@ -61,6 +63,20 @@ public class PlayerController : MonoBehaviour
             interactable.Interact();
         }
         */
+    }
+
+    private void OnPauseMenu(InputValue input)
+    {
+        if (Time.timeScale > 0 && !PlayerOnPauseMenu)
+        {
+            MenuManager.Instance.OpenMenu("pause_menu");
+            PlayerOnPauseMenu = true;
+        }
+        else if(PlayerOnPauseMenu)
+        {
+            MenuManager.Instance.CloseMenu("pause_menu");
+            PlayerOnPauseMenu = false;
+        }
     }
 
     private bool TryGetInteractable(out IInteractable interactable)

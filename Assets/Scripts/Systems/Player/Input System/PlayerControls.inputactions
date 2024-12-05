@@ -76,6 +76,15 @@
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": false
+                },
+                {
+                    "name": "Pause Menu",
+                    "type": "Button",
+                    "id": "5c5d5ed6-7d19-4d09-bb14-22c5a44f7941",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
                 }
             ],
             "bindings": [
@@ -375,6 +384,39 @@
                     "action": "Evade",
                     "isComposite": false,
                     "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "76d7c3d3-29ea-4dac-8c17-dcdf706a09f6",
+                    "path": "<Keyboard>/backspace",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Keyboard Mouse",
+                    "action": "Pause Menu",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "a5753be6-e24d-4d90-95cc-df6473426c99",
+                    "path": "<Keyboard>/escape",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Keyboard Mouse",
+                    "action": "Pause Menu",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "3ad7f87d-018d-47dd-b76b-ae0734b5539f",
+                    "path": "<Gamepad>/start",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Gamepad",
+                    "action": "Pause Menu",
+                    "isComposite": false,
+                    "isPartOfComposite": false
                 }
             ]
         },
@@ -383,7 +425,7 @@
             "id": "87b7c12b-ce05-4a98-8ee0-c1db79c5f703",
             "actions": [
                 {
-                    "name": "Cancel",
+                    "name": "Pause",
                     "type": "Button",
                     "id": "530b575a-e16e-4d43-a87b-64b3f931eab7",
                     "expectedControlType": "Button",
@@ -400,7 +442,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "Cancel",
+                    "action": "Pause",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
@@ -411,29 +453,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "Cancel",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "4f7b56b1-2232-4c18-b854-a0416130d070",
-                    "path": "<XInputController>/buttonEast",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "Cancel",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "c2635ecf-b126-43d4-b9f1-11a998ab9927",
-                    "path": "<Gamepad>/buttonEast",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "Cancel",
+                    "action": "Pause",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
@@ -444,40 +464,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "Cancel",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "45a1e5a7-9973-48cb-89e1-cb7f32531af4",
-                    "path": "<XInputController>/start",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "Cancel",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "6f41aff1-c921-4f03-8921-de01fdc7dfd7",
-                    "path": "<Gamepad>/select",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "Cancel",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "eddf83cb-8741-4edb-b62d-7c7d088a4f80",
-                    "path": "<XInputController>/select",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "Cancel",
+                    "action": "Pause",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

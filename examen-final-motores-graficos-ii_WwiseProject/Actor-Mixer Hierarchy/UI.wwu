@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<WwiseDocument Type="WorkUnit" ID="{C57F7AAE-E947-4350-8913-5F0A267DEFAF}" SchemaVersion="123">
+	<AudioObjects>
+		<WorkUnit Name="UI" ID="{C57F7AAE-E947-4350-8913-5F0A267DEFAF}" PersistMode="Standalone">
+			<ChildrenList>
+				<Sound Name="Cancelar" ID="{73A32C1F-99F4-4E30-B1BC-CBA97976C20A}" ShortID="1019616776">
+					<ReferenceList>
+						<Reference Name="Conversion">
+							<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{A8E4C321-AFB5-4D6F-9676-26040F5C4B02}"/>
+						</Reference>
+						<Reference Name="OutputBus">
+							<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{1F78CA96-7B89-4C2D-89B6-12DBFB54758D}"/>
+						</Reference>
+					</ReferenceList>
+					<ChildrenList>
+						<AudioFileSource Name="Cancelar" ID="{C91D1745-97FB-459A-A3BA-09D088A558BC}">
+							<Language>SFX</Language>
+							<AudioFile>Menu Principal\UI\Cancel2.wav</AudioFile>
+							<MediaIDList>
+								<MediaID ID="749897319"/>
+							</MediaIDList>
+						</AudioFileSource>
+					</ChildrenList>
+					<ActiveSourceList>
+						<ActiveSource Name="Cancelar" ID="{C91D1745-97FB-459A-A3BA-09D088A558BC}" Platform="Linked"/>
+					</ActiveSourceList>
+				</Sound>
+				<Sound Name="Aceptar" ID="{2573CF82-07EB-423B-B061-8FCDB9484C03}" ShortID="1015307763">
+					<ReferenceList>
+						<Reference Name="Conversion">
+							<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{A8E4C321-AFB5-4D6F-9676-26040F5C4B02}"/>
+						</Reference>
+						<Reference Name="OutputBus">
+							<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{1F78CA96-7B89-4C2D-89B6-12DBFB54758D}"/>
+						</Reference>
+					</ReferenceList>
+					<ChildrenList>
+						<AudioFileSource Name="Aceptar" ID="{0A681EC5-F1FA-4918-9558-7C584C3576AB}">
+							<Language>SFX</Language>
+							<AudioFile>Menu Principal\UI\Decision1.wav</AudioFile>
+							<MediaIDList>
+								<MediaID ID="563289381"/>
+							</MediaIDList>
+						</AudioFileSource>
+					</ChildrenList>
+					<ActiveSourceList>
+						<ActiveSource Name="Aceptar" ID="{0A681EC5-F1FA-4918-9558-7C584C3576AB}" Platform="Linked"/>
+					</ActiveSourceList>
+				</Sound>
+			</ChildrenList>
+		</WorkUnit>
+	</AudioObjects>
+</WwiseDocument>

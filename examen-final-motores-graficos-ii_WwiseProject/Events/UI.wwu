@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<WwiseDocument Type="WorkUnit" ID="{97CB052E-8A1D-47BA-90D3-0F762C5B60D5}" SchemaVersion="123">
+	<Events>
+		<WorkUnit Name="UI" ID="{97CB052E-8A1D-47BA-90D3-0F762C5B60D5}" PersistMode="Standalone">
+			<ChildrenList>
+				<Event Name="UI_Aceptar" ID="{60D6BAB3-8A42-44C9-AEBD-2DE46AB8220F}">
+					<ChildrenList>
+						<Action Name="" ID="{172726E9-09A2-43DC-9B4B-6A953E2A6FAB}" ShortID="214709796">
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="Aceptar" ID="{2573CF82-07EB-423B-B061-8FCDB9484C03}" WorkUnitID="{C57F7AAE-E947-4350-8913-5F0A267DEFAF}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+					</ChildrenList>
+				</Event>
+				<Event Name="UI_Cancelar" ID="{7A43418D-B12E-4A7F-83CB-3190CFBF71C3}">
+					<ChildrenList>
+						<Action Name="" ID="{CB4A0EBA-3268-47E2-8C0D-FD5AA9543707}" ShortID="408109180">
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="Cancelar" ID="{73A32C1F-99F4-4E30-B1BC-CBA97976C20A}" WorkUnitID="{C57F7AAE-E947-4350-8913-5F0A267DEFAF}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+					</ChildrenList>
+				</Event>
+			</ChildrenList>
+		</WorkUnit>
+	</Events>
+</WwiseDocument>

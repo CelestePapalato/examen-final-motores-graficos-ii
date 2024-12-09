@@ -1,0 +1,6 @@
+Event	ID	Name			Wwise Object Path	Notes
+	4019668754	CheckpointEnabled			\LevelObjects\CheckpointEnabled	
+
+In Memory Audio	ID	Name	Audio source file		Wwise Object Path	Notes	Data Size
+	378853131	Checkpoint	C:\UAI\3er cuatrimestre\Motores Gráficos II\examen-final-motores-graficos-ii\examen-final-motores-graficos-ii_WwiseProject\.cache\DB\{DB0451E7-DE5F-BB59-9311-00CEF6CA3951}.wem		\Actor-Mixer Hierarchy\LevelObjects\Checkpoint		37216
+

@@ -1,0 +1,6 @@
+Event	ID	Name			Wwise Object Path	Notes
+	4095160060	Ambiente			\Default Work Unit\Ambiente	
+
+In Memory Audio	ID	Name	Audio source file		Wwise Object Path	Notes	Data Size
+	966070257	Ambiente 1	C:\UAI\3er cuatrimestre\Motores Gráficos II\examen-final-motores-graficos-ii\examen-final-motores-graficos-ii_WwiseProject\.cache\19\{19AE897B-3A3A-BBFC-C818-75504AD8DB28}.wem		\Actor-Mixer Hierarchy\Default Work Unit\Ambiente 1		15599178
+

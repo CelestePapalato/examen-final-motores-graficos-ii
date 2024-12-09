@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<WwiseDocument Type="WorkUnit" ID="{CDD9D6A7-B521-4D66-9106-6FE952E8E723}" SchemaVersion="123">
+	<Events>
+		<WorkUnit Name="LevelObjects" ID="{CDD9D6A7-B521-4D66-9106-6FE952E8E723}" PersistMode="Standalone">
+			<ChildrenList>
+				<Event Name="CheckpointEnabled" ID="{45B0A196-1E0B-42E0-8EE6-6BAF19290987}">
+					<ChildrenList>
+						<Action Name="" ID="{D5D16B4F-5E71-49C2-8DBD-43B479F44365}" ShortID="756540018">
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="Checkpoint" ID="{D57D923B-764C-4491-AC11-35C6EA231613}" WorkUnitID="{A0710286-124A-4F32-ACFF-F3097B05ABBC}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+					</ChildrenList>
+				</Event>
+			</ChildrenList>
+		</WorkUnit>
+	</Events>
+</WwiseDocument>

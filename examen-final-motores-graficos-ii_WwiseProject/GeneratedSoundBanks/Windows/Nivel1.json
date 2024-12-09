@@ -1,0 +1,45 @@
+{
+ "SoundBanksInfo": {
+  "Platform": "Windows",
+  "BasePlatform": "Windows",
+  "SchemaVersion": "16",
+  "SoundBankVersion": "154",
+  "SoundBanks": [
+   {
+    "Id": "409685056",
+    "Type": "User",
+    "GUID": "{025088B0-4013-43DF-A419-B2269DDE64DF}",
+    "Language": "SFX",
+    "Hash": "{4AFB0CB5-359A-9513-D9C0-3EED90D241C9}",
+    "ObjectPath": "\\SoundBanks\\Default Work Unit\\Nivel1",
+    "ShortName": "Nivel1",
+    "Path": "Nivel1.bnk",
+    "Media": [
+     {
+      "Id": "966070257",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Memory",
+      "ShortName": "Ambiente 1.wav",
+      "CachePath": "19/{19AE897B-3A3A-BBFC-C818-75504AD8DB28}.wem"
+     }
+    ],
+    "Events": [
+     {
+      "Id": "4095160060",
+      "Name": "Ambiente",
+      "ObjectPath": "\\Events\\Default Work Unit\\Ambiente",
+      "GUID": "{BECF1192-E7C1-4B47-9157-42D9529ECD75}",
+      "DurationType": "Infinite",
+      "MediaRefs": [
+       {
+        "Id": "966070257"
+       }
+      ]
+     }
+    ]
+   }
+  ],
+  "FileHash": "{6946A8B1-8B46-48CF-9E19-427E6E39D6A8}"
+ }
+}

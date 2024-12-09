@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<WwiseDocument Type="WorkUnit" ID="{52A8F075-8FA2-4E0E-9F5F-3BA4847AE6C8}" SchemaVersion="123">
+	<SoundBanks>
+		<WorkUnit Name="Default Work Unit" ID="{52A8F075-8FA2-4E0E-9F5F-3BA4847AE6C8}" PersistMode="Standalone">
+			<ChildrenList>
+				<SoundBank Name="Nivel1" ID="{025088B0-4013-43DF-A419-B2269DDE64DF}">
+					<ObjectInclusionList>
+						<ObjectRef Name="Default Work Unit" ID="{FEC521C4-5B4C-40A2-BB11-539682064A77}" WorkUnitID="{FEC521C4-5B4C-40A2-BB11-539682064A77}" Origin="Manual" Filter="7"/>
+					</ObjectInclusionList>
+					<ObjectExclusionList/>
+					<GameSyncExclusionList/>
+				</SoundBank>
+				<SoundBank Name="UI" ID="{4AE620AC-35B3-4E23-8865-036CE1882469}">
+					<ObjectInclusionList>
+						<ObjectRef Name="UI" ID="{C57F7AAE-E947-4350-8913-5F0A267DEFAF}" WorkUnitID="{C57F7AAE-E947-4350-8913-5F0A267DEFAF}" Origin="Manual" Filter="7"/>
+					</ObjectInclusionList>
+					<ObjectExclusionList/>
+					<GameSyncExclusionList/>
+				</SoundBank>
+				<SoundBank Name="LevelObjects" ID="{A724A988-0523-4495-BF65-A3E6ED886788}">
+					<ObjectInclusionList>
+						<ObjectRef Name="LevelObjects" ID="{A0710286-124A-4F32-ACFF-F3097B05ABBC}" WorkUnitID="{A0710286-124A-4F32-ACFF-F3097B05ABBC}" Origin="Manual" Filter="7"/>
+					</ObjectInclusionList>
+					<ObjectExclusionList/>
+					<GameSyncExclusionList/>
+				</SoundBank>
+			</ChildrenList>
+		</WorkUnit>
+	</SoundBanks>
+</WwiseDocument>

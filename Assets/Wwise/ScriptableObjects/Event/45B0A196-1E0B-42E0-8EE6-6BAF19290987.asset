@@ -1,0 +1,19 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d24e347636152744eab103a82fd2d5ab, type: 3}
+  m_Name: 45B0A196-1E0B-42E0-8EE6-6BAF19290987
+  m_EditorClassIdentifier: 
+  objectName: CheckpointEnabled
+  id: 4019668754
+  guid: 45B0A196-1E0B-42E0-8EE6-6BAF19290987
+  IsInUserDefinedSoundBank: 1
+  IsAutoBankLoaded: 0

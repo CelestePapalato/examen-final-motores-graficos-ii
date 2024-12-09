@@ -1,0 +1,36 @@
+{
+ "ProjectInfo": {
+  "Project": {
+   "Name": "examen-final-motores-graficos-ii_WwiseProject",
+   "GUID": "{059C356E-AAE2-4AF6-8F65-29663CAA3BD1}",
+   "Generator": "2024.1.0.8669"
+  },
+  "CacheRoot": "../../../../examen-final-motores-graficos-ii_WwiseProject/.cache",
+  "Platforms": [
+   {
+    "Name": "Mac",
+    "GUID": "{1BDA835B-E9BF-4639-B302-33B0E1FB1445}",
+    "BasePlatform": "Mac",
+    "BasePlatformGUID": "{9C6217D5-DD11-4795-87C1-6CE02853C540}",
+    "Path": "../../../../examen-final-motores-graficos-ii_WwiseProject/GeneratedSoundBanks/Mac"
+   },
+   {
+    "Name": "Windows",
+    "GUID": "{ED2469DA-82AC-47AB-8D40-F6DAFF2BB4EE}",
+    "BasePlatform": "Windows",
+    "BasePlatformGUID": "{6E0CB257-C6C8-4C5C-8366-2740DFC441EB}",
+    "Path": "../../../../examen-final-motores-graficos-ii_WwiseProject/GeneratedSoundBanks/Windows"
+   }
+  ],
+  "Languages": [
+   {
+    "Name": "English(US)",
+    "Id": "684519430",
+    "GUID": "{D236D4F9-93B7-45DE-8B3A-1FF7140160D2}",
+    "Default": "true",
+    "UseAsStandIn": "true"
+   }
+  ],
+  "FileHash": "{3ADE646A-3E2D-9332-949D-0096BDFA4B19}"
+ }
+}

@@ -1,0 +1,48 @@
+{
+ "SoundBanksInfo": {
+  "Platform": "Windows",
+  "BasePlatform": "Windows",
+  "SchemaVersion": "16",
+  "SoundBankVersion": "154",
+  "SoundBanks": [
+   {
+    "Id": "3013243631",
+    "Type": "User",
+    "GUID": "{A724A988-0523-4495-BF65-A3E6ED886788}",
+    "Language": "SFX",
+    "Hash": "{2F9F79C8-105A-3783-B052-9A7DD3B1AE72}",
+    "ObjectPath": "\\SoundBanks\\Default Work Unit\\LevelObjects",
+    "ShortName": "LevelObjects",
+    "Path": "LevelObjects.bnk",
+    "Media": [
+     {
+      "Id": "378853131",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Memory",
+      "ShortName": "Level Objects\\Sound1.wav",
+      "CachePath": "DB/{DB0451E7-DE5F-BB59-9311-00CEF6CA3951}.wem"
+     }
+    ],
+    "Events": [
+     {
+      "Id": "4019668754",
+      "Name": "CheckpointEnabled",
+      "ObjectPath": "\\Events\\LevelObjects\\CheckpointEnabled",
+      "GUID": "{45B0A196-1E0B-42E0-8EE6-6BAF19290987}",
+      "MaxAttenuation": "25",
+      "DurationType": "OneShot",
+      "DurationMin": "0.8417234",
+      "DurationMax": "0.8417234",
+      "MediaRefs": [
+       {
+        "Id": "378853131"
+       }
+      ]
+     }
+    ]
+   }
+  ],
+  "FileHash": "{3E398E44-9A9D-3D69-7934-20DF9846DE54}"
+ }
+}

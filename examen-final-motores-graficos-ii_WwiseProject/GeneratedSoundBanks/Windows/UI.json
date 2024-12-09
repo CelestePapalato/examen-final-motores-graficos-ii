@@ -1,0 +1,69 @@
+{
+ "SoundBanksInfo": {
+  "Platform": "Windows",
+  "BasePlatform": "Windows",
+  "SchemaVersion": "16",
+  "SoundBankVersion": "154",
+  "SoundBanks": [
+   {
+    "Id": "1551306167",
+    "Type": "User",
+    "GUID": "{4AE620AC-35B3-4E23-8865-036CE1882469}",
+    "Language": "SFX",
+    "Hash": "{732ED677-B860-7143-D7FA-E25A72F8F532}",
+    "ObjectPath": "\\SoundBanks\\Default Work Unit\\UI",
+    "ShortName": "UI",
+    "Path": "UI.bnk",
+    "Media": [
+     {
+      "Id": "563289381",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Memory",
+      "ShortName": "Menu Principal\\UI\\Decision1.wav",
+      "CachePath": "D5/{D588468F-7FAB-8166-51C7-5AAAA33D7E60}.wem"
+     },
+     {
+      "Id": "749897319",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Memory",
+      "ShortName": "Menu Principal\\UI\\Cancel2.wav",
+      "CachePath": "46/{463E8B3D-B178-9746-FE09-DBE5CA436634}.wem"
+     }
+    ],
+    "Events": [
+     {
+      "Id": "3127113562",
+      "Name": "UI_Aceptar",
+      "ObjectPath": "\\Events\\UI\\UI_Aceptar",
+      "GUID": "{60D6BAB3-8A42-44C9-AEBD-2DE46AB8220F}",
+      "DurationType": "OneShot",
+      "DurationMin": "0.26122448",
+      "DurationMax": "0.26122448",
+      "MediaRefs": [
+       {
+        "Id": "563289381"
+       }
+      ]
+     },
+     {
+      "Id": "406518269",
+      "Name": "UI_Cancelar",
+      "ObjectPath": "\\Events\\UI\\UI_Cancelar",
+      "GUID": "{7A43418D-B12E-4A7F-83CB-3190CFBF71C3}",
+      "DurationType": "OneShot",
+      "DurationMin": "0.46294785",
+      "DurationMax": "0.46294785",
+      "MediaRefs": [
+       {
+        "Id": "749897319"
+       }
+      ]
+     }
+    ]
+   }
+  ],
+  "FileHash": "{7534E394-CC00-7951-3143-E79E7EFED574}"
+ }
+}

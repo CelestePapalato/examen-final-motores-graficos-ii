@@ -3815,15 +3815,7 @@ PrefabInstance:
     - {fileID: 8951192356384506914, guid: 601d365fc2ed1c047aeb8411e727c00a, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 5710841285094775086, guid: 601d365fc2ed1c047aeb8411e727c00a,
-        type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 3818294610643212100}
-    - targetCorrespondingSourceObject: {fileID: 5710841285094775086, guid: 601d365fc2ed1c047aeb8411e727c00a,
-        type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 3818294610643212099}
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 601d365fc2ed1c047aeb8411e727c00a, type: 3}
 --- !u!114 &3818294610643212097 stripped
 MonoBehaviour:
@@ -3837,49 +3829,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e5eb80d8e62d9d145bb50fb783c0f731, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!1 &3818294610643212098 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 5710841285094775086, guid: 601d365fc2ed1c047aeb8411e727c00a,
-    type: 3}
-  m_PrefabInstance: {fileID: 3818294610643212096}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &3818294610643212099
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3818294610643212098}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b9ac074f70cdae24aaaff5198010eac2, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  isDefaultListener: 1
-  listenerId: 0
---- !u!114 &3818294610643212100
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3818294610643212098}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 133f80f15c03f7c428d5881264c9fdf3, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_listeners:
-    initialListenerList: []
-    useDefaultListeners: 1
-  isEnvironmentAware: 0
-  isStaticObject: 0
-  usePositionOffsetData: 0
-  m_positionOffsetData:
-    KeepMe: 0
-    positionOffset: {x: 0, y: 0, z: 0}
-  m_posOffsetData: {fileID: 0}
-  listenerMask: 1
 --- !u!1001 &4014073969861059168
 PrefabInstance:
   m_ObjectHideFlags: 0

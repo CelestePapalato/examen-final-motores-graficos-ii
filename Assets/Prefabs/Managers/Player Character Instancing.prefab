@@ -44,3 +44,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bed494ea1df865941b477a5e92a3fed1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  audioListenerPrefab: {fileID: 3964976649866426864, guid: da5660ebbe5b71a4a9ba52d8f69f9297,
+    type: 3}
+  offset: {x: 0, y: 0.05, z: 0}
+  targetGroup: {fileID: 0}
+  startingPoints: []

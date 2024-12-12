@@ -8,12 +8,15 @@ using UnityEngine.Rendering.Universal;
 public class PlayerInstancing : MonoBehaviour
 {
     [SerializeField]
+    TransformFollower audioListenerPrefab;
+    [SerializeField]
     Vector3 offset = new Vector3(0, 0.05f, 0);
     [SerializeField]
     CinemachineTargetGroup targetGroup;
     [SerializeField]
     List<Transform> startingPoints = new List<Transform>();
     List<Character> loadedCharaters = new List<Character>();
+    List<TransformFollower> loadedAudioListeners = new List<TransformFollower>();
 
     void Start()
     {
@@ -65,6 +68,9 @@ public class PlayerInstancing : MonoBehaviour
             player.ChangeCharacter(character);
             player.enabled = true;
             loadedCharaters.Add(character);
+            TransformFollower audioListener = Instantiate(audioListenerPrefab, p.transform);
+            audioListener.Target = character.MovementComponent.transform;
+            loadedAudioListeners.Add(audioListener);
         }
     }
 
@@ -76,6 +82,7 @@ public class PlayerInstancing : MonoBehaviour
             Player player = chara.transform.parent.GetComponent<Player>();
             targetGroup.RemoveMember(chara.MovementComponent.transform);
             Destroy(chara.gameObject);
+            Destroy(loadedAudioListeners[i].gameObject);
         }
         loadedCharaters = new List<Character>();
     }

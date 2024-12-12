@@ -4,8 +4,7 @@ using UnityEngine;
 
 public class TransformFollower : MonoBehaviour
 {
-    [SerializeField]
-    Transform target;
+    public Transform Target;
     [SerializeField]
     bool position;
     [SerializeField]
@@ -25,11 +24,11 @@ public class TransformFollower : MonoBehaviour
     {
         if(position)
         {
-            transform.position = target.position;
+            transform.position = Target.position;
         }
         if (rotation && !cameraRotation)
         {
-            transform.rotation = target.rotation;
+            transform.rotation = Target.rotation;
         }
         if (cameraRotation)
         {

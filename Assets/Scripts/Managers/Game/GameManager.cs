@@ -19,6 +19,9 @@ public class GameManager : MonoBehaviour
 
     public static float GameTime { get => Time.timeSinceLevelLoad; }
 
+    [SerializeField]
+    private int scoreNeededForRespawn = 50;
+
     private void Awake()
     {
         Instance = this;
@@ -62,9 +65,14 @@ public class GameManager : MonoBehaviour
         {
             return;
         }
-        if (Checkpoint.TryRespawning())
+        if (score >= scoreNeededForRespawn)
         {
-            return;
+            if (Checkpoint.TryRespawning())
+            {
+                score -= scoreNeededForRespawn;
+                OnScoreUpdate?.Invoke(score);
+                return;
+            }
         }
         Time.timeScale = 0;
         OnGameOver?.Invoke(false);

@@ -20,13 +20,11 @@ public class EnemyAI : MonoBehaviour
     [SerializeField] float attackDistance;
     [SerializeField] float attackCooldown;
 
-    [Header("Target Selection. Total Probability, 100% = 2")]
+    [Header("Target Selection")]
     [SerializeField]
-    [Tooltip("1 = Low Health + High Health")]
-    [Range(0f, 1f)] float lowHealthProbability;
+    [Range(0, 10)] int changeTargetProbability;
     [SerializeField]
-    [Tooltip("1 = Nearest + Furthest")]
-    [Range(0f, 1f)] float nearestProbability;
+    [Range(0, 10)] int lowestHealthProbability;
 
     Character character;
 
@@ -136,8 +134,9 @@ public class EnemyAI : MonoBehaviour
     {
        enemiesDetected.RemoveAll(x => !x);
        enemiesDetected.Add(target.GetComponentInChildren<Health>());
-        if (!currentTarget)
+        if (!currentTarget || ProbabilityCheck(changeTargetProbability))
         {
+            Debug.Log("Change target");
             TargetUpdate();
         }
     }
@@ -159,6 +158,11 @@ public class EnemyAI : MonoBehaviour
     private void TargetUpdate()
     {
         if (isDead) { return; }
+        if (currentTarget)
+        {
+            currentTarget.OnDead -= PlayerKilled;
+            character.StopAvoiding(currentTarget.transform);
+        }
         Health[] aliveTargets = enemiesDetected.Where(x => x.Current > 0).ToArray();
         if (enemiesDetected.Count == 0 || aliveTargets.Length == 0)
         {
@@ -167,8 +171,17 @@ public class EnemyAI : MonoBehaviour
             character.StartPatrol();
             return;
         }
-        int r = UnityEngine.Random.Range(0, aliveTargets.Length);
-        currentTarget = aliveTargets[r];
+        if (ProbabilityCheck(lowestHealthProbability))
+        {
+            Debug.Log("Pick enemy with lowest health");
+            currentTarget = MinorHealthEnemy();
+        }
+        else
+        {
+            int r = UnityEngine.Random.Range(0, aliveTargets.Length);
+            Debug.Log(r);
+            currentTarget = aliveTargets[r];
+        }
         currentTarget.OnDead += PlayerKilled;
         character.MoveTowards(currentTarget.transform);
         state = STATE.CHASE;
@@ -202,4 +215,23 @@ public class EnemyAI : MonoBehaviour
         this.enabled = false;
     }
 
+    private bool ProbabilityCheck(float probability)
+    {
+        int r = UnityEngine.Random.Range(0, 10);
+        Debug.Log("probability check: " + probability + ", " + r);
+        return r <= probability;
+    }
+
+    private Health MinorHealthEnemy()
+    {
+        Health newTarget = null;
+        foreach(Health health in enemiesDetected)
+        {
+            if(newTarget == null || health.Current < newTarget.Current)
+            {
+                newTarget = health;
+            }
+        }
+        return newTarget;
+    }
 }

@@ -9,6 +9,36 @@
 							<ObjectRef Name="System" ID="{60D1CAE7-D76D-43AB-A568-3770B11E72AD}" WorkUnitID="{839952CE-1E46-4ED8-A469-90471194618F}"/>
 						</Reference>
 					</ReferenceList>
+					<ChildrenList>
+						<Bus Name="BGM" ID="{5838FE34-6470-4713-970A-54CB90C538F2}">
+							<PropertyList>
+								<Property Name="BusVolume" Type="Real64">
+									<ValueList>
+										<Value>-12</Value>
+									</ValueList>
+								</Property>
+							</PropertyList>
+						</Bus>
+						<Bus Name="Environment" ID="{3003A2F5-7976-44C4-A7E0-92D302C183E8}">
+							<PropertyList>
+								<Property Name="BusVolume" Type="Real64">
+									<ValueList>
+										<Value>-12</Value>
+									</ValueList>
+								</Property>
+							</PropertyList>
+						</Bus>
+						<Bus Name="SFX" ID="{9C2623D4-10BF-4C9C-BCD4-21F3A4951545}"/>
+						<Bus Name="UI" ID="{4BD20426-8842-4D10-822F-4F502F36C257}">
+							<PropertyList>
+								<Property Name="BusVolume" Type="Real64">
+									<ValueList>
+										<Value>-9</Value>
+									</ValueList>
+								</Property>
+							</PropertyList>
+						</Bus>
+					</ChildrenList>
 				</Bus>
 			</ChildrenList>
 		</WorkUnit>

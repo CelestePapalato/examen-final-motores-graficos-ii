@@ -15,6 +15,8 @@ namespace AK
     {
         static const AkUniqueID AMBIENTE = 4095160060U;
         static const AkUniqueID CHECKPOINTENABLED = 4019668754U;
+        static const AkUniqueID NIVEL1_ONFIGHTEND = 790159265U;
+        static const AkUniqueID NIVEL1_ONFIGHTSTART = 3212454034U;
         static const AkUniqueID UI_ACEPTAR = 3127113562U;
         static const AkUniqueID UI_CANCELAR = 406518269U;
     } // namespace EVENTS
@@ -29,7 +31,11 @@ namespace AK
 
     namespace BUSSES
     {
+        static const AkUniqueID BGM = 412724365U;
+        static const AkUniqueID ENVIRONMENT = 1229948536U;
         static const AkUniqueID MASTER_AUDIO_BUS = 3803692087U;
+        static const AkUniqueID SFX = 393239870U;
+        static const AkUniqueID UI = 1551306167U;
     } // namespace BUSSES
 
     namespace AUDIO_DEVICES

@@ -10,11 +10,19 @@
     "Type": "User",
     "GUID": "{025088B0-4013-43DF-A419-B2269DDE64DF}",
     "Language": "SFX",
-    "Hash": "{4AFB0CB5-359A-9513-D9C0-3EED90D241C9}",
+    "Hash": "{9AD64A5E-D09E-40A6-4B55-E1A6B968A239}",
     "ObjectPath": "\\SoundBanks\\Default Work Unit\\Nivel1",
     "ShortName": "Nivel1",
     "Path": "Nivel1.bnk",
     "Media": [
+     {
+      "Id": "303733197",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Memory",
+      "ShortName": "Music\\Nivel 1 - BGM- Normal.wav",
+      "CachePath": "9C/{9C35B32A-55A9-F61A-4CA7-298DF665A4CE}.wem"
+     },
      {
       "Id": "966070257",
       "Language": "SFX",
@@ -22,6 +30,14 @@
       "Location": "Memory",
       "ShortName": "Ambiente 1.wav",
       "CachePath": "19/{19AE897B-3A3A-BBFC-C818-75504AD8DB28}.wem"
+     },
+     {
+      "Id": "1038016090",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Memory",
+      "ShortName": "Music\\Nivel 1 - BGM- Pelea.wav",
+      "CachePath": "B4/{B40B45DB-9FA2-4CDF-ADE9-8FBDC2A22B71}.wem"
      }
     ],
     "Events": [
@@ -33,13 +49,49 @@
       "DurationType": "Infinite",
       "MediaRefs": [
        {
+        "Id": "303733197"
+       },
+       {
         "Id": "966070257"
+       },
+       {
+        "Id": "1038016090"
+       }
+      ]
+     },
+     {
+      "Id": "790159265",
+      "Name": "Nivel1_OnFightEnd",
+      "ObjectPath": "\\Events\\Default Work Unit\\Nivel1_OnFightEnd",
+      "GUID": "{5A5984A5-79CA-499A-8862-DDA51B08A478}",
+      "MaxAttenuation": "0",
+      "DurationType": "OneShot",
+      "DurationMin": "0",
+      "DurationMax": "0",
+      "MediaRefs": [
+       {
+        "Id": "1038016090"
+       }
+      ]
+     },
+     {
+      "Id": "3212454034",
+      "Name": "Nivel1_OnFightStart",
+      "ObjectPath": "\\Events\\Default Work Unit\\Nivel1_OnFightStart",
+      "GUID": "{8859429E-0EF0-4338-B793-649CF0FF599E}",
+      "MaxAttenuation": "0",
+      "DurationType": "OneShot",
+      "DurationMin": "0",
+      "DurationMax": "0",
+      "MediaRefs": [
+       {
+        "Id": "1038016090"
        }
       ]
      }
     ]
    }
   ],
-  "FileHash": "{6946A8B1-8B46-48CF-9E19-427E6E39D6A8}"
+  "FileHash": "{591A036B-290C-71E5-FA43-408401317D2C}"
  }
 }

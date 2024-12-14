@@ -38,8 +38,42 @@ MonoBehaviour:
     ParentPath: Master-Mixer Hierarchy\Default Work Unit
     guid: 96ca781f897b2d4c89b612dbfb54758d
     GuidInternal: 
-    m_lastTime: -8584679539330980454
+    m_lastTime: -8584673984453685402
     List:
+    - name: BGM
+      guid: 34fe385870641347970a54cb90c538f2
+      id: 412724365
+      PathAndIcons:
+      - ElementName: Master-Mixer Hierarchy
+        ObjectType: 5
+        guid: 00000000000000000000000000000000
+      - ElementName: Default Work Unit
+        ObjectType: 12
+        guid: 96ca781f897b2d4c89b612dbfb54758d
+      - ElementName: Master Audio Bus
+        ObjectType: 2
+        guid: d8a41415a61d2a41a17e75ca0c2149f3
+      - ElementName: BGM
+        ObjectType: 2
+        guid: 34fe385870641347970a54cb90c538f2
+      Path: Master-Mixer Hierarchy\Default Work Unit\Master Audio Bus\BGM
+    - name: Environment
+      guid: f5a203307679c444a7e092d302c183e8
+      id: 1229948536
+      PathAndIcons:
+      - ElementName: Master-Mixer Hierarchy
+        ObjectType: 5
+        guid: 00000000000000000000000000000000
+      - ElementName: Default Work Unit
+        ObjectType: 12
+        guid: 96ca781f897b2d4c89b612dbfb54758d
+      - ElementName: Master Audio Bus
+        ObjectType: 2
+        guid: d8a41415a61d2a41a17e75ca0c2149f3
+      - ElementName: Environment
+        ObjectType: 2
+        guid: f5a203307679c444a7e092d302c183e8
+      Path: Master-Mixer Hierarchy\Default Work Unit\Master Audio Bus\Environment
     - name: Master Audio Bus
       guid: d8a41415a61d2a41a17e75ca0c2149f3
       id: 3803692087
@@ -54,6 +88,40 @@ MonoBehaviour:
         ObjectType: 2
         guid: d8a41415a61d2a41a17e75ca0c2149f3
       Path: Master-Mixer Hierarchy\Default Work Unit\Master Audio Bus
+    - name: SFX
+      guid: d423269cbf109c4cbcd421f3a4951545
+      id: 393239870
+      PathAndIcons:
+      - ElementName: Master-Mixer Hierarchy
+        ObjectType: 5
+        guid: 00000000000000000000000000000000
+      - ElementName: Default Work Unit
+        ObjectType: 12
+        guid: 96ca781f897b2d4c89b612dbfb54758d
+      - ElementName: Master Audio Bus
+        ObjectType: 2
+        guid: d8a41415a61d2a41a17e75ca0c2149f3
+      - ElementName: SFX
+        ObjectType: 2
+        guid: d423269cbf109c4cbcd421f3a4951545
+      Path: Master-Mixer Hierarchy\Default Work Unit\Master Audio Bus\SFX
+    - name: UI
+      guid: 2604d24b4288104d822f4f502f36c257
+      id: 1551306167
+      PathAndIcons:
+      - ElementName: Master-Mixer Hierarchy
+        ObjectType: 5
+        guid: 00000000000000000000000000000000
+      - ElementName: Default Work Unit
+        ObjectType: 12
+        guid: 96ca781f897b2d4c89b612dbfb54758d
+      - ElementName: Master Audio Bus
+        ObjectType: 2
+        guid: d8a41415a61d2a41a17e75ca0c2149f3
+      - ElementName: UI
+        ObjectType: 2
+        guid: 2604d24b4288104d822f4f502f36c257
+      Path: Master-Mixer Hierarchy\Default Work Unit\Master Audio Bus\UI
   BankWwu:
   - PhysicalPath: SoundBanks\Default Work Unit.wwu
     PathAndIcons:
@@ -66,7 +134,7 @@ MonoBehaviour:
     ParentPath: SoundBanks\Default Work Unit
     guid: 75f0a852a28f0e4e9f5f3ba4847ae6c8
     GuidInternal: 
-    m_lastTime: -8584679468319859249
+    m_lastTime: -8584674322029261673
     List:
     - name: LevelObjects
       guid: 88a924a723059544bf65a3e6ed886788
@@ -122,7 +190,7 @@ MonoBehaviour:
     ParentPath: Events\Default Work Unit
     guid: 9d2feba5002e0c4f965531a215c0b17e
     GuidInternal: 
-    m_lastTime: -8584679380429195740
+    m_lastTime: -8584674324813445225
     List:
     - name: Ambiente
       guid: 9211cfbec1e7474b915742d9529ecd75
@@ -138,6 +206,40 @@ MonoBehaviour:
         ObjectType: 3
         guid: 9211cfbec1e7474b915742d9529ecd75
       Path: Events\Default Work Unit\Ambiente
+      maxAttenuation: 0
+      maxDuration: -1
+      minDuration: -1
+    - name: Nivel1_OnFightEnd
+      guid: a584595aca799a498862dda51b08a478
+      id: 790159265
+      PathAndIcons:
+      - ElementName: Events
+        ObjectType: 5
+        guid: 00000000000000000000000000000000
+      - ElementName: Default Work Unit
+        ObjectType: 12
+        guid: 9d2feba5002e0c4f965531a215c0b17e
+      - ElementName: Nivel1_OnFightEnd
+        ObjectType: 3
+        guid: a584595aca799a498862dda51b08a478
+      Path: Events\Default Work Unit\Nivel1_OnFightEnd
+      maxAttenuation: 0
+      maxDuration: -1
+      minDuration: -1
+    - name: Nivel1_OnFightStart
+      guid: 9e425988f00e3843b793649cf0ff599e
+      id: 3212454034
+      PathAndIcons:
+      - ElementName: Events
+        ObjectType: 5
+        guid: 00000000000000000000000000000000
+      - ElementName: Default Work Unit
+        ObjectType: 12
+        guid: 9d2feba5002e0c4f965531a215c0b17e
+      - ElementName: Nivel1_OnFightStart
+        ObjectType: 3
+        guid: 9e425988f00e3843b793649cf0ff599e
+      Path: Events\Default Work Unit\Nivel1_OnFightStart
       maxAttenuation: 0
       maxDuration: -1
       minDuration: -1
@@ -275,8 +377,8 @@ MonoBehaviour:
     m_lastTime: -8584679539331629446
     List: []
   ExpandedFileSystemItemIds: 
-  ExpandedWaapiItemIds: 0500000006000000080000000a0000000b0000000d0000000e0000001a000000
-  AutoSyncSelection: 0
+  ExpandedWaapiItemIds: 050000000600000007000000080000000a0000000b0000000d0000000e0000001a0000009800000099000000b8010000b9010000
+  AutoSyncSelection: 1
   autoPopulateEnabled: 1
   currentDataSource: 0
   CurrentPluginConfig: 

@@ -12,6 +12,58 @@
 								</Reference>
 							</ReferenceList>
 						</Action>
+						<Action Name="" ID="{42D67E79-EB34-4A74-89F0-EED520FC3BB7}" ShortID="875915487">
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="Nivel 1" ID="{417D0B17-549A-4D6E-BAF0-604FA6314CE6}" WorkUnitID="{F7BCFA0F-1147-468E-94CF-910E2996551A}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+						<Action Name="" ID="{BB6614D2-CA64-4022-A64D-F7BAD58BB9E5}" ShortID="898797510">
+							<PropertyList>
+								<Property Name="ActionType" Type="int16" Value="4"/>
+								<Property Name="Scope" Type="int16" Value="1"/>
+							</PropertyList>
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="Fight" ID="{BBFA6109-56FD-4AA8-842F-3363284BDD41}" WorkUnitID="{F7BCFA0F-1147-468E-94CF-910E2996551A}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+					</ChildrenList>
+				</Event>
+				<Event Name="Nivel1_OnFightStart" ID="{8859429E-0EF0-4338-B793-649CF0FF599E}">
+					<ChildrenList>
+						<Action Name="" ID="{6F96DC1F-ACED-42AA-9B0E-F9413A4CC3D9}" ShortID="946876616">
+							<PropertyList>
+								<Property Name="ActionType" Type="int16" Value="5"/>
+								<Property Name="FadeInCurve" Type="int16" Value="1"/>
+								<Property Name="FadeTime" Type="Real64" Value="1"/>
+								<Property Name="Scope" Type="int16" Value="1"/>
+							</PropertyList>
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="Fight" ID="{BBFA6109-56FD-4AA8-842F-3363284BDD41}" WorkUnitID="{F7BCFA0F-1147-468E-94CF-910E2996551A}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+					</ChildrenList>
+				</Event>
+				<Event Name="Nivel1_OnFightEnd" ID="{5A5984A5-79CA-499A-8862-DDA51B08A478}">
+					<ChildrenList>
+						<Action Name="" ID="{55A0C83E-83D7-4B3F-82F8-5F6E26810BB4}" ShortID="636835127">
+							<PropertyList>
+								<Property Name="ActionType" Type="int16" Value="4"/>
+								<Property Name="FadeOutCurve" Type="int16" Value="7"/>
+								<Property Name="FadeTime" Type="Real64" Value="1.5"/>
+								<Property Name="Scope" Type="int16" Value="1"/>
+							</PropertyList>
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="Fight" ID="{BBFA6109-56FD-4AA8-842F-3363284BDD41}" WorkUnitID="{F7BCFA0F-1147-468E-94CF-910E2996551A}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
 					</ChildrenList>
 				</Event>
 			</ChildrenList>

@@ -12,7 +12,7 @@
 							<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{A8E4C321-AFB5-4D6F-9676-26040F5C4B02}"/>
 						</Reference>
 						<Reference Name="OutputBus">
-							<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{1F78CA96-7B89-4C2D-89B6-12DBFB54758D}"/>
+							<ObjectRef Name="Environment" ID="{3003A2F5-7976-44C4-A7E0-92D302C183E8}" WorkUnitID="{1F78CA96-7B89-4C2D-89B6-12DBFB54758D}"/>
 						</Reference>
 					</ReferenceList>
 					<ChildrenList>

@@ -6,6 +6,7 @@
 				<SoundBank Name="Nivel1" ID="{025088B0-4013-43DF-A419-B2269DDE64DF}">
 					<ObjectInclusionList>
 						<ObjectRef Name="Default Work Unit" ID="{FEC521C4-5B4C-40A2-BB11-539682064A77}" WorkUnitID="{FEC521C4-5B4C-40A2-BB11-539682064A77}" Origin="Manual" Filter="7"/>
+						<ObjectRef Name="Default Work Unit" ID="{F7BCFA0F-1147-468E-94CF-910E2996551A}" WorkUnitID="{F7BCFA0F-1147-468E-94CF-910E2996551A}" Origin="Manual" Filter="7"/>
 					</ObjectInclusionList>
 					<ObjectExclusionList/>
 					<GameSyncExclusionList/>

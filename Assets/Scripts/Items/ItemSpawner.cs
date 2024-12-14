@@ -72,8 +72,10 @@ public class ItemSpawner : MonoBehaviour
 
     private void InstanceItem(int index)
     {
-        if(index < 0) { return; }
-        Instantiate(_itemList[index].gameObject, transform.position, Quaternion.identity);
+        if(index >= 0)
+        {
+            Instantiate(_itemList[index].gameObject, transform.position, Quaternion.identity);
+        }
         if (destroyOnSpawn)
         {
             Destroy(destroyOnSpawn);

@@ -17,4 +17,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Pruebas/Nivel prueba.unity
     guid: 3c3dd4dc91075c449be70b7866f0605f
+  - enabled: 1
+    path: Assets/Scenes/Pruebas/bake test.unity
+    guid: 4ccdcfc6273287447b409d4c960af58e
   m_configObjects: {}

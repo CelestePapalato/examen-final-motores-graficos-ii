@@ -19,3 +19,5 @@ MonoBehaviour:
     scene: {fileID: 102900000, guid: 3c3dd4dc91075c449be70b7866f0605f, type: 3}
   - level_tag: camera_test
     scene: {fileID: 102900000, guid: 9fc0d4010bbf28b4594072e72b8655ab, type: 3}
+  - level_tag: level_1
+    scene: {fileID: 102900000, guid: 4ccdcfc6273287447b409d4c960af58e, type: 3}

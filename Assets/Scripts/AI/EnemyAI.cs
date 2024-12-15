@@ -161,8 +161,8 @@ public class EnemyAI : MonoBehaviour
             character.StopAvoiding(currentTarget.transform);
             TargetUpdate();
         }
-        var obj = enemiesDetected.First(x => x.CompareTag("Player"));
-        if (!obj)
+        Health obj = enemiesDetected.FirstOrDefault(x => x.CompareTag("Player"));
+        if (obj == null)
         {
             PlayerOutOfRange?.Invoke(this);
             playerInRange = false;

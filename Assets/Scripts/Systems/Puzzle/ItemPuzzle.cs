@@ -24,11 +24,11 @@ namespace PuzzleSystem
         public override void Interact()
         {
             base.Interact();
-            if (!InventorySystem.Inventory.ContainsItem(itemNeeded) || Completed)
+            if (Completed || (!InventorySystem.Inventory.ContainsItem(itemNeeded) && itemNeeded != null))
             {
                 return;
             }
-            if (consumeObject)
+            if (consumeObject && itemNeeded != null)
             {
                 InventorySystem.Inventory.RemoveItem(itemNeeded);
             }

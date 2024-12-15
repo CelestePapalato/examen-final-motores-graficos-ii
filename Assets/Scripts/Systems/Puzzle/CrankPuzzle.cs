@@ -49,19 +49,21 @@ namespace PuzzleSystem
         IEnumerator WheelValueUpdate()
         {
             float wheelValue = 0f;
-            stateSlider.value = wheelValue;
+            if (stateSlider)
+            {
+                stateSlider.value = wheelValue;
+            }
             float timer = 0f;
             while (wheelValue < 1f)
             {
-                if(timeToComplete == 0)
-                {
-                    break;
-                }
                 yield return null;
                 timer += Time.deltaTime * ((isInteracting) ? 1 : -slowDownFactor);
                 timer = Mathf.Max(timer, 0);
                 wheelValue = timer/timeToComplete;
-                stateSlider.value = 1 - wheelValue;
+                if (stateSlider)
+                {
+                    stateSlider.value = 1 - wheelValue;
+                }
                 onWheelValueUpdated?.Invoke(wheelValue);
             }
             Completed = true;

@@ -99,6 +99,15 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+  TriggerExit:
+    m_PersistentCalls:
+      m_Calls: []
+  SomeoneInside:
+    m_PersistentCalls:
+      m_Calls: []
+  NoOneInside:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!1 &8223676548415464938
 GameObject:
   m_ObjectHideFlags: 0

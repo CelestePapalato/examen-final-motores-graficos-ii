@@ -134,7 +134,7 @@ MonoBehaviour:
     ParentPath: SoundBanks\Default Work Unit
     guid: 75f0a852a28f0e4e9f5f3ba4847ae6c8
     GuidInternal: 
-    m_lastTime: -8584674322029261673
+    m_lastTime: -8584673413859237024
     List:
     - name: LevelObjects
       guid: 88a924a723059544bf65a3e6ed886788
@@ -150,6 +150,20 @@ MonoBehaviour:
         ObjectType: 7
         guid: 88a924a723059544bf65a3e6ed886788
       Path: SoundBanks\Default Work Unit\LevelObjects
+    - name: MainMenu
+      guid: 6daf66142087bf4d8a85af8250ee7c54
+      id: 3604647259
+      PathAndIcons:
+      - ElementName: SoundBanks
+        ObjectType: 5
+        guid: 00000000000000000000000000000000
+      - ElementName: Default Work Unit
+        ObjectType: 12
+        guid: 75f0a852a28f0e4e9f5f3ba4847ae6c8
+      - ElementName: MainMenu
+        ObjectType: 7
+        guid: 6daf66142087bf4d8a85af8250ee7c54
+      Path: SoundBanks\Default Work Unit\MainMenu
     - name: Nivel1
       guid: b08850021340df43a419b2269dde64df
       id: 409685056
@@ -190,7 +204,7 @@ MonoBehaviour:
     ParentPath: Events\Default Work Unit
     guid: 9d2feba5002e0c4f965531a215c0b17e
     GuidInternal: 
-    m_lastTime: -8584674324813445225
+    m_lastTime: -8584673413859376507
     List:
     - name: Ambiente
       guid: 9211cfbec1e7474b915742d9529ecd75
@@ -270,6 +284,36 @@ MonoBehaviour:
         ObjectType: 3
         guid: 96a1b0450b1ee0428ee66baf19290987
       Path: Events\LevelObjects\CheckpointEnabled
+      maxAttenuation: 0
+      maxDuration: -1
+      minDuration: -1
+  - PhysicalPath: Events\MainMenu.wwu
+    PathAndIcons:
+    - ElementName: Events
+      ObjectType: 5
+      guid: 00000000000000000000000000000000
+    - ElementName: MainMenu
+      ObjectType: 12
+      guid: 7c1cbacd629628459e2f1c8c7646a4ef
+    ParentPath: Events\MainMenu
+    guid: 7c1cbacd629628459e2f1c8c7646a4ef
+    GuidInternal: 
+    m_lastTime: -8584673413859127387
+    List:
+    - name: Play_Main_Menu
+      guid: db0f1f5ca9e32b42a3e233debdcbfc3c
+      id: 3306210749
+      PathAndIcons:
+      - ElementName: Events
+        ObjectType: 5
+        guid: 00000000000000000000000000000000
+      - ElementName: MainMenu
+        ObjectType: 12
+        guid: 7c1cbacd629628459e2f1c8c7646a4ef
+      - ElementName: Play_Main_Menu
+        ObjectType: 3
+        guid: db0f1f5ca9e32b42a3e233debdcbfc3c
+      Path: Events\MainMenu\Play_Main_Menu
       maxAttenuation: 0
       maxDuration: -1
       minDuration: -1
@@ -377,7 +421,7 @@ MonoBehaviour:
     m_lastTime: -8584679539331629446
     List: []
   ExpandedFileSystemItemIds: 
-  ExpandedWaapiItemIds: 050000000600000007000000080000000a0000000b0000000d0000000e0000001a0000009800000099000000b8010000b9010000
+  ExpandedWaapiItemIds: 050000000600000007000000080000000a0000000b0000000d0000000e00000013000000140000001a0000009800000099000000df000000e0000000e5000000e7000000b8010000b9010000
   AutoSyncSelection: 1
   autoPopulateEnabled: 1
   currentDataSource: 0

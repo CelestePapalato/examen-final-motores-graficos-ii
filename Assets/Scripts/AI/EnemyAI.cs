@@ -11,6 +11,9 @@ public class EnemyAI : MonoBehaviour
     private STATE state = STATE.PATROL;
 
     public static event Action<int> OnEnemyDead;
+    public static event Action<EnemyAI> PlayerInRange;
+    public static event Action<EnemyAI> PlayerOutOfRange;
+    bool playerInRange = false;
 
     private static Dictionary<Health, List<EnemyAI>> enemiesAttacking = new Dictionary<Health, List<EnemyAI>>();
 
@@ -139,6 +142,11 @@ public class EnemyAI : MonoBehaviour
             Debug.Log("Change target");
             TargetUpdate();
         }
+        if (target.CompareTag("Player") && !playerInRange)
+        {
+            PlayerInRange?.Invoke(this);
+            playerInRange = true;
+        }
     }
 
     private void TargetLost(Transform target)
@@ -152,6 +160,12 @@ public class EnemyAI : MonoBehaviour
             currentTarget.OnDead -= PlayerKilled;
             character.StopAvoiding(currentTarget.transform);
             TargetUpdate();
+        }
+        var obj = enemiesDetected.First(x => x.CompareTag("Player"));
+        if (!obj)
+        {
+            PlayerOutOfRange?.Invoke(this);
+            playerInRange = false;
         }
     }
 
@@ -212,6 +226,8 @@ public class EnemyAI : MonoBehaviour
         itemSpawner?.DropItem();
         OnEnemyDead?.Invoke(points);
         Destroy(gameObject, 5);
+        PlayerOutOfRange?.Invoke(this);
+        playerInRange = false;
         this.enabled = false;
     }
 

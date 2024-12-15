@@ -187,6 +187,138 @@
 						</MusicSegment>
 					</ChildrenList>
 				</MusicPlaylistContainer>
+				<MusicPlaylistContainer Name="Main Menu" ID="{C9E1C32A-720B-4F30-AE0D-CE2BDB583FDA}" ShortID="165613562">
+					<ReferenceList>
+						<Reference Name="Conversion">
+							<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{A8E4C321-AFB5-4D6F-9676-26040F5C4B02}"/>
+						</Reference>
+						<Reference Name="OutputBus">
+							<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{1F78CA96-7B89-4C2D-89B6-12DBFB54758D}"/>
+						</Reference>
+						<Reference Name="PlaylistRoot">
+							<Custom>
+								<MusicPlaylistItem Name="" ID="{9F016211-31E2-43C1-81FA-E171E1428E21}" ShortID="308791795">
+									<ChildrenList>
+										<MusicPlaylistItem Name="" ID="{193BD333-3F4F-4081-93DA-CA5722314F1D}" ShortID="370299608">
+											<PropertyList>
+												<Property Name="LoopCount" Type="int16" Value="0"/>
+												<Property Name="PlaylistItemType" Type="int16" Value="1"/>
+											</PropertyList>
+											<ReferenceList>
+												<Reference Name="Segment">
+													<ObjectRef Name="Main Menu" ID="{C1360E1F-5C26-4326-B471-F11770950F00}" WorkUnitID="{F7BCFA0F-1147-468E-94CF-910E2996551A}"/>
+												</Reference>
+											</ReferenceList>
+										</MusicPlaylistItem>
+									</ChildrenList>
+								</MusicPlaylistItem>
+							</Custom>
+						</Reference>
+						<Reference Name="TransitionRoot">
+							<Custom>
+								<MusicTransition Name="Root" ID="{3A3FE585-64E6-4BF0-A989-5C018A292DF3}">
+									<PropertyList>
+										<Property Name="IsFolder" Type="bool" Value="True"/>
+									</PropertyList>
+									<ChildrenList>
+										<MusicTransition Name="Transition" ID="{12547113-CAB2-4DAC-A89F-06980EA6883B}">
+											<TransitionInfo/>
+										</MusicTransition>
+									</ChildrenList>
+									<TransitionInfo/>
+								</MusicTransition>
+							</Custom>
+						</Reference>
+					</ReferenceList>
+					<ChildrenList>
+						<MusicSegment Name="Main Menu" ID="{C1360E1F-5C26-4326-B471-F11770950F00}" ShortID="297565791">
+							<PropertyList>
+								<Property Name="EndPosition" Type="Real64" Value="27000"/>
+							</PropertyList>
+							<ReferenceList>
+								<Reference Name="Conversion">
+									<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{A8E4C321-AFB5-4D6F-9676-26040F5C4B02}"/>
+								</Reference>
+								<Reference Name="OutputBus">
+									<ObjectRef Name="BGM" ID="{5838FE34-6470-4713-970A-54CB90C538F2}" WorkUnitID="{1F78CA96-7B89-4C2D-89B6-12DBFB54758D}"/>
+								</Reference>
+							</ReferenceList>
+							<ChildrenList>
+								<MusicTrack Name="akita no hanashi 6 - kyouki ga tomarenai v2" ID="{FC2CBE0A-20D3-4026-9F70-7D984AFBE4D0}" ShortID="86863188">
+									<ReferenceList>
+										<Reference Name="OutputBus">
+											<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{1F78CA96-7B89-4C2D-89B6-12DBFB54758D}"/>
+										</Reference>
+										<Reference Name="TransitionRoot">
+											<Custom>
+												<MusicTransition Name="Root" ID="{54F9B67A-F7B6-4E43-B77E-FE1832D09D39}">
+													<PropertyList>
+														<Property Name="IsFolder" Type="bool" Value="True"/>
+													</PropertyList>
+													<TransitionInfo/>
+												</MusicTransition>
+											</Custom>
+										</Reference>
+									</ReferenceList>
+									<ChildrenList>
+										<AudioFileSource Name="akita no hanashi 6 - kyouki ga tomarenai v2" ID="{0C705100-6055-49AE-9AAF-327333449743}">
+											<Language>SFX</Language>
+											<AudioFile>akita no hanashi 6 - kyouki ga tomarenai v2.wav</AudioFile>
+											<MediaIDList>
+												<MediaID ID="977219297"/>
+											</MediaIDList>
+										</AudioFileSource>
+									</ChildrenList>
+									<ObjectLists>
+										<ObjectList Name="Sequences">
+											<Reference>
+												<Local>
+													<MusicTrackSequence Name="" ID="{71037065-019C-4251-9020-C3F6E3B8A461}">
+														<ObjectLists>
+															<ObjectList Name="Clips">
+																<Reference>
+																	<Local>
+																		<MusicClip Name="akita no hanashi 6 - kyouki ga tomarenai v2" ID="{D8EACC20-E629-4802-B09C-4186EADBAB42}">
+																			<PropertyList>
+																				<Property Name="EndTrimOffset" Type="Real64" Value="26961.9727891156"/>
+																				<Property Name="FadeInMode" Type="int16" Value="0"/>
+																				<Property Name="FadeOutMode" Type="int16" Value="0"/>
+																			</PropertyList>
+																			<AudioSourceRef Name="akita no hanashi 6 - kyouki ga tomarenai v2" ID="{0C705100-6055-49AE-9AAF-327333449743}"/>
+																		</MusicClip>
+																	</Local>
+																</Reference>
+															</ObjectList>
+														</ObjectLists>
+													</MusicTrackSequence>
+												</Local>
+											</Reference>
+										</ObjectList>
+									</ObjectLists>
+								</MusicTrack>
+							</ChildrenList>
+							<ObjectLists>
+								<ObjectList Name="Cues">
+									<Reference>
+										<Local>
+											<MusicCue Name="Entry Cue" ID="{D12606C6-FC56-4C5F-BF22-020010886E28}"/>
+										</Local>
+									</Reference>
+									<Reference>
+										<Local>
+											<MusicCue Name="Exit Cue" ID="{2CAF8255-3C0E-442E-8519-F94D1343B595}">
+												<PropertyList>
+													<Property Name="CueType" Type="int16" Value="1"/>
+													<Property Name="TimeMs" Type="Real64" Value="26000"/>
+												</PropertyList>
+											</MusicCue>
+										</Local>
+									</Reference>
+								</ObjectList>
+							</ObjectLists>
+						</MusicSegment>
+					</ChildrenList>
+				</MusicPlaylistContainer>
 			</ChildrenList>
 		</WorkUnit>
 	</InteractiveMusic>

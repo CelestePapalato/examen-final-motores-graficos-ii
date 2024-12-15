@@ -17,6 +17,7 @@ namespace AK
         static const AkUniqueID CHECKPOINTENABLED = 4019668754U;
         static const AkUniqueID NIVEL1_ONFIGHTEND = 790159265U;
         static const AkUniqueID NIVEL1_ONFIGHTSTART = 3212454034U;
+        static const AkUniqueID PLAY_MAIN_MENU = 3306210749U;
         static const AkUniqueID UI_ACEPTAR = 3127113562U;
         static const AkUniqueID UI_CANCELAR = 406518269U;
     } // namespace EVENTS
@@ -25,6 +26,7 @@ namespace AK
     {
         static const AkUniqueID INIT = 1355168291U;
         static const AkUniqueID LEVELOBJECTS = 3013243631U;
+        static const AkUniqueID MAINMENU = 3604647259U;
         static const AkUniqueID NIVEL1 = 409685056U;
         static const AkUniqueID UI = 1551306167U;
     } // namespace BANKS

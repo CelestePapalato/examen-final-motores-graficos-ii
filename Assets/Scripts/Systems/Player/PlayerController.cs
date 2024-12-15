@@ -19,6 +19,7 @@ public class PlayerController : MonoBehaviour
     public UnityEvent OnEvadeInput;
 
     static bool PlayerOnPauseMenu = false;
+    bool canPause = true;
 
     private void Start()
     {
@@ -26,6 +27,16 @@ public class PlayerController : MonoBehaviour
         {
             camera = Camera.main;
         }
+    }
+
+    private void OnEnable()
+    {
+        GameManager.OnGameOver += RestartPlayerOnPauseMenu;
+    }
+
+    private void OnDisable()
+    {
+        GameManager.OnGameOver -= RestartPlayerOnPauseMenu;
     }
 
     private void OnMovement(InputValue inputValue)
@@ -65,9 +76,15 @@ public class PlayerController : MonoBehaviour
         */
     }
 
+    private void RestartPlayerOnPauseMenu(bool gameStatus)
+    {
+        canPause = false;
+        PlayerOnPauseMenu = false;
+    }
+
     private void OnPauseMenu(InputValue input)
     {
-        if (Time.timeScale > 0 && !PlayerOnPauseMenu)
+        if (Time.timeScale > 0 && !PlayerOnPauseMenu && canPause)
         {
             MenuManager.Instance.OpenMenu("pause_menu");
             PlayerOnPauseMenu = true;

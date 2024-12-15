@@ -3095,7 +3095,7 @@ GameObject:
   - component: {fileID: 6997726778545432955}
   m_Layer: 8
   m_Name: Hurtbox
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -3390,7 +3390,7 @@ GameObject:
   - component: {fileID: 2478386032918908938}
   m_Layer: 6
   m_Name: Knight
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<WwiseDocument Type="WorkUnit" ID="{CDBA1C7C-9662-4528-9E2F-1C8C7646A4EF}" SchemaVersion="123">
+	<Events>
+		<WorkUnit Name="MainMenu" ID="{CDBA1C7C-9662-4528-9E2F-1C8C7646A4EF}" PersistMode="Standalone">
+			<ChildrenList>
+				<Event Name="Play_Main_Menu" ID="{5C1F0FDB-E3A9-422B-A3E2-33DEBDCBFC3C}">
+					<ChildrenList>
+						<Action Name="" ID="{751DD7DD-7324-47A0-B3AA-9B4F3EC7A368}" ShortID="435755310">
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="Main Menu" ID="{C9E1C32A-720B-4F30-AE0D-CE2BDB583FDA}" WorkUnitID="{F7BCFA0F-1147-468E-94CF-910E2996551A}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+					</ChildrenList>
+				</Event>
+			</ChildrenList>
+		</WorkUnit>
+	</Events>
+</WwiseDocument>

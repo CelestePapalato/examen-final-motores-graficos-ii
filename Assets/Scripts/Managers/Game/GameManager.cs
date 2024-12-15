@@ -13,6 +13,7 @@ public class GameManager : MonoBehaviour
     public static UnityAction<int> OnScoreUpdate;
 
     public static UnityAction<bool> OnGameOver;
+    public static UnityAction OnGameSessionEnd;
 
     private int score = 0;
     public int Score { get => score; }

@@ -13,6 +13,7 @@ public class LevelManager : MonoBehaviour
     string current_level_tag;
 
     public UnityEvent OnSceneLoad;
+    public static UnityAction OnSceneLoading;
 
     private void Awake()
     {
@@ -22,6 +23,11 @@ public class LevelManager : MonoBehaviour
             return;
         }
         Instance = this;
+    }
+
+    private void OnDestroy()
+    {
+        Instance = null;
     }
 
     public void ChangeLevelTag(string level_tag)

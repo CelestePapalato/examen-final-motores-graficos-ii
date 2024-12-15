@@ -18,7 +18,6 @@ public class PlayerController : MonoBehaviour
     public UnityEvent OnInteractInput;
     public UnityEvent OnEvadeInput;
 
-    static bool PlayerOnPauseMenu = false;
     bool canPause = true;
 
     private void Start()
@@ -31,12 +30,14 @@ public class PlayerController : MonoBehaviour
 
     private void OnEnable()
     {
-        GameManager.OnGameOver += RestartPlayerOnPauseMenu;
+        GameManager.OnGameSessionEnd += DisablePauseMenuUse;
+        LevelManager.OnSceneLoading += DisablePauseMenuUse;
     }
 
     private void OnDisable()
     {
-        GameManager.OnGameOver -= RestartPlayerOnPauseMenu;
+        GameManager.OnGameSessionEnd -= DisablePauseMenuUse;
+        LevelManager.OnSceneLoading -= DisablePauseMenuUse;
     }
 
     private void OnMovement(InputValue inputValue)
@@ -76,23 +77,20 @@ public class PlayerController : MonoBehaviour
         */
     }
 
-    private void RestartPlayerOnPauseMenu(bool gameStatus)
+    private void DisablePauseMenuUse()
     {
         canPause = false;
-        PlayerOnPauseMenu = false;
     }
 
     private void OnPauseMenu(InputValue input)
     {
-        if (Time.timeScale > 0 && !PlayerOnPauseMenu && canPause)
+        if (Time.timeScale > 0 && canPause)
         {
             MenuManager.Instance.OpenMenu("pause_menu");
-            PlayerOnPauseMenu = true;
         }
-        else if(PlayerOnPauseMenu)
+        else if (canPause)
         {
             MenuManager.Instance.CloseMenu("pause_menu");
-            PlayerOnPauseMenu = false;
         }
     }
 

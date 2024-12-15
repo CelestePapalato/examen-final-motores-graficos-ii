@@ -42,4 +42,10 @@ public class LevelManager : MonoBehaviour
         OnSceneLoad?.Invoke();
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
+
+    public void CloseGame()
+    {
+        Application.Quit();
+        Debug.Log("Game is exiting");
+    }
 }

@@ -942,7 +942,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f81ff89199fff9f4e865d517f2cc48db, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHealth: 3
+  maxHealth: 5
   damageMemoryTimeAlive: 2
   enableInvincibilitySystem: 0
   invincibilityTime: 0
@@ -1014,8 +1014,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 456189b30227e2041bc79238c8defe45, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _itemList: []
-  _noDropProbability: 0
+  _itemList:
+  - name: health power up
+    gameObject: {fileID: 191476813094066143, guid: 422b303d0ed87554cb15a3eac71875d1,
+      type: 3}
+    dropProbability: 5
+  - name: damage power up
+    gameObject: {fileID: 191476813094066143, guid: a164bfbb4f47ced48bbdabc30b3eda52,
+      type: 3}
+    dropProbability: 2
+  - name: speed power up
+    gameObject: {fileID: 191476813094066143, guid: a026f21902afbee4fa85638b49519e1b,
+      type: 3}
+    dropProbability: 3
+  _noDropProbability: 8
   destroyOnSpawn: {fileID: 0}
 --- !u!1 &3110233613606476268
 GameObject:

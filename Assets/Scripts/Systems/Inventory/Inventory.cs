@@ -19,7 +19,7 @@ namespace InventorySystem
             }
             ItemSO[] inventoryCopy = new ItemSO[_currentItems.Count];
             _currentItems.CopyTo(inventoryCopy, 0);
-            InventoryUpdated(inventoryCopy);
+            InventoryUpdated?.Invoke(inventoryCopy);
         }
 
         public static void AddItem(ItemSO itemToAdd)

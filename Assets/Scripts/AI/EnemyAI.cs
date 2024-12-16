@@ -222,6 +222,9 @@ public class EnemyAI : MonoBehaviour
     
     private void Dead()
     {
+        CancelInvoke();
+        StopAllCoroutines();
+        character.DisableStateChange = true;
         isDead = true;
         itemSpawner?.DropItem();
         OnEnemyDead?.Invoke(points);

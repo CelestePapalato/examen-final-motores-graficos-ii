@@ -140,10 +140,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _itemList:
-  - name: speed power up
-    gameObject: {fileID: 191476813094066143, guid: a026f21902afbee4fa85638b49519e1b,
-      type: 3}
-    dropProbability: 3
   - name: health power up
     gameObject: {fileID: 191476813094066143, guid: 422b303d0ed87554cb15a3eac71875d1,
       type: 3}

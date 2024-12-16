@@ -12,8 +12,17 @@ namespace InventorySystem {
         private void Awake()
         {
             _canvas = GetComponentInParent<Canvas>();
-            Inventory.InventoryUpdated += UpdateItemUI;
             UpdateItemUI(Inventory.CurrentItems);
+        }
+
+        private void OnEnable()
+        {
+            Inventory.InventoryUpdated += UpdateItemUI;
+        }
+
+        private void OnDisable()
+        {
+            Inventory.InventoryUpdated -= UpdateItemUI;
         }
 
         private void UpdateItemUI(ItemSO[] items)

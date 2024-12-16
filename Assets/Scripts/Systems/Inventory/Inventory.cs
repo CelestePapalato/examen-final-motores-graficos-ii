@@ -43,5 +43,13 @@ namespace InventorySystem
         {
             return _currentItems.Contains(itemToCheck);
         }
+
+        public static void Clear()
+        {
+            _currentItems = new List<ItemSO>();
+            ItemSO[] inventoryCopy = new ItemSO[_currentItems.Count];
+            _currentItems.CopyTo(inventoryCopy, 0);
+            InventoryUpdated?.Invoke(inventoryCopy);
+        }
     }
 }

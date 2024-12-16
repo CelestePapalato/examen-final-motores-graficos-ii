@@ -41,11 +41,13 @@ public class LevelManager : MonoBehaviour
         LevelData level = levelCollection.Levels.First(x => x.level_tag == current_level_tag);
         if(level == null) { return; }
         OnSceneLoad?.Invoke();
+        InventorySystem.Inventory.Clear();
         SceneManager.LoadScene(level.scene.name);
     }
     public void ReloadLevel()
     {
         OnSceneLoad?.Invoke();
+        InventorySystem.Inventory.Clear();
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
 

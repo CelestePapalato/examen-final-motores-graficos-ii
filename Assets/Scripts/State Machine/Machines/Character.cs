@@ -69,6 +69,7 @@ public class Character : StateMachine
     CharacterState currentIdleState;
 
     private bool toBeDestroyed = false;
+    public bool DisableStateChange = false;
 
     int currentHitCount = 0;
     bool hitMemoryCoroutineON = false;
@@ -151,6 +152,7 @@ public class Character : StateMachine
 
     public override void CambiarEstado(State newState)
     {
+        if(DisableStateChange) { return; }
         bool damaged = currentState == stunState;
         currentState?.Salir();
         if (!toBeDestroyed)

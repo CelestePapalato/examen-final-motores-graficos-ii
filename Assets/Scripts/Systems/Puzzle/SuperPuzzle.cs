@@ -1,16 +1,18 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 namespace PuzzleSystem
 {
     public class SuperPuzzle : Puzzle
     {
-        Puzzle[] puzzles;
+        List<Puzzle> puzzles;
 
         private void Awake()
         {
-            puzzles = GetComponentsInChildren<Puzzle>();
+            puzzles = GetComponentsInChildren<Puzzle>().ToList();
+            puzzles.Remove(this);
         }
 
         private void OnEnable()
@@ -36,6 +38,7 @@ namespace PuzzleSystem
             foreach (var puzzle in puzzles)
             {
                 isCompleted &= puzzle.Completed;
+                Debug.Log(puzzle.Completed + ", -> " + isCompleted);
             }
             if (isCompleted)
             {

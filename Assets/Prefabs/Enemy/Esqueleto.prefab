@@ -1022,12 +1022,8 @@ MonoBehaviour:
   - name: damage power up
     gameObject: {fileID: 191476813094066143, guid: a164bfbb4f47ced48bbdabc30b3eda52,
       type: 3}
-    dropProbability: 2
-  - name: speed power up
-    gameObject: {fileID: 191476813094066143, guid: a026f21902afbee4fa85638b49519e1b,
-      type: 3}
     dropProbability: 3
-  _noDropProbability: 8
+  _noDropProbability: 3
   destroyOnSpawn: {fileID: 0}
 --- !u!1 &3110233613606476268
 GameObject:

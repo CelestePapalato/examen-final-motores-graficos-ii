@@ -51,6 +51,7 @@ public class Health : MonoBehaviour, IDamageable, IObservableVariable, IBuffable
     {
         StopAllCoroutines();
         OnDestroyEvent?.Invoke();
+        OnDestroyEvent = null;
     }
     public void Accept(IBuff buff)
     {

@@ -21,7 +21,7 @@ public class GameManager : MonoBehaviour
     public static float GameTime { get => Time.timeSinceLevelLoad; }
 
     [SerializeField]
-    private int scoreNeededForRespawn = 50;
+    private int scoreNeededForRespawn = 25;
 
     private void Awake()
     {

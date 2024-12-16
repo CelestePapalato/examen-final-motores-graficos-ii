@@ -31,6 +31,7 @@ public class Mana : MonoBehaviour, IObservableVariable
     private void OnDestroy()
     {
         OnDestroyEvent?.Invoke();
+        OnDestroyEvent = null;
     }
 
     public bool UseMana(int points)

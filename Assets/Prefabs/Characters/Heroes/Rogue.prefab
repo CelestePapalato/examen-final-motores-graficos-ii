@@ -3088,7 +3088,7 @@ MonoBehaviour:
   currentState: {fileID: 0}
   hitCountResistance: 1
   hitTimePeriod: 1
-  NormalAttackData: {fileID: 11400000, guid: 5d2c1067a6f2abf4ebae4194760fc69b, type: 2}
+  NormalAttackData: {fileID: 11400000, guid: 282482135e1bf234ea40d8e0632b9cb0, type: 2}
   SpecialAttackData: {fileID: 11400000, guid: 949dbecf0c8941a41883d29984cd7255, type: 2}
   EvadeData: {fileID: 11400000, guid: 2ad5082e3009c6e4684b26cd8bc56c14, type: 2}
   idleState: {fileID: 3352572470649863919}
@@ -3099,6 +3099,7 @@ MonoBehaviour:
   deadState: {fileID: 1453960441506458151}
   followState: {fileID: 7343882717538000953}
   disableHitboxesOnStart: 1
+  DisableStateChange: 0
 --- !u!114 &3352572470649863919
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3599,7 +3600,7 @@ CapsuleCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 0.5
+  m_Radius: 0.4
   m_Height: 2.43
   m_Direction: 1
   m_Center: {x: 0, y: 1.22, z: 0}

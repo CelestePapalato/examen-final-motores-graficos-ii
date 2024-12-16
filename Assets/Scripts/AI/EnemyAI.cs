@@ -46,6 +46,7 @@ public class EnemyAI : MonoBehaviour
         character = GetComponent<Character>();
         itemSpawner = GetComponent<ItemSpawner>();
         targetDetection = transform.parent.GetComponent<TargetDetection>();
+        Debug.Log("Enemy target detection check: " + targetDetection);
     }
 
     private void Start()

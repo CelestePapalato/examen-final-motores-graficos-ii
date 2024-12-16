@@ -35,7 +35,6 @@ public class Spawner : MonoBehaviour
         {
             spawnTransform = transform;
         }
-        Invoke(nameof(StartSpawning), startWaitTime);
     }
 
     [ContextMenu("Start Spawning")]

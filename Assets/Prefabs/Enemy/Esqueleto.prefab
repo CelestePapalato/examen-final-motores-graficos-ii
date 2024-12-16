@@ -943,7 +943,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxHealth: 5
-  damageMemoryTimeAlive: 2
+  damageMemoryTimeAlive: 3
   enableInvincibilitySystem: 0
   invincibilityTime: 0
   OnHeal:
@@ -1023,7 +1023,7 @@ MonoBehaviour:
     gameObject: {fileID: 191476813094066143, guid: a164bfbb4f47ced48bbdabc30b3eda52,
       type: 3}
     dropProbability: 3
-  _noDropProbability: 3
+  _noDropProbability: 2
   destroyOnSpawn: {fileID: 0}
 --- !u!1 &3110233613606476268
 GameObject:
@@ -1215,7 +1215,7 @@ Transform:
   m_GameObject: {fileID: 3911558624716358384}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: -1, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -2861,6 +2861,7 @@ MonoBehaviour:
   deadState: {fileID: 9187192045758457223}
   followState: {fileID: 6288251048710172828}
   disableHitboxesOnStart: 1
+  DisableStateChange: 0
 --- !u!114 &6419777909725961314
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -42,12 +42,14 @@ public class LevelManager : MonoBehaviour
         if(level == null) { return; }
         OnSceneLoad?.Invoke();
         InventorySystem.Inventory.Clear();
+        Time.timeScale = 1f;
         SceneManager.LoadScene(level.scene.name);
     }
     public void ReloadLevel()
     {
         OnSceneLoad?.Invoke();
         InventorySystem.Inventory.Clear();
+        Time.timeScale = 1f;
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
 

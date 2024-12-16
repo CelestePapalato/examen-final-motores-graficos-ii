@@ -6,7 +6,8 @@ using UnityEngine;
 public class LevelData
 {
     public string level_tag;
-    public SceneAsset scene;
+    public string scene;
+    // public SceneAsset scene; <- for debug
 }
 
 [CreateAssetMenu(fileName = "Level Data Collection", menuName = "Levels/Level Data Collection", order = 0)]

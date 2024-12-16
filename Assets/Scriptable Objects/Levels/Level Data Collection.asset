@@ -14,10 +14,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Levels:
   - level_tag: main_menu
-    scene: {fileID: 102900000, guid: c9443f58f0766e347a3c16a79051f8ae, type: 3}
+    scene: MENU
   - level_tag: playground
-    scene: {fileID: 102900000, guid: 3c3dd4dc91075c449be70b7866f0605f, type: 3}
+    scene: Nivel prueba
   - level_tag: camera_test
-    scene: {fileID: 102900000, guid: 9fc0d4010bbf28b4594072e72b8655ab, type: 3}
+    scene: 
   - level_tag: level_1
-    scene: {fileID: 102900000, guid: 4ccdcfc6273287447b409d4c960af58e, type: 3}
+    scene: bake test

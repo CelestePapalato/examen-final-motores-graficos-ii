@@ -43,7 +43,7 @@ public class LevelManager : MonoBehaviour
         OnSceneLoad?.Invoke();
         InventorySystem.Inventory.Clear();
         Time.timeScale = 1f;
-        SceneManager.LoadScene(level.scene.name);
+        SceneManager.LoadScene(level.scene);
     }
     public void ReloadLevel()
     {

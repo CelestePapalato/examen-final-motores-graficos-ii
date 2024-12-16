@@ -6,7 +6,7 @@ public class PlayerController : MonoBehaviour
 {
     [Header("Camera")]
     [SerializeField] protected bool inputRelatedToCamera = true;
-    [SerializeField] protected new Camera camera;
+    [SerializeField] protected Camera currentCamera;
     [Header("Interactables")]
     [SerializeField] protected float interactableRange = 4f;
     [SerializeField] protected Transform origin;
@@ -22,9 +22,9 @@ public class PlayerController : MonoBehaviour
 
     private void Start()
     {
-        if (camera == null)
+        if (currentCamera == null)
         {
-            camera = Camera.main;
+            currentCamera = Camera.main;
         }
     }
 
@@ -45,7 +45,7 @@ public class PlayerController : MonoBehaviour
         Vector2 input = (inputValue != null) ? inputValue.Get<Vector2>() : Vector2.zero; 
         if (inputRelatedToCamera)
         {
-            input = Quaternion.Euler(0f, 0f, -camera.transform.eulerAngles.y) * input;
+            input = Quaternion.Euler(0f, 0f, -currentCamera.transform.eulerAngles.y) * input;
         }
         OnMoveInput?.Invoke(input);
     }

@@ -1,0 +1,8 @@
+Event	ID	Name			Wwise Object Path	Notes
+	406518269	UI_Cancelar			\UI\UI_Cancelar	
+	3127113562	UI_Aceptar			\UI\UI_Aceptar	
+
+In Memory Audio	ID	Name	Audio source file		Wwise Object Path	Notes	Data Size
+	563289381	Aceptar	C:\UAI\3er cuatrimestre\Motores Gráficos II\examen-final-motores-graficos-ii\examen-final-motores-graficos-ii_WwiseProject\.cache\D5\{D588468F-7FAB-8166-51C7-5AAAA33D7E60}.wem		\Actor-Mixer Hierarchy\UI\Aceptar		11616
+	749897319	Cancelar	C:\UAI\3er cuatrimestre\Motores Gráficos II\examen-final-motores-graficos-ii\examen-final-motores-graficos-ii_WwiseProject\.cache\46\{463E8B3D-B178-9746-FE09-DBE5CA436634}.wem		\Actor-Mixer Hierarchy\UI\Cancelar		40928
+

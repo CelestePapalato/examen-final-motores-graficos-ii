@@ -3,7 +3,6 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
-using UnityEngine.Rendering.Universal;
 
 public class PlayerInstancing : MonoBehaviour
 {
@@ -52,7 +51,7 @@ public class PlayerInstancing : MonoBehaviour
         Dictionary<PlayerInput, Character> characters = PlayerManager.CurrentCharacters;
         if (Points.Length < 1 ||
             players.Length < 1 ||
-            characters.Count != players.Length) { return; }
+            characters.Count < players.Length) { return; }
 
         for (int i = 0; i < players.Length; i++)
         {
@@ -83,12 +82,12 @@ public class PlayerInstancing : MonoBehaviour
             targetGroup.RemoveMember(chara.MovementComponent.transform);
             player.ChangeCharacter(null);
             player.enabled = false;
-            Destroy(chara.gameObject);
             TransformFollower audioListener = loadedAudioListeners[i];
-            loadedAudioListeners.Remove(audioListener);
             Destroy(audioListener.gameObject);
+            Destroy(chara.gameObject);
         }
         loadedCharaters = new List<Character>();
+        loadedAudioListeners = new List<TransformFollower>();
     }
 
 }

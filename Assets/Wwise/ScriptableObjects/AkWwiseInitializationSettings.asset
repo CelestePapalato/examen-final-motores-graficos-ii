@@ -18,7 +18,8 @@ MonoBehaviour:
   PlatformSettingsList:
   - {fileID: 11400000, guid: 6a0231f4fce12164a8d31afc9a6da2a1, type: 2}
   - {fileID: 11400000, guid: ab1383d6e8708f9428576654c858c456, type: 2}
-  InvalidReferencePlatforms: []
+  InvalidReferencePlatforms:
+  - Web
   UserSettings:
     m_BasePath: Audio\GeneratedSoundBanks
     m_StartupLanguage: English(US)

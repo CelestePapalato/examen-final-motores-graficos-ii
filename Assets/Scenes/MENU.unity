@@ -6051,12 +6051,12 @@ PrefabInstance:
     - target: {fileID: 4328665055715156983, guid: eeade6da59e7c9b48b95c3c826aa35f2,
         type: 3}
       propertyPath: OnAtLeastOnePlayerOn.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: EraseCharacters
+      value: ExpulsePlayers
       objectReference: {fileID: 0}
     - target: {fileID: 4328665055715156983, guid: eeade6da59e7c9b48b95c3c826aa35f2,
         type: 3}
       propertyPath: OnAtLeastOnePlayerOn.m_PersistentCalls.m_Calls.Array.data[1].m_MethodName
-      value: ExpulsePlayers
+      value: EraseCharacters
       objectReference: {fileID: 0}
     - target: {fileID: 4328665055715156983, guid: eeade6da59e7c9b48b95c3c826aa35f2,
         type: 3}
@@ -6161,12 +6161,12 @@ PrefabInstance:
     - target: {fileID: 4328665055715156983, guid: eeade6da59e7c9b48b95c3c826aa35f2,
         type: 3}
       propertyPath: OnAtLeastOnePlayerOn.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_BoolArgument
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4328665055715156983, guid: eeade6da59e7c9b48b95c3c826aa35f2,
         type: 3}
       propertyPath: OnAtLeastOnePlayerOn.m_PersistentCalls.m_Calls.Array.data[1].m_Arguments.m_BoolArgument
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4328665055715156983, guid: eeade6da59e7c9b48b95c3c826aa35f2,
         type: 3}

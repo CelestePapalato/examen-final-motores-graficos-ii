@@ -3,6 +3,7 @@ using System;
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.InputSystem;
+using System.Linq;
 
 public class PlayerManager : MonoBehaviour
 {
@@ -15,7 +16,15 @@ public class PlayerManager : MonoBehaviour
     public UnityEvent onMultiplayerDisabled;
     public UnityEvent onNoPlayersLeft;
 
-    public static PlayerInput[] CurrentPlayers { get => players.ToArray(); }
+    public static PlayerInput[] CurrentPlayers
+    {
+        get
+        {
+            players = players.Where(x => x != null).ToList();
+            return players.ToArray();
+        }
+    }
+
     public static Dictionary<PlayerInput, Character> CurrentCharacters { get => playerCharacter; }
     public static int[] PlayerIDsWithoutCharacters { get => playerIDsWithNoCharacters.ToArray(); }
 
@@ -68,6 +77,10 @@ public class PlayerManager : MonoBehaviour
         {
             players = new List<PlayerInput>();
         }
+        if (players.Contains(player))
+        {
+            return;
+        }
         players.Add(player);
 
         Debug.Log("Jugador " + players.Count + " ha entrado a la partida");
@@ -89,6 +102,7 @@ public class PlayerManager : MonoBehaviour
     private void PlayerLeft(PlayerInput player)
     {
         players.Remove(player);
+        playerCharacter.Remove(player);
         if (players.Count == 1)
         {
             onMultiplayerDisabled?.Invoke();
@@ -105,7 +119,14 @@ public class PlayerManager : MonoBehaviour
         if(playerIDsWithNoCharacters.Count > 0)
         {
             PlayerInput player = players[playerIDsWithNoCharacters[0]];
-            playerCharacter.Add(player, character);
+            if (playerCharacter.ContainsKey(player))
+            {
+                playerCharacter[player] = character;
+            }
+            else
+            {
+                playerCharacter.Add(player, character);
+            }
             playerIDsWithNoCharacters.RemoveAt(0);
         }
     }
@@ -126,9 +147,8 @@ public class PlayerManager : MonoBehaviour
         PlayerInput[] playersJoined = CurrentPlayers;
         for(int i = 1; i < playersJoined.Length; i++) 
         {
-            playerCharacter.Remove(playersJoined[i]);
-            players.Remove(playersJoined[i]);
-            Destroy(playersJoined[i].gameObject);
+            PlayerInput playerInput = playersJoined[i];
+            Destroy(playerInput.gameObject);
         }
         playerIDsWithNoCharacters.Clear();
         playerIDsWithNoCharacters.Add(0);

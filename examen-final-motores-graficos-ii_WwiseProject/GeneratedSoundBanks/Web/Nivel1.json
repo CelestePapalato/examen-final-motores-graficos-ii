@@ -1,0 +1,97 @@
+{
+ "SoundBanksInfo": {
+  "Platform": "Web",
+  "BasePlatform": "Web",
+  "SchemaVersion": "16",
+  "SoundBankVersion": "154",
+  "SoundBanks": [
+   {
+    "Id": "409685056",
+    "Type": "User",
+    "GUID": "{025088B0-4013-43DF-A419-B2269DDE64DF}",
+    "Language": "SFX",
+    "Hash": "{79000F5A-648A-6FE3-DEEE-3CE65EB67F05}",
+    "ObjectPath": "\\SoundBanks\\Default Work Unit\\Nivel1",
+    "ShortName": "Nivel1",
+    "Path": "Nivel1.bnk",
+    "Media": [
+     {
+      "Id": "303733197",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Memory",
+      "ShortName": "Music\\Nivel 1 - BGM- Normal.wav",
+      "CachePath": "9C/{9C35B32A-55A9-F61A-4CA7-298DF665A4CE}.wem"
+     },
+     {
+      "Id": "966070257",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Memory",
+      "ShortName": "Ambiente 1.wav",
+      "CachePath": "19/{19AE897B-3A3A-BBFC-C818-75504AD8DB28}.wem"
+     },
+     {
+      "Id": "1038016090",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Memory",
+      "ShortName": "Music\\Nivel 1 - BGM- Pelea.wav",
+      "CachePath": "B4/{B40B45DB-9FA2-4CDF-ADE9-8FBDC2A22B71}.wem"
+     }
+    ],
+    "Events": [
+     {
+      "Id": "4095160060",
+      "Name": "Ambiente",
+      "ObjectPath": "\\Events\\Default Work Unit\\Ambiente",
+      "GUID": "{BECF1192-E7C1-4B47-9157-42D9529ECD75}",
+      "DurationType": "Infinite",
+      "MediaRefs": [
+       {
+        "Id": "303733197"
+       },
+       {
+        "Id": "966070257"
+       },
+       {
+        "Id": "1038016090"
+       }
+      ]
+     },
+     {
+      "Id": "790159265",
+      "Name": "Nivel1_OnFightEnd",
+      "ObjectPath": "\\Events\\Default Work Unit\\Nivel1_OnFightEnd",
+      "GUID": "{5A5984A5-79CA-499A-8862-DDA51B08A478}",
+      "MaxAttenuation": "0",
+      "DurationType": "OneShot",
+      "DurationMin": "0",
+      "DurationMax": "0",
+      "MediaRefs": [
+       {
+        "Id": "1038016090"
+       }
+      ]
+     },
+     {
+      "Id": "3212454034",
+      "Name": "Nivel1_OnFightStart",
+      "ObjectPath": "\\Events\\Default Work Unit\\Nivel1_OnFightStart",
+      "GUID": "{8859429E-0EF0-4338-B793-649CF0FF599E}",
+      "MaxAttenuation": "0",
+      "DurationType": "OneShot",
+      "DurationMin": "0",
+      "DurationMax": "0",
+      "MediaRefs": [
+       {
+        "Id": "1038016090"
+       }
+      ]
+     }
+    ]
+   }
+  ],
+  "FileHash": "{86E641A1-360F-C6DC-837C-3CA4E0A1BB3F}"
+ }
+}

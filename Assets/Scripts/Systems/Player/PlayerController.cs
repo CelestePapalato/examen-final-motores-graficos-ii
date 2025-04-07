@@ -86,11 +86,11 @@ public class PlayerController : MonoBehaviour
     {
         if (Time.timeScale > 0 && canPause)
         {
-            MenuManager.Instance.OpenMenu("pause_menu");
+            MenuManager.Instance?.OpenMenu("pause_menu");
         }
         else if (canPause)
         {
-            MenuManager.Instance.CloseMenu("pause_menu");
+            MenuManager.Instance?.CloseMenu("pause_menu");
         }
     }
 

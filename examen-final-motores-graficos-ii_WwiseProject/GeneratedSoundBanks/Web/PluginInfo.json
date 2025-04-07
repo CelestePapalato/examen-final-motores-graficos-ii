@@ -1,0 +1,26 @@
+{
+ "PluginInfo": {
+  "Platform": "Web",
+  "BasePlatform": "Web",
+  "PluginLibs": [
+   {
+    "LibName": "Wwise Matrix Reverb",
+    "LibId": "7536643",
+    "Type": "Effect",
+    "DLL": "AkMatrixReverb",
+    "StaticLib": "AkMatrixReverbFX"
+   },
+   {
+    "LibName": "System",
+    "LibId": "11403271",
+    "Type": "AudioDevice"
+   },
+   {
+    "LibName": "No Output",
+    "LibId": "11862023",
+    "Type": "AudioDevice"
+   }
+  ],
+  "FileHash": "{6D30855B-7613-EA93-4DFB-E6DAC5B8C624}"
+ }
+}

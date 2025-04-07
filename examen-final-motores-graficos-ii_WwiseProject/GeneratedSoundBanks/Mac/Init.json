@@ -10,17 +10,17 @@
     "Type": "User",
     "GUID": "{701ECBBD-9C7B-4030-8CDB-749EE5D1C7B9}",
     "Language": "SFX",
-    "Hash": "{EE2828D0-36D5-4039-33EC-F467E1A1F8CA}",
+    "Hash": "{FFBE829D-E337-EA3E-D578-AC6E32FD2D1A}",
     "ObjectPath": "Init",
     "ShortName": "Init",
     "Path": "Init.bnk",
     "Plugins": {
      "ShareSets": [
       {
-       "Id": "702543456",
-       "Name": "Tunnel1",
-       "ObjectPath": "\\Effects\\Factory Effects\\Matrix Reverb\\Tunnel1",
-       "GUID": "{CC44B890-9865-4157-965F-86FED27BC4C6}",
+       "Id": "2098638826",
+       "Name": "Underground_Parking1",
+       "ObjectPath": "\\Effects\\Factory Effects\\Matrix Reverb\\Underground_Parking1",
+       "GUID": "{8DA66AA3-6CA0-41A0-B7A2-BB6FCABFCDA8}",
        "LibName": "Wwise Matrix Reverb",
        "LibId": "7536643"
       }
@@ -80,19 +80,56 @@
      {
       "Id": "348963605",
       "Name": "Reverb",
-      "ObjectPath": "\\Master-Mixer Hierarchy\\Default Work Unit\\Master Audio Bus\\Reverb",
+      "ObjectPath": "\\Master-Mixer Hierarchy\\Default Work Unit\\Master Audio Bus\\SFX\\Reverb",
       "GUID": "{C05098AE-D0A5-477A-B3BA-B105C14DD8DF}",
       "PluginRefs": {
        "ShareSets": [
         {
-         "Id": "702543456"
+         "Id": "2098638826"
         }
        ]
       }
      }
+    ],
+    "StateGroups": [
+     {
+      "Id": "1208172739",
+      "Name": "states",
+      "ObjectPath": "\\States\\Default Work Unit\\states",
+      "GUID": "{A8B2AA3F-1587-41CC-968D-6F1EA9FA92DA}",
+      "States": [
+       {
+        "Id": "546651193",
+        "Name": "dos",
+        "ObjectPath": "\\States\\Default Work Unit\\states\\dos",
+        "GUID": "{26BF80E8-0F9C-47BA-844D-992A6177E4DC}"
+       },
+       {
+        "Id": "748895195",
+        "Name": "None",
+        "ObjectPath": "\\States\\Default Work Unit\\states\\None",
+        "GUID": "{1660833A-344F-47E0-AA3A-97DCD4F4E780}"
+       },
+       {
+        "Id": "1063947391",
+        "Name": "uno",
+        "ObjectPath": "\\States\\Default Work Unit\\states\\uno",
+        "GUID": "{59ECEDD9-C529-46C6-859B-36FBA9FEB9B3}"
+       }
+      ]
+     }
+    ],
+    "SwitchGroups": [
+     {
+      "Id": "2250165792",
+      "Name": "New_Switch_Group",
+      "ObjectPath": "\\Switches\\Default Work Unit\\New_Switch_Group",
+      "GUID": "{22297ED2-CE9B-46BA-AF4D-AE45C01D6666}",
+      "Switches": []
+     }
     ]
    }
   ],
-  "FileHash": "{0E1F49EB-BBD2-F398-4770-6B50A9D08EA0}"
+  "FileHash": "{E2D03820-C517-1E85-8BA4-FD8C723E6DFE}"
  }
 }

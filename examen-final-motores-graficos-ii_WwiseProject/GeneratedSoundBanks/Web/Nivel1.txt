@@ -1,0 +1,18 @@
+Event	ID	Name			Wwise Object Path	Notes
+	790159265	Nivel1_OnFightEnd			\Default Work Unit\Nivel1_OnFightEnd	
+	3212454034	Nivel1_OnFightStart			\Default Work Unit\Nivel1_OnFightStart	
+	4095160060	Ambiente			\Default Work Unit\Ambiente	
+
+State Group	ID	Name			Wwise Object Path	Notes
+	1208172739	states			\Default Work Unit\states	
+
+State	ID	Name	State Group			Notes
+	546651193	dos	states			
+	748895195	None	states			
+	1063947391	uno	states			
+
+In Memory Audio	ID	Name	Audio source file		Wwise Object Path	Notes	Data Size
+	303733197	Normal	C:\UAI\3er cuatrimestre\Motores Gráficos II\examen-final-motores-graficos-ii\examen-final-motores-graficos-ii_WwiseProject\.cache\9C\{9C35B32A-55A9-F61A-4CA7-298DF665A4CE}.wem		\Interactive Music Hierarchy\Default Work Unit\New Music Switch Container\Nivel 1\Music\Normal		7702896
+	966070257	Ambiente 1	C:\UAI\3er cuatrimestre\Motores Gráficos II\examen-final-motores-graficos-ii\examen-final-motores-graficos-ii_WwiseProject\.cache\19\{19AE897B-3A3A-BBFC-C818-75504AD8DB28}.wem		\Actor-Mixer Hierarchy\Default Work Unit\Ambiente 1		15599178
+	1038016090	Fight	C:\UAI\3er cuatrimestre\Motores Gráficos II\examen-final-motores-graficos-ii\examen-final-motores-graficos-ii_WwiseProject\.cache\B4\{B40B45DB-9FA2-4CDF-ADE9-8FBDC2A22B71}.wem		\Interactive Music Hierarchy\Default Work Unit\New Music Switch Container\Nivel 1\Music\Fight		7702896
+

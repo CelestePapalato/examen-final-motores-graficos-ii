@@ -4482,7 +4482,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 2.04, z: -52.6335}
-  m_LocalScale: {x: -34.53, y: 1, z: 91.50583}
+  m_LocalScale: {x: 34.53, y: 1, z: 91.50583}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1702789238}
@@ -11944,7 +11944,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: -1.3559, y: 1.46, z: 37.6687}
-  m_LocalScale: {x: -66.81667, y: 1, z: 76.77691}
+  m_LocalScale: {x: 66.81667, y: 1, z: 76.77691}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1335946530}
@@ -27626,7 +27626,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1538825371530622, guid: 085f0c4a9df420f4c80df0c2e9501532, type: 3}
       propertyPath: m_StaticEditorFlags
-      value: 2147483647
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4151266322956148, guid: 085f0c4a9df420f4c80df0c2e9501532, type: 3}
       propertyPath: m_LocalScale.x
@@ -27958,7 +27958,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 2147483647
+  m_StaticEditorFlags: 0
   m_IsActive: 1
 --- !u!4 &1561074788
 Transform:
@@ -30724,7 +30724,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1166029089251226, guid: 94bc148fc0d575f4791242dbf5987726, type: 3}
       propertyPath: m_StaticEditorFlags
-      value: 2147483647
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4780969264104226, guid: 94bc148fc0d575f4791242dbf5987726, type: 3}
       propertyPath: m_LocalScale.x
@@ -32270,7 +32270,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 13.7418, y: 2.04, z: 14.6169}
-  m_LocalScale: {x: -62.012424, y: 1, z: 30.67373}
+  m_LocalScale: {x: 62.01242, y: 1, z: 30.67373}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1702789238}
@@ -34099,7 +34099,7 @@ Light:
   m_BounceIntensity: 1
   m_ColorTemperature: 6570
   m_UseColorTemperature: 0
-  m_BoundingSphereOverride: {x: 1.02e-43, y: 5.6e-44, z: 2.65e-41, w: 0}
+  m_BoundingSphereOverride: {x: 1.0505626e-38, y: -5.3877e-41, z: 5.21e-43, w: -2.186474e-37}
   m_UseBoundingSphereOverride: 0
   m_UseViewFrustumForShadowCasterCull: 1
   m_ShadowRadius: 0
@@ -39334,7 +39334,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: -29.2472, y: 1.46, z: -16.7494}
-  m_LocalScale: {x: -93.02382, y: 1, z: 27.591084}
+  m_LocalScale: {x: 93.02382, y: 1, z: 27.591084}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1335946530}

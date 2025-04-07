@@ -21,6 +21,11 @@
 						</Bus>
 						<Bus Name="Environment" ID="{3003A2F5-7976-44C4-A7E0-92D302C183E8}">
 							<PropertyList>
+								<Property Name="BusChannelConfig" Type="int32">
+									<ValueList>
+										<Value>528</Value>
+									</ValueList>
+								</Property>
 								<Property Name="BusVolume" Type="Real64">
 									<ValueList>
 										<Value>-12</Value>
@@ -28,7 +33,30 @@
 								</Property>
 							</PropertyList>
 						</Bus>
-						<Bus Name="SFX" ID="{9C2623D4-10BF-4C9C-BCD4-21F3A4951545}"/>
+						<Bus Name="SFX" ID="{9C2623D4-10BF-4C9C-BCD4-21F3A4951545}">
+							<ChildrenList>
+								<AuxBus Name="Reverb" ID="{C05098AE-D0A5-477A-B3BA-B105C14DD8DF}">
+									<PropertyList>
+										<Property Name="UseGameAuxSends" Type="bool" Value="True"/>
+									</PropertyList>
+									<ObjectLists>
+										<ObjectList Name="Effects">
+											<Reference>
+												<Local>
+													<EffectSlot Name="" ID="{BFEF4908-F19D-4285-B5DB-E76286C242F8}" ShortID="757697641">
+														<ReferenceList>
+															<Reference Name="Effect" PluginName="Wwise Matrix Reverb" CompanyID="0" PluginID="115" PluginType="3">
+																<ObjectRef Name="Underground_Parking1" ID="{8DA66AA3-6CA0-41A0-B7A2-BB6FCABFCDA8}" WorkUnitID="{E8613F7D-BAD3-45CD-A3ED-505576F31277}"/>
+															</Reference>
+														</ReferenceList>
+													</EffectSlot>
+												</Local>
+											</Reference>
+										</ObjectList>
+									</ObjectLists>
+								</AuxBus>
+							</ChildrenList>
+						</Bus>
 						<Bus Name="UI" ID="{4BD20426-8842-4D10-822F-4F502F36C257}">
 							<PropertyList>
 								<Property Name="BusVolume" Type="Real64">

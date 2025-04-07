@@ -1,0 +1,6 @@
+Event	ID	Name			Wwise Object Path	Notes
+	3306210749	Play_Main_Menu			\MainMenu\Play_Main_Menu	
+
+In Memory Audio	ID	Name	Audio source file		Wwise Object Path	Notes	Data Size
+	977219297	akita no hanashi 6 - kyouki ga tomarenai v2	C:\UAI\3er cuatrimestre\Motores Gráficos II\examen-final-motores-graficos-ii\examen-final-motores-graficos-ii_WwiseProject\.cache\58\{5877EEBA-6591-156E-B587-C3C90E44E798}.wem		\Interactive Music Hierarchy\Default Work Unit\Main Menu\Main Menu\akita no hanashi 6 - kyouki ga tomarenai v2		4756188
+

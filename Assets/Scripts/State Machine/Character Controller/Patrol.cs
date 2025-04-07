@@ -88,8 +88,11 @@ public class Patrol : CharacterState, IAvoidObject
     private void NextDestination()
     {
         currentDestinationIndex++;
-        if(currentDestinationIndex > destination.Length - 1) { currentDestinationIndex = 0; }
-        currentDestination = destination[currentDestinationIndex];
+        if(currentDestinationIndex >= destination.Length) { currentDestinationIndex = 0; }
+        if(destination.Length != 0)
+        {
+            currentDestination = destination[currentDestinationIndex];
+        }
     }
 
     private void UpdatePath()

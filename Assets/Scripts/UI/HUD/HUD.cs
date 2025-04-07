@@ -14,6 +14,13 @@ public class HUD : MonoBehaviour
 
     private void InitializeSliders(Character character)
     {
+        if(character == null)
+        {
+            healthbar.ObservableVariable = null;
+            manabar.ObservableVariable = null;
+            m_Character = null;
+            return;
+        }
         if (m_Character != character)
         {
             healthbar.ObservableVariable = character.Health.GetComponent<IObservableVariable>();

@@ -50,6 +50,15 @@ public class HUDManager : MonoBehaviour
         }
     }
 
+    public static void RemovePlayer(Player player)
+    {
+        if (Instance)
+        {
+            Instance.RemovePlayerFromHUD(player);
+            return;
+        }
+    }
+
     private bool AddPlayerToHUD(Player player)
     {
         if (HUDs.ContainsKey(player))

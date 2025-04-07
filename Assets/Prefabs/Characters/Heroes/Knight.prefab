@@ -2218,7 +2218,7 @@ SphereCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Radius: 0.67794013
+  m_Radius: 0.49
   m_Center: {x: 0, y: 0.572721, z: 0.084625155}
 --- !u!1 &5405072901498343659
 GameObject:
@@ -2500,7 +2500,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   inputRelatedToCamera: 1
-  camera: {fileID: 0}
+  currentCamera: {fileID: 0}
   interactableRange: 4
   origin: {fileID: 4971216893810648071}
   interactableLayer:
@@ -2596,7 +2596,7 @@ MonoBehaviour:
   firstState: {fileID: 0}
   currentState: {fileID: 0}
   hitCountResistance: 2
-  hitTimePeriod: 1
+  hitTimePeriod: 0.8
   NormalAttackData: {fileID: 11400000, guid: 5d2c1067a6f2abf4ebae4194760fc69b, type: 2}
   SpecialAttackData: {fileID: 11400000, guid: d4878fc9426c24b42a7e8a54dd373859, type: 2}
   EvadeData: {fileID: 11400000, guid: 6fe17cc37b9278142a68aa206e0e7add, type: 2}
@@ -3218,6 +3218,8 @@ GameObject:
   - component: {fileID: 8907825932588467042}
   - component: {fileID: 69099154769824348}
   - component: {fileID: 2478386032918908938}
+  - component: {fileID: 6311894754448126159}
+  - component: {fileID: 6096683577405581802}
   m_Layer: 6
   m_Name: Knight
   m_TagString: Player
@@ -3369,6 +3371,42 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxMana: 9
   manaRecoveryRate: 1.5
+--- !u!114 &6311894754448126159
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7456829722582181569}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 133f80f15c03f7c428d5881264c9fdf3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_listeners:
+    initialListenerList: []
+    useDefaultListeners: 1
+  isEnvironmentAware: 1
+  isStaticObject: 0
+  usePositionOffsetData: 0
+  m_positionOffsetData:
+    KeepMe: 0
+    positionOffset: {x: 0, y: 0, z: 0}
+  m_posOffsetData: {fileID: 0}
+  listenerMask: 1
+--- !u!114 &6096683577405581802
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7456829722582181569}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f1480e5ce04c5f24ca90dc36048ac538, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Collider: {fileID: 0}
 --- !u!1 &7472438764497247980
 GameObject:
   m_ObjectHideFlags: 0

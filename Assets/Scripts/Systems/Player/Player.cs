@@ -48,11 +48,9 @@ public class Player : MonoBehaviour
     {
         if (GetCharacter())
         {
+            Debug.LogWarning("xd re bug parte 3");
             chara.OnDead += Dead;
             chara.OnResurrection += Revived;
-        }
-        if(chara.Health.Current > 0)
-        {
             IsDead = false;
         }
     }
@@ -90,13 +88,16 @@ public class Player : MonoBehaviour
 
     public void ChangeCharacter(Character character)
     {
+        if (chara)
+        {
+            chara.OnDead -= Dead;
+            chara.OnResurrection -= Revived;
+        }
+        HUDManager.RemovePlayer(this);
         if (character)
         {
             chara = character;
             HUDManager.AddPlayer(this);
-        }
-        if (chara.Health.Current > 0)
-        {
             IsDead = false;
         }
     }

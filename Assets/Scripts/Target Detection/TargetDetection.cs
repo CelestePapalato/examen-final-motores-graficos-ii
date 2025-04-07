@@ -12,7 +12,13 @@ public class TargetDetection : MonoBehaviour
 
     List<Transform> targets = new List<Transform>();
 
-    public Transform[] Targets { get => targets.ToArray(); }
+    public Transform[] Targets { 
+        get
+        {
+            targets = targets.Where(t => t != null).ToList();
+            return targets.ToArray();
+        }
+    }
 
     private void OnTriggerEnter(Collider other)
     {

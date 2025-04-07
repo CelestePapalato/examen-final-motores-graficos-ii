@@ -22,6 +22,35 @@ namespace AK
         static const AkUniqueID UI_CANCELAR = 406518269U;
     } // namespace EVENTS
 
+    namespace STATES
+    {
+        namespace STATES
+        {
+            static const AkUniqueID GROUP = 1208172739U;
+
+            namespace STATE
+            {
+                static const AkUniqueID DOS = 546651193U;
+                static const AkUniqueID NONE = 748895195U;
+                static const AkUniqueID UNO = 1063947391U;
+            } // namespace STATE
+        } // namespace STATES
+
+    } // namespace STATES
+
+    namespace SWITCHES
+    {
+        namespace NEW_SWITCH_GROUP
+        {
+            static const AkUniqueID GROUP = 2250165792U;
+
+            namespace SWITCH
+            {
+            } // namespace SWITCH
+        } // namespace NEW_SWITCH_GROUP
+
+    } // namespace SWITCHES
+
     namespace BANKS
     {
         static const AkUniqueID INIT = 1355168291U;
@@ -39,6 +68,11 @@ namespace AK
         static const AkUniqueID SFX = 393239870U;
         static const AkUniqueID UI = 1551306167U;
     } // namespace BUSSES
+
+    namespace AUX_BUSSES
+    {
+        static const AkUniqueID REVERB = 348963605U;
+    } // namespace AUX_BUSSES
 
     namespace AUDIO_DEVICES
     {

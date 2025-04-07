@@ -4,8 +4,5 @@ using UnityEngine;
 
 public class WwisePostEvent : MonoBehaviour
 {
-    public void PostEvent(string eventName)
-    {
-        AkSoundEngine.PostEvent(eventName, gameObject);
-    }
+    public void PostEvent(string eventName) => AkSoundEngine.PostEvent(eventName, gameObject);
 }

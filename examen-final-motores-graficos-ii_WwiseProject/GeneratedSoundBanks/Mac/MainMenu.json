@@ -1,0 +1,45 @@
+{
+ "SoundBanksInfo": {
+  "Platform": "Mac",
+  "BasePlatform": "Mac",
+  "SchemaVersion": "16",
+  "SoundBankVersion": "154",
+  "SoundBanks": [
+   {
+    "Id": "3604647259",
+    "Type": "User",
+    "GUID": "{1466AF6D-8720-4DBF-8A85-AF8250EE7C54}",
+    "Language": "SFX",
+    "Hash": "{A4408A2A-6A05-081F-8393-E784C5AAD824}",
+    "ObjectPath": "\\SoundBanks\\Default Work Unit\\MainMenu",
+    "ShortName": "MainMenu",
+    "Path": "MainMenu.bnk",
+    "Media": [
+     {
+      "Id": "977219297",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Memory",
+      "ShortName": "akita no hanashi 6 - kyouki ga tomarenai v2.wav",
+      "CachePath": "58/{5877EEBA-6591-156E-B587-C3C90E44E798}.wem"
+     }
+    ],
+    "Events": [
+     {
+      "Id": "3306210749",
+      "Name": "Play_Main_Menu",
+      "ObjectPath": "\\Events\\MainMenu\\Play_Main_Menu",
+      "GUID": "{5C1F0FDB-E3A9-422B-A3E2-33DEBDCBFC3C}",
+      "DurationType": "Infinite",
+      "MediaRefs": [
+       {
+        "Id": "977219297"
+       }
+      ]
+     }
+    ]
+   }
+  ],
+  "FileHash": "{4885D214-E62A-5BCE-7CF7-15C1C2AFCEB6}"
+ }
+}

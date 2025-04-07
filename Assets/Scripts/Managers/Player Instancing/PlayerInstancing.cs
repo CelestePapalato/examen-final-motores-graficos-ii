@@ -81,8 +81,12 @@ public class PlayerInstancing : MonoBehaviour
             Character chara = loadedCharaters[i];
             Player player = chara.transform.parent.GetComponent<Player>();
             targetGroup.RemoveMember(chara.MovementComponent.transform);
+            player.ChangeCharacter(null);
+            player.enabled = false;
             Destroy(chara.gameObject);
-            Destroy(loadedAudioListeners[i].gameObject);
+            TransformFollower audioListener = loadedAudioListeners[i];
+            loadedAudioListeners.Remove(audioListener);
+            Destroy(audioListener.gameObject);
         }
         loadedCharaters = new List<Character>();
     }

@@ -24,12 +24,12 @@ public class ObserverSliderUI : MonoBehaviour
             {
                 variable.OnUpdate += UpdateSlider;
                 variable.OnDestroyEvent += OnVariableDestroy;
+                if (slider)
+                {
+                    slider.gameObject.SetActive(variable != null);
+                }
+                UpdateSlider(variable.Current, variable.Max);
             }
-            if (slider)
-            {
-                slider.gameObject.SetActive(variable != null);
-            }
-            UpdateSlider(variable.Current, variable.Max);
         }
     }
 

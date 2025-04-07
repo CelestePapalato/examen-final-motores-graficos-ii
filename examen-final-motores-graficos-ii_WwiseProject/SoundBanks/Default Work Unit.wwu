@@ -7,6 +7,7 @@
 					<ObjectInclusionList>
 						<ObjectRef Name="Default Work Unit" ID="{FEC521C4-5B4C-40A2-BB11-539682064A77}" WorkUnitID="{FEC521C4-5B4C-40A2-BB11-539682064A77}" Origin="Manual" Filter="7"/>
 						<ObjectRef Name="Nivel 1" ID="{417D0B17-549A-4D6E-BAF0-604FA6314CE6}" WorkUnitID="{F7BCFA0F-1147-468E-94CF-910E2996551A}" Origin="Manual" Filter="7"/>
+						<ObjectRef Name="Default Work Unit" ID="{A5EB2F9D-2E00-4F0C-9655-31A215C0B17E}" WorkUnitID="{A5EB2F9D-2E00-4F0C-9655-31A215C0B17E}" Origin="Manual" Filter="7"/>
 					</ObjectInclusionList>
 					<ObjectExclusionList/>
 					<GameSyncExclusionList/>
@@ -27,6 +28,7 @@
 				</SoundBank>
 				<SoundBank Name="MainMenu" ID="{1466AF6D-8720-4DBF-8A85-AF8250EE7C54}">
 					<ObjectInclusionList>
+						<ObjectRef Name="MainMenu" ID="{CDBA1C7C-9662-4528-9E2F-1C8C7646A4EF}" WorkUnitID="{CDBA1C7C-9662-4528-9E2F-1C8C7646A4EF}" Origin="Manual" Filter="7"/>
 						<ObjectRef Name="Main Menu" ID="{C9E1C32A-720B-4F30-AE0D-CE2BDB583FDA}" WorkUnitID="{F7BCFA0F-1147-468E-94CF-910E2996551A}" Origin="Manual" Filter="7"/>
 					</ObjectInclusionList>
 					<ObjectExclusionList/>

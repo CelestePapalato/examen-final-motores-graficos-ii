@@ -2991,7 +2991,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   inputRelatedToCamera: 1
-  camera: {fileID: 0}
+  currentCamera: {fileID: 0}
   interactableRange: 4
   origin: {fileID: 47408389500043241}
   interactableLayer:

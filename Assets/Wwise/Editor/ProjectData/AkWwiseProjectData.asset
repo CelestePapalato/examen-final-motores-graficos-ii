@@ -38,7 +38,7 @@ MonoBehaviour:
     ParentPath: Master-Mixer Hierarchy\Default Work Unit
     guid: 96ca781f897b2d4c89b612dbfb54758d
     GuidInternal: 
-    m_lastTime: -8584673922699019920
+    m_lastTime: -8584669033495826326
     List:
     - name: BGM
       guid: 34fe385870641347970a54cb90c538f2
@@ -88,6 +88,26 @@ MonoBehaviour:
         ObjectType: 2
         guid: d8a41415a61d2a41a17e75ca0c2149f3
       Path: Master-Mixer Hierarchy\Default Work Unit\Master Audio Bus
+    - name: Reverb
+      guid: ae9850c0a5d07a47b3bab105c14dd8df
+      id: 348963605
+      PathAndIcons:
+      - ElementName: Master-Mixer Hierarchy
+        ObjectType: 5
+        guid: 00000000000000000000000000000000
+      - ElementName: Default Work Unit
+        ObjectType: 12
+        guid: 96ca781f897b2d4c89b612dbfb54758d
+      - ElementName: Master Audio Bus
+        ObjectType: 2
+        guid: d8a41415a61d2a41a17e75ca0c2149f3
+      - ElementName: SFX
+        ObjectType: 2
+        guid: d423269cbf109c4cbcd421f3a4951545
+      - ElementName: Reverb
+        ObjectType: 1
+        guid: ae9850c0a5d07a47b3bab105c14dd8df
+      Path: Master-Mixer Hierarchy\Default Work Unit\Master Audio Bus\SFX\Reverb
     - name: SFX
       guid: d423269cbf109c4cbcd421f3a4951545
       id: 393239870
@@ -134,7 +154,7 @@ MonoBehaviour:
     ParentPath: SoundBanks\Default Work Unit
     guid: 75f0a852a28f0e4e9f5f3ba4847ae6c8
     GuidInternal: 
-    m_lastTime: -8584673413859237024
+    m_lastTime: -8584576160498413300
     List:
     - name: LevelObjects
       guid: 88a924a723059544bf65a3e6ed886788
@@ -204,7 +224,7 @@ MonoBehaviour:
     ParentPath: Events\Default Work Unit
     guid: 9d2feba5002e0c4f965531a215c0b17e
     GuidInternal: 
-    m_lastTime: -8584673413859376507
+    m_lastTime: -8584576160498532890
     List:
     - name: Ambiente
       guid: 9211cfbec1e7474b915742d9529ecd75
@@ -220,6 +240,23 @@ MonoBehaviour:
         ObjectType: 3
         guid: 9211cfbec1e7474b915742d9529ecd75
       Path: Events\Default Work Unit\Ambiente
+      maxAttenuation: 0
+      maxDuration: -1
+      minDuration: -1
+    - name: footsteps
+      guid: b145ae7a33292745a81cd03519bc8478
+      id: 2385628198
+      PathAndIcons:
+      - ElementName: Events
+        ObjectType: 5
+        guid: 00000000000000000000000000000000
+      - ElementName: Default Work Unit
+        ObjectType: 12
+        guid: 9d2feba5002e0c4f965531a215c0b17e
+      - ElementName: footsteps
+        ObjectType: 3
+        guid: b145ae7a33292745a81cd03519bc8478
+      Path: Events\Default Work Unit\footsteps
       maxAttenuation: 0
       maxDuration: -1
       minDuration: -1
@@ -298,7 +335,7 @@ MonoBehaviour:
     ParentPath: Events\MainMenu
     guid: 7c1cbacd629628459e2f1c8c7646a4ef
     GuidInternal: 
-    m_lastTime: -8584673413859127387
+    m_lastTime: -8584669033495686322
     List:
     - name: Play_Main_Menu
       guid: db0f1f5ca9e32b42a3e233debdcbfc3c
@@ -390,8 +427,74 @@ MonoBehaviour:
     ParentPath: States\Default Work Unit
     guid: 8b43330eee7276429d0b626d5c82c39f
     GuidInternal: 
-    m_lastTime: -8584679539331370452
-    List: []
+    m_lastTime: -8584669033495616315
+    List:
+    - name: states
+      guid: 3faab2a88715cc41968d6f1ea9fa92da
+      id: 1208172739
+      PathAndIcons:
+      - ElementName: States
+        ObjectType: 5
+        guid: 00000000000000000000000000000000
+      - ElementName: Default Work Unit
+        ObjectType: 12
+        guid: 8b43330eee7276429d0b626d5c82c39f
+      - ElementName: states
+        ObjectType: 9
+        guid: 3faab2a88715cc41968d6f1ea9fa92da
+      Path: States\Default Work Unit\states
+      values:
+      - name: dos
+        guid: e880bf269c0fba47844d992a6177e4dc
+        id: 546651193
+        PathAndIcons:
+        - ElementName: States
+          ObjectType: 5
+          guid: 00000000000000000000000000000000
+        - ElementName: Default Work Unit
+          ObjectType: 12
+          guid: 8b43330eee7276429d0b626d5c82c39f
+        - ElementName: states
+          ObjectType: 9
+          guid: 3faab2a88715cc41968d6f1ea9fa92da
+        - ElementName: dos
+          ObjectType: 8
+          guid: e880bf269c0fba47844d992a6177e4dc
+      - name: None
+        guid: 3a8360164f34e047aa3a97dcd4f4e780
+        id: 748895195
+        PathAndIcons:
+        - ElementName: States
+          ObjectType: 5
+          guid: 00000000000000000000000000000000
+        - ElementName: Default Work Unit
+          ObjectType: 12
+          guid: 8b43330eee7276429d0b626d5c82c39f
+        - ElementName: states
+          ObjectType: 9
+          guid: 3faab2a88715cc41968d6f1ea9fa92da
+        - ElementName: None
+          ObjectType: 8
+          guid: 3a8360164f34e047aa3a97dcd4f4e780
+      - name: uno
+        guid: d9edec5929c5c646859b36fba9feb9b3
+        id: 1063947391
+        PathAndIcons:
+        - ElementName: States
+          ObjectType: 5
+          guid: 00000000000000000000000000000000
+        - ElementName: Default Work Unit
+          ObjectType: 12
+          guid: 8b43330eee7276429d0b626d5c82c39f
+        - ElementName: states
+          ObjectType: 9
+          guid: 3faab2a88715cc41968d6f1ea9fa92da
+        - ElementName: uno
+          ObjectType: 8
+          guid: d9edec5929c5c646859b36fba9feb9b3
+      ValueGuids: []
+      ValueIcons: []
+      valuesInternal: []
   SwitchWwu:
   - PhysicalPath: Switches\Default Work Unit.wwu
     PathAndIcons:
@@ -404,7 +507,7 @@ MonoBehaviour:
     ParentPath: Switches\Default Work Unit
     guid: 5c43e77fc769f843a82c23b05a222375
     GuidInternal: 
-    m_lastTime: -8584679539331100456
+    m_lastTime: -8584669033495886324
     List: []
   TriggerWwu:
   - PhysicalPath: Triggers\Default Work Unit.wwu
@@ -421,7 +524,7 @@ MonoBehaviour:
     m_lastTime: -8584679539331629446
     List: []
   ExpandedFileSystemItemIds: 
-  ExpandedWaapiItemIds: 050000000600000007000000080000000a0000000b0000000d0000000e00000013000000140000001a0000009800000099000000df000000e0000000e5000000e7000000b8010000b9010000
+  ExpandedWaapiItemIds: 01000000020000000300000004000000050000000600000007000000080000000a0000000b0000000d0000000e0000000f00000012000000130000001400000015000000160000001a0000009800000099000000df000000e0000000e5000000e7000000b8010000b9010000
   AutoSyncSelection: 1
   autoPopulateEnabled: 1
   currentDataSource: 0

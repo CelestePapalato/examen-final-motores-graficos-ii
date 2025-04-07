@@ -66,6 +66,20 @@
 						</Action>
 					</ChildrenList>
 				</Event>
+				<Event Name="footsteps" ID="{7AAE45B1-2933-4527-A81C-D03519BC8478}">
+					<PropertyList>
+						<Property Name="Inclusion" Type="bool" Value="False"/>
+					</PropertyList>
+					<ChildrenList>
+						<Action Name="" ID="{EC3D3CC9-6B2A-4BDF-BA73-FC7F741B4E5E}" ShortID="5173599">
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="SE" ID="{F581AAA3-8015-4444-A4E9-ACEF93A13049}" WorkUnitID="{76321B0A-AE73-44CF-B97F-3D55EDFB9C87}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+					</ChildrenList>
+				</Event>
 			</ChildrenList>
 		</WorkUnit>
 	</Events>
